@@ -1,0 +1,6 @@
+=== PA601-D54A 定制电源技术规格书.doc.json
+  doc_id='PA601-D54A 定制电源技术规格书'
+  title='PA601-D54A 定制电源技术规格书 B'
+  source_kind='markdown'
+  keys=['doc_id', 'title', 'source_path', 'source_kind', 'meta', 'blocks']
+  meta={"provider": "local", "ext": ".md", "size_bytes": 74039}

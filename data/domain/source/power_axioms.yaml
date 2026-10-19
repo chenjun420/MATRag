@@ -1,0 +1,886 @@
+# 电力域公理/定理/公式表 (通用知识层之二): 基本定律 + 导出关系 + 工程公式。
+#
+# 用途: 供知识图谱组装层把术语 (terms) 与域规则 (rules) 串成可推理的知识链:
+#   公式 (axioms) --properties--> 本体参数 --related_rules--> 域规则。
+#
+# kind 取值: axiom (基本定律) | theorem (导出关系) | formula (工程公式)。
+# category 取值必须 ∈ matrag.domain.vocab.CATEGORIES。
+# properties 只填 matrag.domain.ontology 里真实存在的属性名, 不确定留 []。
+# related_rules 只填 power_rules.yaml 里的真实 id, 不确定留 []。
+# 每条均给出 source; 卡片来源必须带 card_id (power-knowledge-N)。
+
+axioms:
+  # ------------------------------------------------------------------ #
+  # 基本电学 / electrical
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-OHM
+    kind: axiom
+    statement: "欧姆定律: 导体两端电压 V 与通过电流 I 成正比, V = I·R。"
+    expr: "V = I * R"
+    variables: {V: "电压(V)", I: "电流(A)", R: "电阻(Ω)"}
+    category: general
+    aliases: [欧姆定律]
+    properties: [voltage, current, resistance]
+    related_rules: [K-ELEC-002, K-ELEC-003]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-SERIES
+    kind: axiom
+    statement: "串联电路: 电流处处相等, 总电压等于各部分电压之和, 总电阻 R = R1 + R2 + …。"
+    expr: "R = R1 + R2 + ..."
+    variables: {R: "总电阻(Ω)", R1: "分电阻1(Ω)", R2: "分电阻2(Ω)"}
+    category: general
+    aliases: [串联电阻, 串联电路]
+    properties: [resistance, total_resistance]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-PARALLEL
+    kind: axiom
+    statement: "并联电路: 各支路电压相等, 干路电流等于支路电流之和, 1/R = 1/R1 + 1/R2 + …。"
+    expr: "1 / R = 1 / R1 + 1 / R2 + ..."
+    variables: {R: "等效电阻(Ω)", R1: "支路电阻1(Ω)", R2: "支路电阻2(Ω)"}
+    category: general
+    aliases: [并联电阻, 并联电路]
+    properties: [resistance, total_resistance]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-JOULE
+    kind: axiom
+    statement: "焦耳定律: 电流通过导体产生的热量 G = I²Rt (I 为电流, t 为通电时间)。"
+    expr: "Q = I^2 * R * t"
+    variables: {Q: "热量(J)", I: "电流(A)", R: "电阻(Ω)", t: "时间(s)"}
+    category: general
+    aliases: [焦耳定律, 焦耳热]
+    properties: [current, resistance, power]
+    related_rules: [K-ELEC-004]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-DCPOWER
+    kind: axiom
+    statement: "直流功率: P = V × I; 纯电阻电路中等效形式 P = I²R = V²/R。"
+    expr: "P = V * I = I^2 * R = V^2 / R"
+    variables: {P: "功率(W)", V: "电压(V)", I: "电流(A)", R: "电阻(Ω)"}
+    category: general
+    aliases: [直流功率公式, 电功率]
+    properties: [power, voltage, current, resistance]
+    related_rules: [K-ELEC-001, K-ELEC-004, K-ELEC-005]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-DCPOWER-I2R
+    kind: theorem
+    statement: 纯电阻电路中功率 = 电流平方 × 电阻 (P = I²R), 是直流功率与欧姆定律的导出式。
+    expr: "P = I^2 * R"
+    variables: {P: "功率(W)", I: "电流(A)", R: "电阻(Ω)"}
+    category: general
+    aliases: [电阻功耗公式, I方R]
+    properties: [power, current, resistance]
+    related_rules: [K-ELEC-004]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-DCPOWER-V2R
+    kind: theorem
+    statement: 纯电阻电路中功率 = 电压平方 / 电阻 (P = V²/R)。
+    expr: "P = V^2 / R"
+    variables: {P: "功率(W)", V: "电压(V)", R: "电阻(Ω)"}
+    category: general
+    aliases: [V方R公式]
+    properties: [power, voltage, resistance]
+    related_rules: [K-ELEC-005]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-TEMPCOEFF
+    kind: theorem
+    statement: 金属导体电阻随温度升高而增大, 灯丝冷态电阻小于热态电阻 (正温度系数)。
+    expr: "R(T) = R0 * (1 + alpha * (T - T0))"
+    variables: {R: "温度 T 时电阻(Ω)", R0: "温度 T0 时电阻(Ω)", alpha: "电阻温度系数(1/K)", T: "温度(K)"}
+    category: general
+    aliases: [电阻温度系数, 正温度系数]
+    properties: [resistance, ambient_temp_c]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 交流与功率 / ac
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-APPARENTPOWER
+    kind: axiom
+    statement: 单相视在功率 S = V_rms × I_rms; 对称三相 P = √3 × U_line × I_line × cosφ。
+    expr: "S = V_rms * I_rms"
+    variables: {S: "视在功率(VA)", V_rms: "电压有效值(V)", I_rms: "电流有效值(A)"}
+    category: general
+    aliases: [视在功率公式]
+    properties: [apparent_power, voltage_rms, current_rms]
+    related_rules: [K-AC-002]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-PF
+    kind: axiom
+    statement: 功率因数 PF = 有功功率/视在功率 = cosθ, 表征负载对电网电能的利用程度。
+    expr: "PF = P / S = cos(theta)"
+    variables: {PF: "功率因数(无量纲)", P: "有功功率(W)", S: "视在功率(VA)", theta: "电压电流相位角(rad)"}
+    category: general
+    aliases: [功率因数公式]
+    properties: [power_factor, active_power, apparent_power]
+    related_rules: [K-AC-001]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-POWERTRIANGLE
+    kind: theorem
+    statement: "功率三角形: S² = P² + Q², 无功 Q = √(S² − P²)。"
+    expr: "S^2 = P^2 + Q^2"
+    variables: {S: "视在功率(VA)", P: "有功功率(W)", Q: "无功功率(var)"}
+    category: general
+    aliases: [功率三角形, 无功功率公式]
+    properties: [apparent_power, active_power, reactive_power]
+    related_rules: [K-AC-003]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-REACTIVE
+    kind: theorem
+    statement: 无功功率 Q = V_rms·I_rms·sinθ, 由电压电流相位差产生、不做功但在电网中往返。
+    expr: "Q = V_rms * I_rms * sin(theta)"
+    variables: {Q: "无功功率(var)", V_rms: "电压有效值(V)", I_rms: "电流有效值(A)", theta: "相位差(rad)"}
+    category: general
+    aliases: [无功功率定义]
+    properties: [reactive_power, voltage_rms, current_rms]
+    related_rules: [K-AC-003]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-BRIDGEPEAK
+    kind: theorem
+    statement: 单相整流后母线峰值电压 V_peak = √2·V_rms (220Vac → 311Vdc)。
+    expr: "V_peak = sqrt(2) * V_rms"
+    variables: {V_peak: "母线峰值电压(V)", V_rms: "输入电压有效值(V)"}
+    category: input
+    aliases: [整流母线峰值]
+    properties: [rectified_bus_voltage, vac_rms, v_high_line]
+    related_rules: [K-PWR-117]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 效率与功率 / power / efficiency
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-EFFICIENCY
+    kind: axiom
+    statement: 转换效率 η = P_out/P_in × 100%, 是电源能把输入电能转换为输出电能的比例。
+    expr: "eta = P_out / P_in * 100%"
+    variables: {eta: "效率(%)", P_out: "输出功率(W)", P_in: "输入功率(W)"}
+    category: efficiency
+    aliases: [效率公式]
+    properties: [efficiency, p_out, p_in]
+    related_rules: [K-PWR-001]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-ACINPUTPOWER
+    kind: theorem
+    statement: 交流输入有功功率 P_in = V_in × I_in × PF (视在值须乘功率因数才是真实输入功率)。
+    expr: "P_in = V_in * I_in * PF"
+    variables: {P_in: "输入有功功率(W)", V_in: "输入电压有效值(V)", I_in: "输入电流有效值(A)", PF: "功率因数"}
+    category: efficiency
+    aliases: [交流输入功率公式]
+    properties: [p_in, input_voltage, input_current, power_factor]
+    related_rules: [K-PWR-003]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-LOSS
+    kind: theorem
+    statement: 电源损耗 P_loss = P_in − P_out, 是效率损失在热学上的直接来源。
+    expr: "P_loss = P_in - P_out"
+    variables: {P_loss: "损耗功率(W)", P_in: "输入功率(W)", P_out: "输出功率(W)"}
+    category: efficiency
+    aliases: [损耗公式]
+    properties: [loss, p_in, p_out]
+    related_rules: [K-PWR-002]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-MOSCOND
+    kind: theorem
+    statement: MOSFET 导通损耗 P_cond = I_avg² × R_DS(on) × D; 开关损耗与 tr/tf 及频率成正比。
+    expr: "P_cond = I_avg^2 * R_DS(on) * D"
+    variables: {P_cond: "导通损耗(W)", I_avg: "平均电流(A)", R_DS_on: "通态电阻(Ω)", D: "占空比"}
+    category: efficiency
+    aliases: [MOSFET 导通损耗]
+    properties: [duty_cycle, current, resistance]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-ESRLOSS
+    kind: theorem
+    statement: 电容 ESR 损耗 P = I_rms² × ESR; 高 ESR 降低效率并增大纹波。
+    expr: "P = I_rms^2 * ESR"
+    variables: {P: "ESR 损耗(W)", I_rms: "纹波电流有效值(A)", ESR: "等效串联电阻(Ω)"}
+    category: efficiency
+    aliases: [ESR 损耗公式, 电容损耗]
+    properties: [esr_loss, esr, ripple_current_rms]
+    related_rules: [K-PWR-005]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-PWRBALANCE
+    kind: theorem
+    statement: "功率平衡自检: 任意工况 P_out ≤ P_in; 若实测 P_out > P_in 属数据采集/判读错误, 须重测而非判产品异常。"
+    expr: "P_out <= P_in"
+    variables: {P_out: "输出功率(W)", P_in: "输入功率(W)"}
+    category: efficiency
+    aliases: [功率守恒自检]
+    properties: [p_out, p_in]
+    related_rules: [K-PWR-121]
+    source: {kind: card, name: "power-knowledge-10 效率与功率判据", card_id: power-knowledge-10, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-EFF-MULTI
+    kind: formula
+    statement: 效率测试在额定输入下于 25%/50%/75%/100% 负载点分别测 η, 取最小值作为合格判据。
+    expr: "eta_judged = min(eta(25%), eta(50%), eta(75%), eta(100%))"
+    variables: {eta: "各负载点效率(%)", eta_judged: "判定用效率(%)"}
+    category: efficiency
+    aliases: [效率多点测试]
+    properties: [efficiency, efficiency_pct]
+    related_rules: [K-PWR-118]
+    source: {kind: card, name: "power-knowledge-10 效率与功率判据", card_id: power-knowledge-10, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 拓扑与纹波 / ripple
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-BUCK-DUTY
+    kind: theorem
+    statement: 降压变换器占空比 D = V_out/V_in (CCM), 输入电流 I_in = D × I_out。
+    expr: "D = V_out / V_in"
+    variables: {D: "占空比", V_out: "输出电压(V)", V_in: "输入电压(V)"}
+    category: output
+    aliases: [buck 占空比]
+    properties: [duty_cycle, voltage, input_voltage]
+    related_rules: [K-PWR-004]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-BOOST-DUTY
+    kind: theorem
+    statement: Boost 变换器占空比 D = 1 − V_in/V_out (CCM)。
+    expr: "D = 1 - V_in / V_out"
+    variables: {D: "占空比", V_in: "输入电压(V)", V_out: "输出电压(V)"}
+    category: output
+    aliases: [boost 占空比]
+    properties: [duty_cycle, input_voltage, voltage]
+    related_rules: [K-PWR-004]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-RIPPLE-CURRENT
+    kind: formula
+    statement: 电感纹波电流峰峰值 ΔI_L = Vout·(Vin−Vout)/(Vin·L·f_sw)。
+    expr: "dI_L = V_out * (V_in - V_out) / (V_in * L * f_sw)"
+    variables: {dI_L: "纹波电流峰峰值(A)", V_out: "输出电压(V)", V_in: "输入电压(V)", L: "电感量(H)", f_sw: "开关频率(Hz)"}
+    category: output
+    aliases: [电感纹波电流公式]
+    properties: [ripple_current, capacitance, switching_frequency]
+    related_rules: [K-PWR-101, K-PWR-104]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-OUTPUT-RIPPLE
+    kind: formula
+    statement: 输出纹波峰峰值 = 电容项 ΔV_cap = ΔI_L/(8·f_sw·C_out) + ESR 项 ΔV_ESR = ΔI_L·ESR。
+    expr: "dV = dI_L / (8 * f_sw * C_out) + dI_L * ESR"
+    variables: {dV: "输出纹波峰峰值(V)", dI_L: "纹波电流峰峰值(A)", f_sw: "开关频率(Hz)", C_out: "输出电容(F)", ESR: "输出电容等效串联电阻(Ω)"}
+    category: output
+    aliases: [输出纹波公式]
+    properties: [output_ripple, esr, capacitance]
+    related_rules: [K-PWR-101]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-COUT-SELECT
+    kind: formula
+    statement: 输出电容选型 C = ΔI_L/(8·f_sw·ΔV_ripple), 由允许纹波与纹波电流反推电容量。
+    expr: "C = dI_L / (8 * f_sw * dV_ripple)"
+    variables: {C: "输出电容(F)", dI_L: "纹波电流峰峰值(A)", f_sw: "开关频率(Hz)", dV_ripple: "允许纹波峰峰值(V)"}
+    category: output
+    aliases: [输出电容选型]
+    properties: [capacitance, ripple_current, switching_frequency]
+    related_rules: [K-PWR-101, K-PWR-103]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-IND-PEAK
+    kind: formula
+    statement: 电感峰值电流 I_pk = I_out + ΔI_L/2; 有效值 I_rms = √(I_out² + ΔI_L²/12); I_pk 不得超过电感饱和电流 I_sat。
+    expr: "I_pk = I_out + dI_L / 2; I_rms = sqrt(I_out^2 + dI_L^2 / 12)"
+    variables: {I_pk: "峰值电流(A)", I_out: "输出电流(A)", dI_L: "纹波电流峰峰值(A)", I_rms: "电流有效值(A)"}
+    category: output
+    aliases: [电感峰值电流公式, 电感有效值电流]
+    properties: [peak_current, current_rms, sat_current, ripple_current]
+    related_rules: [K-PWR-104]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 启动 / 保持时间 / 浪涌 / startup / inrush
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-HOLDUP-CAP
+    kind: formula
+    statement: 保持时间储能电容 C = 2·P·t/(η·(V1²−V2²)), 须在最低输入电压下判定 (储能按 V² 变化)。
+    expr: "C = 2 * P * t / (eta * (V1^2 - V2^2))"
+    variables: {C: "母线电容(F)", P: "输出功率(W)", t: "保持时间(s)", eta: "效率", V1: "初始母线电压(V)", V2: "允许最低母线电压(V)"}
+    category: dynamics
+    aliases: [保持时间电容公式]
+    properties: [required_bulk_capacitance, hold_up_time, efficiency, v_start, v_end]
+    related_rules: [K-PWR-115]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-HOLDUP-DEF
+    kind: formula
+    statement: "保持时间定义式: 输入断电后输出维持在标称 90% 以上的时间, 通用要求 ≥16~20ms。"
+    expr: "t_hold = t(V_out >= 90% * V_nom) - t(power_loss)"
+    variables: {t_hold: "保持时间(s)", V_out: "输出电压(V)", V_nom: "标称输出电压(V)"}
+    category: dynamics
+    aliases: [保持时间定义]
+    properties: [hold_up_time, measured_hold_up_ms, hold_up_limit_ms]
+    related_rules: [K-PWR-114]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-INRUSH-FUSE
+    kind: formula
+    statement: "输入浪涌与保险丝配合: 保险丝分断 I²t 须显著大于被保护器件 I²t, 典型配合比 ≥10 倍; 浪涌峰值须 ≤ 规格限值。"
+    expr: "I2t_fuse >= 10 * I2t_device"
+    variables: {I2t_fuse: "保险丝分断 I²t(A²s)", I2t_device: "被保护器件 I²t(A²s)"}
+    category: input
+    aliases: [保险丝 I2t 配合]
+    properties: [fuse_i2t, device_i2t, measured_inrush_a, inrush_limit_a]
+    related_rules: [K-PWR-116, K-SAF-106]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 调整率与精度 / regulation / accuracy
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-LINEREG
+    kind: formula
+    statement: 电压调整率 = (V_低线 − V_高线)/V_标称 × 100% (输入变化、负载恒定)。
+    expr: "line_reg = (V_low_line - V_high_line) / V_nom * 100%"
+    variables: {line_reg: "电压调整率(%)", V_low_line: "低线输出电压(V)", V_high_line: "高线输出电压(V)", V_nom: "标称输出电压(V)"}
+    category: output
+    aliases: [线性调整率公式, 电压调整率公式]
+    properties: [line_regulation_pct, v_low_line, v_high_line, v_nominal]
+    related_rules: [K-PWR-110]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-LOADREG
+    kind: formula
+    statement: 负载调整率 = (V_空载 − V_满载)/V_标称 × 100% (负载变化、输入恒定)。
+    expr: "load_reg = (V_no_load - V_full_load) / V_nom * 100%"
+    variables: {load_reg: "负载调整率(%)", V_no_load: "空载输出电压(V)", V_full_load: "满载输出电压(V)", V_nom: "标称输出电压(V)"}
+    category: output
+    aliases: [负载调整率公式]
+    properties: [measured_regulation_pct, regulation_limit_pct, v_nominal]
+    related_rules: [K-PWR-110]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-OUTACC
+    kind: formula
+    statement: "输出精度判据: 实测偏差 ≤ ±(0.5~1)% 读数 + ±0.5% 满量程, 判定余量须大于仪器精度 2 倍。"
+    expr: "|measured - nominal| <= 1% * reading + 0.5% * FS"
+    variables: {measured: "实测值", nominal: "标称值", reading: "读数", FS: "满量程"}
+    category: output
+    aliases: [输出精度公式]
+    properties: [measured_error_pct, accuracy_limit_pct, full_scale]
+    related_rules: [K-PWR-112]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-TELEMETRY-ACC
+    kind: formula
+    statement: "遥测精度判据: 电压/电流读数误差 ≤ ±(0.5~1)% 读数 + ±0.5% 满量程。"
+    expr: "|telemetry - actual| <= 1% * reading + 0.5% * FS"
+    variables: {telemetry: "遥测读数", actual: "实际值", reading: "读数", FS: "满量程"}
+    category: communication
+    aliases: [遥测精度公式]
+    properties: [measured_telemetry_error_pct, telemetry_error_limit_pct]
+    related_rules: [K-TLM-101]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-SETPOINT-READBACK
+    kind: formula
+    statement: "设定-回读一致性: 回读实际值与设定值偏差 ≤ 设定精度带, 须在 0%/50%/100% 三点验证。"
+    expr: "|readback - setpoint| <= accuracy_band"
+    variables: {readback: "回读值", setpoint: "设定值", accuracy_band: "设定精度带"}
+    category: communication
+    aliases: [设定回读一致性]
+    properties: [setpoint_readback_delta_pct, readback_limit_pct, setpoint]
+    related_rules: [K-TLM-108]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-CAL-RESIDUAL
+    kind: formula
+    statement: "输出标定残差判据: 两点/多点标定 (至少 0% 与 100%) 后残差 ≤ ±0.5%, 判定余量 > 基准源精度 2 倍。"
+    expr: "|calibrated - reference| <= 0.5% * FS"
+    variables: {calibrated: "标定后读数", reference: "基准源值", FS: "满量程"}
+    category: output
+    aliases: [标定残差判据]
+    properties: [calibration_residual_pct, calibration_limit_pct]
+    related_rules: [K-CAL-101]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-LOWLINE-RATED
+    kind: formula
+    statement: "低线降额输出电流反算: I = P_低线段/V_out, 严禁沿用高压段额定电流; 判据上限须取该输入电压对应的降额值。"
+    expr: "I_out_limit = P_low_line / V_out"
+    variables: {I_out_limit: "低线段输出电流上限(A)", P_low_line: "低线段功率上限(W)", V_out: "输出电压(V)"}
+    category: reliability
+    aliases: [低线降额反算]
+    properties: [line_derated_power_w, derated_output_current, output_voltage]
+    related_rules: [K-PWR-122, K-PWR-123]
+    source: {kind: card, name: "power-knowledge-15 低线输入降额 (分段输出功率)", card_id: power-knowledge-15, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 保护 / protection
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-HYSTERESIS
+    kind: theorem
+    statement: "保护回差方向性: 过压/过流/过温类 保护点 ≥ 恢复点 + 回差; 欠压类 恢复点 ≥ 保护点 + 回差。"
+    expr: "trip >= recovery + hysteresis (过压/过流/过温类)"
+    variables: {trip: "保护点", recovery: "恢复点", hysteresis: "回差"}
+    category: protection
+    aliases: [保护回差方向性]
+    properties: [trip, recovery, hysteresis, min_hysteresis]
+    related_rules: [K-PROT-001]
+    source: {kind: card, name: "power-knowledge-5 保护逻辑常识", card_id: power-knowledge-5, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-HYST-MIN
+    kind: formula
+    statement: "回差通用下限式: 回差 ≥ max(设定值 × 1%, 输入噪声峰峰值 × 2); 过小引起保护抖动, 过大形成保护死区。"
+    expr: "hysteresis >= max(setpoint * 1%, 2 * V_noise_pp)"
+    variables: {hysteresis: "回差", setpoint: "设定值", V_noise_pp: "输入噪声峰峰值"}
+    category: protection
+    aliases: [回差下限公式]
+    properties: [min_hysteresis, hysteresis, noise_pp, setpoint]
+    related_rules: [K-PROT-108]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-ALARM-MARGIN
+    kind: formula
+    statement: "告警与保护的安全余量: 告警阈值 ≤ 保护点 − 设计余量 (如过流告警 ≤ 保护点 − 0.5A, 过温告警 ≤ 保护点 − 3℃)。"
+    expr: "alarm_threshold <= protection_point - margin"
+    variables: {alarm_threshold: "告警阈值", protection_point: "保护点", margin: "设计余量"}
+    category: protection
+    aliases: [告警余量公式]
+    properties: [alarm, trip, hysteresis, severity]
+    related_rules: [K-PROT-002]
+    source: {kind: card, name: "power-knowledge-5 保护逻辑常识", card_id: power-knowledge-5, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-UVLO-ORDER
+    kind: theorem
+    statement: "欠压分层有序性: 最低工作电压 < UVLO 启动阈值 < UVLO 关断阈值; 欠压告警点须高于最低工作电压且低于关断点。"
+    expr: "V_min_op < V_uvlo_on < V_uvlo_off"
+    variables: {V_min_op: "最低工作电压(V)", V_uvlo_on: "UVLO 启动阈值(V)", V_uvlo_off: "UVLO 关断阈值(V)"}
+    category: protection
+    aliases: [UVLO 分层有序性]
+    properties: [min_operating_voltage, turn_on_threshold, turn_off_threshold]
+    related_rules: [K-PROT-109]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-TRIP-TOLERANCE
+    kind: formula
+    statement: "保护点精度判据: OVP/OCP 保护点实测值须落在标称值 ±5% 容差带内, 判定余量须大于测量仪器精度 2 倍。"
+    expr: "|trip_measured - trip_nominal| <= 5% * trip_nominal"
+    variables: {trip_measured: "实测保护点", trip_nominal: "标称保护点", trip_tolerance: "容差带"}
+    category: protection
+    aliases: [保护点精度公式]
+    properties: [trip_measured, trip_nominal, trip_tolerance]
+    related_rules: [K-PROT-111]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-FOLDBACK
+    kind: formula
+    statement: "短路折返判据: 短路态电流 I_sc 应低于恒流限流点 I_lim (典型 0.2~0.5 倍), 以限制短路功耗与器件热应力。"
+    expr: "I_sc = (0.2 ~ 0.5) * I_lim"
+    variables: {I_sc: "短路电流(A)", I_lim: "恒流限流点(A)"}
+    category: protection
+    aliases: [折返判据]
+    properties: [short_circuit_current, current_limit, protection_mode]
+    related_rules: [K-PROT-106]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 热设计 / 可靠性 / thermal / reliability
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-DELTA-T
+    kind: axiom
+    statement: 温升 ΔT = P_loss × R_th; 结温 T_j = T_a + P × R_th。
+    expr: "dT = P_loss * R_th; T_j = T_a + P * R_th"
+    variables: {dT: "温升(℃)", P_loss: "损耗功率(W)", R_th: "热阻(℃/W)", T_j: "结温(℃)", T_a: "环境温度(℃)"}
+    category: thermal
+    aliases: [温升公式, 结温公式]
+    properties: [operating_temp, ambient_temp_c, loss]
+    related_rules: [K-THM-003]
+    source: {kind: card, name: "power-knowledge-4 热设计", card_id: power-knowledge-4, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-RTH-CHAIN
+    kind: theorem
+    statement: "热阻链路串联叠加: R_th,ja = R_th,jc + R_th,cs + R_th,sa; 产测可由实测温升反推实际热阻 ΔT/P_loss。"
+    expr: "R_th_ja = R_th_jc + R_th_cs + R_th_sa"
+    variables: {R_th_ja: "结到环境热阻(℃/W)", R_th_jc: "结到壳热阻(℃/W)", R_th_cs: "壳到散热器热阻(℃/W)", R_th_sa: "散热器到环境热阻(℃/W)"}
+    category: thermal
+    aliases: [热阻链公式]
+    properties: [loss, operating_temp, ambient_temp_c]
+    related_rules: [K-THM-003]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-DERATE-BY-V
+    kind: theorem
+    statement: "电压降额判据: 电容实际工作电压 ≤ 额定 × 80%, 降额不足将按 Arrhenius 律直接缩短寿命。"
+    expr: "V_work <= 80% * V_rated"
+    variables: {V_work: "实际工作电压(V)", V_rated: "额定电压(V)"}
+    category: reliability
+    aliases: [电容电压降额]
+    properties: [derated_capacity_a, rated_voltage_v, working_voltage_v]
+    related_rules: [K-CAL-103]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-CAPLIFE
+    kind: formula
+    statement: "铝电解电容寿命倍增律: 纹波电流恒定时温度每降低 10℃ 寿命约翻倍 (Arrhenius 近似)。"
+    expr: "L(T) ≈ L(T0) * 2^((T0 - T) / 10)"
+    variables: {L: "寿命(h)", T: "工作温度(℃)", T0: "参考温度(℃)"}
+    category: thermal
+    aliases: [电容寿命倍增律, 10度法则]
+    properties: [life_factor, rated_life, operating_temp]
+    related_rules: [K-THM-003]
+    source: {kind: card, name: "power-knowledge-4 热设计", card_id: power-knowledge-4, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-AVAIL
+    kind: theorem
+    statement: 可用度 A = MTBF/(MTBF + MTTR); PA601-D54A 按 500000h/0.5h 计得 0.999999。
+    expr: "A = MTBF / (MTBF + MTTR)"
+    variables: {A: "可用度", MTBF: "平均故障间隔时间(h)", MTTR: "平均修复时间(h)"}
+    category: reliability
+    aliases: [可用度公式]
+    properties: [availability, mtbf, mttr]
+    related_rules: [K-REL-001]
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-NTC
+    kind: formula
+    statement: "NTC 温度换算: R(T) = R25·exp(B·(1/T − 1/298.15)), B 典型 3435~3950K (T 为绝对温度)。"
+    expr: "R(T) = R25 * exp(B * (1 / T - 1 / 298.15))"
+    variables: {R: "温度 T 时阻值(Ω)", R25: "25℃ 阻值(Ω)", B: "材料常数(K)", T: "绝对温度(K)"}
+    category: thermal
+    aliases: [NTC 换算公式]
+    properties: [ntc_resistance, r25, b_coeff]
+    related_rules: [K-TLM-104]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-TEMPCO-MEAS
+    kind: formula
+    statement: "温度系数测量: 用 ≥3 个温度点 (工作范围两端 + 常温) 的 (ΔV/V)/ΔT 做最小二乘拟合。"
+    expr: "TC = d(V_out / V_nom) / dT"
+    variables: {TC: "温度系数(%/℃)", V_out: "输出电压(V)", V_nom: "标称输出电压(V)", T: "温度(℃)"}
+    category: general
+    aliases: [温度系数测量式]
+    properties: [measured_temp_error_c, temp_error_limit_c, rated_temp]
+    related_rules: [K-PWR-111]
+    source: {kind: card, name: "power-knowledge-22 温度系数测量与温度箱", card_id: power-knowledge-22, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 安规 / safety
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-YCAP
+    kind: formula
+    statement: "Y 电容容值由漏电流限值反推: C = I_leak/(2π·f·V), 按最恶劣工况 (60Hz, 264Vac) 计算。"
+    expr: "C = I_leak / (2 * pi * f * V)"
+    variables: {C: "Y 电容容值(F)", I_leak: "允许漏电流(A)", f: "电网频率(Hz)", V: "输入电压有效值(V)"}
+    category: safety
+    aliases: [Y 电容容值公式, 漏电流反推]
+    properties: [max_y_capacitance, i_leak, vac_rms]
+    related_rules: [K-SAF-104]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-CLEARANCE
+    kind: theorem
+    statement: "爬电距离/电气间隙查表: 基本绝缘 1500V 峰值 0.5mm、2000V 1.0mm、2500V 1.5mm、3000V 2.0mm; 加强绝缘取 2 倍; 海拔 >2000m 乘修正系数。"
+    expr: "d_clearance = f(V_peak, insulation_type, pollution_degree) * altitude_factor"
+    variables: {d_clearance: "最小间距(mm)", V_peak: "工作电压峰值(V)", insulation_type: "绝缘类型", pollution_degree: "污染等级", altitude_factor: "海拔修正系数"}
+    category: safety
+    aliases: [爬电距离查表, 电气间隙查表]
+    properties: [effective_clearance, actual_clearance_mm, working_voltage_peak]
+    related_rules: [K-SAF-103]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-HIPOT-LIMIT
+    kind: formula
+    statement: "耐压试验判据: 施加规定直流电压并保持规定时间 (如 1min), 漏电流 ≤10mA 且无击穿或飞弧; 须在正负两极性各做一次。"
+    expr: "I_leakage <= 10 mA over t_hold"
+    variables: {I_leakage: "试验漏电流(mA)", t_hold: "电压保持时间(min)"}
+    category: safety
+    aliases: [耐压试验判据]
+    properties: [test_voltage_v, i_leak, insulation_type]
+    related_rules: [K-SAF-101, K-SAF-102]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-INSULRES
+    kind: formula
+    statement: "绝缘电阻判据: 正常大气压、相对湿度 90%、直流 500V 下绝缘电阻 ≥2MΩ。"
+    expr: "R_insulation >= 2 MOhm @ 500 Vdc, RH 90%"
+    variables: {R_insulation: "绝缘电阻(Ω)"}
+    category: safety
+    aliases: [绝缘电阻判据]
+    properties: [insulation_resistance, test_voltage_v]
+    related_rules: [K-SAF-001]
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 环路 / control
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-LOOP-PM
+    kind: formula
+    statement: 相位裕度 PM = 交越频率处相位滞后距 −180° 的余量 (度); 行业通行最小 45°, 本型号下限以规格书/方案为准。
+    expr: "PM = 180° + phase(fC)"
+    variables: {PM: "相位裕度(°)", phase_fC: "交越频率处相位(°)"}
+    category: dynamics
+    aliases: [相位裕度公式]
+    properties: [phase_margin_deg, phase_margin_min_deg, phase_margin_headroom_deg]
+    related_rules: [K-LOOP-002]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-LOOP-FC
+    kind: theorem
+    statement: 交越频率物理上界 fC < fSW/2; 环路注入测量的扫频上限同样不得超过 fSW/2, 否则 PWM 采样效应使读数失真。
+    expr: "fC < f_sw / 2"
+    variables: {fC: "交越频率(Hz)", f_sw: "开关频率(Hz)"}
+    category: dynamics
+    aliases: [交越频率上界]
+    properties: [fc_max_hz, switching_frequency]
+    related_rules: [K-LOOP-001]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-LOOP-GM
+    kind: formula
+    statement: 增益裕度 GM = 相位首次达到 −180° 处环路增益低于 0dB 的余量 (dB); 行业通行最小 10dB。
+    expr: "GM = -20 * log10(|G(jw_180)|)"
+    variables: {GM: "增益裕度(dB)", G_jw180: "−180° 处环路增益"}
+    category: dynamics
+    aliases: [增益裕度公式]
+    properties: [gain_margin_db, gain_margin_min_db, gain_margin_headroom_db]
+    related_rules: [K-LOOP-003]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 测量 / 量具能力 / measurement
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-UNCERTAINTY
+    kind: axiom
+    statement: "合成与扩展不确定度: 各输入量标准不确定度方和根合成得 u_c, 扩展不确定度 U = k·u_c, 常用 k=2 (约 95% 置信), k 必须显式给出。"
+    expr: "u_c = sqrt(sum(u_i^2)); U = k * u_c"
+    variables: {u_c: "合成标准不确定度", u_i: "各输入标准不确定度", U: "扩展不确定度", k: "包含因子"}
+    category: general
+    aliases: [不确定度合成公式, 扩展不确定度公式]
+    properties: [standard_uncertainty, combined_standard_uncertainty, expanded_uncertainty]
+    related_rules: [K-MSR-002]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-CM
+    kind: formula
+    statement: 测量能力指数 Cm = 公差/(4 × 标准不确定度) (ISO/TR 14253-6:2012 术语 3.8, 倍数取 4)。
+    expr: "Cm = T / (4 * u)"
+    variables: {Cm: "测量能力指数", T: "公差", u: "标准不确定度"}
+    category: general
+    aliases: [测量能力指数公式]
+    properties: [measurement_capability_index, uncertainty_multiple, spec_tolerance]
+    related_rules: [K-MSR-001]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-TUR
+    kind: formula
+    statement: 测试不确定度比 TUR = 公差/扩展不确定度 (ANSI/NCSLI Z540.3); 与 Cm 差一个覆盖因子 TUR = Cm × k。
+    expr: "TUR = T / U = Cm * k"
+    variables: {TUR: "测试不确定度比", T: "公差", U: "扩展不确定度", Cm: "测量能力指数", k: "包含因子"}
+    category: general
+    aliases: [TUR 公式]
+    properties: [measurement_capability_index, expanded_uncertainty, spec_tolerance]
+    related_rules: [K-MSR-001]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-WC
+    kind: formula
+    statement: "最坏情况公差合成: WC = Σ|tᵢ|, 所有分量同向叠加的保守边界。"
+    expr: "WC = sum(|t_i|)"
+    variables: {WC: "最坏情况总公差", t_i: "各环节公差"}
+    category: general
+    aliases: [最坏情况公差公式]
+    properties: [total_tolerance, rss_tolerance, tolerance]
+    related_rules: [K-FIX-017]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-RSS
+    kind: formula
+    statement: "均方根公差合成: RSS = √(Σtᵢ²), 统计独立假设下约为最坏情况的 1/√n。"
+    expr: "RSS = sqrt(sum(t_i^2))"
+    variables: {RSS: "均方根总公差", t_i: "各环节公差", n: "环节数"}
+    category: general
+    aliases: [均方根公差公式, RSS 公式]
+    properties: [rss_tolerance, total_tolerance, rail_power_budget_tolerance_w]
+    related_rules: [K-FIX-002, K-FIX-017]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-RESOLUTION-10TO1
+    kind: formula
+    statement: "测量系统分辨率 10:1 规则: 分辨率 ≤ min(被测公差, 过程变差)/10, 否则过程变差无法被分辨。"
+    expr: "resolution <= min(tolerance, process_variation) / 10"
+    variables: {resolution: "测量系统分辨率", tolerance: "被测公差", process_variation: "过程变差"}
+    category: general
+    aliases: [10:1 规则, 分辨率规则]
+    properties: [required_resolution, process_variation, spec_tolerance]
+    related_rules: [K-FIX-015]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-GRR
+    kind: formula
+    statement: "量具重复性与再现性判定 (%GRR): ≤10% 可接受, 10%~30% 视应用条件, >30% 不可接受。"
+    expr: "%GRR = 100% * (GRR / TV)"
+    variables: {GRR: "量具重复性与再现性变差", TV: "总变差"}
+    category: general
+    aliases: [GRR 判定式]
+    properties: [percent_gauge_rr, process_variation, tolerance]
+    related_rules: [K-FIX-016]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-INSTRUMENT-3X
+    kind: formula
+    statement: "测量仪器精度三分法则: 仪器精度应优于被测公差的 1/3, 判定余量须大于仪器精度 2 倍。"
+    expr: "accuracy_instrument <= tolerance / 3"
+    variables: {accuracy_instrument: "仪器精度", tolerance: "被测公差"}
+    category: general
+    aliases: [仪器精度三分法则, 3:1 规则]
+    properties: [fixture_precision, spec_tolerance, accuracy_limit_pct]
+    related_rules: [K-FIX-001]
+    source: {kind: card, name: "power-knowledge-6 测试与工装", card_id: power-knowledge-6, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-PROBE-LIFE
+    kind: formula
+    statement: "探针寿命选型: 所需寿命 = 实际排产循环数 × 安全系数(2~3), 不得直接选规格书最高值; 剩余寿命 = 额定寿命 − 已使用次数。"
+    expr: "L_required = N_cycles * safety_factor"
+    variables: {L_required: "所需寿命(次)", N_cycles: "排产循环数(次)", safety_factor: "安全系数(2~3)"}
+    category: general
+    aliases: [探针寿命选型公式]
+    properties: [rated_life, used_count, remaining_life, safety_factor]
+    related_rules: [K-FIX-007, K-FIX-014]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-PROBE-CHANNELS
+    kind: formula
+    statement: "测试通道数规划: 所需通道数 = ceil(目标产能 × 单次测试时间 / 可用工作时间)。"
+    expr: "N_channel = ceil(throughput * t_test / t_available)"
+    variables: {N_channel: "所需通道数", throughput: "目标产能", t_test: "单次测试时间", t_available: "可用工作时间"}
+    category: general
+    aliases: [通道数规划公式]
+    properties: [required_channels, throughput, test_time, available_time]
+    related_rules: [K-FIX-006]
+    source: {kind: card, name: "power-knowledge-6 测试与工装", card_id: power-knowledge-6, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-KELVIN
+    kind: axiom
+    statement: "开尔文四线测量: 力线与感线必须在被测接触点汇合, 夹具引线电阻被完全消除, 测量结果仅含接触电阻。"
+    expr: "R_measured = R_contact (力线与感线在接触点汇合)"
+    variables: {R_measured: "测量电阻(Ω)", R_contact: "接触电阻(Ω)"}
+    category: general
+    aliases: [开尔文四线接法]
+    properties: [kelvin_measured_resistance, contact_resistance, measurement_type]
+    related_rules: [K-FIX-009, K-FIX-010]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 数字测量 / ADC / measurement
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-LSB
+    kind: axiom
+    statement: "量化步长: 1 LSB = 满量程输入范围/2^位数; 理想 N 位 ADC 最大量化误差为 ±0.5 LSB。"
+    expr: "1 LSB = FSR / 2^N"
+    variables: {LSB: "量化步长(V)", FSR: "满量程输入范围(V)", N: "ADC 位数"}
+    category: general
+    aliases: [量化步长公式, LSB 公式]
+    properties: [lsb, adc_lsb, bits, full_scale]
+    related_rules: [K-MSR-101]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-QUANTNOISE
+    kind: theorem
+    statement: 均方根量化噪声 = LSB/√12 (即 LSB/(2√3)), 前提是量化误差与输入不相关 (整数量化时噪声集中到谐波)。
+    expr: "noise_rms = LSB / sqrt(12)"
+    variables: {noise_rms: "量化噪声有效值(V)", LSB: "量化步长(V)"}
+    category: general
+    aliases: [量化噪声公式]
+    properties: [quantization_noise_rms, lsb, bits]
+    related_rules: [K-MSR-102]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-APERTURE-JITTER
+    kind: theorem
+    statement: 孔径抖动引起的采样电压误差(有效值) = 2π·f_in·t_a·A; 抖动造成的 SNR 上限与转换器位数无关。
+    expr: "V_err_rms = 2 * pi * f_in * t_a * A"
+    variables: {V_err_rms: "误差电压有效值(V)", f_in: "输入频率(Hz)", t_a: "孔径抖动(s)", A: "信号幅度(V)"}
+    category: general
+    aliases: [孔径抖动误差公式]
+    properties: [aperture_jitter, aperture_jitter_error, snr_db]
+    related_rules: [K-MSR-103]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-ENOB
+    kind: theorem
+    statement: 有效位数 ENOB = (SNR_dB − 1.76)/6.02, 由理想 N 位转换器 SNR = 6.02N + 1.76dB 反解; 须在全 Nyquist 带宽内积分。
+    expr: "ENOB = (SNR_dB - 1.76) / 6.02"
+    variables: {ENOB: "有效位数", SNR_dB: "信纳比(dB)"}
+    category: general
+    aliases: [ENOB 公式]
+    properties: [enob_from_snr, snr_db, bits]
+    related_rules: [K-MSR-104]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-SNR-IDEAL
+    kind: theorem
+    statement: 理想 N 位转换器理论信纳比 SNR = 6.02N + 1.76dB; 只在量化误差与输入不相关且全带宽积分时成立。
+    expr: "SNR_dB = 6.02 * N + 1.76"
+    variables: {SNR_dB: "信纳比(dB)", N: "转换器位数"}
+    category: general
+    aliases: [理想 SNR 公式]
+    properties: [snr_db, bits, enob_from_snr]
+    related_rules: [K-MSR-104]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-NYQUIST
+    kind: theorem
+    statement: "采样率下限 (Nyquist): 被测信号最高频率须低于采样率的一半, 否则带外频率折叠成带内虚假读数。"
+    expr: "f_in_max < f_s / 2"
+    variables: {f_in_max: "被测信号最高频率(Hz)", f_s: "采样率(Hz)"}
+    category: general
+    aliases: [Nyquist 采样定理, 采样率下限]
+    properties: [sample_rate_hz, switching_frequency_hz]
+    related_rules: [K-TLM-102]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 并联均流 / current-sharing
+  # ------------------------------------------------------------------ #
+  - axiom_id: A-SHARE-ERROR
+    kind: formula
+    statement: "下垂法均流误差: 两机电流差 ΔI = ΔV_SET/ΔV_SLOPE, 相对均流误差 ε = ΔV_SET/(ΔV_SLOPE × I_RATED)。"
+    expr: "dI = dV_SET / dV_SLOPE; eps = dV_SET / (dV_SLOPE * I_RATED)"
+    variables: {dI: "两机电流差(A)", dV_SET: "输出电压设定偏差(V)", dV_SLOPE: "下垂斜率(V/A)", eps: "相对均流误差", I_RATED: "额定电流(A)"}
+    category: output
+    aliases: [均流误差公式]
+    properties: [current_share_error, droop_slope, setpoint_mismatch, dut_rated_current]
+    related_rules: [K-SHR-001, K-SHR-002]
+    source: {kind: card, name: "power-knowledge-21 并联均流与下垂法", card_id: power-knowledge-21, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-SHARE-IMBALANCE
+    kind: formula
+    statement: 均流不平衡度 = (|Ii − Ī|max / Ī) × 100%, 即单模块电流与各模块平均电流之差的最大绝对值比平均电流; 半载及以上常规限值 ±5%。
+    expr: "imbalance = max(|I_i - I_avg|) / I_avg * 100%"
+    variables: {I_i: "单模块输出电流(A)", I_avg: "各模块平均电流(A)", imbalance: "均流不平衡度(%)"}
+    category: output
+    aliases: [均流不平衡度公式]
+    properties: [measured_sharing_deviation_pct, sharing_deviation_limit_pct, sharing_fault_threshold_pct]
+    related_rules: [K-PWR-113, K-CTL-104]
+    source: {kind: card, name: "power-knowledge-21 并联均流与下垂法", card_id: power-knowledge-21, url: "", retrieved: "2026-10-11"}
+
+  - axiom_id: A-SHARE-LIMIT
+    kind: formula
+    statement: "均流故障检测判据: 各模块分担电流偏差 >±10% 须置故障并使该模块退出, 防止单模块长期过载。"
+    expr: "|I_i - I_avg| / I_avg > 10% -> fault, module exit"
+    variables: {I_i: "单模块电流(A)", I_avg: "平均电流(A)"}
+    category: output
+    aliases: [均流故障阈值, 均流退出判据]
+    properties: [sharing_fault_threshold_pct, measured_sharing_deviation_pct]
+    related_rules: [K-CTL-104, K-PROT-118]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}

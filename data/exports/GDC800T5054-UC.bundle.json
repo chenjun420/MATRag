@@ -1,0 +1,4236 @@
+{
+  "bundle_version": "1.0",
+  "contract_hash": "59a852c26ca277e4141c6a60ae723b20",
+  "product_code": "GDC800T5054-UC",
+  "doc_version": "",
+  "product_doc_fingerprint": "cfa2a9b302ff315a8c00a6f05ba7a735",
+  "generated_at": "2026-10-18T02:24:30Z",
+  "generator": "matrag.extract/1.0",
+  "bundle_fingerprint": "60446cf26cae6beb19958dadf2894d4a",
+  "requirements": [
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t11-1-0",
+      "spec_requirement_id": "",
+      "title": "工作电压",
+      "section_path": "4 电气特性 > 4.2 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "-",
+      "req_fingerprint": "8ab68d7cc4af80f4",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "工作电压",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t11-1-0-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t11-1|0: 工作电压; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t11-1-1",
+      "spec_requirement_id": "",
+      "title": "最大输入电流",
+      "section_path": "4 电气特性 > 4.2 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=0V~60V,\nIout=Iomax,FDD负载",
+      "req_fingerprint": "27626451ce7e2823",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "output_current",
+          "text": "最大输入电流",
+          "role": "input",
+          "value": {
+            "max": 28.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "0a517a757388cf86"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 0V",
+          "role": "input",
+          "value": {
+            "typ": 0.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3f626cfb542244e4"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t11-1-1-S001",
+          "seq": 1,
+          "name": "Vin=0V~60V, Iout=Iomax,FDD负载",
+          "rail": "",
+          "bindings": {
+            "input_tier": "0V"
+          },
+          "derived": {},
+          "basis": "t11-1|1: 最大输入电流; Vin=0V~60V, Iout=Iomax,FDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t11-1-2",
+      "spec_requirement_id": "",
+      "title": "最大输入电流",
+      "section_path": "4 电气特性 > 4.2 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=36V~60V,\nIout=Iomax,FDD负载",
+      "req_fingerprint": "05a5a4bdf077e939",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "output_current",
+          "text": "最大输入电流",
+          "role": "input",
+          "value": {
+            "max": 26.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "df3cd29d6a8377c0"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 36V",
+          "role": "input",
+          "value": {
+            "typ": 36.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "0de02fc3ba24772b"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t11-1-2-S001",
+          "seq": 1,
+          "name": "Vin=36V~60V, Iout=Iomax,FDD负载",
+          "rail": "",
+          "bindings": {
+            "input_tier": "36V"
+          },
+          "derived": {},
+          "basis": "t11-1|2: 最大输入电流; Vin=36V~60V, Iout=Iomax,FDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-0",
+      "spec_requirement_id": "",
+      "title": "输出整定电压",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,\nIout=50%Iomax,\nTA=25°C",
+      "req_fingerprint": "cee5601f14e4db6d",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TA=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出整定电压",
+          "role": "output",
+          "value": {
+            "min": 5.0,
+            "typ": 50.0,
+            "max": 5.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "059c7360dd8c8043"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 5.0,
+          "typ": 50.0,
+          "max": 5.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-0-S001",
+          "seq": 1,
+          "name": "Vin=48V, Iout=50%Iomax, TA=25°C",
+          "rail": "50V",
+          "bindings": {
+            "input_tier": "48V"
+          },
+          "derived": {},
+          "basis": "t12-0|0: 输出整定电压; Vin=48V, Iout=50%Iomax, TA=25°C",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-1",
+      "spec_requirement_id": "",
+      "title": "输出整定电压",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,\nIout=50%Iomax,\nTA=25°C",
+      "req_fingerprint": "acd55efe88d47b90",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TA=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出整定电压",
+          "role": "output",
+          "value": {
+            "min": 24.0,
+            "typ": 4.0,
+            "max": 56.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "63ddf3a8637b74a8"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 24.0,
+          "typ": 4.0,
+          "max": 56.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-1-S001",
+          "seq": 1,
+          "name": "Vin=48V, Iout=50%Iomax, TA=25°C",
+          "rail": "5V4",
+          "bindings": {
+            "input_tier": "48V"
+          },
+          "derived": {},
+          "basis": "t12-0|1: 输出整定电压; Vin=48V, Iout=50%Iomax, TA=25°C",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-2",
+      "spec_requirement_id": "",
+      "title": "输出整定电压",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,\nIout=50%Iomax,\nTA=25°C",
+      "req_fingerprint": "36819041ce0372bc",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TA=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出整定电压",
+          "role": "output",
+          "value": {
+            "min": -9.34,
+            "typ": -9.5,
+            "max": -9.76,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "36f1f47db4038552"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": -9.34,
+          "typ": -9.5,
+          "max": -9.76,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-2-S001",
+          "seq": 1,
+          "name": "Vin=48V, Iout=50%Iomax, TA=25°C",
+          "rail": "N10V",
+          "bindings": {
+            "input_tier": "48V"
+          },
+          "derived": {},
+          "basis": "t12-0|2: 输出整定电压; Vin=48V, Iout=50%Iomax, TA=25°C",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-3",
+      "spec_requirement_id": "",
+      "title": "输出电压",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "●支持PMBus在线调\n压;\n●输出电压支持在线\n调节;\n●Vout≥46V,\nPomax=700W;Vout\n<46V,\nIomax=15.2A",
+      "req_fingerprint": "5fb5d2038f83579a",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 46V",
+          "role": "input",
+          "value": {
+            "typ": 46.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "41c86cfbf9aa3a0d"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压",
+          "role": "output",
+          "value": {
+            "min": 34.0,
+            "max": 55.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "34416b5ee4879cbd"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 34.0,
+          "typ": null,
+          "max": 55.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-3-S001",
+          "seq": 1,
+          "name": "●支持PMBus在线调 压; ●输出电压支持在线 调节; ●Vout≥46V, Pomax=700W;Vout <46V, Iomax=15.2A",
+          "rail": "50V",
+          "bindings": {
+            "input_tier": "46V"
+          },
+          "derived": {},
+          "basis": "t12-0|3: 输出电压; ●支持PMBus在线调 压; ●输出电压支持在线 调节; ●Vout≥46V, Pomax=700W;Vout <46V, Iomax=15.2A",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-4",
+      "spec_requirement_id": "",
+      "title": "输出电压",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "在Vo+与TRIM引脚间\n并联调节电阻,电压\n减小;在Vo-与TRIM脚\n间并联调节电阻,电\n压增大\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4ba6f170fb056369",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压",
+          "role": "output",
+          "value": {
+            "min": 95.0,
+            "max": 105.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "0dcf5b66e2bdcd12"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 95.0,
+          "typ": null,
+          "max": 105.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-4-S001",
+          "seq": 1,
+          "name": "在Vo+与TRIM引脚间 并联调节电阻,电压 减小;在Vo-与TRIM脚 间并联调节电阻,电 压增大",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|4: 输出电压; 在Vo+与TRIM引脚间 并联调节电阻,电压 减小;在Vo-与TRIM脚 间并联调节电阻,电 压增大",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-5",
+      "spec_requirement_id": "",
+      "title": "输出电流",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "恒流模式,FDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d1e5bb9a70fe0566",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "typ": 7.0,
+            "max": 1.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "116c975a0eecd6a3"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": 7.0,
+          "max": 1.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-5-S001",
+          "seq": 1,
+          "name": "恒流模式,FDD负载",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|5: 输出电流; 恒流模式,FDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-6",
+      "spec_requirement_id": "",
+      "title": "输出电流",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "50V输出峰值功率,\nTDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "0d2c2e750431a675",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "typ": 2.0,
+            "max": 18.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ef55fe5cc6efbd59"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": 2.0,
+          "max": 18.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-6-S001",
+          "seq": 1,
+          "name": "50V输出峰值功率, TDD负载",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|6: 输出电流; 50V输出峰值功率, TDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-7",
+      "spec_requirement_id": "",
+      "title": "输出电流",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "ea54443282736162",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流",
+          "role": "output",
+          "value": {
+            "min": 2.0,
+            "typ": 1.0,
+            "max": 5.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1d27c0df291be29f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 2.0,
+          "typ": 1.0,
+          "max": 5.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-7-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|7: 输出电流; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-8",
+      "spec_requirement_id": "",
+      "title": "输出电流",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "12a97222573804c9",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 2.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "69fb05d3669adee7"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 2.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-8-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|8: 输出电流; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-9",
+      "spec_requirement_id": "",
+      "title": "输出功率",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "恒流模式,FDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "75c57947749d1ba9",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "输出功率",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "typ": 585.0,
+            "max": 705.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d6bb0cd4b718879a"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": 585.0,
+          "max": 705.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-9-S001",
+          "seq": 1,
+          "name": "恒流模式,FDD负载",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|9: 输出功率; 恒流模式,FDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-10",
+      "spec_requirement_id": "",
+      "title": "输出功率",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "50V输出峰值功率,\nTDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e98f9cdf62f9c0da",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "输出功率",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "typ": 760.0,
+            "max": 900.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "616fca0bed516d78"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": 760.0,
+          "max": 900.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-10-S001",
+          "seq": 1,
+          "name": "50V输出峰值功率, TDD负载",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|10: 输出功率; 50V输出峰值功率, TDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-11",
+      "spec_requirement_id": "",
+      "title": "输出功率",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a7973cb4b79c3dbd",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "输出功率",
+          "role": "output",
+          "value": {
+            "min": 8.0,
+            "typ": 87.0,
+            "max": 100.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b9b43af5045caa43"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 8.0,
+          "typ": 87.0,
+          "max": 100.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-11-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|11: 输出功率; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t12-0-12",
+      "spec_requirement_id": "",
+      "title": "输出功率",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4cb7de1fd206b8dd",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "输出功率",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 9.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4a83a88914b6ac4d"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 9.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t12-0-12-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t12-0|12: 输出功率; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-9",
+      "spec_requirement_id": "",
+      "title": "容性负载",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "FDD负载,50V输出电\n容中至少包含17.6μF\n的陶瓷电容,50V输出\n电容ESR小于350mΩ\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "cb34eee529743692",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "容性负载",
+          "role": "output",
+          "value": {
+            "min": 1000.0,
+            "max": 2000.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d3489e5fb6ebcecb"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 1000.0,
+          "typ": null,
+          "max": 2000.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-9-S001",
+          "seq": 1,
+          "name": "FDD负载,50V输出电 容中至少包含17.6μF 的陶瓷电容,50V输出 电容ESR小于350mΩ",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|9: 容性负载; FDD负载,50V输出电 容中至少包含17.6μF 的陶瓷电容,50V输出 电容ESR小于350mΩ",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-10",
+      "spec_requirement_id": "",
+      "title": "容性负载",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "TDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "92ffe6ca4e007fb3",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "容性负载",
+          "role": "output",
+          "value": {
+            "min": 1360.0,
+            "max": 2000.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "eaf289893eb01382"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 1360.0,
+          "typ": null,
+          "max": 2000.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-10-S001",
+          "seq": 1,
+          "name": "TDD负载",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|10: 容性负载; TDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-11",
+      "spec_requirement_id": "",
+      "title": "容性负载",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "5V4输出电容为固体铝\n电容(如果不使用\n5V4,容性负载可为\n330μF)。此处的外部\n电容是指C1的电容。\nN10V输出电容应采用\n陶瓷电容。",
+      "req_fingerprint": "f698230c60ad4b53",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 5V",
+          "role": "input",
+          "value": {
+            "typ": 5.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3ce5dbfb9cf07216"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "容性负载",
+          "role": "output",
+          "value": {
+            "min": 300.0,
+            "max": 1500.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "235a8741d3482bd8"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 300.0,
+          "typ": null,
+          "max": 1500.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-11-S001",
+          "seq": 1,
+          "name": "5V4输出电容为固体铝 电容(如果不使用 5V4,容性负载可为 330μF)。此处的外部 电容是指C1的电容。 N10V输出电容应采用 陶瓷电容。",
+          "rail": "5V4",
+          "bindings": {
+            "input_tier": "5V"
+          },
+          "derived": {},
+          "basis": "t13-0|11: 容性负载; 5V4输出电容为固体铝 电容(如果不使用 5V4,容性负载可为 330μF)。此处的外部 电容是指C1的电容。 N10V输出电容应采用 陶瓷电容。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-12",
+      "spec_requirement_id": "",
+      "title": "容性负载",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "5V4输出电容为固体铝\n电容(如果不使用\n5V4,容性负载可为\n330μF)。此处的外部\n电容是指C1的电容。\nN10V输出电容应采用\n陶瓷电容。",
+      "req_fingerprint": "934baca050545ef2",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 5V",
+          "role": "input",
+          "value": {
+            "typ": 5.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3ce5dbfb9cf07216"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "容性负载",
+          "role": "output",
+          "value": {
+            "min": 50.0,
+            "max": 470.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f6e0a83baa789c77"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": 50.0,
+          "typ": null,
+          "max": 470.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-12-S001",
+          "seq": 1,
+          "name": "5V4输出电容为固体铝 电容(如果不使用 5V4,容性负载可为 330μF)。此处的外部 电容是指C1的电容。 N10V输出电容应采用 陶瓷电容。",
+          "rail": "N10V",
+          "bindings": {
+            "input_tier": "5V"
+          },
+          "derived": {},
+          "basis": "t13-0|12: 容性负载; 5V4输出电容为固体铝 电容(如果不使用 5V4,容性负载可为 330μF)。此处的外部 电容是指C1的电容。 N10V输出电容应采用 陶瓷电容。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-13",
+      "spec_requirement_id": "",
+      "title": "输出电压纹波噪声 (峰峰值)",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "示波器带宽:20MHz\nFDD负载,50V输出电\n容中至少包含17.6μF\n的陶瓷电容\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "dcc859d2c5b24ebc",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "ripple",
+          "text": "输出电压纹波噪声 (峰峰值)",
+          "role": "output",
+          "value": {
+            "max": 500.0,
+            "unit": "mVpp"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2b8a5d4946848d88"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 500.0,
+          "unit": "mVpp"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-13-S001",
+          "seq": 1,
+          "name": "示波器带宽:20MHz FDD负载,50V输出电 容中至少包含17.6μF 的陶瓷电容",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|13: 输出电压纹波噪声 (峰峰值); 示波器带宽:20MHz FDD负载,50V输出电 容中至少包含17.6μF 的陶瓷电容",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-14",
+      "spec_requirement_id": "",
+      "title": "输出电压纹波噪声 (峰峰值)",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "示波器带宽:\n20MHz;FDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "ca6347a42851ed63",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "ripple",
+          "text": "输出电压纹波噪声 (峰峰值)",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 50.0,
+            "unit": "mVpp"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ec4658e5766002b3"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 50.0,
+          "unit": "mVpp"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-14-S001",
+          "seq": 1,
+          "name": "示波器带宽: 20MHz;FDD负载",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|14: 输出电压纹波噪声 (峰峰值); 示波器带宽: 20MHz;FDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-15",
+      "spec_requirement_id": "",
+      "title": "输出电压纹波噪声 (峰峰值)",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "示波器带宽:\n20MHz;TDD负载\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8992474239d8dfef",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "ripple",
+          "text": "输出电压纹波噪声 (峰峰值)",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 100.0,
+            "unit": "mVpp"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0bcd6ddc0bcc46c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 100.0,
+          "unit": "mVpp"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-15-S001",
+          "seq": 1,
+          "name": "示波器带宽: 20MHz;TDD负载",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|15: 输出电压纹波噪声 (峰峰值); 示波器带宽: 20MHz;TDD负载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-16",
+      "spec_requirement_id": "",
+      "title": "输出电压过冲",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "全温度范围、全输入\n电压范围和全输出电\n流范围\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "92c4222048dfac1b",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压过冲",
+          "role": "output",
+          "value": {
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2a06c27b704bf7c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-16-S001",
+          "seq": 1,
+          "name": "全温度范围、全输入 电压范围和全输出电 流范围",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|16: 输出电压过冲; 全温度范围、全输入 电压范围和全输出电 流范围",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-17",
+      "spec_requirement_id": "",
+      "title": "输出电压过冲",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "全温度范围、全输入\n电压范围和全输出电\n流范围\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e19675fc1747a602",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压过冲",
+          "role": "output",
+          "value": {
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2a06c27b704bf7c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-17-S001",
+          "seq": 1,
+          "name": "全温度范围、全输入 电压范围和全输出电 流范围",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|17: 输出电压过冲; 全温度范围、全输入 电压范围和全输出电 流范围",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-18",
+      "spec_requirement_id": "",
+      "title": "输出电压过冲",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "全温度范围、全输入\n电压范围和全输出电\n流范围\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "1395636d702f2602",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压过冲",
+          "role": "output",
+          "value": {
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2a06c27b704bf7c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-18-S001",
+          "seq": 1,
+          "name": "全温度范围、全输入 电压范围和全输出电 流范围",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|18: 输出电压过冲; 全温度范围、全输入 电压范围和全输出电 流范围",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-19",
+      "spec_requirement_id": "",
+      "title": "输出电压延迟时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "参见8.4 电源模块时序\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "9a65608e81c05dc2",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压延迟时间",
+          "role": "output",
+          "value": {
+            "min": 200.0,
+            "max": 5000.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0d4c1e86098ff8b"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 200.0,
+          "typ": null,
+          "max": 5000.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-19-S001",
+          "seq": 1,
+          "name": "参见8.4 电源模块时序",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|19: 输出电压延迟时间; 参见8.4 电源模块时序",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t13-0-20",
+      "spec_requirement_id": "",
+      "title": "输出电压延迟时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "参见8.4 电源模块时序\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e8c63358c159fba1",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压延迟时间",
+          "role": "output",
+          "value": {
+            "max": 100.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "e28f241d1d76066b"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 100.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t13-0-20-S001",
+          "seq": 1,
+          "name": "参见8.4 电源模块时序",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t13-0|20: 输出电压延迟时间; 参见8.4 电源模块时序",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-0-0",
+      "spec_requirement_id": "",
+      "title": "输出电压延迟时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "01d410be2a29f663",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压延迟时间",
+          "role": "output",
+          "value": {
+            "max": 200.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "8463696657afc042"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 200.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-0-0-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t14-0|0: 输出电压延迟时间; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-0-1",
+      "spec_requirement_id": "",
+      "title": "输出电压上升时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "输出电压从10%上升\n到90%的时间\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "22172d80358e2c08",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压上升时间",
+          "role": "output",
+          "value": {
+            "max": 200.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "8463696657afc042"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 200.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-0-1-S001",
+          "seq": 1,
+          "name": "输出电压从10%上升 到90%的时间",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t14-0|1: 输出电压上升时间; 输出电压从10%上升 到90%的时间",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-0-2",
+      "spec_requirement_id": "",
+      "title": "输出电压上升时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "输出电压从10%上升\n到90%的时间\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "12cd75892592e96d",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压上升时间",
+          "role": "output",
+          "value": {
+            "max": 50.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "50a89886d9030762"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 50.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-0-2-S001",
+          "seq": 1,
+          "name": "输出电压从10%上升 到90%的时间",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t14-0|2: 输出电压上升时间; 输出电压从10%上升 到90%的时间",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-0-3",
+      "spec_requirement_id": "",
+      "title": "输出电压上升时间",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "输出电压从10%上升\n到90%的时间\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4b277d03b170acab",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压上升时间",
+          "role": "output",
+          "value": {
+            "max": 50.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "50a89886d9030762"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 50.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-0-3-S001",
+          "seq": 1,
+          "name": "输出电压从10%上升 到90%的时间",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t14-0|3: 输出电压上升时间; 输出电压从10%上升 到90%的时间",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-1-0",
+      "spec_requirement_id": "",
+      "title": "输入欠压保护(50V) 保护点 恢复点 回差",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n-\n-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "b0509bde3823e05b",
+      "flags": [
+        "synth-code",
+        "multi-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护(50V) 保护点 恢复点 回差 (拆分: 保护点; 恢复点; 回差)",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "保护点",
+          "min": 29.5,
+          "typ": 31.5,
+          "max": 33.5,
+          "unit": "V"
+        },
+        {
+          "rail": "",
+          "qualifier": "恢复点",
+          "min": 31.5,
+          "typ": 33.5,
+          "max": 35.5,
+          "unit": "V"
+        },
+        {
+          "rail": "",
+          "qualifier": "回差",
+          "min": 2.0,
+          "typ": 3.0,
+          "max": 4.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-1-0-S001",
+          "seq": 1,
+          "name": "- - -",
+          "rail": "",
+          "bindings": {
+            "input_tier": "50V"
+          },
+          "derived": {},
+          "basis": "t14-1|0: 输入欠压保护(50V) 保护点 恢复点 回差; - - -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t14-1-1",
+      "spec_requirement_id": "",
+      "title": "输入欠压保护(5V4) 保护点 恢复点 回差",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n-\n-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "314b8c937a1510f6",
+      "flags": [
+        "synth-code",
+        "multi-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护(5V4) 保护点 恢复点 回差 (拆分: 保护点; 恢复点; 回差)",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "保护点",
+          "min": 25.0,
+          "typ": 29.0,
+          "max": 32.0,
+          "unit": "V"
+        },
+        {
+          "rail": "",
+          "qualifier": "恢复点",
+          "min": 28.0,
+          "typ": 33.0,
+          "max": 35.0,
+          "unit": "V"
+        },
+        {
+          "rail": "",
+          "qualifier": "回差",
+          "min": 1.5,
+          "typ": 4.0,
+          "max": 6.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t14-1-1-S001",
+          "seq": 1,
+          "name": "- - -",
+          "rail": "",
+          "bindings": {
+            "input_tier": "5V"
+          },
+          "derived": {},
+          "basis": "t14-1|1: 输入欠压保护(5V4) 保护点 恢复点 回差; - - -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-0",
+      "spec_requirement_id": "",
+      "title": "输出过流保护",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "打嗝模式\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "3751888f6992563c",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过流保护",
+          "role": "output",
+          "value": {
+            "min": 2.0,
+            "max": 8.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f34d7c66e3a6b1aa"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 2.0,
+          "typ": null,
+          "max": 8.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-0-S001",
+          "seq": 1,
+          "name": "打嗝模式",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|0: 输出过流保护; 打嗝模式",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-1",
+      "spec_requirement_id": "",
+      "title": "输出过流保护",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "打嗝模式\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "7c31f2cd80b8b4ee",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过流保护",
+          "role": "output",
+          "value": {
+            "min": 5.0,
+            "max": 0.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "44b7617742f36de0"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 5.0,
+          "typ": null,
+          "max": 0.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-1-S001",
+          "seq": 1,
+          "name": "打嗝模式",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|1: 输出过流保护; 打嗝模式",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-2",
+      "spec_requirement_id": "",
+      "title": "输出过流保护",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "打嗝模式\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c1c52c7fa6f51998",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过流保护",
+          "role": "output",
+          "value": {
+            "min": 3.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "e21aa6ad9108140f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": 3.0,
+          "typ": null,
+          "max": null,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-2-S001",
+          "seq": 1,
+          "name": "打嗝模式",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|2: 输出过流保护; 打嗝模式",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-3",
+      "spec_requirement_id": "",
+      "title": "输出过压保护",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "打嗝模式\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "3220ca275637b625",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过压保护",
+          "role": "output",
+          "value": {
+            "min": 60.0,
+            "max": 64.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "9bbaa9cc47c4601f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": 60.0,
+          "typ": null,
+          "max": 64.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-3-S001",
+          "seq": 1,
+          "name": "打嗝模式",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|3: 输出过压保护; 打嗝模式",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-4",
+      "spec_requirement_id": "",
+      "title": "输出过压保护",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "打嗝模式\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a3f03c9ce8dec3d8",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过压保护",
+          "role": "output",
+          "value": {
+            "min": 94.0,
+            "max": 0.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1ab723b64c603f54"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": 94.0,
+          "typ": null,
+          "max": 0.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-4-S001",
+          "seq": 1,
+          "name": "打嗝模式",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|4: 输出过压保护; 打嗝模式",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-0-5",
+      "spec_requirement_id": "",
+      "title": "过温保护 保护点 回差",
+      "section_path": "4 电气特性 > 4.4 保护特性",
+      "role": "",
+      "description": "",
+      "notes": "自恢复;\n通过测量温度传感器附\n近的PCB温度获得此\n值。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "b239ec0640654cb8",
+      "flags": [
+        "synth-code",
+        "multi-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "过温保护 保护点 回差 (拆分: 保护点; 回差)",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "保护点",
+          "min": 110.0,
+          "typ": 120.0,
+          "max": 130.0,
+          "unit": "degC"
+        },
+        {
+          "rail": "",
+          "qualifier": "回差",
+          "min": 5.0,
+          "typ": null,
+          "max": null,
+          "unit": "degC"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-0-5-S001",
+          "seq": 1,
+          "name": "自恢复; 通过测量温度传感器附 近的PCB温度获得此 值。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t15-0|5: 过温保护 保护点 回差; 自恢复; 通过测量温度传感器附 近的PCB温度获得此 值。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-1-0",
+      "spec_requirement_id": "",
+      "title": "最大负载",
+      "section_path": "4 电气特性 > 4.5 效率特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,TB=25°C,\nI50V=14.1A,IN10V=0A,\nI5V4=18.5A",
+      "req_fingerprint": "4d17e3a8e623bdd3",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TB=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "最大负载",
+          "role": "output",
+          "value": {
+            "min": 94.0,
+            "typ": 95.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "55ddefb8b93d0093"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 94.0,
+          "typ": 95.0,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-1-0-S001",
+          "seq": 1,
+          "name": "Vin=48V,TB=25°C, I50V=14.1A,IN10V=0A, I5V4=18.5A",
+          "rail": "",
+          "bindings": {
+            "input_tier": "48V"
+          },
+          "derived": {},
+          "basis": "t15-1|0: 最大负载; Vin=48V,TB=25°C, I50V=14.1A,IN10V=0A, I5V4=18.5A",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-1-1",
+      "spec_requirement_id": "",
+      "title": "额定负载",
+      "section_path": "4 电气特性 > 4.5 效率特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,TB=25°C,\nI50V=12A,IN10V=0A,\nI5V4=16.1A",
+      "req_fingerprint": "2edc5722be82c956",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TB=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "额定负载",
+          "role": "output",
+          "value": {
+            "min": 94.0,
+            "typ": 95.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "55ddefb8b93d0093"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 94.0,
+          "typ": 95.0,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-1-1-S001",
+          "seq": 1,
+          "name": "Vin=48V,TB=25°C, I50V=12A,IN10V=0A, I5V4=16.1A",
+          "rail": "",
+          "bindings": {
+            "input_tier": "48V"
+          },
+          "derived": {},
+          "basis": "t15-1|1: 额定负载; Vin=48V,TB=25°C, I50V=12A,IN10V=0A, I5V4=16.1A",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t15-1-2",
+      "spec_requirement_id": "",
+      "title": "空载",
+      "section_path": "4 电气特性 > 4.5 效率特性",
+      "role": "",
+      "description": "",
+      "notes": "Vin=48V,TB=25°C,\nI50V=3A,IN10V=0A,\nI5V4=10A",
+      "req_fingerprint": "1627684dff9317a0",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 48V",
+          "role": "input",
+          "value": {
+            "typ": 48.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6c27064a2a5f3c7d"
+        },
+        {
+          "kind": "temperature",
+          "text": "原文标注 TB=25°C",
+          "role": "input",
+          "value": {
+            "typ": 25.0,
+            "unit": "degC"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "edfa9658b3137e5f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "空载",
+          "role": "output",
+          "value": {
+            "min": 91.0,
+            "typ": 92.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1e08aeb08ac85009"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 91.0,
+          "typ": 92.0,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t15-1-2-S001",
+          "seq": 1,
+          "name": "Vin=48V,TB=25°C, I50V=3A,IN10V=0A, I5V4=10A",
+          "rail": "",
+          "bindings": {
+            "input_tier": "48V",
+            "load": "空载"
+          },
+          "derived": {},
+          "basis": "t15-1|2: 空载; Vin=48V,TB=25°C, I50V=3A,IN10V=0A, I5V4=10A",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-0",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n1A/μs,负载:\n25%~50%~25%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "57ae52fc8b23124e",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 2500.0,
+            "unit": "mV"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "70c52cf3480fd7de"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 2500.0,
+          "unit": "mV"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-0-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 1A/μs,负载: 25%~50%~25%",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|0: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 1A/μs,负载: 25%~50%~25%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-1",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n1A/μs,负载:\n25%~50%~25%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "2d52d28cd2c05953",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 0.2,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0818df9632c403d"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 0.2,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-1-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 1A/μs,负载: 25%~50%~25%",
+          "rail": "50V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|1: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 1A/μs,负载: 25%~50%~25%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-2",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n0.1A/μs,负载:\n25%~50%~25%;\n50%~75%~50%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e2fb6bfe11519835",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 270.0,
+            "unit": "mV"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "7a922d5ad4b876b8"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 270.0,
+          "unit": "mV"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-2-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|2: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-3",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n0.1A/μs,负载:\n25%~50%~25%;\n50%~75%~50%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "07884ddaec0faee1",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 0.2,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0818df9632c403d"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "5V4",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 0.2,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-3-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "rail": "5V4",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|3: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-4",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n0.1A/μs,负载:\n25%~50%~25%;\n50%~75%~50%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a2026883d819520b",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 630.0,
+            "unit": "mV"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "126d5c1bfb9d5ed6"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 630.0,
+          "unit": "mV"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-4-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|4: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-5",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (FDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=1ms,电流变化率:\n0.1A/μs,负载:\n25%~50%~25%;\n50%~75%~50%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a780296368c20f5c",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 36.0,
+            "typ": 48.0,
+            "max": 60.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "15e47b508ffe23d2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (FDD)",
+          "role": "output",
+          "value": {
+            "max": 0.2,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0818df9632c403d"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "N10V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 0.2,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-5-S001",
+          "seq": 1,
+          "name": "T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "rail": "N10V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t16-0|5: 过冲幅度 恢复时间 (FDD); T=1ms,电流变化率: 0.1A/μs,负载: 25%~50%~25%; 50%~75%~50%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-6",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (TDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=10ms/5ms,\nVout=Vonom,电流变化\n率:1A/μs,负载:\n0W~900W~0W;50V输\n出功率在7.5ms/3.75ms动\n态模式下达到900W,\n2.5ms/1.25ms为0W。",
+      "req_fingerprint": "439fd465f0c232c5",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 50V",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b977679b08c70172"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (TDD)",
+          "role": "output",
+          "value": {
+            "max": 3500.0,
+            "unit": "mV"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2d78b6de54293041"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 3500.0,
+          "unit": "mV"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-6-S001",
+          "seq": 1,
+          "name": "T=10ms/5ms, Vout=Vonom,电流变化 率:1A/μs,负载: 0W~900W~0W;50V输 出功率在7.5ms/3.75ms动 态模式下达到900W, 2.5ms/1.25ms为0W。",
+          "rail": "50V",
+          "bindings": {
+            "input_tier": "50V"
+          },
+          "derived": {},
+          "basis": "t16-0|6: 过冲幅度 恢复时间 (TDD); T=10ms/5ms, Vout=Vonom,电流变化 率:1A/μs,负载: 0W~900W~0W;50V输 出功率在7.5ms/3.75ms动 态模式下达到900W, 2.5ms/1.25ms为0W。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-GDC800T5054-UC-t16-0-7",
+      "spec_requirement_id": "",
+      "title": "过冲幅度 恢复时间 (TDD)",
+      "section_path": "4 电气特性 > 4.6 动态特性",
+      "role": "",
+      "description": "",
+      "notes": "T=10ms/5ms,\nVout=Vonom,电流变化\n率:1A/μs,负载:\n0W~900W~0W;50V输\n出功率在7.5ms/3.75ms动\n态模式下达到900W,\n2.5ms/1.25ms为0W。",
+      "req_fingerprint": "6e619c965f2e64ec",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 50V",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b977679b08c70172"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "过冲幅度 恢复时间 (TDD)",
+          "role": "output",
+          "value": {
+            "max": 1.5,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "cef73df563d6a4b8"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "50V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 1.5,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-GDC800T5054-UC-t16-0-7-S001",
+          "seq": 1,
+          "name": "T=10ms/5ms, Vout=Vonom,电流变化 率:1A/μs,负载: 0W~900W~0W;50V输 出功率在7.5ms/3.75ms动 态模式下达到900W, 2.5ms/1.25ms为0W。",
+          "rail": "50V",
+          "bindings": {
+            "input_tier": "50V"
+          },
+          "derived": {},
+          "basis": "t16-0|7: 过冲幅度 恢复时间 (TDD); T=10ms/5ms, Vout=Vonom,电流变化 率:1A/μs,负载: 0W~900W~0W;50V输 出功率在7.5ms/3.75ms动 态模式下达到900W, 2.5ms/1.25ms为0W。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    }
+  ],
+  "excluded": [
+    {
+      "req_id": "",
+      "title": "工作温度(TA)",
+      "section_path": "4 电气特性 > 4.1 绝对额定最大值",
+      "reason": "非产测范围: 环境/可靠性条件",
+      "matched_word": "",
+      "notes": "-"
+    },
+    {
+      "req_id": "",
+      "title": "存储温度",
+      "section_path": "4 电气特性 > 4.1 绝对额定最大值",
+      "reason": "非产测范围: 环境/可靠性条件",
+      "matched_word": "",
+      "notes": "-"
+    },
+    {
+      "req_id": "",
+      "title": "工作湿度",
+      "section_path": "4 电气特性 > 4.1 绝对额定最大值",
+      "reason": "非产测范围: 环境/可靠性条件",
+      "matched_word": "",
+      "notes": "无凝露"
+    },
+    {
+      "req_id": "",
+      "title": "海拔",
+      "section_path": "4 电气特性 > 4.1 绝对额定最大值",
+      "reason": "非产测范围: 环境/可靠性条件",
+      "matched_word": "",
+      "notes": "-"
+    },
+    {
+      "req_id": "",
+      "title": "低温存储",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "●测试进程中不接入电源。\n●测试完成后,电气性能正常,电源模\n块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "高温存储",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "●测试进程中不接入电源。\n●测试完成后,电气性能正常,电源模\n块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "低温工作实验",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "Vin=48V DC,测试完成后,电气性能正\n常,电源模块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "高温工作实验",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "Vin=48V DC,测试完成后,电气性能正\n常,电源模块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "高低温循环工作试验",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "Vin=48V DC,测试完成后,电气性能正\n常,电源模块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "恒定湿热",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": "Vin=48V DC,测试完成后,电气性能正\n常,电源模块不损坏。"
+    },
+    {
+      "req_id": "",
+      "title": "平均无故障时间 (MTBF)",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 环境/可靠性条件",
+      "matched_word": "",
+      "notes": "Telcordia SR332 Method 1\nCase 3;80%负载;\nTA=40°C;正常输入/额定\n输出,风速=1.5m/s\n(300LFM)"
+    },
+    {
+      "req_id": "",
+      "title": "电解电容寿命",
+      "section_path": "14 产品包装",
+      "reason": "非产测范围: 产品包装",
+      "matched_word": "产品包装",
+      "notes": ""
+    }
+  ],
+  "review": [
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.2 输入特性",
+      "heading": "空载功耗",
+      "detail": "未命中映射表 (cat=input, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.2 输入特性",
+      "heading": "容性负载",
+      "detail": "未命中映射表 (cat=input, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "电压调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "电压调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "电压调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "负载调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "负载调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "负载调整率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "稳压精度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "稳压精度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "稳压精度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "温度系数",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "温度系数",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "温度系数",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "开关频率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "开关频率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.3 输出特性",
+      "heading": "开关频率",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "N10V_FAULT电压 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "N10V_FAULT电压 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "N10V_FAULT电流 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "N10V_FAULT电流 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_I2C_RESET电压 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_I2C_RESET电压 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_I2C_RESET电流 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_I2C_RESET电流 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "REMOTE_POWER_OFF 电压 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "REMOTE_POWER_OFF 电压 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "REMOTE_POWER_OFF 电流 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "REMOTE_POWER_OFF 电流 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_ALARM电压 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_ALARM电压 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_ALARM电压 (低电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "4 电气特性 > 4.7 其他特性",
+      "heading": "PWR_ALARM电压 (高电平)",
+      "detail": "未命中映射表 (cat=other, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "逻辑输入低电平(VIL)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "逻辑输入高电平(VIH)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "逻辑输出低电平(VOL)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "逻辑输出高电平(VOH)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "PMBus通信建立时间 (Tset)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "PMBus通信保持时间 (Thold)",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "输入电压检测精度",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "输出电压检测精度",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "输出电流检测精度",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "9 通信 > 9.2 信号特性",
+      "heading": "温度检测精度",
+      "detail": "未命中映射表 (cat=communication, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    }
+  ],
+  "excluded_scenarios": [],
+  "stats": {
+    "spec": {
+      "rows": 106,
+      "requirements": 51,
+      "excluded": 12,
+      "review": 43,
+      "kinds": {
+        "cap_load": 4,
+        "efficiency": 3,
+        "input_voltage@input": 51,
+        "output_current": 4,
+        "output_current@input": 2,
+        "output_power": 4,
+        "output_voltage": 5,
+        "protection_action": 8,
+        "ripple": 3,
+        "temperature@input": 6,
+        "timing": 17
+      },
+      "baseline_input_voltage": {
+        "min": 36.0,
+        "typ": 48.0,
+        "max": 60.0,
+        "unit": "V"
+      }
+    },
+    "narrative": {
+      "blocks_total": 612,
+      "blocks_in_scope": 78,
+      "blocks_used": 24,
+      "blocks_truncated": 54,
+      "clauses_draft": 0,
+      "skipped_llm_off": 1,
+      "deduped_against_spec": 0,
+      "requirements": 0,
+      "clauses_bound": 0
+    },
+    "requirements_total": 51,
+    "excluded_total": 12,
+    "review_total": 43,
+    "narrative_skipped": "llm_not_configured"
+  },
+  "removed_requirement_codes": []
+}

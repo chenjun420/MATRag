@@ -1,0 +1,2252 @@
+# 电力域通用术语表 (通用知识层之一): 中英缩写 + 定义。
+#
+# 用途: 供知识图谱组装层把「规格书实例名 / 卡片原文提法」链接到稳定术语节点,
+# 再由术语挂到 ontology 属性 (properties) 与域规则 (related_rules)。
+#
+# 数据来源纪律:
+#   - kind: spec_table —— 规格书缩略语表/术语章原文 (name 里带表 id 或章节号);
+#   - kind: card       —— 域知识卡片 power-knowledge-N (必须带 card_id);
+#   - kind: standard   —— 标准原文提法 (url 仅在本任务实际检索并能访问时给出)。
+#   - category 取值必须 ∈ matrag.domain.vocab.CATEGORIES;
+#   - properties 只填 matrag.domain.ontology 里真实存在的属性名, 不确定留 [];
+#   - related_rules 只填 power_rules.yaml 里的真实 id, 不确定留 []。
+#
+# 说明: 同一缩写/别名在全表内必须归一后唯一 (build_term_index 会对冲突 fail-fast),
+# 因此 EMC/ESD 等跨类别概念只登记在最主要的一个类别下, 不重复登记。
+
+terms:
+  # ------------------------------------------------------------------ #
+  # 需求等级与工作条件 (PA601-D54A §3 术语和约定)
+  # ------------------------------------------------------------------ #
+  - term_id: T-RATED
+    zh: 额定
+    en: Rated
+    abbr: ""
+    category: general
+    definition: >-
+      指对应项目的典型值; 如额定输入为输入工作电压范围的典型值,
+      额定输出电流指输出电流的典型值 (PA601-D54A §3 约定)。
+    aliases: [额定值, 额定输入, 额定输出, 额定输出电压]
+    properties: [input_voltage, output_voltage, rated_current]
+    related_rules: [K-LIM-001]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定 (额定)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LONGTERM
+    zh: 长期工作
+    en: Continuous (Long-Term) Operation
+    abbr: ""
+    category: environment
+    definition: >-
+      与「短期」相对的工作条件: 可长期连续运行且不降额; 规格书中未特别
+      标注「短期」的项目默认按长期工作判定 (PA601-D54A 工作温度即标「长期工作,
+      在此范围内能保证电源正常工作, 不降额」)。
+    aliases: [长期工作条件, 连续工作, 工作时间]
+    properties: [operating_temp, available_time, rated_temp]
+    related_rules: [K-CAL-107]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定 (短期) 与 §4.1 工作环境条件", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SHORTTERM
+    zh: 短期工作
+    en: Short-Term Operation
+    abbr: ""
+    category: environment
+    definition: >-
+      PA601-D54A §3 定义: 连续工作不超过 96 小时, 1 年中累计不超过 4 次
+      且累计时间不超过 10 天; 短期工作条件下的功能与性能指标必须满足规格
+      要求, 器件降额可以适当降低 (参考器件降额准则)。
+    aliases: [短期, 短期工作条件]
+    properties: [operating_temp, test_time, available_time]
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定 (短期)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-MANDATORY
+    zh: 强制需求
+    en: Mandatory Requirement
+    abbr: ""
+    category: general
+    definition: >-
+      PA601-D54A §3 定义的需求优先级最高等级: 规定电源的关键需求, 体现用户
+      的关键需要或对产品架构、可靠性有重大影响的需求; 强制等级需求必须具备
+      测试用例覆盖。
+    aliases: [强制, 强制等级]
+    properties: [coverage_factor, required_cycle_life]
+    related_rules: [K-COV-001]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定 (强制)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RECOMMENDED
+    zh: 推荐需求
+    en: Recommended Requirement
+    abbr: ""
+    category: general
+    definition: >-
+      PA601-D54A §3 定义的需求优先级次等级: 规定电源的重要需求, 如竞争对手
+      已经实现且用户感觉良好的需求、本产品区别于其它同类产品的独特需求等。
+    aliases: [推荐, 推荐等级]
+    properties: [priority, need]
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定 (推荐)", url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # EMC 电磁兼容
+  # ------------------------------------------------------------------ #
+  - term_id: T-EMC
+    zh: 电磁兼容
+    en: Electro Magnetic Compatibility
+    abbr: EMC
+    category: emc
+    definition: >-
+      设备或系统在其电磁环境中能正常工作, 且不对该环境中任何其他设备产生
+      无法承受的电磁骚扰的能力; 含发射 (EMI) 与抗扰度 (EMS) 两个方面。
+    aliases: [电磁兼容性]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CE
+    zh: 传导发射
+    en: Conducted Emission
+    abbr: CE
+    category: emc
+    definition: >-
+      设备通过电源线、信号线等导体向外传导的电磁骚扰 (150kHz~30MHz 频段),
+      由 LISN 配合接收机测量; 与「传导抗扰度 CS」是一对相反的考察方向。
+    aliases: [传导骚扰]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RE
+    zh: 辐射发射
+    en: Radiated Emission
+    abbr: RE
+    category: emc
+    definition: >-
+      设备以电磁波形式向空间辐射的骚扰 (典型 30MHz~1GHz, 天线法测量);
+      开关电源的辐射源主要是开关节点、变压器漏磁与整流回路的高 di/dt 环路。
+    aliases: [辐射骚扰]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-EFT
+    zh: 电快速瞬变脉冲群
+    en: Electrical Fast Transient/Burst
+    abbr: EFT
+    category: emc
+    definition: >-
+      由开关电弧、继电器触点弹跳等引起的成串快速瞬变脉冲抗扰度试验;
+      考核电源对群脉冲干扰的耐受能力, 试验时须确认输出与保护行为不异常。
+    aliases: [电快速瞬变脉冲群抗扰度, EFT/B, 电快速脉冲群]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RS
+    zh: 辐射抗扰度
+    en: Radiated Susceptibility
+    abbr: RS
+    category: emc
+    definition: >-
+      设备在外部射频电磁场 (典型 80MHz~6GHz) 照射下保持规定性能的能力;
+      与「辐射发射 RE」方向相反, 验收时按判据等级 (A/B/C) 评定。
+    aliases: [辐射抗干扰]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CS
+    zh: 传导抗扰度
+    en: Conducted Susceptibility
+    abbr: CS
+    category: emc
+    definition: >-
+      设备在电源线/信号线上注入的射频干扰 (典型 150kHz~80MHz) 下保持规定
+      性能的能力; 与「传导发射 CE」方向相反, 同样按判据等级评定。
+    aliases: [传导抗干扰]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-ESD
+    zh: 静电放电
+    en: Electrostatic Discharge
+    abbr: ESD
+    category: standards
+    definition: >-
+      带电人体或物体向设备泄放静电荷的现象及其抗扰度试验 (接触放电/空气
+      放电); 产测工装必须具备 ESD 防护, 否则会损伤被测电源。
+    aliases: [静电抗扰, 静电放电抗扰度]
+    properties: [has_esd_protection]
+    related_rules: [K-SAF-003]
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-YCAP
+    zh: Y 电容
+    en: Y Capacitor
+    abbr: Y-Cap
+    category: emc
+    definition: >-
+      跨接在一次侧与可触及二次侧/地之间, 用于抑制共模干扰的安规电容;
+      容值上限由允许泄漏电流反推, 失效模式必须为开路。
+    aliases: [安规电容]
+    properties: [max_y_capacitance, i_leak, cap_class]
+    related_rules: [K-SAF-104, K-SAF-105]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-EN61000-3-2
+    zh: EN61000-3-2 谐波电流限值
+    en: EN 61000-3-2 Harmonic Current Emission Limits
+    abbr: EN61000-3-2
+    category: emc
+    definition: >-
+      对每相输入电流 ≤16A 设备的谐波电流发射限值标准; 卡片指出 75W 以上
+      电器须限制谐波, 开关电源须借 PFC 校正后达标。
+    aliases: [谐波电流限值标准]
+    properties: []
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # input 输入特性
+  # ------------------------------------------------------------------ #
+  - term_id: T-ACDC
+    zh: 交流-直流变换
+    en: Alternating Current-Direct Current
+    abbr: AC-DC
+    category: input
+    definition: >-
+      把交流输入整流并变换为直流输出的电源类型; 本域主力产品形态,
+      典型链路为 输入滤波 → 整流/PFC → DC-DC 变换 → 输出滤波。
+    aliases: [交直流变换, AC/DC]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177-75V-20A 规格书缩略语表 (t5-0, p5)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-WORKVOLT
+    zh: 工作电压
+    en: Working Voltage
+    abbr: ""
+    category: input
+    definition: >-
+      设备可长期连续运行 (不降额) 的输入电压范围; 产测判据须取该范围内容,
+      与「最高极限输入电压」(允许不工作但不损坏) 是两个不同的边界。
+    aliases: [输入工作电压范围]
+    properties: [input_voltage, min_operating_voltage]
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.1 环境条件/输入特性 (t14-1 SR-PA601-D54A-1101)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-MAXINPUT
+    zh: 最高极限输入电压
+    en: Maximum Withstand Input Voltage
+    abbr: ""
+    category: input
+    definition: >-
+      设备短时可承受的输入电压上限; 在此条件下可以不工作, 但不得损坏,
+      用于界定过压耐受边界而非正常工作范围。
+    aliases: [极限输入电压]
+    properties: [input_voltage]
+    related_rules: [K-PROT-101]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3 SR-PA601-D54A-1102 最高极限输入电压", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-INRUSH
+    zh: 浪涌电流
+    en: Inrush Current
+    abbr: ""
+    category: input
+    definition: >-
+      上电瞬间因母线电容充电产生的输入电流峰值; 由 NTC、限流电阻或继电器
+      限制在规格值内, 并与输入保险丝 I²t 配合, 重复插拔与低温工况须分别验证。
+    aliases: [输入冲击电流, 涌流]
+    properties: [measured_inrush_a, inrush_limit_a, fuse_i2t]
+    related_rules: [K-PWR-116, K-SAF-106]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-PFC
+    zh: 功率因数校正
+    en: Power Factor Correction
+    abbr: PFC
+    category: input
+    definition: >-
+      在整流与母线电容之间加入升压型变换级, 使输入电流跟随输入电压波形
+      (接近正弦) 从而把功率因数提升到 0.99 附近的电路技术。
+    aliases: [功率因数校正电路, 有源 PFC]
+    properties: [power_factor, rectified_bus_voltage]
+    related_rules: [K-AC-001, K-PWR-117]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-PF
+    zh: 功率因数
+    en: Power Factor
+    abbr: PF
+    category: input
+    definition: >-
+      有功功率与视在功率之比 PF = P/S = cosθ; 整流电容输入的开关电源
+      电流呈脉冲状、功率因数低, 经 PFC 校正后可达 0.99。
+    aliases: [功率因数 PF]
+    properties: [power_factor, active_power, apparent_power, input_current]
+    related_rules: [K-AC-001]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RECTBUS
+    zh: 整流母线电压
+    en: Rectified Bus Voltage
+    abbr: V_bus
+    category: input
+    definition: >-
+      交流输入经整流 (含 PFC) 后在直流母线上建立的电压; 单相整流峰值
+      V_peak = √2·V_rms (220Vac → 311Vdc), PFC 升压后稳定在更高母线电压。
+    aliases: [母线电压, PFC 母线电压]
+    properties: [rectified_bus_voltage]
+    related_rules: [K-PWR-117]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-INPUTSURGE
+    zh: 输入过压应力
+    en: Input Overvoltage Stress
+    abbr: ""
+    category: input
+    definition: >-
+      输入电压超过最高极限值 (如交流 290Vac 工作上限之上的 315Vac) 时施加在
+      输入整流/母线器件上的电压应力; 判定看器件耐压余量与不损坏边界。
+    aliases: [输入过压]
+    properties: [input_voltage, working_voltage_peak]
+    related_rules: [K-PROT-101]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3 SR-PA601-D54A-1102", url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # output 输出特性
+  # ------------------------------------------------------------------ #
+  - term_id: T-RIPPLE
+    zh: 纹波
+    en: Ripple
+    abbr: ""
+    category: output
+    definition: >-
+      直流输出上叠加的与开关动作同频的周期性波动 (峰峰值/有效值);
+      由电感纹波电流经输出电容与 ESR 产生的两项电压纹波叠加而成,
+      产测须用 20MHz 带宽限制示波器测量。
+    aliases: [输出纹波, 纹波噪声, 峰峰值杂音电压, 噪声+纹波]
+    properties: [measured_ripple_mvpp, ripple_limit_mvpp, output_ripple]
+    related_rules: [K-PWR-101, K-PWR-102]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RIPPLEVOLT
+    zh: 纹波电压
+    en: Ripple Voltage
+    abbr: ""
+    category: output
+    definition: >-
+      纹波的电压量度, 工程上多给峰峰值 (mVpp) 或占输出电压的百分比
+      (模块电源典型 ≤1%·Vout 或 50~100mVpp)。
+    aliases: [纹波电压峰峰值]
+    properties: [measured_ripple_mvpp, output_ripple]
+    related_rules: [K-PWR-102]
+    source: {kind: card, name: "power-knowledge-6 测试与工装", card_id: power-knowledge-6, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RIPPLE-CURRENT
+    zh: 纹波电流
+    en: Ripple Current
+    abbr: ΔIL
+    category: output
+    definition: >-
+      电感电流的峰峰脉动量 ΔI_L = Vout·(Vin−Vout)/(Vin·L·f_sw) (降压型);
+      其有效值决定电容自热与损耗, 须不超过电容额定纹波电流。
+    aliases: [电感纹波电流]
+    properties: [ripple_current, ripple_current_rms, ripple_current_rating]
+    related_rules: [K-PWR-103, K-PWR-104]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-HOLDUP
+    zh: 保持时间
+    en: Hold-Up Time
+    abbr: ""
+    category: output
+    definition: >-
+      输入断电后输出维持在标称 90% 以上的持续时间; 由母线电容储能决定,
+      通用要求 ≥16~20ms, 须在最低输入电压下判定。
+    aliases: [掉电保持时间, 断电维持时间]
+    properties: [hold_up_time, measured_hold_up_ms, hold_up_limit_ms]
+    related_rules: [K-PWR-114, K-PWR-115]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LOADREG
+    zh: 负载调整率
+    en: Load Regulation
+    abbr: ""
+    category: output
+    definition: >-
+      输入恒定时, 输出电压随负载从空载到满载的变化量与标称值之比
+      (V_空载 − V_满载)/V_标称 × 100%; 模块电源典型 ≤0.5%~1%。
+    aliases: [负载效应]
+    properties: [measured_regulation_pct, regulation_limit_pct]
+    related_rules: [K-PWR-110, K-PWR-111]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LINEREG
+    zh: 线性调整率
+    en: Line Regulation
+    abbr: ""
+    category: output
+    definition: >-
+      负载恒定时, 输出电压随输入电压从高线到低线的变化量与标称值之比
+      (V_低线 − V_高线)/V_标称 × 100%; 与负载调整率须独立测量, 不可互相替代。
+    aliases: [电压调整率, 源效应, 线性调整度]
+    properties: [line_regulation_pct, measured_regulation_pct]
+    related_rules: [K-PWR-110, K-PWR-111]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-OUTACC
+    zh: 输出精度
+    en: Output Accuracy
+    abbr: ""
+    category: output
+    definition: >-
+      输出电压/电流实测值与标称值的偏差, 典型判据 ≤ ±(0.5~1)% 读数
+      + ±0.5% 满量程; 判定余量须大于仪器精度 2 倍。
+    aliases: [输出精度判据, 设定精度, 电压精度, 稳压精度]
+    properties: [measured_error_pct, accuracy_limit_pct, setpoint]
+    related_rules: [K-PWR-112]
+    source: {kind: card, name: "power-knowledge-9 电压调整率与输出精度", card_id: power-knowledge-9, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CROSSREG
+    zh: 交叉调整率
+    en: Cross Regulation
+    abbr: ""
+    category: output
+    definition: >-
+      多路输出电源中, 某一路负载变化引起输出电流变化时, 对其它未调路输出
+      电压的影响量; 是衡量多路耦合程度与各路独立调整能力的指标。
+    aliases: [交叉调整度]
+    properties: [measured_regulation_pct, regulation_limit_pct]
+    related_rules: [K-PWR-110, K-PWR-124]
+    source: {kind: card, name: "power-knowledge-10 效率与功率判据", card_id: power-knowledge-10, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-STARTOVERSHOOT
+    zh: 启动过冲
+    en: Startup Overshoot
+    abbr: ""
+    category: output
+    definition: >-
+      开机过程输出电压超过标称值的最大超出量, 典型判据 ≤1~5%·Vout;
+      超限常源于输出电容容性浪涌与软启动斜率过陡。
+    aliases: [开关机过冲, 启动过冲电压]
+    properties: [measured_overshoot_pct, overshoot_limit_pct]
+    related_rules: [K-PWR-109]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SOFTSTART
+    zh: 软启动
+    en: Soft Start
+    abbr: ""
+    category: output
+    definition: >-
+      开机时按设定斜率缓慢提升输出 (限制浪涌电流与过冲) 的控制手段;
+      hiccup 保护须每周期配合软启动, 故障恢复后不得出现过冲重启。
+    aliases: [软起动]
+    properties: [setpoint, current_setpoint_max]
+    related_rules: [K-PWR-109, K-PROT-105]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LOWLINEDERATE
+    zh: 低线输入降额
+    en: Low-Line Input Derating
+    abbr: ""
+    category: output
+    definition: >-
+      规格书按输入电压分段给出输出功率上限 (如 90~176Vac 为 400W,
+      176~286Vac 为 600W) 的降额规则; 低压段满载输出电流须按该段功率
+      上限反算, 严禁沿用高压段额定电流。
+    aliases: [输入电压分段降额, 低线降额]
+    properties: [line_derated_power_w, p_line_derated, derated_output_current]
+    related_rules: [K-PWR-122, K-PWR-123]
+    source: {kind: card, name: "power-knowledge-15 低线输入降额 (分段输出功率)", card_id: power-knowledge-15, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SHARE
+    zh: 均流
+    en: Current Sharing
+    abbr: ""
+    category: output
+    definition: >-
+      并联运行的各电源模块按比例分担负载电流的能力; 判据为各模块电流
+      偏差 ≤ ±5% (半载及以上), 且须与设定精度、下垂斜率一并声明才可复核。
+    aliases: [并联均流, 均流度, 负载均流度]
+    properties: [measured_sharing_deviation_pct, sharing_deviation_limit_pct]
+    related_rules: [K-CTL-104, K-PWR-113, K-SHR-001, K-SHR-002]
+    source: {kind: card, name: "power-knowledge-21 并联均流与下垂法", card_id: power-knowledge-21, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DROOP
+    zh: 下垂法
+    en: Droop (Current Sharing) Method
+    abbr: ""
+    category: output
+    definition: >-
+      人为提高各模块输出阻抗, 使输出电压随负载电流按固定斜率下垂
+      (典型空载 +2.5% 到满载 −2.5%); 并联时各模块被拉到同一输出电压
+      而自然分流, 属开环方案, 牺牲负载调整率。
+    aliases: [下垂均流, 下垂斜率]
+    properties: [droop_slope, current_share_error, current_share_error_limit]
+    related_rules: [K-SHR-001, K-SHR-002]
+    source: {kind: card, name: "power-knowledge-21 并联均流与下垂法", card_id: power-knowledge-21, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-ORING
+    zh: 输出防倒灌
+    en: Output ORing (Reverse-Current Blocking)
+    abbr: ORing
+    category: output
+    definition: >-
+      用理想二极管/ORing MOSFET 防止外部能量 (带电池母线或并联模块) 经
+      输出端反灌入已关断模块的措施, 避免其成为反向电流通道而过流损坏。
+    aliases: [防反灌, ORing 理想二极管, 输出 ORING]
+    properties: [has_protection, default_path_continuous]
+    related_rules: [K-PROT-117]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # management / protection 保护特性
+  # ------------------------------------------------------------------ #
+  - term_id: T-OVP
+    zh: 过压保护
+    en: Over Voltage Protection
+    abbr: OVP
+    category: protection
+    definition: >-
+      输出电压 (或输入电压) 超过保护点时钳位或关断的保护功能; 宽输出可调
+      电源须用跟踪式 OVP (保护点 = 设定值 × 110~135%), 过压去除后能自恢复。
+    aliases: [过电压保护]
+    properties: [ovp_trip_voltage, trip, trip_tolerance]
+    related_rules: [K-PROT-101]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-OCP
+    zh: 过流保护
+    en: Over Current Protection
+    abbr: OCP
+    category: protection
+    definition: >-
+      输出/输入电流超过保护点时限制或关断的保护功能; 含 hiccup、恒流限流、
+      折返 (foldback) 与锁存 (latch-off) 四种动作模式, 保护点须给出容差带。
+    aliases: [过电流保护]
+    properties: [ocp_trip_value, current_limit, trip_tolerance]
+    related_rules: [K-PROT-104, K-PROT-111]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-OPP
+    zh: 过功率保护
+    en: Over Power Protection
+    abbr: OPP
+    category: protection
+    definition: >-
+      输出功率超过额定上限时限制输出功率或关断的保护功能; 是五类必备保护
+      之一, 须明确触发条件、动作方式与恢复方式。
+    aliases: [过功率保护]
+    properties: [output_power, p_out, trip_tolerance]
+    related_rules: [K-PROT-107]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-OTP
+    zh: 过温保护
+    en: Over Temperature Protection
+    abbr: OTP
+    category: protection
+    definition: >-
+      器件或环境温度超过保护点时降额或关断的保护功能; 测温点须贴近发热器件,
+      过温告警点须低于过温保护点并留余量 (如 ≤ 保护点 − 3℃)。
+    aliases: [过温度保护, 温度保护]
+    properties: [protection_mode, trip, hysteresis, temperature_k]
+    related_rules: [K-PROT-107, K-PROT-002]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SCP
+    zh: 短路保护
+    en: Short Circuit Protection
+    abbr: SCP
+    category: protection
+    definition: >-
+      输出短路时限制电流并周期性重试 (hiccup) 的保护功能; 长期短路不得损坏
+      电源, 故障消除后须自动恢复且无过冲, 折返型短路电流为限流点的 0.2~0.5 倍。
+    aliases: [输出短路保护]
+    properties: [short_circuit_current, current_limit, trip_tolerance]
+    related_rules: [K-PROT-104, K-PROT-106]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-UVP
+    zh: 欠压保护
+    en: Under Voltage Protection
+    abbr: UVP
+    category: protection
+    definition: >-
+      输出电压或输入电压低于保护阈值时关断输出的保护功能; 与欠压锁定
+      (UVLO) 的区别在于后者专指输入侧且强调恢复回差。
+    aliases: [欠电压保护, 输出欠压保护]
+    properties: [trip, hysteresis, min_operating_voltage]
+    related_rules: [K-PROT-102, K-PROT-109]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-UVLO
+    zh: 欠压锁定
+    en: Under Voltage Lock Out
+    abbr: UVLO
+    category: protection
+    definition: >-
+      输入低于关断阈值即关断输出, 恢复到更高的启动阈值后才重启的输入侧
+      欠压保护; 典型 8.7V 启动 / 8.1V 关断 (回差 0.6V), 回差须大于器件
+      启动电流引起的供电压降, 否则高阻或长线供电时会反复启停。
+    aliases: [输入欠压保护, 输入欠压恢复点, 欠压恢复点]
+    properties: [turn_on_threshold, turn_off_threshold, hysteresis]
+    related_rules: [K-PROT-102, K-PROT-103, K-PROT-109]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-HICCUP
+    zh: 打嗝保护
+    en: Hiccup Protection
+    abbr: hiccup
+    category: protection
+    definition: >-
+      检出过流/短路后关断输出, 每数百毫秒至数秒重试一次, 故障消除后自动
+      恢复的过流保护模式; 重试须配软启动, 短路期工作频率大幅下降。
+    aliases: [打嗝模式, hiccup 模式]
+    properties: [protection_mode, recovery_mode, recovery]
+    related_rules: [K-PROT-104, K-PROT-105]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FOLDBACK
+    zh: 折返保护
+    en: Foldback Protection
+    abbr: foldback
+    category: protection
+    definition: >-
+      短路时使输出电流降至恒流限流点 0.2~0.5 倍的过流保护模式;
+      兼顾保护与器件热应力, 仅有恒流限流而无折返时短路功耗显著升高。
+    aliases: [折返型保护, 折返限流]
+    properties: [short_circuit_current, current_limit]
+    related_rules: [K-PROT-106]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LATCHOFF
+    zh: 锁存关断
+    en: Latch-Off
+    abbr: latch-off
+    category: protection
+    definition: >-
+      保护动作后保持关断状态、须人工或重新上电复位的保护模式;
+      复位时若故障源仍存在须重新触发, 不得被视为已消除。
+    aliases: [锁存保护, 自锁保护]
+    properties: [requires_manual_reset, reset_clears_active_fault, default_state]
+    related_rules: [K-PROT-114, K-CTL-103]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-REVERSEIN
+    zh: 输入反接保护
+    en: Input Reverse Polarity Protection
+    abbr: ""
+    category: protection
+    definition: >-
+      DC 输入产品在输入端子极性反接时不损坏、反接消除后功能恢复正常的
+      保护措施; 典型实现为串入二极管或理想二极管控制器。
+    aliases: [防反接, 输入防反接, 电池反接保护]
+    properties: [has_protection, default_path_continuous]
+    related_rules: [K-PROT-116]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-HYSTERESIS
+    zh: 回差
+    en: Hysteresis
+    abbr: ""
+    category: protection
+    definition: >-
+      保护点与恢复点之间的阈值差; 回差过小会引起保护抖动, 过大形成保护
+      死区, 通用下限为 max(设定值 × 1%, 输入噪声峰峰值 × 2)。
+    aliases: [滞回, 保护回差, 告警回差]
+    properties: [hysteresis, min_hysteresis, trip, recovery]
+    related_rules: [K-PROT-001, K-PROT-108]
+    source: {kind: card, name: "power-knowledge-5 保护逻辑常识", card_id: power-knowledge-5, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FAULTLATCH
+    zh: 故障锁存
+    en: Fault Latching
+    abbr: ""
+    category: protection
+    definition: >-
+      最高级故障被锁存并记录可查询故障码的机制; 复位条件须明确, 复位时
+      故障源仍存在则须重新触发, 防止故障被静默清除。
+    aliases: [故障锁定, 故障码记录]
+    properties: [fault_active, requires_manual_reset, reset_clears_active_fault]
+    related_rules: [K-PROT-114, K-CTL-103]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-NPLUS1
+    zh: N+1 冗余
+    en: N+1 Redundancy
+    abbr: N+1
+    category: protection
+    definition: >-
+      并联系统中多配一台模块作为冗余: 单模块故障自动电气退出并置故障遥信,
+      母线不中断, 剩余模块须能承担全载; 无源二极管 ORing 只保证切换,
+      不保证均流。
+    aliases: [N加1冗余, 冗余配置]
+    properties: [supports_parallel, has_protection, fault_active]
+    related_rules: [K-PROT-118]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-HOTPLUG
+    zh: 热插拔
+    en: Hot Swap
+    abbr: ""
+    category: protection
+    definition: >-
+      在系统带电运行状态下插入或拔出电源模块, 母线不中断、模块与系统均
+      不损坏的能力; 实现上依赖输出 ORing、软启动与浪涌限制。
+    aliases: [热插拔要求, 带电插拔]
+    properties: [default_path_continuous, has_protection, inrush_limit_a]
+    related_rules: [K-PROT-116, K-PROT-117, K-PWR-116]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3 SR-PA601-D54A-1223 热插拔要求", url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # dynamics 动态特性
+  # ------------------------------------------------------------------ #
+  - term_id: T-TRANSIENT
+    zh: 动态响应
+    en: Transient Response
+    abbr: ""
+    category: dynamics
+    definition: >-
+      负载或输入阶跃扰动下输出电压的偏移与恢复行为; 判读必须同时给出
+      阶跃幅度、斜率与恢复带 (典型偏移 ≤±3~5%·Vout, 恢复 ≤100~500µs)。
+    aliases: [瞬态响应, 负载瞬态, 动态响应恢复时间, 过冲幅度恢复时间, 过冲幅度恢复时间(FDD), 过冲幅度恢复时间(TDD)]
+    properties: [measured_recovery_us, recovery_limit_us, deviation_limit_pct]
+    related_rules: [K-PWR-106, K-PWR-107]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LINETRANSIENT
+    zh: 输入瞬态
+    en: Line Transient
+    abbr: ""
+    category: dynamics
+    definition: >-
+      输入电压阶跃扰动引起的输出偏移与恢复过程; 与负载瞬态是两类独立试验,
+      判据为输出偏移 ≤±2%、恢复 ≤100µs, 两者不可互相替代。
+    aliases: [输入电压瞬态, 输入瞬态响应]
+    properties: [deviation_limit_pct, measured_recovery_us, recovery_limit_us]
+    related_rules: [K-PWR-108]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-STARTUPTIME
+    zh: 开机输出延迟
+    en: Startup Delay Time
+    abbr: ""
+    category: dynamics
+    definition: >-
+      从发出开机指令 (或输入上电) 到输出上升到 90% 标称所需的时间;
+      典型 ≤5~6s, 低温下限启动时放宽 (如 ≤12s), 须含软启动过程。
+    aliases: [启动时间, 开机时间, 输出电压延迟时间]
+    properties: [dut_response_time, measured_recovery_us]
+    related_rules: [K-PWR-109]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3 SR-PA601-D54A-1213 开机输出延迟", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RISETIME
+    zh: 输出电压上升时间
+    en: Output Voltage Rise Time
+    abbr: ""
+    category: dynamics
+    definition: >-
+      输出电压从 10% 上升到 90% 标称所需的时间, 反映软启动斜率与输出电容
+      充电速度; 与「开机输出延迟」是两个先后衔接的指标。
+    aliases: [上升时间]
+    properties: [max_load_risetime, dut_response_time]
+    related_rules: [K-PWR-109]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3 SR-PA601-D54A-1215 输出电压上升时间", url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # efficiency 效率特性
+  # ------------------------------------------------------------------ #
+  - term_id: T-EFFICIENCY
+    zh: 效率
+    en: Efficiency
+    abbr: η
+    category: efficiency
+    definition: >-
+      输出功率与输入功率之比 η = P_out/P_in × 100%; 须在额定输入下于
+      25%/50%/75%/100% 负载点分别测量并取最小值判定。
+    aliases: [转换效率, 整机效率, 能效]
+    properties: [efficiency, efficiency_pct, measured_pin_w, measured_pout_w]
+    related_rules: [K-PWR-001, K-PWR-118, K-PWR-119, K-PWR-121]
+    source: {kind: card, name: "power-knowledge-10 效率与功率判据", card_id: power-knowledge-10, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-NOLOADPWR
+    zh: 空载输入功率
+    en: No-Load Input Power
+    abbr: ""
+    category: efficiency
+    definition: >-
+      输出空载时的输入功率, 反映待机损耗 (控制器静态功耗、变压器与辅助
+      电源损耗); 模块电源典型 ≤0.3~0.5W, 超标即待机功耗偏高。
+    aliases: [待机损耗, 空载功耗, 待机功耗]
+    properties: [measured_no_load_w, no_load_limit_w]
+    related_rules: [K-PWR-120]
+    source: {kind: card, name: "power-knowledge-10 效率与功率判据", card_id: power-knowledge-10, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LOSS
+    zh: 损耗
+    en: Power Loss
+    abbr: P_loss
+    category: efficiency
+    definition: >-
+      输入功率与输出功率之差 P_loss = P_in − P_out; 主要成分为开关管导通/
+      开关损耗、磁性元件铜铁损、电容 ESR 损耗及辅助电路损耗。
+    aliases: [功率损耗, 电源损耗]
+    properties: [loss, measured_pin_w, measured_pout_w]
+    related_rules: [K-PWR-002]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # safety 安规
+  # ------------------------------------------------------------------ #
+  - term_id: T-HIPOT
+    zh: 绝缘耐压
+    en: Dielectric Voltage Withstand Test (Hipot)
+    abbr: hipot
+    category: safety
+    definition: >-
+      在绝缘两端施加规定直流/交流高压并保持规定时间, 检验无击穿或飞弧的
+      安规试验; 基本绝缘 (输入对地) 2500Vdc, 加强绝缘 (输入对输出) 4000Vdc,
+      须在正负两个极性下各进行并测量漏电流。
+    aliases: [耐压试验, 绝缘电压, 高压试验, 抗电强度, 介电强度]
+    properties: [test_voltage_v, insulation_type, isolation_level]
+    related_rules: [K-SAF-101, K-SAF-102]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-INSULRES
+    zh: 绝缘电阻
+    en: Insulation Resistance
+    abbr: IR
+    category: safety
+    definition: >-
+      绝缘材料两端在直流测试电压下呈现的电阻; 典型判据为正常大气压、
+      相对湿度 90%、直流 500V 下 ≥2MΩ, 上电前先测以排除短路。
+    aliases: [绝缘阻抗]
+    properties: [insulation_resistance, insulation_type]
+    related_rules: [K-SAF-001, K-SAF-109]
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CREEPAGE
+    zh: 爬电距离
+    en: Creepage Distance
+    abbr: ""
+    category: safety
+    definition: >-
+      沿绝缘材料表面测得的两导电部件间的最短距离; 按工作电压峰值、绝缘
+      类型、过电压类别与污染等级查表, 海拔 >2000m 须乘修正系数。
+    aliases: [沿面距离, 污染等级]
+    properties: [effective_clearance, actual_clearance_mm, spacing]
+    related_rules: [K-SAF-103]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CLEARANCE
+    zh: 电气间隙
+    en: Clearance (Electrical)
+    abbr: ""
+    category: safety
+    definition: >-
+      两导电部件在空气中的最短空间距离; 基本绝缘 1500V 峰值 0.5mm、
+      2000V 1.0mm、2500V 1.5mm、3000V 2.0mm, 加强绝缘取 2 倍。
+    aliases: [空间距离]
+    properties: [effective_clearance, actual_clearance_mm, working_voltage_peak]
+    related_rules: [K-SAF-103]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TOUCHCURR
+    zh: 接触电流
+    en: Touch Current
+    abbr: ""
+    category: safety
+    definition: >-
+      人触及设备可触及部件时流过人体的电流 (含正常状态与单一故障状态,
+      须在极性反转下各测一次); Class I 保护地端 <2.5mA、输出端 <0.5mA,
+      信号/连接器类限 0.25mA/0.5mA。
+    aliases: [泄漏电流, 漏电流]
+    properties: [measured_touch_current_ma, touch_current_limit_ma, i_leak]
+    related_rules: [K-SAF-107]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-GNDCONT
+    zh: 接地连续性
+    en: Ground Continuity
+    abbr: ""
+    category: safety
+    definition: >-
+      保护接地端子与可触及金属外壳之间的电气连通性, 用 ≥10A 大电流低电阻法
+      测量并做零线补偿 (扣除测试线电阻), 判据接地阻抗 <0.1Ω。
+    aliases: [接地阻抗, 保护接地]
+    properties: [ground_resistance, contact_resistance]
+    related_rules: [K-SAF-002, K-SAF-108]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-Y1Y2
+    zh: Y 电容耐压分级
+    en: Y Capacitor Class Y1/Y2
+    abbr: Y1/Y2
+    category: safety
+    definition: >-
+      Y1 用于一次侧到可触及非接地部件 (8kV 测试), Y2 用于一次侧到可触及
+      已接地部件 (5kV 测试); 分级须与实际绝缘位置匹配, 不得用 Y2 替代 Y1。
+    aliases: [Y 电容分级]
+    properties: [cap_class, isolation_level, test_voltage_v]
+    related_rules: [K-SAF-105]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SAFSEQ
+    zh: 安规测试顺序
+    en: Safety Test Sequence
+    abbr: ""
+    category: safety
+    definition: >-
+      产测安规项目的执行次序: 上电前先测绝缘电阻/接地阻抗 (排除短路) →
+      耐压 → 上电功能与保护 → 上电后复测; 顺序颠倒可能在失效品上施加危险电压。
+    aliases: [安规产测顺序]
+    properties: [process_variation, severity_sequence]
+    related_rules: [K-SAF-109]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-IEC62368
+    zh: 音视频/信息技术设备安全标准
+    en: IEC/EN/UL 62368-1 Safety Standard
+    abbr: IEC 62368-1
+    category: standards
+    definition: >-
+      音视频、信息技术与通信技术设备的安全要求标准 (替代 IEC 60950-1);
+      本域型号的耐压、接触电流、Y 电容与爬电/电气间隙判据均引用该标准。
+    aliases: [GB 4943.1, IEC62368-1, 62368-1]
+    properties: []
+    related_rules: [K-SAF-101, K-SAF-104]
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # reliability 可靠性
+  # ------------------------------------------------------------------ #
+  - term_id: T-MTBF
+    zh: 平均故障间隔时间
+    en: Mean Time Between Failures
+    abbr: MTBF
+    category: reliability
+    definition: >-
+      可修复产品相邻两次故障之间的平均工作时间; 可靠性预计的基准量,
+      与 MTTR 共同决定可用度, 预计常引用 Telcordia SR-332 等方法。
+    aliases: [平均无故障时间]
+    properties: [mtbf, available_time]
+    related_rules: [K-REL-001]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §3 术语和约定", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-MTTR
+    zh: 平均修复时间
+    en: Mean Time To Repair
+    abbr: MTTR
+    category: reliability
+    definition: >-
+      故障发生后完成诊断与更换修复所需的平均时间 (PA601-D54A 为 0.5 小时);
+      现场可更换且有故障告警的电源可显著缩短 MTTR。
+    aliases: [平均维修时间]
+    properties: [mttr, available_time]
+    related_rules: [K-REL-001]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.4.1.4 SR-PA601-D54A-2003 MTTR 和可用度要求", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-AVAIL
+    zh: 可用度
+    en: Availability
+    abbr: A
+    category: reliability
+    definition: >-
+      系统在任意时刻处于可工作状态的概率, A = MTBF/(MTBF+MTTR);
+      PA601-D54A 按 MTBF=500000h、MTTR=0.5h 计得 0.999999。
+    aliases: [可用性]
+    properties: [availability, mtbf, mttr]
+    related_rules: [K-REL-001]
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-BURNIN
+    zh: 老化
+    en: Burn-In
+    abbr: ""
+    category: reliability
+    definition: >-
+      产品出厂前在高温/满负载等加速应力下持续运行, 以剔除早期失效
+      (infant mortality)、稳定器件参数的生产工艺环节。
+    aliases: [老化试验, 烤机]
+    properties: [test_time, operating_temp, rated_temp]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-16 安规与可靠性", card_id: power-knowledge-16, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DERATE
+    zh: 降额
+    en: Derating
+    abbr: ""
+    category: reliability
+    definition: >-
+      使器件实际应力 (电压/电流/功率/结温) 低于额定值以换取寿命与可靠性的
+      设计准则; 电容电压降额典型 ≤额定 × 80%, 半导体结温留 20℃ 裕量。
+    aliases: [降额设计, 应力降额]
+    properties: [derated_capacity_a, derated_output_current, rated_temp]
+    related_rules: [K-CAL-103, K-CAL-107]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DERATECURVE
+    zh: 降额曲线
+    en: Derating Curve
+    abbr: ""
+    category: reliability
+    definition: >-
+      输出能力随环境温度 (或输入电压) 变化的分段上限曲线; 判据须按实测
+      环境温度查对应降额值, 不得用额定值判定, 且须注明冷却方式与风速。
+    aliases: [温度降额曲线]
+    properties: [rated_temp, ambient_temp_c, line_derated_power_w]
+    related_rules: [K-CAL-107, K-PWR-123]
+    source: {kind: card, name: "power-knowledge-18 冷却方式与热阻取值", card_id: power-knowledge-18, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # thermal 热设计
+  # ------------------------------------------------------------------ #
+  - term_id: T-ARRHENIUS
+    zh: 阿伦尼乌斯模型
+    en: Arrhenius Model
+    abbr: ""
+    category: thermal
+    definition: >-
+      描述化学反应速率随温度指数增长的模型; 电源域用于电解电容寿命估计,
+      近似结论为温度每降低 10℃ 寿命翻倍, 纹波电流过大同样加速衰减。
+    aliases: [Arrhenius 模型, 阿伦尼乌斯, 阿伦尼乌斯方程, 温度加速模型, 电解电容寿命]
+    properties: [life_factor, rated_life, operating_temp]
+    related_rules: [K-THM-003]
+    source: {kind: card, name: "power-knowledge-4 热设计", card_id: power-knowledge-4, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-NTC
+    zh: 负温度系数热敏电阻
+    en: Negative Temperature Coefficient Thermistor
+    abbr: NTC
+    category: thermal
+    definition: >-
+      阻值随温度升高而下降的热敏电阻; 温度换算 R(T) = R25·exp(B·(1/T − 1/298.15)),
+      B 典型 3435~3950K, 分压电阻须低温漂 (≤50ppm/K)。
+    aliases: [热敏电阻, NTC 温度换算]
+    properties: [ntc_resistance, r25, b_coeff]
+    related_rules: [K-TLM-104, K-TLM-105]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-THERMALCHAMBER
+    zh: 温度箱
+    en: Thermal Chamber
+    abbr: ""
+    category: thermal
+    definition: >-
+      可程控控温的环境试验设备; 能力口径含稳定度 (±0.5℃ 量级)、降温速率、
+      必须带载运行 (DUT 热负荷落在腔体负载能力内), 带负载测量导则见
+      GB/T 2424.7。
+    aliases: [温箱, 高低温试验箱, 环境腔]
+    properties: [ambient_temp_c, operating_temp, test_time]
+    related_rules: []
+    source: {kind: standard, name: "GB/T 2424.7-2024 环境试验 第3部分: 试验A(低温)和B(高温)的温度箱测量(带负载)", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=57DBC73E4DF670A9BDC8C91FE5534A55", retrieved: "2026-10-11"}
+
+  - term_id: T-COOLING
+    zh: 冷却方式
+    en: Cooling Method
+    abbr: ""
+    category: thermal
+    definition: >-
+      器件与整机的散热途径 (自然对流/强制风冷/传导); 决定热阻取值:
+      数据手册 θJA 通常是 still air 值, 不得直接用于强制风冷工况的结温校核。
+    aliases: [散热方式, 风冷, 自然对流]
+    properties: [operating_temp, ambient_temp_c]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-18 冷却方式与热阻取值", card_id: power-knowledge-18, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # communication 通信与监控
+  # ------------------------------------------------------------------ #
+  - term_id: T-TELEMETRY
+    zh: 遥测
+    en: Telemetry
+    abbr: TM
+    category: communication
+    definition: >-
+      上位机对电源电压/电流/温度等模拟量的远程测量; 精度判据典型
+      ≤±(0.5~1)% 读数 + ±0.5% 满量程, 采样率须覆盖开关纹波频率 10 倍
+      以上或先经低通滤波, 否则混叠成虚假读数。
+    aliases: [遥测功能, 远程测量]
+    properties: [measured_telemetry_error_pct, telemetry_error_limit_pct]
+    related_rules: [K-PROT-112, K-TLM-101, K-TLM-102]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TELESIGNAL
+    zh: 遥信
+    en: Telesignal / Remote Status Indication
+    abbr: YX
+    category: communication
+    definition: >-
+      电源向上位机上报的开关量状态 (告警/在位/开关机状态); 须标注 0/1 语义、
+      常开/常闭触点与失电默认状态, 数字输入须设去抖滤波, 上报时延典型 ≤1s。
+    aliases: [遥信功能, 告警上报, 状态量]
+    properties: [measured_alarm_latency_ms, alarm_latency_limit_ms, debounce_ms]
+    related_rules: [K-CTL-102, K-PROT-110, K-TLM-103, K-TLM-110, K-TLM-111]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TELECONTROL
+    zh: 遥控
+    en: Telecontrol
+    abbr: YK
+    category: communication
+    definition: >-
+      上位机对电源的远程操作 (开/关机、调压、复位); 关断须走与本地相同的
+      软停/保护流程, 设定值须内嵌于硬件保护范围, 命令时延典型 200~500ms。
+    aliases: [遥控功能, 远程控制]
+    properties: [measured_command_latency_ms, command_latency_limit_ms]
+    related_rules: [K-TLM-106, K-TLM-107, K-TLM-109]
+    source: {kind: card, name: "power-knowledge-13 遥测、遥信与遥控", card_id: power-knowledge-13, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-REMOTESENSE
+    zh: 远端补偿
+    en: Remote Sense
+    abbr: remote sense
+    category: communication
+    definition: >-
+      用开尔文感测线把负载端电压回馈给调节环路, 补偿输出线与连接器压降的
+      功能; 感测线开路时退回本地感测, 短接时须设限保护。
+    aliases: [远程感测, 远端感测, 远地补偿]
+    properties: [has_remote_sense, setpoint_mismatch]
+    related_rules: [K-PROT-119]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-PMBUS
+    zh: PMBus 协议
+    en: Power Management Bus
+    abbr: PMBus
+    category: communication
+    definition: >-
+      基于 I2C 的电源管理数字通信协议, 规定遥测/遥信/遥控的标准命令与
+      数据格式; 用于电源在线调压、状态查询与告警上报。
+    aliases: [电源管理总线, Power Management Bus]
+    properties: [supports_parallel, has_remote_control, has_remote_sense]
+    related_rules: [K-TLM-106, K-TLM-112]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3.4 监控功能 (PMBUS/I2C 接口)", url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-WDT
+    zh: 看门狗
+    en: Watchdog Timer
+    abbr: WDT
+    category: communication
+    definition: >-
+      数字控制器中监测程序是否正常运行的定时器; 超时 (固件跑飞/控制回路
+      失效) 须进入安全态 (关断输出或开环限功率) 并置故障遥信。
+    aliases: [看门狗定时器]
+    properties: [default_state, fail_safe_state, fault_active]
+    related_rules: [K-PROT-113]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵", card_id: power-knowledge-11, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-ALARM
+    zh: 告警
+    en: Alarm
+    abbr: ALM
+    category: communication
+    definition: >-
+      电源向上位机上报的异常提示, 按严重度分三级: 1 预警 (仅告警) →
+      2 降额 (限功率运行) → 3 停机保护 (关断); 阈值须逐级递进且低于
+      保护点并留余量。硬件侧独立告警输出 (如 PWR_ALARM) 常为开漏: 高电平=正常、
+      低电平=异常, 告警电压经 PMBus 命令(0x03)擦除, 下拉电阻 ≥35kΩ、漏电流
+      ≤10µA; 有效故障如 OCP/OTP/OVP/UVP/在位检测信号异常。
+    aliases: [告警分级, 报警, 告警信号, PWR_ALARM, 告警输出, 告警引脚]
+    properties: [alarm, severity, measured_alarm_latency_ms]
+    related_rules: [K-CTL-101, K-PROT-002, K-PROT-115]
+    source: {kind: card, name: "power-knowledge-11 保护功能矩阵 + GDC800T5054-UC 表4-7 PWR_ALARM 硬件告警输出", card_id: power-knowledge-11, url: "", retrieved: "2026-10-16"}
+
+  # ------------------------------------------------------------------ #
+  # measurement 测量与产测
+  # ------------------------------------------------------------------ #
+  - term_id: T-KELVIN4W
+    zh: 开尔文四线法
+    en: Kelvin Four-Wire Measurement
+    abbr: 4W
+    category: general
+    definition: >-
+      力线与感线在接触点汇合的接触电阻测量接法, 夹具引线电阻被完全消除,
+      测量结果仅含接触电阻; 低电阻测量 (如接地阻抗) 的通用手段。
+    aliases: [四线开尔文接法, 四线 Kelvin, 开尔文四线, 四线制测量, 四线制]
+    properties: [kelvin_measured_resistance, contact_resistance, measurement_type]
+    related_rules: [K-FIX-009, K-FIX-010]
+    source: {kind: card, name: "power-knowledge-6 测试与工装", card_id: power-knowledge-6, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-POGOPIN
+    zh: 弹簧探针
+    en: Pogo Pin (Spring-Loaded Probe)
+    abbr: pogo pin
+    category: general
+    definition: >-
+      测试工装用于临时接触被测点位的弹簧针; 载流能力随直径上升
+      (Ø0.5mm≈1A、Ø2.5mm 以上 10~40A), 接触电阻典型 20~50mΩ,
+      寿命标称基线 10 万次插拔。
+    aliases: [探针, pogo 针, 弹簧针]
+    properties: [min_pin_diameter, min_centers, contact_resistance]
+    related_rules: [K-FIX-003, K-FIX-004, K-FIX-013]
+    source: {kind: card, name: "power-knowledge-6 测试与工装", card_id: power-knowledge-6, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-UNCERT
+    zh: 测量不确定度
+    en: Measurement Uncertainty
+    abbr: ""
+    category: general
+    definition: >-
+      表征测量结果分散性的非负参数; 各输入量标准不确定度方和根合成得
+      u_c, 扩展不确定度 U = k·u_c (常用 k=2), k 必须显式给出。
+    aliases: [不确定度]
+    properties: [standard_uncertainty, combined_standard_uncertainty, expanded_uncertainty]
+    related_rules: [K-MSR-002]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-GRR
+    zh: 量具重复性与再现性
+    en: Gauge Repeatability and Reproducibility
+    abbr: GRR
+    category: general
+    definition: >-
+      衡量测量系统变差的指标 (重复性=同一人同量具, 再现性=不同人/条件);
+      %GRR ≤10% 可接受, 10%~30% 视应用条件, >30% 不可接受。
+    aliases: [量具重复性与再现性, 量具 GRR, 重复性与再现性]
+    properties: [percent_gauge_rr, process_variation]
+    related_rules: [K-FIX-016]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CALIB
+    zh: 校准
+    en: Calibration
+    abbr: CAL
+    category: general
+    definition: >-
+      用已知基准源建立仪器或产品读数与实际量值之间关系的过程; 产测标定
+      至少用 0% 与 100% 两点, 残差 ≤±0.5%, 数据须写入非易失存储。
+    aliases: [标定, 校验]
+    properties: [calibration_limit_pct, calibration_residual_pct, cal_storage]
+    related_rules: [K-CAL-101, K-CAL-102]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RESOLUTION
+    zh: 分辨率
+    en: Resolution
+    abbr: ""
+    category: general
+    definition: >-
+      测量系统能分辨的最小输入变化量; 须满足 10:1 规则
+      (分辨率 ≤ min(被测公差, 过程变差)/10), 否则过程变差无法被分辨。
+    aliases: [测量分辨率]
+    properties: [required_resolution, lsb, bits]
+    related_rules: [K-FIX-015]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FSR
+    zh: 量程
+    en: Full Scale Range
+    abbr: FSR
+    category: general
+    definition: >-
+      测量通道可表示的被测量范围上下限之差; 量化步长按实际跨度计算
+      (1 LSB = 量程/2^位数), 用满量程推算会低估误差。
+    aliases: [满量程, 量程范围]
+    properties: [spec_tolerance, tolerance, bits]
+    related_rules: [K-MSR-101]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-LSB
+    zh: 最低有效位
+    en: Least Significant Bit
+    abbr: LSB
+    category: general
+    definition: >-
+      ADC 数字输出的最小码对应模拟量, 1 LSB = 满量程输入范围/2^位数;
+      最大量化误差 ±0.5 LSB, 量化噪声有效值 LSB/√12。
+    aliases: [量化步长]
+    properties: [lsb, adc_lsb, bits]
+    related_rules: [K-MSR-101]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-QUANTNOISE
+    zh: 量化噪声
+    en: Quantization Noise
+    abbr: ""
+    category: general
+    definition: >-
+      ADC 量化误差等效为峰峰值 1 LSB 的非相关锯齿波时, 其均方根值为
+      LSB/√12; 该白噪声假设仅当量化误差与输入不相关 (非整数量化) 时成立。
+    aliases: [量化误差]
+    properties: [quantization_noise_rms, noise_pp, bits]
+    related_rules: [K-MSR-102]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-ENOB
+    zh: 有效位数
+    en: Effective Number of Bits
+    abbr: ENOB
+    category: general
+    definition: >-
+      由实测信纳比反解的有效转换位数 ENOB = (SNR_dB − 1.76)/6.02;
+      仅在量化误差与输入不相关且 SNR 于 dc~fs/2 全带宽内积分时成立。
+    aliases: [有效位, 有效比特数]
+    properties: [enob_from_snr, snr_db, bits]
+    related_rules: [K-MSR-104]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SNR
+    zh: 信纳比
+    en: Signal-to-Noise (and Distortion) Ratio
+    abbr: SNR
+    category: general
+    definition: >-
+      信号功率与噪声 (含谐波失真) 功率之比, 单位 dB; 理想 N 位转换器的
+      理论值 SNR = 6.02N + 1.76dB, 是 ENOB 反解的基础。
+    aliases: [信噪比, SNR_dB]
+    properties: [snr_db, enob_from_snr]
+    related_rules: [K-MSR-104]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SFDR
+    zh: 无杂散动态范围
+    en: Spurious-Free Dynamic Range
+    abbr: SFDR
+    category: general
+    definition: >-
+      信号基波幅值与最大杂散 (谐波或非谐波) 幅值之比, 单位 dBc;
+      频谱测量的关键指标, 量化噪声不相关假设被破坏时底噪与 SFDR 明显变化。
+    aliases: [无杂散动态范围指标]
+    properties: [noise_pp, snr_db]
+    related_rules: [K-MSR-102]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-APERTUREJITTER
+    zh: 孔径抖动
+    en: Aperture Jitter
+    abbr: t_a
+    category: general
+    definition: >-
+      采样时刻的逐次随机变动; 对交流输入产生的 rms 电压误差
+      = 2π·f_in·t_a·A, 由此造成的 SNR 上限与转换器位数无关 (位数补不回时钟抖动)。
+    aliases: [采样抖动, 时钟抖动]
+    properties: [aperture_jitter, aperture_jitter_error]
+    related_rules: [K-MSR-103]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-APERTUREDELAY
+    zh: 孔径延迟
+    en: Aperture Delay
+    abbr: ""
+    category: general
+    definition: >-
+      采样时刻相对期望时刻的系统性固定偏移, 产生固定相位偏移;
+      与孔径抖动 (产生噪声) 是两个不同的量, 不可互相代替。
+    aliases: [孔径延时]
+    properties: [dut_response_time]
+    related_rules: []
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SAMPLERATE
+    zh: 采样率
+    en: Sampling Rate
+    abbr: fs
+    category: general
+    definition: >-
+      单位时间内的采样次数; 被测信号最高频率须低于采样率的一半 (Nyquist),
+      遥测链路采样率须覆盖开关纹波频率 10 倍以上, 否则带外频率折叠成
+      带内虚假读数。
+    aliases: [采样频率, 采样速率]
+    properties: [sample_rate_hz, switching_frequency_hz, fc_max_hz]
+    related_rules: [K-TLM-102]
+    source: {kind: card, name: "power-knowledge-20 ADC 与频谱测量约束", card_id: power-knowledge-20, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-WC
+    zh: 最坏情况公差合成
+    en: Worst Case Tolerance Stack-Up
+    abbr: WC
+    category: general
+    definition: >-
+      公差链按各分量绝对值直接求和 (WC = Σ|tᵢ|) 的保守合成算法;
+      得到 100% 覆盖的边界, 但结果偏保守、成本偏高。
+    aliases: [最坏情况法, 最坏情况分析]
+    properties: [total_tolerance, rss_tolerance, tolerance]
+    related_rules: [K-FIX-017]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-WCSTACK
+    zh: 最坏情况公差链
+    en: Worst-Case Tolerance Chain
+    abbr: WC-chai
+    category: general
+    definition: >-
+      把参与链路的各环节公差按同向叠加得到的上限; 与 RSS 的差异在于
+      是否假设各分量相互独立, 二者不可混用同一判据。
+    aliases: [公差链最坏情况]
+    properties: [total_tolerance, rss_tolerance]
+    related_rules: [K-FIX-017]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RSS
+    zh: 均方根公差合成
+    en: Root-Sum-Square Tolerance Stack-Up
+    abbr: RSS
+    category: general
+    definition: >-
+      公差链按各分量平方和开方 (RSS = √(Σtᵢ²)) 的统计合成算法;
+      在分量独立假设下结果约为最坏情况的 1/√n, 更接近实际但覆盖率为统计值。
+    aliases: [方和根法, 均方根合成]
+    properties: [rss_tolerance, total_tolerance, rail_power_budget_tolerance_w]
+    related_rules: [K-FIX-002, K-FIX-017]
+    source: {kind: card, name: "power-knowledge-7 测量系统与探针寿命", card_id: power-knowledge-7, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-CM
+    zh: 测量能力指数
+    en: Measurement Capability Index
+    abbr: Cm
+    category: general
+    definition: >-
+      Cm = 公差/(4 × 标准不确定度) (ISO/TR 14253-6:2012 术语 3.8);
+      与 TUR (公差/扩展不确定度) 差一个覆盖因子, TUR = Cm × k, 不可混用。
+    aliases: [测量能力指数 Cm]
+    properties: [measurement_capability_index, uncertainty_multiple, spec_tolerance]
+    related_rules: [K-MSR-001]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TUR
+    zh: 测试不确定度比
+    en: Test Uncertainty Ratio
+    abbr: TUR
+    category: general
+    definition: >-
+      ANSI/NCSLI Z540.3 定义 TUR = 公差/扩展不确定度; 与 Cm 差一个覆盖因子
+      (TUR = Cm × k), 引用判据时须说明用的是哪一个。
+    aliases: [测试不确定度比 TUR]
+    properties: [measured_turns_ratio, spec_tolerance]
+    related_rules: [K-MSR-001]
+    source: {kind: card, name: "power-knowledge-19 测量不确定度与量具能力", card_id: power-knowledge-19, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TEMPCO
+    zh: 温度系数
+    en: Temperature Coefficient
+    abbr: TC
+    category: general
+    definition: >-
+      输出电压 (或基准/电阻值) 随环境温度变化的相对速率, 单位 %/℃;
+      用 ≥3 个温度点 (范围两端 + 常温) 的 (ΔV/V)/ΔT 做最小二乘拟合求得。
+    aliases: [温度漂移, 温度系数判据]
+    properties: [measured_temp_error_c, temp_error_limit_c, rated_temp]
+    related_rules: [K-PWR-111]
+    source: {kind: card, name: "power-knowledge-22 温度系数测量与温度箱", card_id: power-knowledge-22, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # control 环路与控制
+  # ------------------------------------------------------------------ #
+  - term_id: T-PM
+    zh: 相位裕度
+    en: Phase Margin
+    abbr: PM
+    category: dynamics
+    definition: >-
+      交越频率处环路相位滞后距 −180° 的余量, 单位度; 行业通行最小值 45°
+      (Hartman/DesignCon 2002 明确为 customary, 非标准强条), 本型号下限
+      以规格书/方案为准。
+    aliases: [相位余量]
+    properties: [phase_margin_deg, phase_margin_min_deg, phase_margin_headroom_deg]
+    related_rules: [K-LOOP-002]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-GM
+    zh: 增益裕度
+    en: Gain Margin
+    abbr: GM
+    category: dynamics
+    definition: >-
+      相位首次达到 −180° 处环路增益低于 0dB 的余量, 单位 dB; 行业通行
+      最小值 10dB, 光耦环节按最坏情况建议 GM ≥15dB 量级留裕度。
+    aliases: [增益余量]
+    properties: [gain_margin_db, gain_margin_min_db, gain_margin_headroom_db]
+    related_rules: [K-LOOP-003]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FC
+    zh: 交越频率
+    en: Crossover Frequency
+    abbr: fC
+    category: dynamics
+    definition: >-
+      环路增益幅值降到 0dB 的频率; 物理上限 fC < fSW/2 (注入法扫频上限
+      同样受限), 与 fSW 的设计比值是取舍而非通用常数。
+    aliases: [穿越频率, 环路带宽]
+    properties: [fc_max_hz, phase_margin_deg, crossover_ratio_divisor]
+    related_rules: [K-LOOP-001]
+    source: {kind: card, name: "power-knowledge-17 控制环路稳定性", card_id: power-knowledge-17, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # general 通用基础
+  # ------------------------------------------------------------------ #
+  - term_id: T-AC
+    zh: 交流
+    en: Alternating Current
+    abbr: AC
+    category: general
+    definition: >-
+      幅值与方向随时间周期性变化的电流/电压; 电源域多为 50/60Hz
+      正弦交流输入, 表征量用有效值 (rms)。
+    aliases: [交流电, 交流电压]
+    properties: [vac_rms, v_ac, input_frequency]
+    related_rules: [K-AC-002]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-APPARENTPOWER
+    zh: 视在功率
+    en: Apparent Power
+    abbr: S
+    category: general
+    definition: >-
+      交流电压有效值与电流有效值之积 S = V_rms × I_rms, 单位 VA;
+      与有功、无功构成 S² = P² + Q², 是功率因数计算的分母。
+    aliases: [表观功率]
+    properties: [apparent_power, voltage_rms, current_rms]
+    related_rules: [K-AC-002, K-AC-003]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-REALPOWER
+    zh: 有功功率
+    en: Active Power
+    abbr: P
+    category: general
+    definition: >-
+      交流电路中实际做功、被负载消耗的功率 P = V_rms·I_rms·cosθ,
+      单位 W; 与视在功率之比即功率因数。
+    aliases: [平均功率]
+    properties: [active_power, apparent_power, power_factor]
+    related_rules: [K-AC-001, K-AC-003]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-REACTIVEPOWER
+    zh: 无功功率
+    en: Reactive Power
+    abbr: Q
+    category: general
+    definition: >-
+      交流电路中在电源与感性/容性负载间往返而不做功的功率部分
+      Q = V_rms·I_rms·sinθ, 单位 var; 与有功、视在构成 S² = P² + Q²。
+    aliases: [无功]
+    properties: [reactive_power, apparent_power, active_power]
+    related_rules: [K-AC-003]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DROOP-GEN
+    zh: 下垂
+    en: Droop (Load Line)
+    abbr: ""
+    category: output
+    definition: >-
+      输出电流增大时输出电压按人为设定斜率下降的负载线特性 (典型空载 +2.5%
+      到满载 −2.5%); 是并联均流的开环实现手段, 代价是负载调整率变差。
+    aliases: [下垂特性, 下垂特性曲线]
+    properties: [droop_slope, current_share_error, current_share_error_limit]
+    related_rules: [K-SHR-001]
+    source: {kind: card, name: "power-knowledge-21 并联均流与下垂法", card_id: power-knowledge-21, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-JTEMP
+    zh: 结温
+    en: Junction Temperature
+    abbr: T_j
+    category: thermal
+    definition: >-
+      半导体器件 PN 结实际温度 T_j = T_a + P·R_th; 降额要求
+      T_j ≤ 额定最高结温 − 20℃, 是热设计校核的目标量。
+    aliases: [结温 Tj, 芯片结温]
+    properties: [operating_temp, ambient_temp_c, loss]
+    related_rules: [K-CAL-107]
+    source: {kind: card, name: "power-knowledge-4 热设计", card_id: power-knowledge-4, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RTH
+    zh: 热阻
+    en: Thermal Resistance
+    abbr: R_th
+    category: thermal
+    definition: >-
+      热量传导路径上的温差与功耗之比 (℃/W); 链路串联叠加
+      R_th,ja = R_th,jc + R_th,cs + R_th,sa, 且随冷却方式与风速变化。
+    aliases: [热阻 Rth, 热阻链路]
+    properties: [operating_temp, ambient_temp_c, loss]
+    related_rules: [K-THM-003]
+    source: {kind: card, name: "power-knowledge-14 产测校准与降额", card_id: power-knowledge-14, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DC
+    zh: 直流
+    en: Direct Current
+    abbr: DC
+    category: general
+    definition: >-
+      方向不随时间变化的电流/电压; 电源输出侧量与母线量均为直流,
+      功率用 P = V×I 直接计算。
+    aliases: [直流电, 直流电压]
+    properties: [voltage, current, power]
+    related_rules: [K-ELEC-001]
+    source: {kind: card, name: "power-knowledge-1 基本电学关系", card_id: power-knowledge-1, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RMS
+    zh: 有效值
+    en: Root Mean Square
+    abbr: rms
+    category: general
+    definition: >-
+      交流量在一个周期内的均方根值, 表征与等效直流热效应相同的量;
+      单相视在功率 S = V_rms × I_rms, 正弦波峰值 = √2·有效值。
+    aliases: [均方根值, 方均根值]
+    properties: [voltage_rms, current_rms, vac_rms]
+    related_rules: [K-AC-002]
+    source: {kind: card, name: "power-knowledge-2 交流与功率因数", card_id: power-knowledge-2, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-VPP
+    zh: 峰峰值电压
+    en: Peak-to-Peak Voltage
+    abbr: Vpp
+    category: general
+    definition: >-
+      周期性波形最大值与最小值之差; 纹波与输入噪声均以峰峰值表述,
+      回差下限式中的「输入噪声峰峰值 × 2」即取此量。
+    aliases: [峰峰值, Vpp 电压]
+    properties: [noise_pp, measured_ripple_mvpp]
+    related_rules: [K-PROT-108]
+    source: {kind: card, name: "power-knowledge-5 保护逻辑常识", card_id: power-knowledge-5, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-VPEAK
+    zh: 峰值电压
+    en: Peak Voltage
+    abbr: V_pk
+    category: general
+    definition: >-
+      波形瞬时最大值; 爬电距离与电气间隙按工作电压的峰值 (非有效值) 查表,
+      单相整流后母线峰值 V_peak = √2·V_rms。
+    aliases: [电压峰值, 峰值]
+    properties: [working_voltage_peak, v_high_line, noise_pp]
+    related_rules: [K-SAF-103, K-PWR-117]
+    source: {kind: card, name: "power-knowledge-12 安规产测项", card_id: power-knowledge-12, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SWITCHFREQ
+    zh: 开关频率
+    en: Switching Frequency
+    abbr: fsw
+    category: general
+    definition: >-
+      功率开关器件的开关 (调制) 频率; 决定电感纹波电流、输出纹波与损耗,
+      也是环路交越频率上限 (fC < fSW/2) 与采样率要求的基准。
+    aliases: [开关频率 fsw, 工作频率]
+    properties: [switching_frequency, switching_frequency_hz, fc_max_hz]
+    related_rules: [K-PWR-101, K-LOOP-001]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-DUTY
+    zh: 占空比
+    en: Duty Cycle
+    abbr: D
+    category: general
+    definition: >-
+      开关管在一个开关周期内的导通时间占比; 降压变换器 D = Vout/Vin,
+      Boost D = 1 − Vin/Vout, 是决定输入电流与电感纹波的关键变量。
+    aliases: [占空系数]
+    properties: [duty_cycle, input_voltage, voltage]
+    related_rules: [K-PWR-004]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-ESR
+    zh: 等效串联电阻
+    en: Equivalent Series Resistance
+    abbr: ESR
+    category: general
+    definition: >-
+      电容的串联等效电阻; 纹波电流在其上产生损耗 P = I_rms²·ESR,
+      同时贡献 ESR 纹波电压 ΔV_ESR = ΔI_L·ESR, 高 ESR 降低效率并增大纹波。
+    aliases: [ESR 等效串联电阻]
+    properties: [esr, esr_loss, capacitance]
+    related_rules: [K-PWR-005, K-PWR-101]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-BUCK
+    zh: 降压变换器
+    en: Buck Converter
+    abbr: buck
+    category: general
+    definition: >-
+      输出电压低于输入电压的 DC-DC 拓扑, 占空比 D = Vout/Vin;
+      输入电流 I_in = D × I_out, 输出纹波由电感纹波电流与输出电容决定。
+    aliases: [Buck 变换器, 降压斩波器]
+    properties: [input_voltage, voltage, duty_cycle]
+    related_rules: [K-PWR-004, K-PWR-101]
+    source: {kind: card, name: "power-knowledge-3 电源效率与损耗", card_id: power-knowledge-3, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-BOOST
+    zh: 升压变换器
+    en: Boost Converter
+    abbr: boost
+    category: general
+    definition: >-
+      输出电压高于输入电压的 DC-DC 拓扑, 占空比 D = 1 − Vin/Vout;
+      输入端连续电流特性使其广泛用作 PFC 主级。
+    aliases: [Boost 变换器, 升压斩波器]
+    properties: [input_voltage, voltage, duty_cycle]
+    related_rules: [K-PWR-004, K-PWR-117]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FLYBACK
+    zh: 反激变换器
+    en: Flyback Converter
+    abbr: flyback
+    category: general
+    definition: >-
+      隔离型拓扑, 原边导通时变压器储能、关断时经副边释放; 结构简单、
+      元件数少, 适合中低功率, 但变压器单向励磁、漏感尖峰须处理。
+    aliases: [反激, 反激式变换器]
+    properties: [turns_ratio_tolerance, nominal_turns_ratio]
+    related_rules: [K-PWR-105]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-FORWARD
+    zh: 正激变换器
+    en: Forward Converter
+    abbr: forward
+    category: general
+    definition: >-
+      隔离型拓扑, 原边导通时能量直接经变压器传至副边; 需磁复位措施,
+      变压器双向利用优于反激, 适合中等功率。
+    aliases: [正激, 正激式变换器]
+    properties: [nominal_turns_ratio, turns_ratio_tolerance, duty_cycle]
+    related_rules: [K-PWR-105]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-TURNRATIO
+    zh: 匝比
+    en: Turns Ratio
+    abbr: n
+    category: general
+    definition: >-
+      隔离变压器原副边匝数之比 n = Np/Ns; 产测变比须落在标称 ±(2~5)% 内,
+      偏差过大提示匝间短路或磁路饱和。
+    aliases: [变压器变比, 变比]
+    properties: [nominal_turns_ratio, turns_ratio_tolerance, measured_turns_ratio]
+    related_rules: [K-PWR-105]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-SATCURRENT
+    zh: 饱和电流
+    en: Saturation Current
+    abbr: I_sat
+    category: general
+    definition: >-
+      磁性元件磁芯开始饱和时对应的电流; 电感峰值电流 I_pk = Iout + ΔI_L/2
+      不得超过 I_sat, 否则满载时电感进入饱和、电流失控。
+    aliases: [I_sat]
+    properties: [sat_current, peak_current, ripple_current]
+    related_rules: [K-PWR-104]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  - term_id: T-RIPPLERATING
+    zh: 纹波电流额定
+    en: Ripple Current Rating
+    abbr: ""
+    category: general
+    definition: >-
+      电容允许的纹波电流有效值上限; 实际纹波电流有效值须 ≤ 该额定值,
+      超额引起电容自热并按 Arrhenius 律加速老化。
+    aliases: [额定纹波电流]
+    properties: [ripple_current_rating, ripple_current_rms, ripple_current_actual]
+    related_rules: [K-PWR-103]
+    source: {kind: card, name: "power-knowledge-8 DC-DC 拓扑与实测判据", card_id: power-knowledge-8, url: "", retrieved: "2026-10-11"}
+
+  # ------------------------------------------------------------------ #
+  # 规格书参数补全 (2026-10-14): 术语 gap 补全
+  # 目标: 覆盖三份规格书中未命中参数 (输出/输入量, 过冲/时序, 遥测精度,
+  # 逻辑电平, 环境条件, 负载条件, 容性负载, 接地/压降等);
+  # 来源: 规格书原文 (spec_table) 与 websearch 检索 (websearch, 均带 URL)。
+  # ------------------------------------------------------------------ #
+  - term_id: T-OUTVOLT
+    zh: 输出电压
+    en: Output Voltage
+    abbr: ""
+    category: output
+    definition: >-
+      电源输出端的稳压电压; 规格书以范围(如 40~75V)、可调节范围与整定值形式给出, 判定指标包括稳压精度、线性/负载调整率与动态过冲。
+    aliases: [输出电压范围, 输出电压可调节范围, 输出电压整定值, 输出整定电压]
+    properties: [output_voltage]
+    related_rules: [K-PWR-110, K-PWR-111]
+    source: {kind: spec_table, name: "PA601-D54A §4.3.2 输出特性 / CY0177 表2 输出规格 / GDC800T5054-UC §4.3 输出特性 (输出电压)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-OUTCURR
+    zh: 输出电流
+    en: Output Current
+    abbr: ""
+    category: output
+    definition: >-
+      电源输出端提供的电流; 规格书给出最大/最小负载电流, 恒流(CC)模式下由限流设定值决定, 低于最小负载时的稳定性见负载条件。
+    aliases: [最大电流, 额定输出电流]
+    properties: [output_current]
+    related_rules: [K-PWR-127]
+    source: {kind: spec_table, name: "CY0177 表2 输出规格 (最大电流) / PA601-D54A §4.3.2 / GDC800T5054-UC §4.3 输出特性 (输出电流)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-OUTPWR
+    zh: 输出功率
+    en: Output Power
+    abbr: ""
+    category: output
+    definition: >-
+      电源输出端可提供的功率 (Pout = Vout × Iout); 额定/最大输出功率是选型、并机均流与效率判定的基准量。
+    aliases: [最大输出功率, 额定输出功率]
+    properties: [output_power]
+    related_rules: [K-PWR-001]
+    source: {kind: spec_table, name: "CY0177 表2 输出规格 (最大输出功率) / GDC800T5054-UC §4.3 输出特性 / PA601-D54A §4.3.2", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-INPUTCURR
+    zh: 输入电流
+    en: Input Current
+    abbr: ""
+    category: input
+    definition: >-
+      电源输入端的电流; 最大输入电流按最低输入电压与满载效率推算 (Iin = Pout / (η·Vin)), 上电瞬间的短时峰值是浪涌电流。
+    aliases: [最大输入电流]
+    properties: [input_current]
+    related_rules: [K-PWR-003]
+    source: {kind: spec_table, name: "GDC800T5054-UC §4.2 输入特性 (最大输入电流) / CY0177、PA601-D54A 输入电流", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-NOMVOLT
+    zh: 标称输入电压范围
+    en: Nominal Input Voltage Range
+    abbr: ""
+    category: input
+    definition: >-
+      铭牌标注的额定输入电压范围 (如 220Vac±10%、110Vac±10%); 安规认证在该范围内进行, 与可短时承受的更宽工作电压范围区分。
+    aliases: [标称输入电压, 铭牌标称电压]
+    properties: [input_voltage]
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.2 SR-PA601-D54A-1100 标称输入电压范围", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-OVERSHOOT
+    zh: 输出过冲
+    en: Output Overshoot
+    abbr: ""
+    category: output
+    definition: >-
+      负载突变或开关机瞬间输出电压/电流偏离稳态的瞬时尖峰; 判定须同时给出过冲幅度(常为额定值百分比)与恢复时间, 过冲过大提示环路相位裕度不足或输出电容失配。
+    aliases: [输出电压过冲, 过冲电压, 过冲电流]
+    properties: [measured_overshoot_pct, overshoot_limit_pct]
+    related_rules: [K-PWR-109]
+    source: {kind: websearch, name: "交流稳压电源动态指标的测试方法 (AET) — 过冲幅值/瞬态总恢复时间", url: "https://chinaaet.com/article/101574", retrieved: "2026-10-14"}
+
+  - term_id: T-POWDOWNDELAY
+    zh: 掉电延时
+    en: Power-Down Delay
+    abbr: ""
+    category: output
+    definition: >-
+      掉电告警发出至输出电压跌落到规定下限(如 36V)的时间窗口; 是保持时间在「告警→跌落」区间的可测化, 用于下游完成数据保护与备份切换。
+    aliases: [掉电延时功能, 掉电告警延时]
+    properties: [hold_up_limit_ms, measured_hold_up_ms]
+    related_rules: [K-PWR-114, K-PWR-115]
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3.2 SR-PA601-D54A-1218 掉电延时功能 (掉电告警→54V 跌至 36V)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-PWRSEQ
+    zh: 上下电时序
+    en: Power Sequencing
+    abbr: ""
+    category: dynamics
+    definition: >-
+      多路输出电源各路的启动/关断顺序与延迟窗口; 错误时序会引起后级器件闩锁、总线争用与浪涌超标, 关断顺序通常取启动顺序的逆序; 常见实现为PGOOD 级联、复位 IC 与模拟/数字定序器。
+    aliases: [各路输出上下电时序要求, 上下电时序, 电源定序]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "控制电源启动及关断时序 (DigiKey) / Power-supply sequencing for FPGAs (TI zhct278)", url: "https://www.digikey.cn/zh/articles/controlling-startup-and-shutdown-power-sequences", retrieved: "2026-10-14"}
+
+  - term_id: T-COMMLOSS
+    zh: 通讯中断保护
+    en: Communication Loss Protection
+    abbr: ""
+    category: communication
+    definition: >-
+      通信链路超时(如 120s 未收到有效报文)时的保护策略: 保持或按预设动作关断输出并置告警, 恢复通信后自恢复或需复位, 防止通信故障期间失控运行。
+    aliases: [通讯中断, 通信中断]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177 规格书 保护功能 (通讯中断 120s 未收报文)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-TELEMACC
+    zh: 遥测检测精度
+    en: Telemetry Accuracy
+    abbr: ""
+    category: communication
+    definition: >-
+      遥测(READ_VOUT/READ_IOUT/READ_VIN/温度)读数与真值的允许偏差, 以读数百分比或绝对量给出; 判定须扣除采样链(分压电阻/DCR/分流器)与仪器不确定度, 并覆盖全温度范围。
+    aliases: [输入电压检测精度, 输出电压检测精度, 输出电流检测精度, 温度检测精度, 遥测精度]
+    properties: [telemetry_error_limit_pct]
+    related_rules: [K-TLM-101, K-TLM-105, K-TLM-108]
+    source: {kind: websearch, name: "利用 PMBus 数字电源系统管理器进行电流检测 (ADI) — TUE 总非调整误差与读回精度", url: "https://www.analog.com/cn/resources/analog-dialogue/articles/current-sensing-with-pmbus-digital-power-system-managers-part-2.html", retrieved: "2026-10-14"}
+
+  - term_id: T-LOGICLVL
+    zh: 逻辑电平
+    en: Logic Level
+    abbr: ""
+    category: communication
+    definition: >-
+      数字接口信号的高/低电平阈值定义: VIL 为判为低电平的最大输入电压, VIH 为判为高电平的最小输入电压, VOL/VOH 为给定 IOL/IOH 下输出的低/高电平保证值; 互连须保证 VOH ≥ VIH 且 VOL ≤ VIL。
+    aliases: [逻辑输入低电平(VIL), 逻辑输入高电平(VIH), 逻辑输出低电平(VOL), 逻辑输出高电平(VOH)]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "逻辑电平之基本概念 (FPGA 开发圈) / 确保 I/O 电压标准 (DigiKey)", url: "https://fpga.eetrend.com/content/2018/100015925.html", retrieved: "2026-10-14"}
+
+  - term_id: T-N10VFAULT
+    zh: N10V 在位检测信号
+    en: N10V Presence / Fault Detect Signal
+    abbr: N10V_FAULT
+    category: communication
+    definition: >-
+      单板在位检测信号 (引脚名 N10V_FAULT): 低电平有效 (正常模式高电平、异常模式低电平);
+      低电平 0~0.8V、高电平 2.8~3.6V, 灌/拉电流 ≤4mA; 50V 输出关闭时低电平持续时间须 >200µs。
+    aliases: [N10V_FAULT, N10V在位检测引脚, N10V在位检测, N10V故障检测]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "GDC800T5054-UC 表4-7/表0 其他特性 (N10V_FAULT 电压/电流 高低电平) + §引脚定义", url: "", retrieved: "2026-10-16"}
+
+  - term_id: T-REMOTEOFF
+    zh: 遥控关机信号
+    en: Remote Power Off
+    abbr: REMOTE_POWER_OFF
+    category: communication
+    definition: >-
+      遥控关机输入 (引脚名 REMOTE_POWER_OFF, 中文"遥控关机"): 高电平有效 (应复位所有输出);
+      低电平 0~0.8V、高电平 2.8~3.6V; 有效持续时间须 >150ms; 重启前所有输出应保持低电平
+      至少 200ms; 接地电阻 10kΩ。
+    aliases: [REMOTE_POWER_OFF, 遥控关机]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "GDC800T5054-UC 表0 其他特性 (REMOTE_POWER_OFF 电压/电流 高低电平) + §引脚定义 (遥控关机/输入)", url: "", retrieved: "2026-10-16"}
+
+  - term_id: T-I2CRESET
+    zh: I2C 复位信号
+    en: I2C Reset Signal
+    abbr: PWR_I2C_RESET
+    category: communication
+    definition: >-
+      I2C 接口复位输入 (引脚名 PWR_I2C_RESET): 高电平有效; 低电平 0~0.8V、高电平 2.8~3.6V;
+      有效持续时间须 >700ms; 接地电阻 10kΩ。
+    aliases: [PWR_I2C_RESET, I2C复位引脚, I2C复位]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "GDC800T5054-UC 表0 其他特性 (PWR_I2C_RESET 电压/电流 高低电平) + §引脚定义 (I2C复位引脚)", url: "", retrieved: "2026-10-16"}
+
+  - term_id: T-TELEADJUST
+    zh: 遥调
+    en: Teleadjustment
+    abbr: ""
+    category: communication
+    definition: >-
+      四遥中"遥调"(YT): 由上位机远程下发模拟设定值 (调压/调流/限功率点), 与遥控的开/
+      关命令相区分; 须验证设定限幅 (不越硬件保护范围)、回读一致性与响应时延。
+    aliases: [遥调功能, 遥调, 远程设定, 远程调压]
+    properties: [measured_command_latency_ms, command_latency_limit_ms]
+    related_rules: [K-TLM-107, K-TLM-108]
+    source: {kind: card, name: "power-knowledge-13 遥测遥信遥控 (四遥定义与设定值下发)", card_id: power-knowledge-13, url: "", retrieved: "2026-10-16"}
+
+  - term_id: T-PGOOD
+    zh: 电源正常信号
+    en: Power Good Signal
+    abbr: ""
+    category: communication
+    definition: >-
+      输出建立后的"电源正常"指示 (PG/PGOOD/PSOK): 常为开漏或 TTL 输出, 高=正常;
+      上电时序中常作级联使能信号; 测试关注翻转阈值、相对输出建立的延时与序列顺序。
+    aliases: [PGOOD, PG信号, PSOK, 电源正常信号]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "控制电源启动及关断时序 (DigiKey) / Power Good 信号语义", url: "https://www.digikey.cn/zh/articles/controlling-startup-and-shutdown-power-sequences", retrieved: "2026-10-16"}
+
+  - term_id: T-ENABLE
+    zh: 使能信号
+    en: Enable Signal
+    abbr: ""
+    category: communication
+    definition: >-
+      控制电源开关的使能输入 (EN/PSON/REMOTE_EN): 有效电平 (高或低) 由设计决定, 常
+      内部上拉; 测试验证使能阈值、去抖与开/关机时序, 以及失效安全默认态 (悬空保持安全)。
+    aliases: [PSON, PSON12V#, 使能引脚, 远程使能, 使能控制]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "PSON12V# 低有效使能信号特性 (PAC800D12-B1 技术手册) / 电源遥控开关信号惯例", url: "https://atta.szlcsc.com/upload/public/pdf/source/20211206/DC6554C32C5DB96B4BC7B6DBF62DF968.pdf", retrieved: "2026-10-16"}
+
+  - term_id: T-LEDIND
+    zh: 面板指示灯
+    en: Panel Indicator
+    abbr: ""
+    category: general
+    definition: >-
+      电源面板状态指示 (运行/告警/故障 LED 或显示): 颜色与闪烁语义须与状态定义一致;
+      产测验证自检序列、各状态灯态与复位行为 (灯态常为失效安全设计的最后防线)。
+    aliases: [指示灯, 状态灯, 运行指示灯, 告警指示灯, LED指示]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "电源模块 LED 状态指示与故障排除 (IBM DataPower 电源模块文档)", url: "https://www.ibm.com/docs/zh/datapower-gateway/11.0.0?topic=appliance-troubleshooting-power-supply-modules", retrieved: "2026-10-16"}
+
+  - term_id: T-DRYCONTACT
+    zh: 干接点
+    en: Dry Contact
+    abbr: ""
+    category: communication
+    definition: >-
+      无源机械触点形式的信号输出 (告警/状态): 与被测电路电气隔离, 常有常开/常闭组合;
+      产测验证通断状态与语义一致性 (失效安全: 断电时触点须处于告警态) 与接触电阻。
+    aliases: [干接点输出, 干接点, 无源触点]
+    properties: [contact_type, contact_resistance_limit]
+    related_rules: [K-TLM-111]
+    source: {kind: card, name: "power-knowledge-13 遥测遥信遥控 (干接点/光耦接口)", card_id: power-knowledge-13, url: "", retrieved: "2026-10-16"}
+
+  - term_id: T-RELHUMI
+    zh: 相对湿度
+    en: Relative Humidity
+    abbr: ""
+    category: environment
+    definition: >-
+      工作/储存环境的相对湿度条件(如 5%~95%RH 无凝露); 凝露会降低绝缘电阻与爬电裕量, 高湿试验须按无凝露或标准加严条件判定。
+    aliases: [工作湿度]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A §4.1 / CY0177 / GDC800T5054-UC 表4-1 (相对湿度/工作湿度)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-STORETEMP
+    zh: 储存温度
+    en: Storage Temperature
+    abbr: ""
+    category: environment
+    definition: >-
+      非工作状态下允许的环境温度范围(如 -55~125℃); 用于运输与仓储判定, 不得与工作温度混用。
+    aliases: [存储温度]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A §4.1 SR-PA601-D54A-0200 / CY0177 / GDC800T5054-UC 表4-1 储存温度", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-OPERTEMP
+    zh: 工作温度
+    en: Operating Temperature
+    abbr: ""
+    category: environment
+    definition: >-
+      电源可正常工作的环境温度范围 TA(如 -40~85℃); 高低温上下限影响降额与启动能力, 须与 PCB 温度 TB 区分。
+    aliases: [工作温度范围, 标称工作温度范围, 工作温度(TA)]
+    properties: [operating_temp]
+    related_rules: [K-THM-003]
+    source: {kind: spec_table, name: "PA601-D54A §4.1 / CY0177 / GDC800T5054-UC 表4-1 工作温度(TA)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-ALTITUDE
+    zh: 海拔高度
+    en: Altitude
+    abbr: ""
+    category: environment
+    definition: >-
+      工作/运输的海拔上限(如 5000m); 高海拔空气密度低, 散热能力与绝缘强度下降, 电气间隙须按标准(如 IEC 60664-1 表 A.2, 5000m 约 ×1.48)修正。
+    aliases: [海拔, 工作海拔高度]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "高电压终端设备的电气间隙与爬电距离解密 (TI, IEC 60664-1 海拔校正)", url: "https://www.ti.com/lit/pdf/nesp013", retrieved: "2026-10-14"}
+
+  - term_id: T-TEMPRATE
+    zh: 温度变化速率
+    en: Temperature Change Rate
+    abbr: ""
+    category: environment
+    definition: >-
+      环境温度变化的最大允许速率(如 ≤1℃/min); 超出会引起热冲击应力、密封失效与结露, 温度循环试验须控制变温速率。
+    aliases: [温度变化最大允许速率, 温度变化率]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.1 SR-PA601-D54A-0203 温度变化最大允许速率", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-LOADCOND
+    zh: 负载条件
+    en: Load Condition
+    abbr: ""
+    category: output
+    definition: >-
+      电源输出所带负载的档位条件(空载/最小/额定/最大负载); 效率、调整率与稳定性须在各档位分别判定, 低于最小负载时可能进入跳脉冲/突发模式, 纹波与精度随之变化。
+    aliases: [最大负载, 最小负载, 最小负载电流, 空载]
+    properties: []
+    related_rules: [K-PWR-120]
+    source: {kind: websearch, name: "如何知道 DC-DC 转换器的最小负载需求 (DigiKey TechForum) / DCDC 轻载工作模式", url: "https://forum.digikey.com/t/dc-dc/43521", retrieved: "2026-10-14"}
+
+  - term_id: T-CAPLOAD
+    zh: 容性负载
+    en: Capacitive Load
+    abbr: ""
+    category: output
+    definition: >-
+      电源输出端允许连接的外部电容总量(如 1000~2000µF, 多路按储能分配); 容性负载过大或 ESR 过高会引起启机不良、过流保护误动或环路振荡, 测试须按规格的电容组合(含陶瓷电容比例)判定。
+    aliases: [带容性负载大小, 带容性负载, 容性负载能力]
+    properties: [capacitance]
+    related_rules: [K-PWR-101]
+    source: {kind: websearch, name: "小型 DC/DC 开关电源容性负载的研究 (21ic)", url: "https://www.21ic.com/dc/technical/201807/73134.html", retrieved: "2026-10-14"}
+
+  - term_id: T-DROPOUT
+    zh: 输入输出电压降
+    en: Dropout Voltage
+    abbr: ""
+    category: input
+    definition: >-
+      维持稳压所需的输入与输出电压最小差值(dropout voltage); 输入接近该点时输出失去调整能力并随输入下降, 直通/线性通路尤须校核。
+    aliases: [输入输出压降]
+    properties: []
+    related_rules: []
+    source: {kind: websearch, name: "LDO 基础知识 (TI zhcy093) / 在系统中成功运用低压差稳压器 (ADI)", url: "https://www.ti.com.cn/cn/lit/wp/zhcy093/zhcy093.pdf", retrieved: "2026-10-14"}
+
+  - term_id: T-GROUNDING
+    zh: 接地方式
+    en: Grounding
+    abbr: ""
+    category: safety
+    definition: >-
+      电源的接地/共地结构要求: 保护地就近接机壳, 输出地与信号地按规格相互隔离或共地; 影响安规耐压、EMS 与信号完整性。
+    aliases: [输出共地方式, 共地方式]
+    properties: []
+    related_rules: [K-SAF-002]
+    source: {kind: spec_table, name: "PA601-D54A §4.3 SR-PA601-D54A-1110 接地方式 / SR-PA601-D54A-1225 输出共地方式", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-ACOUSTICNOISE
+    zh: 噪声
+    en: Acoustic Noise
+    abbr: ""
+    category: mechanical
+    definition: >-
+      电源工作时产生的可听噪声(风扇、变压器磁致伸缩等), 以规定距离(如 1m)处的声压级 dB 限值判定。
+    aliases: [可听噪声, 噪音, 噪声要求, 声学噪声]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "CY0177 表2 输出规格 (噪声 ≤65dB @1m) / PA601-D54A §4.3 噪声要求", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-OUTPROTISO
+    zh: 输出保护独立性
+    en: Output Protection Independence
+    abbr: ""
+    category: protection
+    definition: >-
+      多路输出电源保护动作的互不干扰要求: 某一路过压/短路保护不得影响其它路输出, 避免共基准或互锁设计导致的连带关断。
+    aliases: [输出保护时其它各路输出之间的相关性, 输出保护相关性]
+    properties: []
+    related_rules: []
+    source: {kind: spec_table, name: "PA601-D54A 规格书 §4.3.2 SR-PA601-D54A-1312 输出保护时其它各路输出之间的相关性", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-CCACC
+    zh: 恒流精度
+    en: Constant-Current Accuracy
+    abbr: ""
+    category: output
+    definition: >-
+      恒流(CC)模式下输出电流的精度(如 ±5% 额定输出); CV/CC 双模式下须与电压精度分别判定, 由限流设定基准与采样链精度决定。
+    aliases: [恒流模式精度]
+    properties: []
+    related_rules: [K-PWR-112]
+    source: {kind: spec_table, name: "CY0177 表2 输出规格 (恒流精度 ±5%, 额定 48V/60V 输出)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-INPWR
+    zh: 输入功率
+    en: Input Power
+    abbr: ""
+    category: input
+    definition: >-
+      电源从输入侧吸收的功率: 交流为 输入电压 × 输入电流 × 功率因数
+      (Pin = Vin·Iin·PF), 直流为输入电压与输入电流之积; 与输出功率之差
+      即损耗。
+    aliases: [交流输入功率]
+    properties: [input_power]
+    related_rules: [K-PWR-003, K-PWR-126]
+    source: {kind: spec_table, name: "GDC800T5054-UC §4.5 效率特性 (P_in) / PA601-D54A 整机效率测试 (输入功率)", url: "", retrieved: "2026-10-14"}
+
+  - term_id: T-POWER
+    zh: 功率
+    en: Electric Power
+    abbr: ""
+    category: general
+    definition: >-
+      电功率: 直流为 P = U × I, 交流为 P = U × I × 功率因数; 电源语境下按
+      侧别区分为输入功率与输出功率, 二者之比为效率。SI 单位瓦特 (W)。
+    aliases: [电功率]
+    properties: [power]
+    related_rules: [K-ELEC-001, K-PWR-001, K-PWR-125]
+    source: {kind: standard, name: "GB/T 2900.1-2008《电工术语 基本术语》有功功率/功率(直流)", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=00825B0E95FFA38A3F03F66AB6220693", retrieved: "2026-10-14"}
+
+  - term_id: T-RESISTANCE
+    zh: 电阻
+    en: Resistance
+    abbr: R
+    category: general
+    definition: >-
+      导体对电流的阻碍作用, SI 单位欧姆 (Ω); 直流电路遵循欧姆定律
+      R = U / I, 纯电阻电路功耗 P = I²R = U²/R。产测语境下另有绝缘电阻、
+      接触电阻、等效串联电阻 (ESR) 等专用概念, 见相应术语。
+    aliases: [电阻器]
+    properties: [resistance]
+    related_rules: [K-ELEC-002, K-ELEC-003, K-ELEC-004, K-ELEC-005]
+    source: {kind: standard, name: "GB/T 2900.1-2008《电工术语 基本术语》电阻/欧姆定律", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=00825B0E95FFA38A3F03F66AB6220693", retrieved: "2026-10-15"}
+
+  - term_id: T-VDIP
+    zh: 电压暂降与短时中断
+    en: Voltage Dip & Short Interruption
+    abbr: ""
+    category: emc
+    definition: >-
+      供电电压有效值暂时跌落到规定阈值以下 (暂降) 或跌到接近零 (短时中断) 的
+      抗扰度试验现象, 另有电压变化 (升高/降低) 试验; 按 GB/T 17626.11 以
+      %Ut 试验等级与持续时间组合施加, 按 A/B/C 性能判据验收。
+    aliases: [电压暂降, 电压短时中断, 电压变化]
+    properties: []
+    related_rules: []
+    source: {kind: standard, name: "GB/T 17626.11-2008《电磁兼容 试验和测量技术 电压暂降、短时中断和电压变化的抗扰度试验》", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=699499AA346E452C17CD1E13EDF31D47", retrieved: "2026-10-17"}
+
+  - term_id: T-SURGE
+    zh: 浪涌抗扰度
+    en: Surge Immunity
+    abbr: ""
+    category: emc
+    definition: >-
+      设备对开关瞬态与雷击瞬态过电压 (浪涌) 的抗扰度试验: 以 1.2/50μs 电压波
+      (8/20μs 电流波) 经耦合网络施加差模/共模干扰, 按 GB/T 17626.5 以试验等级
+      与性能判据 A/B/C 验收; 电源端口防护须与放电管/压敏器件配合。
+    aliases: [浪涌抗扰性, 浪涌试验, 浪涌]
+    properties: []
+    related_rules: []
+    source: {kind: standard, name: "GB/T 17626.5-2019《电磁兼容 试验和测量技术 浪涌(冲击)抗扰度试验》", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=534499018FB30E7FC5E646F89937B3A8", retrieved: "2026-10-17"}
+
+  - term_id: T-IP
+    zh: 外壳防护等级
+    en: Ingress Protection Rating (IP Code)
+    abbr: IP
+    category: mechanical
+    definition: >-
+      由外壳对固体异物与水的防护能力分级 (IP 代码): 第一位特征数字表示防固体异物/防触及
+      (0~6), 第二位数字表示防水 (0~8), 如 IP54 = 防尘 + 防溅水; 整机 (含接口) 须覆盖
+      声明等级, 试验按 GB/T 4208 执行, 试验后不影响绝缘与安全性能。
+    aliases: [防护等级, 防水防尘等级, 防水防尘, IP 等级]
+    properties: []
+    related_rules: []
+    source: {kind: standard, name: "GB/T 4208-2017 外壳防护等级（IP代码）", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=09CCED55688D4116ED89659C1E7526F8", retrieved: "2026-10-17"}
+
+  - term_id: T-ROHS
+    zh: 有害物质限用
+    en: Restriction of Hazardous Substances (RoHS/HSF)
+    abbr: RoHS
+    category: standards
+    definition: >-
+      电子电气产品中有害物质 (铅/汞/镉/六价铬/多溴联苯/多溴二苯醚及邻苯二甲酸酯类)
+      的限量要求与合格评定: 中国 RoHS 按 GB/T 26572 及其修改单执行, 产品须满足 HSF
+      要求并有绿色环保标识等披露。
+    aliases: [环保要求, HSF, 有害物质限用, 绿色环保标识]
+    properties: []
+    related_rules: []
+    source: {kind: standard, name: "GB/T 26572-2011 电子电气产品中限用物质的限量要求", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=709EEDE5BF49ACDD34DB85F466D715E8", retrieved: "2026-10-17"}
+
+  - term_id: T-ENVTEST
+    zh: 环境与可靠性试验
+    en: Environmental & Reliability Test
+    abbr: ""
+    category: environment
+    definition: >-
+      按 GB/T 2423 系列与产品环境试验规范对电源进行的项目试验族: 温度类
+      (低温/高温工作与存储、温度变化、高低温循环)、湿热类 (恒定湿热、交变湿热、
+      凝露、湿尘)、机械类 (振动、冲击、跌落、堆码)、腐蚀与低气压类 (盐雾、
+      低气压) 以及 HALT 等健壮性试验; 判据为试验后电气性能正常、外观不损坏。
+    aliases: [环境试验, 低温工作试验, 低温工作实验, 高温工作试验, 高温工作实验, 低温存储, 高温存储, 高低温循环, 恒定湿热, 交变湿热, 温度变化试验, 振动试验, 冲击试验, 跌落试验, 运输振动, 运输冲击, 运输跌落, 堆码, 凝露试验, 湿尘试验, 油污试验, 盐雾试验, 低气压试验, 开关机试验, 开关电试验, HALT]
+    properties: []
+    related_rules: []
+    source: {kind: standard, name: "GB/T 2423 系列《电工电子产品环境试验 第2部分: 试验方法》(低温/高温/恒定湿热/盐雾/低气压等)", url: "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=E7F0B1D2B9A9E03614018F0AEEE98E02", retrieved: "2026-10-17"}

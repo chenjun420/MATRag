@@ -1,0 +1,190 @@
+@prefix ex: <https://semantica.dev/ns#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://semantica.dev/ns#answer:0be6ecc728ac4075b13c154a5777ce34> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T11:14:51.941178+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T11:14:51.941178+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:0ee68cc02be6455d9bf8e852961b62fd> a prov:Entity ;
+    prov:generatedAtTime "2026-10-14T13:44:10.787686+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-14T13:44:10.787686+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:1dd3b64e1bfe466ea29347fd61ea0583> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T11:23:04.759183+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T11:23:04.759183+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:2e1aa64aee7a43f48cee74d549726cf7> a prov:Entity ;
+    prov:generatedAtTime "2026-10-12T13:36:59.225903+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-12T13:36:59.225903+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:3295dec655b547a4bcc4261d7fd7fd45> a prov:Entity ;
+    prov:generatedAtTime "2026-10-12T13:40:58.847901+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-12T13:40:58.847901+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:3c3db25e67564e46beb3fd602dd3b357> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T13:16:59.980416+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T13:16:59.980416+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:486333755c7948b8b701a14bed46364e> a prov:Entity ;
+    prov:generatedAtTime "2026-10-13T11:23:34.102620+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-13T11:23:34.102620+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:63a0f621646a436fb6fcb18772a1c235> a prov:Entity ;
+    prov:generatedAtTime "2026-10-14T13:44:31.701330+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-14T13:44:31.701330+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:69350d6fc2b44295b01395adcae24461> a prov:Entity ;
+    prov:generatedAtTime "2026-10-14T13:45:42.292419+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-14T13:45:42.292419+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:6dc75aa22b364b70aa894957db4be8bc> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T13:17:52.854471+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T13:17:52.854471+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:7020c726cd8242e3ba2f5518bb7ca8bd> a prov:Entity ;
+    prov:generatedAtTime "2026-10-14T13:45:33.411635+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-14T13:45:33.411635+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:791cb3665ac248c395f2924c637d274b> a prov:Entity ;
+    prov:generatedAtTime "2026-10-12T13:39:15.057559+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-12T13:39:15.057559+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:8b745184e9c04209ad1fcb2f65058b69> a prov:Entity ;
+    prov:generatedAtTime "2026-10-16T14:06:21.415714+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-16T14:06:21.415714+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:8f20540473514797afa6b8c5a23b0896> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T11:23:34.748685+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T11:23:34.748685+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:f03b4fc5653a475da4261057a869a628> a prov:Entity ;
+    prov:generatedAtTime "2026-10-15T13:18:42.259209+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:qwen3.8-flash ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-15T13:18:42.259209+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:qwen3.8-flash ;
+    prov:wasGeneratedBy ex:record_answer .
+
+<https://semantica.dev/ns#answer:fa16f3c5f7cd4106997f9fbc283b61fc> a prov:Entity ;
+    prov:generatedAtTime "2026-10-13T11:19:32.048526+00:00"^^xsd:dateTime ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent ex:matrag ;
+            prov:hadRole ex:role_generator ] ;
+    prov:qualifiedGeneration [ a prov:Generation ;
+            prov:activity ex:record_answer ;
+            prov:atTime "2026-10-13T11:19:32.048526+00:00"^^xsd:dateTime ] ;
+    prov:wasAttributedTo ex:matrag ;
+    prov:wasGeneratedBy ex:record_answer .
+
+ex:matrag a prov:Agent,
+        prov:SoftwareAgent .
+
+ex:qwen3.8-flash a prov:Agent,
+        prov:SoftwareAgent .
+
+ex:record_answer a prov:Activity ;
+    prov:wasAssociatedWith ex:matrag,
+        ex:qwen3.8-flash .
+

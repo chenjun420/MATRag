@@ -1,0 +1,15 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+# explorer 隔离依赖（pip --target 落盘，不进 git）
+.tools/
+# 运行时数据与派生语料（不进 git）
+data/corpus/
+data/store/
+data/reports/
+data/eval/out/
+data/domain/generated/
+*.log

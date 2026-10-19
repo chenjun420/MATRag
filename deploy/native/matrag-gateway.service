@@ -1,0 +1,35 @@
+[Unit]
+Description=MATRag gateway (MCP over streamable-http, 规格书 RAG)
+Documentation=file:///opt/matrag/README.md
+# 无外部存储依赖（dev profile: sqlite 索引在 /opt/matrag/data/store）；
+# 对外端口取 .env 的 MATRAG_GATEWAY_PORT（默认 8321），鉴权 fail-closed。
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=matrag
+Group=matrag
+WorkingDirectory=/opt/matrag
+# .env 内含 API Key, 权限 600 属主 matrag
+EnvironmentFile=/opt/matrag/.env
+# 控制台/日志统一 UTF-8 (避免中文规格书名乱码)
+Environment=PYTHONIOENCODING=utf-8
+Environment=PYTHONUNBUFFERED=1
+# 模块入口: serve_http(create_gateway())；未配 API key 且未允许匿名则拒绝启动
+ExecStart=/opt/matrag/.venv/bin/python -m matrag.gateway
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+# 日志: journalctl 之外额外落盘, 便于板卡侧排障
+StandardOutput=append:/var/log/matrag/gateway.log
+StandardError=append:/var/log/matrag/gateway.err
+# 加固: 禁提权 / 私有 tmp / 只读系统分区 (可写路径仅 /opt/matrag 与 /var/log/matrag)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/matrag /var/log/matrag
+
+[Install]
+WantedBy=multi-user.target

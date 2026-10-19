@@ -1,0 +1,1885 @@
+{
+  "bundle_version": "1.0",
+  "contract_hash": "59a852c26ca277e4141c6a60ae723b20",
+  "product_code": "CY0177-75V-20A",
+  "doc_version": "",
+  "product_doc_fingerprint": "acec6b5f3240bf65ee668e9171290183",
+  "generated_at": "2026-10-18T02:24:30Z",
+  "generator": "matrag.extract/1.0",
+  "bundle_fingerprint": "294e27ffa749ef239ff98d8ff5c13e7b",
+  "requirements": [
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-0",
+      "spec_requirement_id": "",
+      "title": "交流输入电压范围",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "输入低于180V,输出功率线性降\n额详见图一(输出功率与输入电\n压关系)",
+      "req_fingerprint": "19d05f1eb60e54aa",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "交流输入电压范围",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-0-S001",
+          "seq": 1,
+          "name": "输入低于180V,输出功率线性降 额详见图一(输出功率与输入电 压关系)",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t7-0|0: 交流输入电压范围; 输入低于180V,输出功率线性降 额详见图一(输出功率与输入电 压关系)",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-1",
+      "spec_requirement_id": "",
+      "title": "额定输入电压范围",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "",
+      "req_fingerprint": "f8c424c3acf65b0f",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "额定输入电压范围",
+          "role": "input",
+          "value": {
+            "min": 100.0,
+            "max": 240.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f211c5f2a8fe7016"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-1-S001",
+          "seq": 1,
+          "name": "额定输入电压范围",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t7-0|1: 额定输入电压范围;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-2",
+      "spec_requirement_id": "",
+      "title": "交流输入电压频率",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "2f39ebd9318f71a2",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_frequency",
+          "text": "交流输入电压频率",
+          "role": "input",
+          "value": {
+            "min": 47.0,
+            "typ": 50.0,
+            "max": 63.0,
+            "unit": "Hz"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "8c45f01987f09274"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-2-S001",
+          "seq": 1,
+          "name": "交流输入电压频率",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t7-0|2: 交流输入电压频率;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-3",
+      "spec_requirement_id": "",
+      "title": "输入电流",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "85Vac,满载",
+      "req_fingerprint": "7321f8007dc1c4ef",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输入电流",
+          "role": "input",
+          "value": {
+            "max": 8.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "13470ecc33c731cc"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 85Vac",
+          "role": "input",
+          "value": {
+            "typ": 85.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ef0ece90d4c6c8de"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-3-S001",
+          "seq": 1,
+          "name": "85Vac,满载",
+          "rail": "",
+          "bindings": {
+            "input_tier": "85Vac",
+            "load": "满载"
+          },
+          "derived": {},
+          "basis": "t7-0|3: 输入电流; 85Vac,满载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-4",
+      "spec_requirement_id": "",
+      "title": "输入冲击电流",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "220Vac/50Hz 输入,满载,冷启\n动,高温50°C。",
+      "req_fingerprint": "96033d3e2b27a1d0",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "power_event",
+          "text": "输入冲击电流",
+          "role": "input",
+          "value": {
+            "max": 40.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "65afe541ff4baf3e"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 220Vac",
+          "role": "input",
+          "value": {
+            "typ": 220.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "454b9e960f642fb4"
+        },
+        {
+          "kind": "input_frequency",
+          "text": "原文标注 50Hz",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "Hz"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "811998f15637f0ad"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-4-S001",
+          "seq": 1,
+          "name": "220Vac/50Hz 输入,满载,冷启 动,高温50°C。",
+          "rail": "",
+          "bindings": {
+            "input_tier": "220Vac",
+            "load": "满载"
+          },
+          "derived": {},
+          "basis": "t7-0|4: 输入冲击电流; 220Vac/50Hz 输入,满载,冷启 动,高温50°C。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-6",
+      "spec_requirement_id": "",
+      "title": "功率因数",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "220Vac/50Hz 输入,100%负载\n≥0.99,50%≥0.98",
+      "req_fingerprint": "deaefbf2622a065a",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "power_factor",
+          "text": "功率因数",
+          "role": "input",
+          "value": {
+            "min": 98.0,
+            "unit": "/"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "964467946683734a"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 220Vac",
+          "role": "input",
+          "value": {
+            "typ": 220.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "454b9e960f642fb4"
+        },
+        {
+          "kind": "input_frequency",
+          "text": "原文标注 50Hz",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "Hz"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "811998f15637f0ad"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-6-S001",
+          "seq": 1,
+          "name": "220Vac/50Hz 输入,100%负载 ≥0.99,50%≥0.98",
+          "rail": "",
+          "bindings": {
+            "input_tier": "220Vac",
+            "load": "100%"
+          },
+          "derived": {},
+          "basis": "t7-0|6: 功率因数; 220Vac/50Hz 输入,100%负载 ≥0.99,50%≥0.98",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-7",
+      "spec_requirement_id": "",
+      "title": "效率",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "220Vac/50Hz 输入,48V 输出,\n满载",
+      "req_fingerprint": "c0ce60063fb72419",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 220Vac",
+          "role": "input",
+          "value": {
+            "typ": 220.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "454b9e960f642fb4"
+        },
+        {
+          "kind": "input_frequency",
+          "text": "原文标注 50Hz",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "Hz"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "811998f15637f0ad"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "效率",
+          "role": "output",
+          "value": {
+            "min": 91.0,
+            "unit": "-"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3e725894324f87e6"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "48V",
+          "qualifier": "",
+          "min": 91.0,
+          "typ": null,
+          "max": null,
+          "unit": "-"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-7-S001",
+          "seq": 1,
+          "name": "220Vac/50Hz 输入,48V 输出, 满载",
+          "rail": "48V",
+          "bindings": {
+            "input_tier": "220Vac",
+            "load": "满载"
+          },
+          "derived": {},
+          "basis": "t7-0|7: 效率; 220Vac/50Hz 输入,48V 输出, 满载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t7-0-8",
+      "spec_requirement_id": "",
+      "title": "效率",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "role": "",
+      "description": "",
+      "notes": "220Vac/50Hz 输入,60V 输出,\n满载",
+      "req_fingerprint": "97ea3d66e89c3dd8",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 220Vac",
+          "role": "input",
+          "value": {
+            "typ": 220.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "454b9e960f642fb4"
+        },
+        {
+          "kind": "input_frequency",
+          "text": "原文标注 50Hz",
+          "role": "input",
+          "value": {
+            "typ": 50.0,
+            "unit": "Hz"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "811998f15637f0ad"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "效率",
+          "role": "output",
+          "value": {
+            "min": 92.0,
+            "unit": "-"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "9cf4c94d53fe0408"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "60V",
+          "qualifier": "",
+          "min": 92.0,
+          "typ": null,
+          "max": null,
+          "unit": "-"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t7-0-8-S001",
+          "seq": 1,
+          "name": "220Vac/50Hz 输入,60V 输出, 满载",
+          "rail": "60V",
+          "bindings": {
+            "input_tier": "220Vac",
+            "load": "满载"
+          },
+          "derived": {},
+          "basis": "t7-0|8: 效率; 220Vac/50Hz 输入,60V 输出, 满载",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t8-0-0",
+      "spec_requirement_id": "",
+      "title": "输出电压",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "dea61c78f9f62498",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压",
+          "role": "output",
+          "value": {
+            "min": 40.0,
+            "max": 75.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2973282912b63c6c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 40.0,
+          "typ": null,
+          "max": 75.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t8-0-0-S001",
+          "seq": 1,
+          "name": "匹配48V/60V 电池",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t8-0|0: 输出电压;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t8-0-1",
+      "spec_requirement_id": "",
+      "title": "最大电流",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "fa554b4a6f197b2f",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "最大电流",
+          "role": "output",
+          "value": {
+            "max": 20.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "784dde212a674ed6"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 20.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t8-0-1-S001",
+          "seq": 1,
+          "name": "最大电流",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t8-0|1: 最大电流;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t8-0-2",
+      "spec_requirement_id": "",
+      "title": "最小负载电流",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "cee540fc7f021ac3",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "最小负载电流",
+          "role": "output",
+          "value": {
+            "typ": 0.0,
+            "max": 0.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "e8e90851a593d071"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": 0.0,
+          "max": 0.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t8-0-2-S001",
+          "seq": 1,
+          "name": "若电流持续小于2A,充电器20 分 钟后自动关机。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t8-0|2: 最小负载电流;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t8-0-3",
+      "spec_requirement_id": "",
+      "title": "最大输出功率",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "813d1556d6ec505e",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "最大输出功率",
+          "role": "output",
+          "value": {
+            "max": 1200.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1cce30bef026cb7c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 1200.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t8-0-3-S001",
+          "seq": 1,
+          "name": "电源最大功率1200W,最大电流 20A,详见图二输出电压与输出电流 (U-I 曲线)",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t8-0|3: 最大输出功率;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t8-0-11",
+      "spec_requirement_id": "",
+      "title": "开机时间",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "role": "",
+      "description": "",
+      "notes": "输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "825e3b9a3b3512f3",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "开机时间",
+          "role": "output",
+          "value": {
+            "max": 5000.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b74f24c9b869859a"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 5000.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t8-0-11-S001",
+          "seq": 1,
+          "name": "发开机指令后,电源起机时间。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t8-0|11: 开机时间;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-0",
+      "spec_requirement_id": "",
+      "title": "输入欠压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "36a5e9b2c5e836fd",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护 [欠压点]",
+          "role": "output",
+          "value": {
+            "min": 85.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b7b9a58ad5b2d8e0"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "欠压点",
+          "min": 85.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-0-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|0: 输入欠压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-1",
+      "spec_requirement_id": "",
+      "title": "输入欠压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "50519a58528c51c0",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护 [恢复点]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-1-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|1: 输入欠压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-2",
+      "spec_requirement_id": "",
+      "title": "输入欠压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "ce429b1e96f35d84",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护 [回差]",
+          "role": "output",
+          "value": {
+            "min": 5.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "51b321b26c5f1fb3"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "回差",
+          "min": 5.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-2-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|2: 输入欠压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-3",
+      "spec_requirement_id": "",
+      "title": "输入过压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8f19aaa123e63c86",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压保护 [过压点]",
+          "role": "output",
+          "value": {
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c7d8c81a01d50eab"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "过压点",
+          "min": null,
+          "typ": null,
+          "max": 300.0,
+          "unit": "Vac"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-3-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|3: 输入过压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-4",
+      "spec_requirement_id": "",
+      "title": "输入过压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4c4591c1a2bc1ce5",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压保护 [恢复点]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-4-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|4: 输入过压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-5",
+      "spec_requirement_id": "",
+      "title": "输入过压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "上位机发指令后才会\n开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "cc33fcbc7f0a3ab7",
+      "flags": [
+        "synth-code"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压保护 [回差]",
+          "role": "output",
+          "value": {
+            "min": 5.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "51b321b26c5f1fb3"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "回差",
+          "min": 5.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-5-S001",
+          "seq": 1,
+          "name": "上位机发指令后才会 开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|5: 输入过压保护; 上位机发指令后才会 开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-6",
+      "spec_requirement_id": "",
+      "title": "输出过压保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "当输出电压超过设定电\n压2.5V,且持续20 秒,\n电源自动关机,需重新发\n开机指令才会重新开机。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "5d9c5f84da3792e8",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过压保护",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-6-S001",
+          "seq": 1,
+          "name": "当输出电压超过设定电 压2.5V,且持续20 秒, 电源自动关机,需重新发 开机指令才会重新开机。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|6: 输出过压保护; 当输出电压超过设定电 压2.5V,且持续20 秒, 电源自动关机,需重新发 开机指令才会重新开机。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-7",
+      "spec_requirement_id": "",
+      "title": "输出短路保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "30S 内自恢复,30S 后自\n动关机,需重新发开机指\n令才会重新开机。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "26ac5dde8b04b776",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "fault_stimulus",
+          "text": "原文含\"短路\" → 触发短路事件",
+          "role": "input",
+          "value": {
+            "event": "短路"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c7c2059f5b2d1c68"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出短路保护",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-7-S001",
+          "seq": 1,
+          "name": "30S 内自恢复,30S 后自 动关机,需重新发开机指 令才会重新开机。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|7: 输出短路保护; 30S 内自恢复,30S 后自 动关机,需重新发开机指 令才会重新开机。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-8",
+      "spec_requirement_id": "",
+      "title": "过温保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "电源自动检测器件温度,\n温度超高时,电源会自动\n降额,温度降低后电源功\n率会恢复。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e312c6982f207a0b",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "过温保护",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-8-S001",
+          "seq": 1,
+          "name": "电源自动检测器件温度, 温度超高时,电源会自动 降额,温度降低后电源功 率会恢复。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|8: 过温保护; 电源自动检测器件温度, 温度超高时,电源会自动 降额,温度降低后电源功 率会恢复。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-9",
+      "spec_requirement_id": "",
+      "title": "电池反接保护",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "电池反接,电源不开机\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "5b4f89d962bd0ad9",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "电池反接保护",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-9-S001",
+          "seq": 1,
+          "name": "电池反接,电源不开机",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|9: 电池反接保护; 电池反接,电源不开机",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-CY0177-75V-20A-t9-0-10",
+      "spec_requirement_id": "",
+      "title": "通讯中断",
+      "section_path": "4 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "充电器120S 内,没有收\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "6cfa7f00272b1a7e",
+      "flags": [
+        "synth-code",
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "typ": 220.0,
+            "max": 300.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b4481f41d9eb4225"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "通讯中断",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-CY0177-75V-20A-t9-0-10-S001",
+          "seq": 1,
+          "name": "充电器120S 内,没有收",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t9-0|10: 通讯中断; 充电器120S 内,没有收",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    }
+  ],
+  "excluded": [
+    {
+      "req_id": "",
+      "title": "抗电强度",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "无飞弧、无击穿"
+    },
+    {
+      "req_id": "",
+      "title": "抗电强度",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "无飞弧、无击穿"
+    },
+    {
+      "req_id": "",
+      "title": "抗电强度",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "无飞弧、无击穿"
+    },
+    {
+      "req_id": "",
+      "title": "绝缘电阻",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "在环境温度为\n15-35°C,相对\n湿度为≤90%"
+    },
+    {
+      "req_id": "",
+      "title": "绝缘电阻",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "在环境温度为\n15-35°C,相对\n湿度为≤90%"
+    },
+    {
+      "req_id": "",
+      "title": "绝缘电阻",
+      "section_path": "5 其它功能",
+      "reason": "非产测范围: 其它功能",
+      "matched_word": "其它功能",
+      "notes": "在环境温度为\n15-35°C,相对\n湿度为≤90%"
+    },
+    {
+      "req_id": "",
+      "title": "传导骚扰发射",
+      "section_path": "7 EMC 要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": "EN55022"
+    },
+    {
+      "req_id": "",
+      "title": "辐射骚扰发射",
+      "section_path": "7 EMC 要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": "EN55022"
+    },
+    {
+      "req_id": "",
+      "title": "静电放电抗扰 性",
+      "section_path": "7 EMC 要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": "EN 55024"
+    },
+    {
+      "req_id": "",
+      "title": "电快速脉冲群 抗扰性",
+      "section_path": "7 EMC 要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": "YD/T1082"
+    },
+    {
+      "req_id": "",
+      "title": "浪涌抗扰性",
+      "section_path": "7 EMC 要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": "YD/T993"
+    },
+    {
+      "req_id": "",
+      "title": "工作温度",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "50°C以上,电源会根据内部器件温度自动\n降额,保障电源能工作在很高的环境温度,\n只是功率会有降额。"
+    },
+    {
+      "req_id": "",
+      "title": "储存温度",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "电源不上电"
+    },
+    {
+      "req_id": "",
+      "title": "相对湿度",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "正常工作时,无冷凝"
+    },
+    {
+      "req_id": "",
+      "title": "相对湿度",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "电源不上电,无冷凝"
+    },
+    {
+      "req_id": "",
+      "title": "工作海拔高 度",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "-"
+    },
+    {
+      "req_id": "",
+      "title": "散热方式",
+      "section_path": "10 电源可靠性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "-"
+    }
+  ],
+  "review": [
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "heading": "待机损耗",
+      "detail": "未命中映射表 (cat=input, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "电压调整率(恒压)",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "纹波电流",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "电压精度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "恒流精度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "噪声+纹波(峰峰值)",
+      "detail": "measure 类 kind=ripple 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "过冲电压",
+      "detail": "measure 类 kind=timing 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "过冲电流",
+      "detail": "measure 类 kind=timing 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "heading": "噪声",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    }
+  ],
+  "excluded_scenarios": [],
+  "stats": {
+    "spec": {
+      "rows": 50,
+      "requirements": 24,
+      "excluded": 17,
+      "review": 9,
+      "kinds": {
+        "efficiency": 2,
+        "fault_stimulus@input": 1,
+        "input_frequency@input": 5,
+        "input_voltage@input": 24,
+        "output_current": 2,
+        "output_current@input": 1,
+        "output_power": 1,
+        "output_voltage": 1,
+        "power_event@input": 1,
+        "power_factor@input": 1,
+        "protection_action": 11,
+        "timing": 1
+      },
+      "baseline_input_voltage": {
+        "min": 85.0,
+        "typ": 220.0,
+        "max": 300.0,
+        "unit": "Vac"
+      }
+    },
+    "narrative": {
+      "blocks_total": 119,
+      "blocks_in_scope": 10,
+      "blocks_used": 10,
+      "blocks_truncated": 0,
+      "clauses_draft": 0,
+      "skipped_llm_off": 1,
+      "deduped_against_spec": 0,
+      "requirements": 0,
+      "clauses_bound": 0
+    },
+    "requirements_total": 24,
+    "excluded_total": 17,
+    "review_total": 9,
+    "narrative_skipped": "llm_not_configured"
+  },
+  "removed_requirement_codes": []
+}

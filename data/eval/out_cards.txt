@@ -1,0 +1,54 @@
+知识卡片 22 张
+字段: ['card_id', 'title', 'section_path', 'body', 'source', 'domain', 'char_count']
+--- None
+   card_id      power-knowledge-1
+   title        ## 基本电学关系
+   section_path 基本电学关系
+   body         欧姆定律: 导体两端电压 V 与通过电流 I 成正比, V = I × R; 电阻 R = V / I; 电流 I = V / R。
+直流功率 P = V × I。纯电阻电路中 P = I²R = V
+   source       MATRag power_knowledge.md
+   domain       power
+   char_count   256
+--- None
+   card_id      power-knowledge-2
+   title        ## 交流与功率因数
+   section_path 交流与功率因数
+   body         功率因数 PF = 有功功率 P / 视在功率 S = cosθ; S² = P² + Q²; 无功 Q = V_rms·I_rms·sinθ。
+单相视在功率 S = V_rms × I_rms; 对
+   source       MATRag power_knowledge.md
+   domain       power
+   char_count   213
+--- None
+   card_id      power-knowledge-3
+   title        ## 电源效率与损耗
+   section_path 电源效率与损耗
+   body         转换效率 η = P_out / P_in × 100%。损耗 P_loss = P_in − P_out。
+交流输入功率 P_in = V_in × I_in × PF。
+MOSFET 导通损耗 P
+   source       MATRag power_knowledge.md
+   domain       power
+   char_count   245
+
+全部卡片标题:
+   None | ## 基本电学关系
+   None | ## 交流与功率因数
+   None | ## 电源效率与损耗
+   None | ## 热设计
+   None | ## 保护逻辑常识
+   None | ## 测试与工装
+   None | ## 测量系统与探针寿命
+   None | ## DC-DC 拓扑与实测判据
+   None | ## 电压调整率与输出精度
+   None | ## 效率与功率判据
+   None | ## 保护功能矩阵
+   None | ## 安规产测项
+   None | ## 遥测、遥信与遥控
+   None | ## 产测校准与降额
+   None | ## 低线输入降额 (分段输出功率)
+   None | ## 安规与可靠性
+   None | ## 控制环路稳定性
+   None | ## 冷却方式与热阻取值
+   None | ## 测量不确定度与量具能力
+   None | ## ADC 与频谱测量约束
+   None | ## 并联均流与下垂法
+   None | ## 温度系数测量与温度箱

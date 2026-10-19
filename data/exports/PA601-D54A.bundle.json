@@ -1,0 +1,6065 @@
+{
+  "bundle_version": "1.0",
+  "contract_hash": "59a852c26ca277e4141c6a60ae723b20",
+  "product_code": "PA601-D54A",
+  "doc_version": "B",
+  "product_doc_fingerprint": "6cb6df8d3b66964551aa472dbfd38496",
+  "generated_at": "2026-10-18T07:00:52Z",
+  "generator": "matrag.extract/1.0",
+  "bundle_fingerprint": "b3000312e300a5f58593d4a9404a38dd",
+  "requirements": [
+    {
+      "requirement_code": "SR-PA601-D54A-1100-m127",
+      "spec_requirement_id": "SR-PA601-D54A-1100",
+      "title": "标称输入电压范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "铭牌标称电压,在此电压范围内进行安规认证。",
+      "req_fingerprint": "ec6b61d687d547da",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "标称输入电压范围",
+          "role": "input",
+          "value": {
+            "min": 100.0,
+            "typ": 110.0,
+            "max": 127.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "078f88ab6a2b5e17"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1100-m127-S001",
+          "seq": 1,
+          "name": "铭牌标称电压,在此电压范围内进行安规认证。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|0: 标称输入电压范围; 铭牌标称电压,在此电压范围内进行安规认证。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1100-m240",
+      "spec_requirement_id": "SR-PA601-D54A-1100",
+      "title": "标称输入电压范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "-",
+      "req_fingerprint": "7fd2f2a8b657b6cf",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "标称输入电压范围",
+          "role": "input",
+          "value": {
+            "min": 200.0,
+            "typ": 220.0,
+            "max": 240.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "974548b6e1e5a6c7"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1100-m240-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|1: 标称输入电压范围; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1101",
+      "spec_requirement_id": "SR-PA601-D54A-1101",
+      "title": "输入工作电压范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "长期工作。若输入为高压直流,电源关断输出,不工作。\n-",
+      "req_fingerprint": "38e516f664c1ee26",
+      "flags": [
+        "merged-rows"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "输入工作电压范围",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a61648add1aac1ba"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "输入工作电压范围",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "6466bdfee02cca6b"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1101-S001",
+          "seq": 1,
+          "name": "长期工作。若输入为高压直流,电源关断输出,不工作。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|2: 输入工作电压范围; 长期工作。若输入为高压直流,电源关断输出,不工作。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1102",
+      "spec_requirement_id": "SR-PA601-D54A-1102",
+      "title": "最高极限输入电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "在此输入电压条件下可以不工作,但不能损坏。",
+      "req_fingerprint": "27ccf3d8b5ffc044",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "最高极限输入电压",
+          "role": "input",
+          "value": {
+            "max": 315.0,
+            "unit": "Vac"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "5e15147926a19a2a"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1102-S001",
+          "seq": 1,
+          "name": "在此输入电压条件下可以不工作,但不能损坏。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|4: 最高极限输入电压; 在此输入电压条件下可以不工作,但不能损坏。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1103",
+      "spec_requirement_id": "SR-PA601-D54A-1103",
+      "title": "交流输入频率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "交流适用\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c533d6a26e135732",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_frequency",
+          "text": "交流输入频率",
+          "role": "input",
+          "value": {
+            "min": 45.0,
+            "max": 66.0,
+            "unit": "Hz"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "86a76c8625fc943f"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1103-S001",
+          "seq": 1,
+          "name": "交流适用",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|5: 交流输入频率; 交流适用",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1104-m85",
+      "spec_requirement_id": "SR-PA601-D54A-1104",
+      "title": "功率因数",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac输入,20%最大输出负载,批量\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "719a08cd6b2a745f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "power_factor",
+          "text": "功率因数",
+          "role": "input",
+          "value": {
+            "min": 85.0,
+            "unit": "-"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "703f1266f96c0e37"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1104-m85-S001",
+          "seq": 1,
+          "name": "额定220Vac输入,20%最大输出负载,批量",
+          "rail": "",
+          "bindings": {
+            "load": "20%"
+          },
+          "derived": {},
+          "basis": "t0-13|6: 功率因数; 额定220Vac输入,20%最大输出负载,批量",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1104-m95",
+      "spec_requirement_id": "SR-PA601-D54A-1104",
+      "title": "功率因数",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac输入,50%最大输出负载,批量\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "9bbcbf000b6ad245",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "power_factor",
+          "text": "功率因数",
+          "role": "input",
+          "value": {
+            "min": 95.0,
+            "unit": "-"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "e3741553998998f2"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1104-m95-S001",
+          "seq": 1,
+          "name": "额定220Vac输入,50%最大输出负载,批量",
+          "rail": "",
+          "bindings": {
+            "load": "50%"
+          },
+          "derived": {},
+          "basis": "t0-13|7: 功率因数; 额定220Vac输入,50%最大输出负载,批量",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1104-m98",
+      "spec_requirement_id": "SR-PA601-D54A-1104",
+      "title": "功率因数",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac输入、最大输出负载测试,批量\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e455fed59bfffc56",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "power_factor",
+          "text": "功率因数",
+          "role": "input",
+          "value": {
+            "min": 98.0,
+            "unit": "-"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3ff5e06a7070a8fd"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1104-m98-S001",
+          "seq": 1,
+          "name": "额定220Vac输入、最大输出负载测试,批量",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|8: 功率因数; 额定220Vac输入、最大输出负载测试,批量",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1105",
+      "spec_requirement_id": "SR-PA601-D54A-1105",
+      "title": "输入冲击电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "注3。满足ETSI EN 300 132-1(适用AC)的输入冲击电流限值要求,见注3。交流电源的缓启动电阻,不得使用陶瓷电阻。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "b9b1c93473719259",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "power_event",
+          "text": "输入冲击电流",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "7cdbd9d52b8158ac"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1105-S001",
+          "seq": 1,
+          "name": "注3。满足ETSI EN 300 132-1(适用AC)的输入冲击电流限值要求,见注3。交流电源的缓启动电阻,不得使用陶瓷电阻。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|9: 输入冲击电流; 注3。满足ETSI EN 300 132-1(适用AC)的输入冲击电流限值要求,见注3。交流电源的缓启动电阻,不得使用陶瓷电阻。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1106",
+      "spec_requirement_id": "SR-PA601-D54A-1106",
+      "title": "输入电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "role": "",
+      "description": "",
+      "notes": "给出前级支路空开和总空开/熔丝的推荐代码,选型推荐要求见注2。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c32d84866d2e8560",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输入电流",
+          "role": "input",
+          "value": {
+            "max": 6.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "102cba559cc4a77a"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1106-S001",
+          "seq": 1,
+          "name": "给出前级支路空开和总空开/熔丝的推荐代码,选型推荐要求见注2。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-13|10: 输入电流; 给出前级支路空开和总空开/熔丝的推荐代码,选型推荐要求见注2。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1200-m-54",
+      "spec_requirement_id": "SR-PA601-D54A-1200",
+      "title": "额定输出电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "上电默认输出,测试点为输出端子与PCB连接部。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "2093c8ed018096ff",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "额定输出电压 [-54V]",
+          "role": "output",
+          "value": {
+            "min": -54.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ec0c398e16ff7567"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": -54.0,
+          "typ": null,
+          "max": null,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1200-m-54-S001",
+          "seq": 1,
+          "name": "上电默认输出,测试点为输出端子与PCB连接部。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|0: 额定输出电压; 上电默认输出,测试点为输出端子与PCB连接部。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1200-m3.45",
+      "spec_requirement_id": "SR-PA601-D54A-1200",
+      "title": "额定输出电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "上电默认输出,测试点为输出端子与PCB连接部。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "396aa1d1bae5795a",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "额定输出电压 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 3.45,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3eae4823c766ac8c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 3.45,
+          "typ": null,
+          "max": null,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1200-m3.45-S001",
+          "seq": 1,
+          "name": "上电默认输出,测试点为输出端子与PCB连接部。",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|1: 额定输出电压; 上电默认输出,测试点为输出端子与PCB连接部。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1201-m-54.8",
+      "spec_requirement_id": "SR-PA601-D54A-1201",
+      "title": "输出电压整定值",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "额定输入、半载输出。",
+      "req_fingerprint": "1f0f46f1856745b9",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(额定输入无数字)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压整定值 [-54V]",
+          "role": "output",
+          "value": {
+            "min": -53.2,
+            "typ": -54.0,
+            "max": -54.8,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "35febfbdf561e2c4"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": -53.2,
+          "typ": -54.0,
+          "max": -54.8,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1201-m-54.8-S001",
+          "seq": 1,
+          "name": "额定输入、半载输出。",
+          "rail": "-54V",
+          "bindings": {
+            "load": "半载"
+          },
+          "derived": {},
+          "basis": "t0-15|2: 输出电压整定值; 额定输入、半载输出。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1201-m6",
+      "spec_requirement_id": "SR-PA601-D54A-1201",
+      "title": "输出电压整定值",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "397b4ef6667a749d",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压整定值 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 3.0,
+            "typ": 3.45,
+            "max": 6.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c2c0e7210c34ce7c"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 3.0,
+          "typ": 3.45,
+          "max": 6.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1201-m6-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|3: 输出电压整定值; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1203-m1",
+      "spec_requirement_id": "SR-PA601-D54A-1203",
+      "title": "输出电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "长期工作\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c69b1d59becd710f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 1.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "265cc2235166189f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 1.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1203-m1-S001",
+          "seq": 1,
+          "name": "长期工作",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|7: 输出电流; 长期工作",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1203-m1-c2",
+      "spec_requirement_id": "SR-PA601-D54A-1203",
+      "title": "输出电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "长期工作\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4344fc3651c58a53",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_current",
+          "text": "输出电流 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 1.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "265cc2235166189f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 1.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1203-m1-c2-S001",
+          "seq": 1,
+          "name": "长期工作",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|9: 输出电流; 长期工作",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1204",
+      "spec_requirement_id": "SR-PA601-D54A-1204",
+      "title": "输出功率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "90~176Vac: 400W; 176~286Vac: 600W",
+      "req_fingerprint": "8b92ed6540e2c890",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 176Vac",
+          "role": "input",
+          "value": {
+            "typ": 176.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3798167ee856fd79"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_power",
+          "text": "输出功率",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 600.0,
+            "unit": "W"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "9cb3cb4f9e6da1f9"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 600.0,
+          "unit": "W"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1204-S001",
+          "seq": 1,
+          "name": "90~176Vac: 400W; 176~286Vac: 600W",
+          "rail": "",
+          "bindings": {
+            "input_tier": "176Vac"
+          },
+          "derived": {},
+          "basis": "t0-15|10: 输出功率; 90~176Vac: 400W; 176~286Vac: 600W",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1205-m62",
+      "spec_requirement_id": "SR-PA601-D54A-1205",
+      "title": "输出电压范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "在各种输入、输出负载条件下的输出电压范围。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d31f16e3c7f542c9",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压范围 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 38.0,
+            "max": 62.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "408d7b6e51149ed3"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 38.0,
+          "typ": null,
+          "max": 62.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1205-m62-S001",
+          "seq": 1,
+          "name": "在各种输入、输出负载条件下的输出电压范围。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|11: 输出电压范围; 在各种输入、输出负载条件下的输出电压范围。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1205-m8",
+      "spec_requirement_id": "SR-PA601-D54A-1205",
+      "title": "输出电压范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "在各种输入、输出负载条件下的输出电压范围。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8d63f336fa89686c",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "output_voltage",
+          "text": "输出电压范围 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 8.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "04668450b5d59adc"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 8.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1205-m8-S001",
+          "seq": 1,
+          "name": "在各种输入、输出负载条件下的输出电压范围。",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|12: 输出电压范围; 在各种输入、输出负载条件下的输出电压范围。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1206-m500",
+      "spec_requirement_id": "SR-PA601-D54A-1206",
+      "title": "峰峰值杂音电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "20MHz 带宽限制,并接10uF 电解电容和0.1uF 电容测试。温度≤-30°时,纹波放宽至600mV。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "596573ef63b14a92",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "ripple",
+          "text": "峰峰值杂音电压 [-54V]",
+          "role": "output",
+          "value": {
+            "max": 500.0,
+            "unit": "mVpp"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2b8a5d4946848d88"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 500.0,
+          "unit": "mVpp"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1206-m500-S001",
+          "seq": 1,
+          "name": "20MHz 带宽限制,并接10uF 电解电容和0.1uF 电容测试。温度≤-30°时,纹波放宽至600mV。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|13: 峰峰值杂音电压; 20MHz 带宽限制,并接10uF 电解电容和0.1uF 电容测试。温度≤-30°时,纹波放宽至600mV。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1206-m50",
+      "spec_requirement_id": "SR-PA601-D54A-1206",
+      "title": "峰峰值杂音电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "652fecc28ff17cbc",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "ripple",
+          "text": "峰峰值杂音电压 [3.45V]",
+          "role": "output",
+          "value": {
+            "max": 50.0,
+            "unit": "mVpp"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c737b10e6d22e4af"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 50.0,
+          "unit": "mVpp"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1206-m50-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|14: 峰峰值杂音电压; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1210-m86",
+      "spec_requirement_id": "SR-PA601-D54A-1210",
+      "title": "整机效率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac 输入,20%最大输出负载。备注:批量生产要求,生产样机测试要求大于85%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "56d9f2dee39bc587",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "整机效率",
+          "role": "output",
+          "value": {
+            "min": 86.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2689583ee0dec189"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 86.0,
+          "typ": null,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1210-m86-S001",
+          "seq": 1,
+          "name": "额定220Vac 输入,20%最大输出负载。备注:批量生产要求,生产样机测试要求大于85%",
+          "rail": "",
+          "bindings": {
+            "load": "20%"
+          },
+          "derived": {},
+          "basis": "t0-15|15: 整机效率; 额定220Vac 输入,20%最大输出负载。备注:批量生产要求,生产样机测试要求大于85%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1210-m91",
+      "spec_requirement_id": "SR-PA601-D54A-1210",
+      "title": "整机效率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac 输入,50%最大输出负载。备注:批量生产要求,生产样机测试要求大于90%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4126b99b5fb7fc52",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "整机效率",
+          "role": "output",
+          "value": {
+            "min": 91.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "bc7d07733d965078"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 91.0,
+          "typ": null,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1210-m91-S001",
+          "seq": 1,
+          "name": "额定220Vac 输入,50%最大输出负载。备注:批量生产要求,生产样机测试要求大于90%",
+          "rail": "",
+          "bindings": {
+            "load": "50%"
+          },
+          "derived": {},
+          "basis": "t0-15|16: 整机效率; 额定220Vac 输入,50%最大输出负载。备注:批量生产要求,生产样机测试要求大于90%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1210-m93",
+      "spec_requirement_id": "SR-PA601-D54A-1210",
+      "title": "整机效率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "额定220Vac 输入、最大输出负载测试。备注:批量生产要求,生产样机测试要求大于92%\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "884d9038c265c09e",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "efficiency",
+          "text": "整机效率",
+          "role": "output",
+          "value": {
+            "min": 93.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d3fed92380e370c0"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 93.0,
+          "typ": null,
+          "max": null,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1210-m93-S001",
+          "seq": 1,
+          "name": "额定220Vac 输入、最大输出负载测试。备注:批量生产要求,生产样机测试要求大于92%",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|17: 整机效率; 额定220Vac 输入、最大输出负载测试。备注:批量生产要求,生产样机测试要求大于92%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1211-m0.2",
+      "spec_requirement_id": "SR-PA601-D54A-1211",
+      "title": "动态响应恢复时间",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "25%~50%~25%或50%~75%~50%负载变化,负载突变速率≤0.1A/uS,以超出输出电压范围的部分计。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "0b0a66a60ff06d7f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "动态响应恢复时间 [-54V]",
+          "role": "output",
+          "value": {
+            "max": 0.2,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "a0818df9632c403d"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 0.2,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1211-m0.2-S001",
+          "seq": 1,
+          "name": "25%~50%~25%或50%~75%~50%负载变化,负载突变速率≤0.1A/uS,以超出输出电压范围的部分计。",
+          "rail": "-54V",
+          "bindings": {
+            "load": "50%"
+          },
+          "derived": {},
+          "basis": "t0-15|18: 动态响应恢复时间; 25%~50%~25%或50%~75%~50%负载变化,负载突变速率≤0.1A/uS,以超出输出电压范围的部分计。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1211-m0.005",
+      "spec_requirement_id": "SR-PA601-D54A-1211",
+      "title": "动态响应恢复时间",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8c48a0722511cd58",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "动态响应恢复时间 [3.45V]",
+          "role": "output",
+          "value": {
+            "max": 0.005,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "395a9124858a9b35"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 0.005,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1211-m0.005-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|19: 动态响应恢复时间; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1212-m5",
+      "spec_requirement_id": "SR-PA601-D54A-1212",
+      "title": "动态响应过冲",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "f99b2d725d73b3b0",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "动态响应过冲 [-54V]",
+          "role": "output",
+          "value": {
+            "min": -5.0,
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "5d28f1cb203fa334"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": -5.0,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1212-m5-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|20: 动态响应过冲; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1212-m5-c2",
+      "spec_requirement_id": "SR-PA601-D54A-1212",
+      "title": "动态响应过冲",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d800617859a0c6ad",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "动态响应过冲 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": -5.0,
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "5d28f1cb203fa334"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": -5.0,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1212-m5-c2-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|21: 动态响应过冲; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1214-m5",
+      "spec_requirement_id": "SR-PA601-D54A-1214",
+      "title": "开关机过冲",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8beb9ca8df30021b",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "开关机过冲 [-54V]",
+          "role": "output",
+          "value": {
+            "min": -5.0,
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "5d28f1cb203fa334"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": -5.0,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1214-m5-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|23: 开关机过冲; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1214-m5-c2",
+      "spec_requirement_id": "SR-PA601-D54A-1214",
+      "title": "开关机过冲",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "b8b3e6d1e52c2a75",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "开关机过冲 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": -5.0,
+            "max": 5.0,
+            "unit": "%"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "5d28f1cb203fa334"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": -5.0,
+          "typ": null,
+          "max": 5.0,
+          "unit": "%"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1214-m5-c2-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|24: 开关机过冲; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1215-m300",
+      "spec_requirement_id": "SR-PA601-D54A-1215",
+      "title": "输出电压上升时间",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "输出电压从10%上升到90%的时间。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a3b3fa92ed154a6e",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压上升时间 [-54V]",
+          "role": "output",
+          "value": {
+            "max": 300.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "de714f36cb1ef7ac"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 300.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1215-m300-S001",
+          "seq": 1,
+          "name": "输出电压从10%上升到90%的时间。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|25: 输出电压上升时间; 输出电压从10%上升到90%的时间。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1215-m20",
+      "spec_requirement_id": "SR-PA601-D54A-1215",
+      "title": "输出电压上升时间",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a3ac53e378aef8ee",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "输出电压上升时间 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 3.0,
+            "max": 20.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d8c334ffe485e1d0"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 3.0,
+          "typ": null,
+          "max": 20.0,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1215-m20-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|26: 输出电压上升时间; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1216-m2000",
+      "spec_requirement_id": "SR-PA601-D54A-1216",
+      "title": "带容性负载大小",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "带容性负载时,采用CR模式进行测试。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "a8af4280e649375f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "带容性负载大小 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 2000.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "9a226d788b0a56f1"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 2000.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1216-m2000-S001",
+          "seq": 1,
+          "name": "带容性负载时,采用CR模式进行测试。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|27: 带容性负载大小; 带容性负载时,采用CR模式进行测试。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1216-m100",
+      "spec_requirement_id": "SR-PA601-D54A-1216",
+      "title": "带容性负载大小",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8514a103543e5638",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "cap_load",
+          "text": "带容性负载大小 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 0.0,
+            "max": 100.0,
+            "unit": "uF"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f731abb3de93fca2"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 0.0,
+          "typ": null,
+          "max": 100.0,
+          "unit": "uF"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1216-m100-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|28: 带容性负载大小; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1218",
+      "spec_requirement_id": "SR-PA601-D54A-1218",
+      "title": "掉电延时功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "测试方法:常温,掉电告警送出至54V总线电压跌落到36V时间段。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "57d849925cf7ad2b",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "timing",
+          "text": "掉电延时功能 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 10.0,
+            "unit": "ms"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "8c72fda623d996ed"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 10.0,
+          "typ": null,
+          "max": null,
+          "unit": "ms"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1218-S001",
+          "seq": 1,
+          "name": "测试方法:常温,掉电告警送出至54V总线电压跌落到36V时间段。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|31: 掉电延时功能; 测试方法:常温,掉电告警送出至54V总线电压跌落到36V时间段。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1222",
+      "spec_requirement_id": "SR-PA601-D54A-1222",
+      "title": "输出 ORING要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "-54V、3.45V输出要求ORING。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "b1242b49d491415a",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "presence",
+          "text": "输出 ORING要求",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "61885f46a1d65cc5"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1222-S001",
+          "seq": 1,
+          "name": "-54V、3.45V输出要求ORING。",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|36: 输出 ORING要求; -54V、3.45V输出要求ORING。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1223",
+      "spec_requirement_id": "SR-PA601-D54A-1223",
+      "title": "热插拔要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "role": "",
+      "description": "",
+      "notes": "支持热插拔。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "57a7de652964771a",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "presence",
+          "text": "热插拔要求",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "61885f46a1d65cc5"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1223-S001",
+          "seq": 1,
+          "name": "支持热插拔。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-15|37: 热插拔要求; 支持热插拔。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1300",
+      "spec_requirement_id": "SR-PA601-D54A-1300",
+      "title": "输入过压保护点",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "1. 额定输入,半载测试,320Vac下不能损坏;",
+      "req_fingerprint": "7395a18ce912948e",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 320Vac",
+          "role": "input",
+          "value": {
+            "typ": 320.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "71461d71fdca730f"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压保护点",
+          "role": "output",
+          "value": {
+            "min": 305.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ca792fa2abc4eb0f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 305.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1300-S001",
+          "seq": 1,
+          "name": "1. 额定输入,半载测试,320Vac下不能损坏;",
+          "rail": "",
+          "bindings": {
+            "input_tier": "320Vac",
+            "load": "半载"
+          },
+          "derived": {},
+          "basis": "t0-16|0: 输入过压保护点; 1. 额定输入,半载测试,320Vac下不能损坏;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1301",
+      "spec_requirement_id": "SR-PA601-D54A-1301",
+      "title": "输入过压恢复点",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "2. 针对输入电压畸变,需要做软件上优化,加强抗畸变能力;3. 测试用例参考Chroma6560DST测试波形。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d6aeea8c35bfaa94",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压恢复点",
+          "role": "output",
+          "value": {
+            "min": 302.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "27799914acebbc83"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 302.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1301-S001",
+          "seq": 1,
+          "name": "2. 针对输入电压畸变,需要做软件上优化,加强抗畸变能力;3. 测试用例参考Chroma6560DST测试波形。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|1: 输入过压恢复点; 2. 针对输入电压畸变,需要做软件上优化,加强抗畸变能力;3. 测试用例参考Chroma6560DST测试波形。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1302",
+      "spec_requirement_id": "SR-PA601-D54A-1302",
+      "title": "输入过压保护回差",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "80Vac输入正常后可自恢复。",
+      "req_fingerprint": "8ae583eebb2d8730",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 80Vac",
+          "role": "input",
+          "value": {
+            "typ": 80.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1a8842dda51af6c9"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入过压保护回差",
+          "role": "output",
+          "value": {
+            "min": 3.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f5f8f898efcae06f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 3.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1302-S001",
+          "seq": 1,
+          "name": "80Vac输入正常后可自恢复。",
+          "rail": "",
+          "bindings": {
+            "input_tier": "80Vac"
+          },
+          "derived": {},
+          "basis": "t0-16|2: 输入过压保护回差; 80Vac输入正常后可自恢复。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1303",
+      "spec_requirement_id": "SR-PA601-D54A-1303",
+      "title": "输入欠压保护点",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "额定输入,半载测试。输入正常后可自恢复。",
+      "req_fingerprint": "f9fd38b455d7551e",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(额定输入无数字)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护点",
+          "role": "output",
+          "value": {
+            "max": 80.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "59c3a39285bb0286"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 80.0,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1303-S001",
+          "seq": 1,
+          "name": "额定输入,半载测试。输入正常后可自恢复。",
+          "rail": "",
+          "bindings": {
+            "load": "半载"
+          },
+          "derived": {},
+          "basis": "t0-16|3: 输入欠压保护点; 额定输入,半载测试。输入正常后可自恢复。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1304",
+      "spec_requirement_id": "SR-PA601-D54A-1304",
+      "title": "输入欠压恢复点",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "ecf110e2ac974d5f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压恢复点",
+          "role": "output",
+          "value": {
+            "max": 83.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "dc7b72fecb7af7aa"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": null,
+          "typ": null,
+          "max": 83.0,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1304-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|4: 输入欠压恢复点; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1305",
+      "spec_requirement_id": "SR-PA601-D54A-1305",
+      "title": "输入欠压保护回差",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d8924857c54777a6",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输入欠压保护回差",
+          "role": "output",
+          "value": {
+            "min": 3.0,
+            "unit": "Vac/Vdc"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "f5f8f898efcae06f"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 3.0,
+          "typ": null,
+          "max": null,
+          "unit": "Vac/Vdc"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1305-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|5: 输入欠压保护回差; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1306",
+      "spec_requirement_id": "SR-PA601-D54A-1306",
+      "title": "过温保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "在规定的的工作温度范围内,电源需正常工作,不得过温保护;过温保护之前,器件温度不得超过器件本身的最高允许工作温度,确保过温时不得损坏电源。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "5e5b749b35df99ca",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "过温保护",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1306-S001",
+          "seq": 1,
+          "name": "在规定的的工作温度范围内,电源需正常工作,不得过温保护;过温保护之前,器件温度不得超过器件本身的最高允许工作温度,确保过温时不得损坏电源。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|6: 过温保护; 在规定的的工作温度范围内,电源需正常工作,不得过温保护;过温保护之前,器件温度不得超过器件本身的最高允许工作温度,确保过温时不得损坏电源。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1307",
+      "spec_requirement_id": "SR-PA601-D54A-1307",
+      "title": "过温保护回差",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "指过温保护检测点的回差,并要求能在温度降低到工作温度范围内时能自恢复。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c4281109ab83e77b",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "过温保护回差",
+          "role": "output",
+          "value": {
+            "min": 5.0,
+            "unit": "degC"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ca938a0b1d385b98"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "",
+          "qualifier": "",
+          "min": 5.0,
+          "typ": null,
+          "max": null,
+          "unit": "degC"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1307-S001",
+          "seq": 1,
+          "name": "指过温保护检测点的回差,并要求能在温度降低到工作温度范围内时能自恢复。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|7: 过温保护回差; 指过温保护检测点的回差,并要求能在温度降低到工作温度范围内时能自恢复。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1308",
+      "spec_requirement_id": "SR-PA601-D54A-1308",
+      "title": "输出短路保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "907b9eeaad42dc6e",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "fault_stimulus",
+          "text": "原文含\"短路\" → 触发短路事件",
+          "role": "input",
+          "value": {
+            "event": "短路"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c7c2059f5b2d1c68"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出短路保护 [-54V]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1308-S001",
+          "seq": 1,
+          "name": "打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|8: 输出短路保护; 打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1308-c2",
+      "spec_requirement_id": "SR-PA601-D54A-1308",
+      "title": "输出短路保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d81bbb03fa01562e",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "fault_stimulus",
+          "text": "原文含\"短路\" → 触发短路事件",
+          "role": "input",
+          "value": {
+            "event": "短路"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "c7c2059f5b2d1c68"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出短路保护 [3.45V]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "b2f336b1095555d7"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1308-c2-S001",
+          "seq": 1,
+          "name": "打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。",
+          "rail": "3.45V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|9: 输出短路保护; 打隔保护,输出正常后可自恢复,长期短路不能损坏电源。保护时输出电流有效值不超过1A。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1309-m18",
+      "spec_requirement_id": "SR-PA601-D54A-1309",
+      "title": "输出过流保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "打隔保护,输出正常后可自恢复,长期过流不能损坏电源。保护时输出电流有效值不超过1A。输入电压<176Vac,过流点8.1A~18A",
+      "req_fingerprint": "582d4e8238e63455",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 176Vac",
+          "role": "input",
+          "value": {
+            "typ": 176.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "3798167ee856fd79"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过流保护 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 12.0,
+            "max": 18.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "2b1f6ef88ca5d1ef"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 12.0,
+          "typ": null,
+          "max": 18.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1309-m18-S001",
+          "seq": 1,
+          "name": "打隔保护,输出正常后可自恢复,长期过流不能损坏电源。保护时输出电流有效值不超过1A。输入电压<176Vac,过流点8.1A~18A",
+          "rail": "-54V",
+          "bindings": {
+            "input_tier": "176Vac"
+          },
+          "derived": {},
+          "basis": "t0-16|10: 输出过流保护; 打隔保护,输出正常后可自恢复,长期过流不能损坏电源。保护时输出电流有效值不超过1A。输入电压<176Vac,过流点8.1A~18A",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1309-m5",
+      "spec_requirement_id": "SR-PA601-D54A-1309",
+      "title": "输出过流保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "-54V,后级单板保险 044050400011 动作不能触发定制电源过流保护要求;3.6V,后级单板EFUSE 002030900015 动作,不能触发定制电源过流保护要求;3.6V,后级单板EFUSES 002030900015 动作,不能触发定制电源过流保护要求;测试方法:两台电源并机,总输出功率600W。",
+      "req_fingerprint": "3506ca004ea19e5d",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 54V",
+          "role": "input",
+          "value": {
+            "typ": 54.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1f437486f96ceb23"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出过流保护 [3.45V]",
+          "role": "output",
+          "value": {
+            "min": 4.0,
+            "max": 5.0,
+            "unit": "A"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "ed3e8a951ccf4249"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "3.45V",
+          "qualifier": "",
+          "min": 4.0,
+          "typ": null,
+          "max": 5.0,
+          "unit": "A"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1309-m5-S001",
+          "seq": 1,
+          "name": "-54V,后级单板保险 044050400011 动作不能触发定制电源过流保护要求;3.6V,后级单板EFUSE 002030900015 动作,不能触发定制电源过流保护要求;3.6V,后级单板EFUSES 002030900015 动作,不能触发定制电源过流保护要求;测试方法:两台电源并机,总输出功率600W。",
+          "rail": "3.45V",
+          "bindings": {
+            "input_tier": "54V"
+          },
+          "derived": {},
+          "basis": "t0-16|11: 输出过流保护; -54V,后级单板保险 044050400011 动作不能触发定制电源过流保护要求;3.6V,后级单板EFUSE 002030900015 动作,不能触发定制电源过流保护要求;3.6V,后级单板EFUSES 002030900015 动作,不能触发定制电源过流保护要求;测试方法:两台电源并机,总输出功率600W。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1310",
+      "spec_requirement_id": "SR-PA601-D54A-1310",
+      "title": "输出静态过压保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "过压去除后能自恢复。输出过压保护时,输出电解电容的电压应力可以不考虑。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e9f1812346776045",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出静态过压保护 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 58.0,
+            "max": 63.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "cc8bee3a04a2d2ec"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 58.0,
+          "typ": null,
+          "max": 63.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1310-S001",
+          "seq": 1,
+          "name": "过压去除后能自恢复。输出过压保护时,输出电解电容的电压应力可以不考虑。",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|12: 输出静态过压保护; 过压去除后能自恢复。输出过压保护时,输出电解电容的电压应力可以不考虑。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1311",
+      "spec_requirement_id": "SR-PA601-D54A-1311",
+      "title": "输出动态过压保护",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "role": "",
+      "description": "",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "22a5fd73d0ce634f",
+      "flags": [],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "protection_action",
+          "text": "输出动态过压保护 [-54V]",
+          "role": "output",
+          "value": {
+            "min": 59.0,
+            "max": 65.0,
+            "unit": "V"
+          },
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "987fbee8769c8970"
+        }
+      ],
+      "limits": [
+        {
+          "rail": "-54V",
+          "qualifier": "",
+          "min": 59.0,
+          "typ": null,
+          "max": 65.0,
+          "unit": "V"
+        }
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1311-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "-54V",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-16|13: 输出动态过压保护; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1402",
+      "spec_requirement_id": "SR-PA601-D54A-1402",
+      "title": "输入掉电告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "信号输出,与系统GND共地。光耦输出,OC门,低电平表示正常(低于0.3V),浮空或高电平表示告警(推荐系统主控4.75K电阻上拉VCC3.3V);吸收电流要求不低于1mA。推荐系统侧信号接收端对地并联0.1uF的滤波电容。1. 推荐电源单体内部预留陶瓷滤波电容;2. 常温额定输入额定负载测试。注:快速掉电(包括市电掉或空开跳闸等场景),以及全范围负载场景,都要正常上报掉电告警。",
+      "notes": "强制\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "2914bf8f3394f214",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输入掉电告警 [VI_DOWN_ALM]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1402-S001",
+          "seq": 1,
+          "name": "强制",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|2: 输入掉电告警; 强制",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1405",
+      "spec_requirement_id": "SR-PA601-D54A-1405",
+      "title": "电源在位",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "检测电源是否插入槽位信号,推荐系统主控10K电阻上拉VCC3.3V,电源板内接GND。电源在位时接GND为0,悬空为1。",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "9647ba8ac8c31e41",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "电源在位 [PWR_PRESENT]",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1405-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|5: 电源在位; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1413",
+      "spec_requirement_id": "SR-PA601-D54A-1413",
+      "title": "告警上报信息",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "3.45V异常告警:0~3V告警。检测点在ORing之前通过接口总线上报",
+      "req_fingerprint": "198234e6bfe9d568",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 3.45V",
+          "role": "input",
+          "value": {
+            "typ": 3.45,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "80dbf405fd85edb4"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "告警上报信息",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1413-S001",
+          "seq": 1,
+          "name": "3.45V异常告警:0~3V告警。检测点在ORing之前通过接口总线上报",
+          "rail": "",
+          "bindings": {
+            "input_tier": "3.45V"
+          },
+          "derived": {},
+          "basis": "t0-17|13: 告警上报信息; 3.45V异常告警:0~3V告警。检测点在ORing之前通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1414",
+      "spec_requirement_id": "SR-PA601-D54A-1414",
+      "title": "保护上报信息",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "输入过、欠压保护;输出-54V的过压、过流保护、过温保护副边单片机不能单独从54V取电,需要单独辅助电源实现",
+      "req_fingerprint": "085fd7d8a2dcd978",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 54V",
+          "role": "input",
+          "value": {
+            "typ": 54.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1f437486f96ceb23"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "保护上报信息",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1414-S001",
+          "seq": 1,
+          "name": "输入过、欠压保护;输出-54V的过压、过流保护、过温保护副边单片机不能单独从54V取电,需要单独辅助电源实现",
+          "rail": "",
+          "bindings": {
+            "input_tier": "54V"
+          },
+          "derived": {},
+          "basis": "t0-17|14: 保护上报信息; 输入过、欠压保护;输出-54V的过压、过流保护、过温保护副边单片机不能单独从54V取电,需要单独辅助电源实现",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1415",
+      "spec_requirement_id": "SR-PA601-D54A-1415",
+      "title": "其他上报信息",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "支持CAPABILITY、电源型号、电源组件版本、生产厂家以及编码、生产条码SN、生产日期、软件版本、PN码、协议版本、制造商地址、输入电压类型、PCBVER等查询,通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4ec888f533dfe2b3",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "其他上报信息",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1415-S001",
+          "seq": 1,
+          "name": "支持CAPABILITY、电源型号、电源组件版本、生产厂家以及编码、生产条码SN、生产日期、软件版本、PN码、协议版本、制造商地址、输入电压类型、PCBVER等查询,通过接口总线上报",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|15: 其他上报信息; 支持CAPABILITY、电源型号、电源组件版本、生产厂家以及编码、生产条码SN、生产日期、软件版本、PN码、协议版本、制造商地址、输入电压类型、PCBVER等查询,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1416",
+      "spec_requirement_id": "SR-PA601-D54A-1416",
+      "title": "历史记录保存",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "记录条数10条,默认使能增强型历史记录功能。触发条件:1)输入掉电告警;2)故障保护包括输入欠压保护、输入过压保护、输入低压限流告警、输出过压保护、输出过流保护、过温保护、原边异常告警、输出欠压保护;3)遥控关机包括硬件遥控关机(PSKILL等)、软件通讯遥控关机。记录内容:1、触发条件包括的信息;2、故障保护时刻的输入电压,输入功率。输出电压,输出电流,温度以及本次上电以来的最大输入电压。历史记录时间精度:小于等于1分钟(要求主系统20分钟内同步电源一次时间)。电源能够在输入断电情况下,记录导致电源无输出的触发原因包括保护和远程控制,以便输入恢复后或电源返修后可通过I2C通讯接口查询。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "e9b6dc2de9c7ec9e",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "历史记录保存",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1416-S001",
+          "seq": 1,
+          "name": "记录条数10条,默认使能增强型历史记录功能。触发条件:1)输入掉电告警;2)故障保护包括输入欠压保护、输入过压保护、输入低压限流告警、输出过压保护、输出过流保护、过温保护、原边异常告警、输出欠压保护;3)遥控关机包括硬件遥控关机(PSKILL等)、软件通讯遥控关机。记录内容:1、触发条件包括的信息;2、故障保护时刻的输入电压,输入功率。输出电压,输出电流,温度以及本次上电以来的最大输入电压。历史…",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|16: 历史记录保存; 记录条数10条,默认使能增强型历史记录功能。触发条件:1)输入掉电告警;2)故障保护包括输入欠压保护、输入过压保护、输入低压限流告警、输出过压保护、输出过流保护、过温保护、原边异常告警、输出欠压保护;3)遥控关机包括硬件遥控关机(PSKILL等)、软件通讯遥控关机。记录内容:1、触发条件包括的信息;2、故障保护时刻的输入电压,输入功率。输出电压,输出电流,温度…",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1417",
+      "spec_requirement_id": "SR-PA601-D54A-1417",
+      "title": "输入欠压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "≥欠压保护点2V,回差同保护点定义,通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "bd8052800959a1e1",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输入欠压告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1417-S001",
+          "seq": 1,
+          "name": "≥欠压保护点2V,回差同保护点定义,通过接口总线上报",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|17: 输入欠压告警; ≥欠压保护点2V,回差同保护点定义,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1418",
+      "spec_requirement_id": "SR-PA601-D54A-1418",
+      "title": "输入过压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "≤过压保护点2V,回差同保护点定义,通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "3f36ed5c78304157",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输入过压告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1418-S001",
+          "seq": 1,
+          "name": "≤过压保护点2V,回差同保护点定义,通过接口总线上报",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|18: 输入过压告警; ≤过压保护点2V,回差同保护点定义,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1419",
+      "spec_requirement_id": "SR-PA601-D54A-1419",
+      "title": "输出欠压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "≤-40V,回差2V,-54V要求,通过接口总线上报",
+      "req_fingerprint": "b0290159223e6079",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 40V",
+          "role": "input",
+          "value": {
+            "typ": 40.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "7682acf4cc03f4c2"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输出欠压告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1419-S001",
+          "seq": 1,
+          "name": "≤-40V,回差2V,-54V要求,通过接口总线上报",
+          "rail": "",
+          "bindings": {
+            "input_tier": "40V"
+          },
+          "derived": {},
+          "basis": "t0-17|19: 输出欠压告警; ≤-40V,回差2V,-54V要求,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1421",
+      "spec_requirement_id": "SR-PA601-D54A-1421",
+      "title": "输出过流告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "≤过流保护点0.5A,回差≥0.3A,-54V要求,通过接口总线上报",
+      "req_fingerprint": "8c1e1b9e21c65a57",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 54V",
+          "role": "input",
+          "value": {
+            "typ": 54.0,
+            "unit": "V"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "1f437486f96ceb23"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输出过流告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1421-S001",
+          "seq": 1,
+          "name": "≤过流保护点0.5A,回差≥0.3A,-54V要求,通过接口总线上报",
+          "rail": "",
+          "bindings": {
+            "input_tier": "54V"
+          },
+          "derived": {},
+          "basis": "t0-17|21: 输出过流告警; ≤过流保护点0.5A,回差≥0.3A,-54V要求,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1422",
+      "spec_requirement_id": "SR-PA601-D54A-1422",
+      "title": "过温告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "≤过温保护点3°C,回差5°C,通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "ceb65aeff500f6f1",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "过温告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1422-S001",
+          "seq": 1,
+          "name": "≤过温保护点3°C,回差5°C,通过接口总线上报",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|22: 过温告警; ≤过温保护点3°C,回差5°C,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1427",
+      "spec_requirement_id": "SR-PA601-D54A-1427",
+      "title": "输入低压限流告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "适用于有低压降额的交流电源:1输入有效值跌到172.5Vac±5%(1个周期跌落)和PFC母线欠压保护同时存在;2输入有效值跌到172.5Vac±5%(1个周期跌落)和输出限流同时存在(为了记录输入跌到176Vac以下,进入半载区,带不动后级负载引起输出跌落)。以上两个条件满足其一。通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "4fea450fec4995a7",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "输入低压限流告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1427-S001",
+          "seq": 1,
+          "name": "适用于有低压降额的交流电源:1输入有效值跌到172.5Vac±5%(1个周期跌落)和PFC母线欠压保护同时存在;2输入有效值跌到172.5Vac±5%(1个周期跌落)和输出限流同时存在(为了记录输入跌到176Vac以下,进入半载区,带不动后级负载引起输出跌落)。以上两个条件满足其一。通过接口总线上报",
+          "rail": "",
+          "bindings": {
+            "load": "半载"
+          },
+          "derived": {},
+          "basis": "t0-17|27: 输入低压限流告警; 适用于有低压降额的交流电源:1输入有效值跌到172.5Vac±5%(1个周期跌落)和PFC母线欠压保护同时存在;2输入有效值跌到172.5Vac±5%(1个周期跌落)和输出限流同时存在(为了记录输入跌到176Vac以下,进入半载区,带不动后级负载引起输出跌落)。以上两个条件满足其一。通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1428",
+      "spec_requirement_id": "SR-PA601-D54A-1428",
+      "title": "原边异常告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "role": "",
+      "description": "",
+      "notes": "输入过欠压保护、PFC母线过欠压保护、PFC过温保护或PFC启动异常时,上报原边异常告警,仅故障诊断使用,不对网管呈现,通过接口总线上报\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "61f4197842e17cbe",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "signal_state",
+          "text": "原边异常告警",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d37299387bd60037"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1428-S001",
+          "seq": 1,
+          "name": "输入过欠压保护、PFC母线过欠压保护、PFC过温保护或PFC启动异常时,上报原边异常告警,仅故障诊断使用,不对网管呈现,通过接口总线上报",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-17|28: 原边异常告警; 输入过欠压保护、PFC母线过欠压保护、PFC过温保护或PFC启动异常时,上报原边异常告警,仅故障诊断使用,不对网管呈现,通过接口总线上报",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1500",
+      "spec_requirement_id": "SR-PA601-D54A-1500",
+      "title": "热插拔信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "role": "",
+      "description": "给出背板或系统侧的连接方式,一般接信号地",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "c16b30f0935a4778",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "command",
+          "text": "热插拔信号 [PWR_IN]",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4d157deb284df9ee"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1500-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-18|0: 热插拔信号; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1501",
+      "spec_requirement_id": "SR-PA601-D54A-1501",
+      "title": "电源开关机信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "role": "",
+      "description": "上位机通过I2C可关断电源输出,关断后延时10s电源自动恢复正常输出。为避免误关断,电源在3s内连续3次接收到关断命令后才执行关断指令。",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "f1b28f30b1665846",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "command",
+          "text": "电源开关机信号",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4d157deb284df9ee"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1501-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-18|1: 电源开关机信号; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1506",
+      "spec_requirement_id": "SR-PA601-D54A-1506",
+      "title": "远程升级功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "role": "",
+      "description": "该电源的MCU可升级,升级过程会掉电。单个升级时间要求:从进入升级模式到退出的时间不超过3分钟。定制电源MCU程序I2C远程升级规定,通过接口总线实现",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "85c1005157152831",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "command",
+          "text": "远程升级功能",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4d157deb284df9ee"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1506-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-18|6: 远程升级功能; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1507",
+      "spec_requirement_id": "SR-PA601-D54A-1507",
+      "title": "输出调压功能/功放慢调压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "role": "",
+      "description": "双配置的系统,节能损耗测试时,系统可以下发命令临时使得另外一款电源输出52V(±1V),实现休眠节能。掉电不保存。通过接口总线实现",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "02727ebacb149787",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "command",
+          "text": "输出调压功能/功放慢调压",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4d157deb284df9ee"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1507-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-18|7: 输出调压功能/功放慢调压; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1518",
+      "spec_requirement_id": "SR-PA601-D54A-1518",
+      "title": "混插告警指示灯遥控功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "role": "",
+      "description": "电源混插告警,主控识别到不同类型的电源板,下发指令给电源板,电源板控制红绿灯交替闪烁。闪烁频率2.5Hz,红灯亮0.2S,绿灯亮0.2S,交替闪烁。通过接口总线实现",
+      "notes": "-\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "7e28c2c0ca5675d9",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "command",
+          "text": "混插告警指示灯遥控功能",
+          "role": "input",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "4d157deb284df9ee"
+        },
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1518-S001",
+          "seq": 1,
+          "name": "-",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-18|18: 混插告警指示灯遥控功能; -",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1600",
+      "spec_requirement_id": "SR-PA601-D54A-1600",
+      "title": "输入电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "0~320Vac；±3%",
+      "notes": "1. 常温下,输入电压90~290Vac的精度要求;2. 200~240Vac范围内精度±2%;",
+      "req_fingerprint": "4a540cfffab81489",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "原文标注 290Vac",
+          "role": "input",
+          "value": {
+            "typ": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d000cdf8491d8215"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "输入电压",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1600-S001",
+          "seq": 1,
+          "name": "1. 常温下,输入电压90~290Vac的精度要求;2. 200~240Vac范围内精度±2%;",
+          "rail": "",
+          "bindings": {
+            "input_tier": "290Vac"
+          },
+          "derived": {},
+          "basis": "t0-19|0: 输入电压; 1. 常温下,输入电压90~290Vac的精度要求;2. 200~240Vac范围内精度±2%;",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1601",
+      "spec_requirement_id": "SR-PA601-D54A-1601",
+      "title": "输出电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "0~60V；±3%",
+      "notes": "正常工作范围内,检测范围内的精度要求\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "8d6ebd7e2cda1536",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "输出电压",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1601-S001",
+          "seq": 1,
+          "name": "正常工作范围内,检测范围内的精度要求",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|1: 输出电压; 正常工作范围内,检测范围内的精度要求",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1603",
+      "spec_requirement_id": "SR-PA601-D54A-1603",
+      "title": "输出电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "0-过流保护点之前；±5%或±0.3A",
+      "notes": "3A以下不要求,3A以上:±5%精度。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "05400c4ee2f77bb7",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "输出电流",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1603-S001",
+          "seq": 1,
+          "name": "3A以下不要求,3A以上:±5%精度。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|3: 输出电流; 3A以下不要求,3A以上:±5%精度。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1604",
+      "spec_requirement_id": "SR-PA601-D54A-1604",
+      "title": "输入功率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "0~过流保护之前；见备注",
+      "notes": "常温下,额定输入、额定输出电压,1. 功率<50W不要求精度;2. 50W≤功率<100W精度要求±10W;3. 功率≥100W精度要求±5%",
+      "req_fingerprint": "75a12797221f9b9d",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(额定输入无数字)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "输入功率",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1604-S001",
+          "seq": 1,
+          "name": "常温下,额定输入、额定输出电压,1. 功率<50W不要求精度;2. 50W≤功率<100W精度要求±10W;3. 功率≥100W精度要求±5%",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|4: 输入功率; 常温下,额定输入、额定输出电压,1. 功率<50W不要求精度;2. 50W≤功率<100W精度要求±10W;3. 功率≥100W精度要求±5%",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1606",
+      "spec_requirement_id": "SR-PA601-D54A-1606",
+      "title": "环境温度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "-40~100°C；±5°C",
+      "notes": "电源入风口的空气温度,通过I2C上报。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "58d20b87463c95f8",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "环境温度",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1606-S001",
+          "seq": 1,
+          "name": "电源入风口的空气温度,通过I2C上报。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|6: 环境温度; 电源入风口的空气温度,通过I2C上报。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1608",
+      "spec_requirement_id": "SR-PA601-D54A-1608",
+      "title": "热点温度2",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "-40~120°C；±5°C",
+      "notes": "电源内部热点,通过I2C上报。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "386a72db85477269",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "热点温度2",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1608-S001",
+          "seq": 1,
+          "name": "电源内部热点,通过I2C上报。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|7: 热点温度2; 电源内部热点,通过I2C上报。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    },
+    {
+      "requirement_code": "SR-PA601-D54A-1613",
+      "spec_requirement_id": "SR-PA601-D54A-1613",
+      "title": "热点温度3",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "role": "",
+      "description": "-40~120°C；±5°C",
+      "notes": "电源内部热点,通过I2C上报。\n输入条件取自产品基线 (工作范围 + 最大标称档)。",
+      "req_fingerprint": "d52f56560a39b729",
+      "flags": [
+        "no-value"
+      ],
+      "input_conditions": [
+        {
+          "kind": "input_voltage",
+          "text": "产品基线(原文未标注明确输入条件)",
+          "role": "input",
+          "value": {
+            "min": 88.0,
+            "typ": 220.0,
+            "max": 290.0,
+            "unit": "Vac"
+          },
+          "source": "notes",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d2f52f04571393c1"
+        }
+      ],
+      "output_conditions": [
+        {
+          "kind": "telemetry_value",
+          "text": "热点温度3",
+          "role": "output",
+          "value": null,
+          "source": "spec",
+          "confidence": "rule",
+          "status": "approved",
+          "method_ref": "",
+          "cond_fingerprint": "d921fd3cd4f1c6be"
+        }
+      ],
+      "limits": [],
+      "scenarios": [
+        {
+          "scenario_id": "SR-PA601-D54A-1613-S001",
+          "seq": 1,
+          "name": "电源内部热点,通过I2C上报。",
+          "rail": "",
+          "bindings": {},
+          "derived": {},
+          "basis": "t0-19|12: 热点温度3; 电源内部热点,通过I2C上报。",
+          "source": "spec"
+        }
+      ],
+      "one_sided": {},
+      "assessment": {}
+    }
+  ],
+  "excluded": [
+    {
+      "req_id": "SR-PA601-D54A-1107",
+      "title": "输入防反功能(直流适用)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "输入反接后电源可以不工作,但不能损坏;反接后再正接,电源工作正常。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1108",
+      "title": "输入 ORING功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "输入 ORING功能"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1202",
+      "title": "输出电压可调节范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "长期工作"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1202",
+      "title": "输出电压可调节范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "短期工作"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1202",
+      "title": "输出电压可调节范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1221",
+      "title": "输入输出电压降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "直通板电源适用"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1224",
+      "title": "各路输出上下电时序要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1400",
+      "title": "输入欠压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1401",
+      "title": "输入过压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1403",
+      "title": "输出欠压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1404",
+      "title": "过温告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1406",
+      "title": "输入正常信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1407",
+      "title": "输出正常信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1408",
+      "title": "模块故障告警信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1409",
+      "title": "输出过压告警信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1410",
+      "title": "不接地检测信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1411",
+      "title": "电池在位信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1412",
+      "title": "电池欠压信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1420",
+      "title": "输出过压告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1423",
+      "title": "风扇故障告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "该告警不允许直接关闭输出,通过接口总线上报"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1424",
+      "title": "防雷失效告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "电源防雷失效,通过IIC总线告警。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1425",
+      "title": "输入低压预警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "给出范围要求/告警说明,通过接口总线上报"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1426",
+      "title": "输入高压预警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "给出范围要求/告警说明,通过接口总线上报"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1429",
+      "title": "电源腐蚀告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "给出告警说明,通过接口总线上报"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1430",
+      "title": "输入继电器健康寿命告警",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.1 遥信功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "给出告警说明,通过接口总线上报"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1502",
+      "title": "硬件重启信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1503",
+      "title": "冷备份硬件信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1504",
+      "title": "软启动控制信号",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1505",
+      "title": "电源开关机/开关功放",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1508",
+      "title": "冷备份功能的开启和关闭",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1509",
+      "title": "风扇调速",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1510",
+      "title": "过温保护禁止/接管功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1511",
+      "title": "输出限流值的设置",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1512",
+      "title": "过温保护点的设置",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1513",
+      "title": "功放快速调压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1514",
+      "title": "数字输出调压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1515",
+      "title": "智能节电功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1516",
+      "title": "功放使能功能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1517",
+      "title": "功放轻载节能",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.2 遥控功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1602",
+      "title": "输入电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1605",
+      "title": "输出功率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1609",
+      "title": "风扇转速",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1610",
+      "title": "输入能量",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1611",
+      "title": "电池温度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1612",
+      "title": "电池充/放电电流",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1614",
+      "title": "热点温度4",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1615",
+      "title": "热点温度5",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1616",
+      "title": "热点温度6",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1617",
+      "title": "腐蚀感知电压",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1618",
+      "title": "输入继电器吸合次数",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.4 监控功能 > 4.3.4.3 遥测功能",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0100",
+      "title": "工作温度范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "长期工作,在此范围内能保证电源正常工作,不降额。电源为插拔安装,系统水平放置。低温下限启动,输出半载,启动过程中允许跌落,启动完成后的输出电压满足输出电压范围要求,其他性能指标不做要求。电源工作1个小时后,需要满足性能指标要求。温度测试点为系统风扇出风口。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0100",
+      "title": "工作温度范围(短期)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "短期工作"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0101",
+      "title": "标称工作温度范围",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "安规认证范围。此为环境温度。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0102",
+      "title": "相对湿度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "长期工作,无冷凝"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0103",
+      "title": "海拔高度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0104",
+      "title": "散热方式",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "系统风冷散热,电源为横插板结构,电源位于出风口,电源仿真常温平均风速为1.5m/S,65°C温度平均风速5.5M/S(最终值以实测为准),风向右进左出。电源板上器件的排布应合理,以便最大程度减少对风道的影响,提高整机散热效率。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0105",
+      "title": "工作时间",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.1 工作环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "每天24小时连续工作"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1900",
+      "title": "噪声要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1901",
+      "title": "能效要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "根据《电源平台-产品认证规格基线》确定。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1902",
+      "title": "器件要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1903",
+      "title": "三防要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1904",
+      "title": "失效隔离",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1905",
+      "title": "环保要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1906",
+      "title": "防水防尘等级",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "针对整个电源(包括外壳),具体防护等级根据需求确定"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1907",
+      "title": "混插要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-1908",
+      "title": "污染等级",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.5 其他要求",
+      "reason": "非产测范围: 其他要求",
+      "matched_word": "其他要求",
+      "notes": "-"
+    },
+    {
+      "req_id": "",
+      "title": "预计MTBF",
+      "section_path": "4.4 可靠性要求 > 4.4.1 可靠性指标要求 > 4.4.1.1 SR-PA601-D54A-2000 预计MTBF要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "参考标准: Telcordia SR332 可靠性预计报告"
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压暂降",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压短时中断",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压变化",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压变化",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "",
+      "title": "电压变化",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.2 EMC指标要求",
+      "reason": "非产测范围: EMC",
+      "matched_word": "emc",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2200",
+      "title": "低温工作试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2201",
+      "title": "高温工作试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2202",
+      "title": "开关电试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "不要求"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2202",
+      "title": "开关电试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2204",
+      "title": "交变湿热试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2205",
+      "title": "温度变化试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2206",
+      "title": "工作振动试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2207",
+      "title": "工作冲击试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2208",
+      "title": "裸机跌落试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做(现场可更换电源,必做)"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2209",
+      "title": "HALT",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2210",
+      "title": "上下电凝露试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.3 常规环境实验要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "带自动启停功能的AAU等电源必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2300",
+      "title": "运输振动应力要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.4 包装运输实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "包装件必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2301",
+      "title": "运输冲击",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.4 包装运输实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "包装件必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2302",
+      "title": "运输跌落",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.4 包装运输实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "包装件必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2303",
+      "title": "堆码",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.4 包装运输实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "包装件必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2400",
+      "title": "防盐雾试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.5 其他实验",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "必做或不做(有独立外壳的室外电源必做,其他不做)。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2401",
+      "title": "低气压试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.5 其他实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "GB/T2423.26。必做"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2402",
+      "title": "MTBF试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.5 其他实验",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "转产后测试(外协电源年用量超过5K或高端市场必做,其他电源删除该条需求)"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2403",
+      "title": "湿尘试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.5 其他实验",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": "自带风扇电源,除应用于IDC机房的服务器电源外,必做,见注2。系统风冷电源,配合系统测试,必做或不做。(在需求阶段,和产品可靠性、产品线一起确定是否做)其他不做。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2404",
+      "title": "油污试验",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.5 其他实验",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": "自带风扇电源,除应用于IDC机房的服务器电源外,必做,见注2。系统风冷电源,配合系统测试,明确必做或不做。(在需求阶段,和产品可靠性、产品线一起确定是否做)其他不做。"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0200",
+      "title": "储存温度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.2 贮存环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0201",
+      "title": "相对湿度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.2 贮存环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0202",
+      "title": "海拔高度",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.2 贮存环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-0203",
+      "title": "温度变化最大允许速率",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4 技术要求 > 4.1 环境条件 > 4.1.2 贮存环境条件",
+      "reason": "非产测范围: 环境条件",
+      "matched_word": "environment",
+      "notes": "-"
+    },
+    {
+      "req_id": "SR-PA601-D54A-2500",
+      "title": "绝缘电压(输入对输出)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2501",
+      "title": "绝缘电压(输入对地)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2502",
+      "title": "绝缘电压(输出对地)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2503",
+      "title": "绝缘电阻",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2504",
+      "title": "接触电流(保护地端)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2504",
+      "title": "接触电流(输出端)",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2505",
+      "title": "接地阻抗",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2506",
+      "title": "放电管接地方式",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2507",
+      "title": "安规其他测试项目",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2508",
+      "title": "本安设备对外接口介电强度要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.6 安规要求 > 4.4.6.1 安规测试要求",
+      "reason": "非产测范围: 安规",
+      "matched_word": "safety",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2700",
+      "title": "直流设备误接交流电的安全性",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2701",
+      "title": "防护器件不在位浪涌防起火要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2702",
+      "title": "直通电源过载不起火要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2703",
+      "title": "MOS短路不起火要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2704",
+      "title": "电源保护要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2705",
+      "title": "进水氢爆防护要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "规格标注\"不要求\"",
+      "matched_word": "不要求",
+      "notes": ""
+    },
+    {
+      "req_id": "SR-PA601-D54A-2706",
+      "title": "其他底线安全性要求",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.4 可靠性要求 > 4.4.7 底线安全性要求",
+      "reason": "非产测范围: 可靠性指标",
+      "matched_word": "reliability",
+      "notes": ""
+    }
+  ],
+  "review": [
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "heading": "输入双火线(交流适用)",
+      "detail": "未命中映射表 (cat=input, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.1 输入特性",
+      "heading": "接地方式",
+      "detail": "未命中映射表 (cat=input, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "输出电流",
+      "detail": "measure 类 kind=output_current 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "multi_value_parse",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "开机输出延迟",
+      "detail": "多值行无法对齐拆分 (行数/单位不齐), 未物化为 limits",
+      "hint": "人工核对原文后修正表格结构或补充拆分规则",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "开机输出延迟",
+      "detail": "measure 类 kind=timing 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "温度系数",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "温度系数",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "measure_no_value",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "掉电延时功能",
+      "detail": "measure 类 kind=timing 无数值判据 (原文数值字段为空或不可解析)",
+      "hint": "补判据后重抽; 不得为凑可执行性编造数值",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "负载均流度",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "待机功耗",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.2 输出特性",
+      "heading": "输出共地方式",
+      "detail": "未命中映射表 (cat=output, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "unmapped",
+      "section_path": "PA601-D54A 定制电源技术规格书 B > 4.3 功能/性能要求 > 4.3.3 保护功能",
+      "heading": "输出保护时其它各路输出之间的相关性",
+      "detail": "未命中映射表 (cat=protection, scope=-)",
+      "hint": "如需纳入产测: 先补 ATEStudio 绑定方法, 再在 patterns.py 扩规则后重抽",
+      "method_ref": ""
+    },
+    {
+      "kind": "code_conflict",
+      "section_path": "",
+      "heading": "SR-PA601-D54A-1203-m1-c2",
+      "detail": "同编号多判据消歧: SR-PA601-D54A-1203-m1 → SR-PA601-D54A-1203-m1-c2 (无法用代表值区分)",
+      "hint": "人工确认编号后缀后再评审签字",
+      "method_ref": ""
+    },
+    {
+      "kind": "code_conflict",
+      "section_path": "",
+      "heading": "SR-PA601-D54A-1212-m5-c2",
+      "detail": "同编号多判据消歧: SR-PA601-D54A-1212-m5 → SR-PA601-D54A-1212-m5-c2 (无法用代表值区分)",
+      "hint": "人工确认编号后缀后再评审签字",
+      "method_ref": ""
+    },
+    {
+      "kind": "code_conflict",
+      "section_path": "",
+      "heading": "SR-PA601-D54A-1214-m5-c2",
+      "detail": "同编号多判据消歧: SR-PA601-D54A-1214-m5 → SR-PA601-D54A-1214-m5-c2 (无法用代表值区分)",
+      "hint": "人工确认编号后缀后再评审签字",
+      "method_ref": ""
+    },
+    {
+      "kind": "code_conflict",
+      "section_path": "",
+      "heading": "SR-PA601-D54A-1308-c2",
+      "detail": "同编号多判据消歧: SR-PA601-D54A-1308 → SR-PA601-D54A-1308-c2 (无法用代表值区分)",
+      "hint": "人工确认编号后缀后再评审签字",
+      "method_ref": ""
+    }
+  ],
+  "excluded_scenarios": [],
+  "stats": {
+    "spec": {
+      "rows": 216,
+      "requirements": 76,
+      "excluded": 128,
+      "review": 16,
+      "kinds": {
+        "cap_load": 2,
+        "command@input": 5,
+        "efficiency": 3,
+        "fault_stimulus@input": 2,
+        "input_frequency@input": 1,
+        "input_voltage@input": 77,
+        "output_current": 2,
+        "output_current@input": 1,
+        "output_power": 1,
+        "output_voltage": 6,
+        "power_event@input": 1,
+        "power_factor@input": 3,
+        "presence": 2,
+        "protection_action": 14,
+        "ripple": 2,
+        "signal_state": 13,
+        "telemetry_value": 7,
+        "timing": 9
+      },
+      "baseline_input_voltage": {
+        "min": 88.0,
+        "typ": 220.0,
+        "max": 290.0,
+        "unit": "Vac"
+      }
+    },
+    "narrative": {},
+    "requirements_total": 76,
+    "excluded_total": 128,
+    "review_total": 16,
+    "narrative_skipped": "narrative_disabled"
+  },
+  "removed_requirement_codes": []
+}

@@ -1,0 +1,140 @@
+# 推导引擎评估集 (P3-0d): L1 确定性规划器 / L2 LLM 编排 / L3 Agent 工具循环 三级对比。
+#
+# 每题按模式给出期望 (缺省 = 不评分, 仅记录):
+#   - 数值: 期望推导值, 与返回值在相对容差 tol 内命中
+#     (判据 |got - expect| <= tol * max(1, |expect|), 默认 tol=1e-6);
+#   - none: 期望"不给数值" —— 缺值/不可达/除零/非计算问题/脚本类对规则引擎不可算,
+#     或 L3 拒答 (含追溯校验拦下编造值); 此时编造出任何数值都判失败。
+#
+# 类别 kind: rules = 规则链可解 / script = 需要脚本计算 / boundary = 边界与对抗
+# (除零、不可达编造陷阱、单位混算、分段积分)。
+# 期望值来自规则库与题干口径, 不依赖"跑出什么录什么"。
+questions:
+  - id: Q01
+    kind: rules
+    question: 输入功率100W、整机效率90%、输出电压12V，输出电流是多少？
+    expect:
+      deterministic: 7.5
+      llm: 7.5
+      agent: 7.5
+
+  - id: Q02
+    kind: rules
+    question: 输出电流11.1A、输出电压54V、输入功率644W，求整机效率
+    expect:
+      deterministic: 93.07453416149069
+      llm: 93.07453416149069
+      agent: 93.07453416149069
+
+  - id: Q03
+    kind: rules
+    question: 输出功率90W、输出电压12V，输出电流是多少？
+    expect:
+      deterministic: 7.5
+      llm: 7.5
+      agent: 7.5
+
+  - id: Q04
+    kind: rules
+    question: 已知电压 54V、电流 11.1A，求功率
+    expect:
+      deterministic: 599.4
+      llm: 599.4
+      agent: 599.4
+
+  - id: Q05
+    kind: rules
+    question: 输入功率100W、整机效率90%，输出功率是多少？
+    expect:
+      deterministic: 90.0
+      llm: 90.0
+      agent: 90.0
+
+  - id: Q06
+    kind: rules
+    question: 整机效率90%、输出功率90W，求输入功率
+    expect:
+      deterministic: 100.0
+      llm: 100.0
+      agent: 100.0
+
+  - id: Q07
+    kind: rules
+    question: 电压10V、功率20W，求电阻
+    expect:
+      deterministic: 5.0
+      llm: 5.0
+      agent: 5.0
+
+  - id: Q08
+    kind: boundary
+    question: 输入功率100W、输出电压12V，输出电流是多少？
+    expect:
+      deterministic: none
+      llm: none
+      agent: none
+
+  - id: Q09
+    kind: boundary
+    question: 输出纹波超标可能是什么原因
+    expect:
+      deterministic: none
+      llm: none
+      agent: none
+
+  - id: S10
+    kind: script
+    question: 输出电压54V、输出电流11.1A，连续工作2小时，求输出电能（Wh）。
+    expect:
+      deterministic: none
+      llm: none
+      agent: 1198.8
+
+  - id: S11
+    kind: script
+    question: 市电侧输入功率540W，连续工作2小时，求输入电能（Wh）。
+    expect:
+      deterministic: none
+      llm: none
+      agent: 1080.0
+
+  - id: S12
+    kind: script
+    question: 输出电流11.1A，等于多少毫安（mA）？
+    expect:
+      deterministic: none
+      llm: none
+      agent: 11100.0
+
+  - id: B13
+    kind: boundary
+    question: 输出电压0V、输出功率90W，求输出电流
+    expect:
+      deterministic: none
+      llm: none
+      agent: none
+
+  - id: B14
+    kind: boundary
+    question: 输出电压54V、输出电流11.1A，求开关频率
+    expect:
+      deterministic: none
+      llm: none
+      agent: none
+
+  - id: B15
+    kind: boundary
+    question: 输出电压54mV、输出功率0.5994W，求输出电流（A）
+    expect:
+      deterministic: 11.1
+      llm: 11.1
+      agent: 11.1
+
+  - id: B16
+    kind: boundary
+    question: 输出电压54V、输出电流11.1A恒定，前0.5小时整机效率90%、后1.5小时整机效率92%，求总输入电能（Wh）。
+    expect:
+      deterministic: none
+      llm: none
+      agent: 1310.282608695652
+    tol: 1.0e-3

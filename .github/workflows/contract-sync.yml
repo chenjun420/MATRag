@@ -1,0 +1,64 @@
+# 跨仓契约同步门 (Phase A.1)
+#
+# 校验 MATRag (生产侧) 与 ATEStudio (消费侧) 的:
+#   - 词表: KIND_UNITS / test_method_bindings.yaml / power_test_methods.yaml / DRIVER_TABLE
+#   - 契约指纹: 两侧 contract_hash() 与 KNOWN_CONTRACT_HASH
+#
+# 失败即红灯 (gate): 词表漏一项 = 对应测试静默缺失; 指纹漂移 = 字段静默丢失。
+name: contract-sync
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: contract-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout MATRag
+        uses: actions/checkout@v4
+        with:
+          path: MATRag
+
+      - name: Checkout ATEStudio
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/ATEStudio
+          path: ATEStudio
+          token: ${{ secrets.ATE_STUDIO_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install MATRag (editable) + dev deps
+        working-directory: MATRag
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Install ATEStudio (editable, 供契约指纹子进程)
+        working-directory: ATEStudio
+        run: python -m pip install -e .
+
+      - name: Resolve interpreter path
+        run: echo "ATE_STUDIO_PYTHON=$(python -c 'import sys; print(sys.executable)')" >> "$GITHUB_ENV"
+
+      - name: Contract vocab sync gate
+        working-directory: MATRag
+        env:
+          ATE_STUDIO_ROOT: ${{ github.workspace }}/ATEStudio
+        run: python -m tools.contract_sync.check_vocab
+
+      - name: Contract hash sync gate
+        working-directory: MATRag
+        env:
+          ATE_STUDIO_ROOT: ${{ github.workspace }}/ATEStudio
+        run: python -m tools.contract_sync.check_contract_hash

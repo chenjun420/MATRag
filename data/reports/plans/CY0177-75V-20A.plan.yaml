@@ -1,0 +1,665 @@
+# 由 ATERag 从规格书自动生成 —— 这是**草稿**, 不是可直接上机的序列。
+#
+# 产品: CY0177-75V-20A  规格版本: (未标注)
+# 步骤数: 39 (= 计划 36 + 破坏性栅栏 1 + 夹具装夹/释放 2)  分段: 9  逐台稳定等待: 40.4s
+# 未映射场景: 0  (这些需求未被排入任何测试)
+name: CY0177-75V-20A 产测序列 (ATERag 生成草稿)
+version: '3.2'
+scope:
+  variables: {}
+max_concurrency: 1
+uut_count: 1
+steps:
+- id: fixture_clamp
+  type: fixture_control
+  action: clamp
+  fixture_id: FILL_IN_AT_COMMISSION
+  on_failure: abort
+- id: SR-CY0177-75V-20A-t7-0-2_s001_g000_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 85.0
+      typ: 220.0
+      max: 300.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+- id: SR-CY0177-75V-20A-t7-0-2_s001_g000_input_frequency
+  type: action
+  script: set_line_frequency.py
+  params:
+    condition_kind: input_frequency
+    condition_text: 交流输入电压频率
+    value:
+      min: 47.0
+      typ: 50.0
+      max: 63.0
+      unit: Hz
+    unit: Hz
+    method_ref: ''
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-2_s001_g000_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-6_s001_g001_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 220Vac
+    value:
+      typ: 220.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 100%
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-2_s001_g000_input_frequency
+- id: SR-CY0177-75V-20A-t7-0-6_s001_g001_input_frequency
+  type: action
+  script: set_line_frequency.py
+  params:
+    condition_kind: input_frequency
+    condition_text: 原文标注 50Hz
+    value:
+      typ: 50.0
+      unit: Hz
+    unit: Hz
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 100%
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-6_s001_g001_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-6_s001_g001_power_factor
+  type: action
+  script: configure_pf_measurement.py
+  params:
+    condition_kind: power_factor
+    condition_text: 功率因数
+    value:
+      min: 98.0
+      unit: /
+    unit: ''
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 100%
+    rail: ''
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-6_s001_g001_input_frequency
+- id: SR-CY0177-75V-20A-t7-0-4_s001_g002_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 220Vac
+    value:
+      typ: 220.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-6_s001_g001_power_factor
+- id: SR-CY0177-75V-20A-t7-0-4_s001_g002_input_frequency
+  type: action
+  script: set_line_frequency.py
+  params:
+    condition_kind: input_frequency
+    condition_text: 原文标注 50Hz
+    value:
+      typ: 50.0
+      unit: Hz
+    unit: Hz
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-4_s001_g002_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-4_s001_g002_power_event
+  type: action
+  script: trigger_power_event.py
+  params:
+    condition_kind: power_event
+    condition_text: 输入冲击电流
+    value:
+      max: 40.0
+      unit: A
+    unit: ''
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: ''
+  resources:
+  - PSU_1
+  - RELAY_MATRIX
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-4_s001_g002_input_frequency
+- id: SR-CY0177-75V-20A-t7-0-3_s001_g003_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 85Vac
+    value:
+      typ: 85.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 85Vac
+      load: 满载
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-4_s001_g002_power_event
+- id: SR-CY0177-75V-20A-t7-0-3_s001_g003_output_current
+  type: action
+  script: measure_input_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 输入电流
+    value:
+      max: 8.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 85Vac
+      load: 满载
+    rail: ''
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-3_s001_g003_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-1_s001_g004_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 额定输入电压范围
+    value:
+      min: 100.0
+      max: 240.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-3_s001_g003_output_current
+- id: SR-CY0177-75V-20A-t7-0-0_s001_g005_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 交流输入电压范围
+    value:
+      min: 85.0
+      typ: 220.0
+      max: 300.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-1_s001_g004_input_voltage
+- id: SR-CY0177-75V-20A-t8-0-0_s001_g005_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出电压
+    value:
+      min: 40.0
+      max: 75.0
+      unit: V
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-0_s001_g005_input_voltage
+- id: SR-CY0177-75V-20A-t8-0-1_s001_g005_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 最大电流
+    value:
+      max: 20.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-CY0177-75V-20A-t8-0-0_s001_g005_m_output_voltage
+- id: SR-CY0177-75V-20A-t8-0-2_s001_g005_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 最小负载电流
+    value:
+      typ: 0.0
+      max: 0.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-CY0177-75V-20A-t8-0-1_s001_g005_m_output_current
+- id: SR-CY0177-75V-20A-t8-0-3_s001_g005_m_output_power
+  type: action
+  script: measure_output_power.py
+  params:
+    condition_kind: output_power
+    condition_text: 最大输出功率
+    value:
+      max: 1200.0
+      unit: W
+    unit: W
+    method_ref: ''
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-CY0177-75V-20A-t8-0-2_s001_g005_m_output_current
+- id: SR-CY0177-75V-20A-t8-0-11_s001_g005_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 开机时间
+    value:
+      max: 5000.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-CY0177-75V-20A-t8-0-3_s001_g005_m_output_power
+- id: SR-CY0177-75V-20A-t9-0-0_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入欠压保护 [欠压点]
+    value:
+      min: 85.0
+      unit: Vac
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t8-0-11_s001_g005_m_timing
+- id: SR-CY0177-75V-20A-t9-0-1_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入欠压保护 [恢复点]
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-0_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-2_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入欠压保护 [回差]
+    value:
+      min: 5.0
+      unit: Vac
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-1_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-3_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入过压保护 [过压点]
+    value:
+      max: 300.0
+      unit: Vac
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-2_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-4_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入过压保护 [恢复点]
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-3_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-5_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输入过压保护 [回差]
+    value:
+      min: 5.0
+      unit: Vac
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-4_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-6_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过压保护
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-5_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-8_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 过温保护
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-6_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-9_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 电池反接保护
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-8_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t9-0-10_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 通讯中断
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-9_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t7-0-7_s001_g006_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 220Vac
+    value:
+      typ: 220.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 48V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-10_s001_g005_m_protection_action
+- id: SR-CY0177-75V-20A-t7-0-7_s001_g006_input_frequency
+  type: action
+  script: set_line_frequency.py
+  params:
+    condition_kind: input_frequency
+    condition_text: 原文标注 50Hz
+    value:
+      typ: 50.0
+      unit: Hz
+    unit: Hz
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 48V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-7_s001_g006_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-7_s001_g006_m_efficiency
+  type: action
+  script: measure_efficiency.py
+  params:
+    condition_kind: efficiency
+    condition_text: 效率
+    value:
+      min: 91.0
+      unit: '-'
+    unit: '%'
+    method_ref: iec62368_efficiency
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 48V
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-7_s001_g006_input_frequency
+- id: SR-CY0177-75V-20A-t7-0-8_s001_g007_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 220Vac
+    value:
+      typ: 220.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 60V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-7_s001_g006_m_efficiency
+- id: SR-CY0177-75V-20A-t7-0-8_s001_g007_input_frequency
+  type: action
+  script: set_line_frequency.py
+  params:
+    condition_kind: input_frequency
+    condition_text: 原文标注 50Hz
+    value:
+      typ: 50.0
+      unit: Hz
+    unit: Hz
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 60V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-8_s001_g007_input_voltage
+- id: SR-CY0177-75V-20A-t7-0-8_s001_g007_m_efficiency
+  type: action
+  script: measure_efficiency.py
+  params:
+    condition_kind: efficiency
+    condition_text: 效率
+    value:
+      min: 92.0
+      unit: '-'
+    unit: '%'
+    method_ref: iec62368_efficiency
+    scenario_bindings:
+      input_tier: 220Vac
+      load: 满载
+    rail: 60V
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-8_s001_g007_input_frequency
+- id: recover_before_SR-CY0177-75V-20A-t9-0-7_s001_g008_input_voltage
+  type: action
+  script: power_cycle.py
+  params:
+    reason: destructive-segment-fence
+  depends_on:
+  - SR-CY0177-75V-20A-t7-0-8_s001_g007_m_efficiency
+- id: SR-CY0177-75V-20A-t9-0-7_s001_g008_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 85.0
+      typ: 220.0
+      max: 300.0
+      unit: Vac
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - recover_before_SR-CY0177-75V-20A-t9-0-7_s001_g008_input_voltage
+- id: SR-CY0177-75V-20A-t9-0-7_s001_g008_fault_stimulus
+  type: action
+  script: inject_fault.py
+  params:
+    condition_kind: fault_stimulus
+    condition_text: 原文含"短路" → 触发短路事件
+    value:
+      event: 短路
+    unit: ''
+    method_ref: iec61000_4_11_surge
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - RELAY_MATRIX
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-7_s001_g008_input_voltage
+- id: SR-CY0177-75V-20A-t9-0-7_s001_g008_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出短路保护
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-7_s001_g008_fault_stimulus
+- id: fixture_release
+  type: fixture_control
+  action: release
+  fixture_id: FILL_IN_AT_COMMISSION
+  depends_on:
+  - SR-CY0177-75V-20A-t9-0-7_s001_g008_m_protection_action

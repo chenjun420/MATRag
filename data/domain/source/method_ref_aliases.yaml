@@ -1,0 +1,362 @@
+# MATRag internal method_id (M-*) <-> external standard refs (iec*/en*/gb*/vendor_*)
+#
+# 数据来源 (2026-10-19 多路 websearch verified)
+# ----------------------------------------
+# - v1 (2026-10-18): stub - 仅 schema, 无数据
+# - v2 (2026-10-19): 6 条 M-* 实填, 来源 TAVILY + EXA websearch
+# - v3 (2026-10-19): 扩到 14 条 M-* (dynamics/safety/protection/input 轴)
+# - v4 (2026-10-19): 结构化修复 + 扩到 25 条
+#     * 结构: 此前 `version:` 顶层键与顶层序列混排 → yaml.safe_load 报错,
+#       load_method_ref_aliases() 实际返回空映射 (降级留痕)。本版改为
+#       `version:` + `aliases:` dict, 与 loader schema (data["aliases"]) 一致。
+#     * 新增 5 条: M-STARTUP-TIME / M-OVERSHOOT / M-CROSS-REG / M-OTP / M-BURN-IN
+#     * 补齐 standards 非空但缺条目的 6 条: M-SCP / M-GROUND-BOND /
+#       M-TOUCH-CURRENT / M-INPUT-SLOW / M-OPP / M-TELEMETRY
+#
+# Provenance 约定
+# ---------------
+# external_ref id 格式: <standard_series>_<topic>  全小写 hyphen-separated
+# 例: iec_61204_ripple / iec_62368_1_hipot / etsi_en_303470_efficiency
+# 新引入 id 必须附可核实 URL (见各条 references); 优先复用本文件既有 id 词表。
+#
+# 命名空间约定 (与 A.1 #2 设计):
+# - M-* 与 external_ref 命名空间设计上不相交 (内部方法 vs 外部标准溯源)
+# - 本表是 RAG 召回阶段的桥, 让 "M-RIPPLE-NOISE" 与 "iec_61204_ripple"
+#   互相承认对方指的是同一件事。
+#
+# 加载入口
+# --------
+# matrag.domain.test_methods.load_method_ref_aliases()        返回 dict[str, tuple[external_ref, ...]]
+# matrag.domain.test_methods.build_reverse_aliases()           推导反向 external_ref -> [M-*, ...]
+# matrag.domain.test_methods.resolve_external_refs_for(M-XXX)  返回 tuple[external_ref, ...]
+# matrag.domain.test_methods.resolve_methods_by_external_ref(ext_ref)  返回 tuple[M-XXX, ...]
+
+version: 4
+
+aliases:
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-RIPPLE-NOISE: 输出纹波与噪声测试
+  #   主要标准: IEC 61204-3 (EMC for DC output) + JEITA-RC9131A
+  # ──────────────────────────────────────────────────────────────────
+  M-RIPPLE-NOISE:
+    external_refs:
+      - iec_61204_3_ripple_emc        # IEC 61204-3 EMC 要求 (DC output)
+      - iec_61204_ripple              # IEC 61204 generic 纹波测试
+      - jeita_rc9131a_ripple          # JEITA-RC9131A 标准测量方法
+      - en_61204_3_ripple             # EN IEC 61204-3 (欧洲等同采用)
+    references:
+      - "https://webstore.ansi.org/preview-pages/IEC/preview_iec61204-3%7Bed3.0%7Db.pdf"
+      - "https://www.us.lambda.tdk.com/resources/blogs/20081121.html"
+      - "https://standards.iteh.ai/catalog/standards/clc/32a2fa75-b35a-410b-83c7-c2f70dea2218/en-iec-61204-3-2018"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-HOLDUP: 掉电保持时间
+  #   主要标准: IEC 61000-4-11 (voltage dips) + IEC 61000-4-34
+  # ──────────────────────────────────────────────────────────────────
+  M-HOLDUP:
+    external_refs:
+      - iec_61000_4_11_dips           # IEC 61000-4-11 电压跌落免疫力测试
+      - iec_61000_4_34_dips           # IEC 61000-4-34 大电流设备电压跌落 (扩展)
+      - en_61000_4_11_dips            # EN 61000-4-11 (欧洲等同)
+    references:
+      - "https://webstore.iec.ch/en/publication/63503"
+      - "https://webstore.iec.ch/en/publication/66487"
+      - "https://transientspecialists.com/blogs/blog/voltage-dips-interruptions-testing-iec-61000-4-11-iec-61000-4-34"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-EFFICIENCY: 效率测试
+  #   主要标准: ETSI EN 303470 + 80 PLUS 协议 + CEC Test Method
+  # ──────────────────────────────────────────────────────────────────
+  M-EFFICIENCY:
+    external_refs:
+      - etsi_en_303470_efficiency     # ETSI EN 303470 (电信电源能效)
+      - eighty_plus_test_protocol     # 80 PLUS Generalized Test Protocol
+      - cec_test_method_external_ps   # CEC test method (single-voltage ext AC/DC)
+      - iec_61204_efficiency          # IEC 61204 (DC power supply efficiency)
+    references:
+      - "https://www.etsi.org/deliver/etsi_en/303400_303499/303470/01.01.00_30/en_303470v010100v.pdf"
+      - "https://www.clearesult.com/80plus/sites/80plus/files/2025-08/Generalized%20Test%20Protocol_Rev%206.7.3%201.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-OCP: 过流保护
+  #   主要标准: IEC 60950-1 (IT equipment safety) + IEC 60601-1 (medical)
+  # ──────────────────────────────────────────────────────────────────
+  M-OCP:
+    external_refs:
+      - iec_60950_1_safety            # IEC 60950-1 IT 设备安全 (OCP 章节)
+      - iec_60601_1_medical           # IEC 60601-1 医用电气设备安全
+      - ul_60950_1_ocp                # UL 60950-1 (北美认证版)
+    references:
+      - "https://ewh.ieee.org/r6/ocs/pses/60950-1,2ndEd-1.pdf"
+      - "https://ramtechno.com/ocp-power-supply-considerations-for-overcurrent-protection"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-HIPOT: 耐压测试
+  #   主要标准: IEC 62368-1 (AV/ICT) + IEC 60335-1 (household) + IEC 61010-1 (lab)
+  # ──────────────────────────────────────────────────────────────────
+  M-HIPOT:
+    external_refs:
+      - iec_62368_1_safety            # IEC 62368-1 AV/ICT 设备安全 (clause 5.4 dielectric)
+      - iec_60335_1_safety            # IEC 60335-1 家用电器 (clause 13 creepage/clearance)
+      - iec_61010_1_lab               # IEC 61010-1 实验室设备
+      - gb_4943_1_safety              # GB 4943.1-2022 (国标等同 IEC 60950-1)
+      - en_62368_1_safety             # EN IEC 62368-1 (欧洲等同采用)
+    references:
+      - "https://webstore.iec.ch/en/publication/6604"   # 62368-1 standard home (proxy URL)
+      - "https://regulatorydecoded.com/iec-standards-for-hipot-testing-which-one-applies-to-your-product-and-what-it-requires"
+      - "https://www.ul.com/resources/iec-62368-1-ask-engineers-question-and-answer-page"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-INSULATION-RES: 绝缘电阻测试
+  #   主要标准: IEC 62368-1 + 4-wire Kelvin 测量方法
+  # ──────────────────────────────────────────────────────────────────
+  M-INSULATION-RES:
+    external_refs:
+      - iec_62368_1_safety            # IEC 62368-1 同样含 IR 要求
+      - iec_60950_1_safety            # IEC 60950-1 历史标准
+      - kelvin_4wire_method           # 测试方法学 (非标准但是工程惯例)
+    references:
+      - "https://www.camiresearch.com/Campaigns/Web-Articles/4-wire-testing.html"
+      - "https://idm-instrumentos.es/wp-content/uploads/2021/01/A_UG_SM0001E01-1.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-UVP: 输出欠压保护
+  #   主要标准: IEC 61204 低压电源总规范 + IEC 60204-1 (机器电控)
+  # ──────────────────────────────────────────────────────────────────
+  M-UVP:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 性能要求 (OVP/UVP 等保护功能)
+      - iec_60204_1_safety            # IEC 60204-1 机器电控设备
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www.idec.com/en-us/solutions/safety/law/iso-iec/iec60204"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-UVLO: 输入欠压锁定
+  #   主要标准: IEC 61204-7 (风能应用) + 总规范
+  # ──────────────────────────────────────────────────────────────────
+  M-UVLO:
+    external_refs:
+      - iec_61204_7_wind              # IEC 61204-7 风能应用
+      - iec_61204_performance         # IEC 61204 总规范
+      - en_61204_7
+    references:
+      - "https://cdn.standards.iteh.ai/sist-preview/20514/714ebd07503c4134a0b659b7b81a8acb/IEC-61204-7-2016.pdf"
+      - "https://webstore.iec.ch/en/publication/4907"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-OVP: 输出过压保护
+  #   主要标准: IEC 61204 + IEC 62368-1 surge immunity (clause 5/7)
+  # ──────────────────────────────────────────────────────────────────
+  M-OVP:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 性能要求
+      - iec_61000_4_5_surge           # IEC 61000-4-5 surge immunity
+      - iec_62368_1_safety            # IEC 62368-1 (过压保护关联)
+      - en_61204_performance
+    references:
+      - "https://cdn.standards.iteh.ai/samples/7428/e6548d235bc444cc9386e76b9e9f0e57/IEC-61204-1993.pdf"
+      - "https://www.advancedenergy.com/getmedia/99d6d69d-073b-4176-93a8-3adc4b3aae80/an_en61000_standards.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-REGULATION: 电压调整率 (line / load / cross)
+  #   主要标准: IEC 61204 总规范
+  # ──────────────────────────────────────────────────────────────────
+  M-REGULATION:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 总规范 line/load 调整率
+      - iec_61204_3_emc
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www.ni.com/en/shop/electronic-test-instrumentation/power-supplies-and-loads/what-are-programmable-power-supplies/line-load-regulation-cascading.html"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-INRUSH: 输入冲击电流
+  #   主要标准: IEC 61204 输入测量规范 + 测试方法学
+  # ──────────────────────────────────────────────────────────────────
+  M-INRUSH:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 输入电流测量
+      - ieee_emc_inrush               # IEEE EMC inrush 测试方法学 (通用)
+      - en_61204_performance
+    references:
+      - "https://emsg.mit.edu/wp-content/uploads/2022/05/Inrush_Current_Testing.pdf"
+      - "https://absolute-emc.com/article/Passing_the_Inrush_Current_Requirement"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-PF: 功率因数 / 谐波测试
+  #   主要标准: IEC 61000-3-2 (谐波电流限制)
+  # ──────────────────────────────────────────────────────────────────
+  M-PF:
+    external_refs:
+      - iec_61000_3_2_harmonics       # IEC 61000-3-2 输入电流 ≤16A 谐波限制
+      - iec_61000_3_12                # IEC 61000-3-12 >16A 设备谐波
+      - en_61000_3_2_harmonics        # EN IEC 61000-3-2 (欧洲等同)
+      - chroma_61505_iec_61000_3_2    # Chroma 61505 已写入 IEC 61000-3-2 测试支持
+    references:
+      - "https://webstore.iec.ch/en/publication/92799"
+      - "https://en.wikipedia.org/wiki/IEC_61000-3-2"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-STARTUP: 上电启动时间 / 波形
+  #   主要标准: IEC 61204-3 turn-on time + Tek sequencing 应用笔记
+  # ──────────────────────────────────────────────────────────────────
+  M-STARTUP:
+    external_refs:
+      - iec_61204_3_emc               # IEC 61204-3 turn-on time delay
+      - tek_sequencing_app_note       # Tek 8-ch 示波器 sequencing app note (业界惯例)
+      - en_61204_3
+    references:
+      - "https://cdn.standards.iteh.ai/samples/15991/c5f9531eabfc43228fdb2334e4be6dd3/IEC-61204-3-2011.pdf"
+      - "https://www.tek.com/en/documents/application-note/verifying-power-supply-sequencing-8-channel-oscilloscope"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-TRANSIENT: 瞬态响应 (load step / line step)
+  #   主要标准: IEC 61204 + Analog Devices article 业界惯例
+  # ──────────────────────────────────────────────────────────────────
+  M-TRANSIENT:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 总规范 (含 transient response)
+      - iec_61204_3_emc               # IEC 61204-3 EMC
+      - analog_devices_load_transient # Analog Devices 测试方法业界惯例
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www.analog.com/en/resources/technical-articles/line-and-load-transient-testing-for-power-supplies.html"
+      - "https://eepower.com/technical-articles/predicting-the-load-transient-response-of-switch-mode-power-supplies"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-OTP: 过温保护 (v4 新增)
+  #   主要标准: IEC 61204 保护功能总规范 (standards 字段: IEC 61204)
+  # ──────────────────────────────────────────────────────────────────
+  M-OTP:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 性能要求 (含过温保护)
+      - en_61204_performance          # EN IEC 61204 (欧洲等同)
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://zhuanlan.zhihu.com/p/656149742"
+      - "https://www.szcpet.com/newsinfo/2563359.html"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-SCP: 短路保护 (v4 补齐, standards: IEC 61204)
+  # ──────────────────────────────────────────────────────────────────
+  M-SCP:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 性能要求 (短路保护)
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www.fcpowerup.com/how-do-i-test-power-supplies"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-GROUND-BOND: 接地连续性(接地阻抗)测试 (v4 补齐, standards: IEC 62368-1)
+  # ──────────────────────────────────────────────────────────────────
+  M-GROUND-BOND:
+    external_refs:
+      - iec_62368_1_safety            # IEC 62368-1 保护接地连续性
+      - en_62368_1_safety             # EN IEC 62368-1 (欧洲等同)
+    references:
+      - "https://webstore.iec.ch/en/publication/6604"
+      - "https://www.eet-china.com/mp/a119666.html"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-TOUCH-CURRENT: 接触电流(漏电流)测试 (v4 补齐, standards: IEC 62368-1)
+  # ──────────────────────────────────────────────────────────────────
+  M-TOUCH-CURRENT:
+    external_refs:
+      - iec_62368_1_safety            # IEC 62368-1 接触电流限值
+      - en_62368_1_safety
+    references:
+      - "https://webstore.iec.ch/en/publication/6604"
+      - "https://zhuanlan.zhihu.com/p/481833370"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-INPUT-SLOW: 输入缓变变动测试 (v4 补齐, standards: IEC 61204)
+  # ──────────────────────────────────────────────────────────────────
+  M-INPUT-SLOW:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 输入电压缓变/调节范围
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://blog.csdn.net/U_YAO/article/details/130979238"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-OPP: 过功率保护测试 (v4 补齐, standards: IEC 61204)
+  # ──────────────────────────────────────────────────────────────────
+  M-OPP:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 性能要求 (过功率保护)
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www.itechate.com/uploadfiles/2020/06/202006241638433843.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-TELEMETRY: 遥测精度测试 (v4 补齐, standards: PMBus 1.3)
+  #   PMBus 1.3 是殷能通信/遥测协议规范 (公开归档, 见 references)。
+  # ──────────────────────────────────────────────────────────────────
+  M-TELEMETRY:
+    external_refs:
+      - pmbus_1_3_spec                # PMBus 1.3 specification (telemetry/读回命令)
+    references:
+      - "https://pmbus.org/specification-archives/"
+      - "https://www.21ic.com/a/924474.html"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-STARTUP-TIME: 启动时间精确测量 (ton/tr 阶跃测试) (v4 新增)
+  #   standards 字段: IEC 62368-1; 方法本体走示波器时序测量 (Tek/R&S app note)。
+  # ──────────────────────────────────────────────────────────────────
+  M-STARTUP-TIME:
+    external_refs:
+      - iec_62368_1_safety            # 方法条目 standards 字段声明 IEC 62368-1
+      - tek_sequencing_app_note       # Tek 8-ch 示波器 sequencing app note (复用)
+      - rohde_schwarz_startup_app_note # R&S MXO5 启动时序 app note (v4 新 id)
+    references:
+      - "https://www.tek.com/en/documents/application-note/verifying-power-supply-sequencing-8-channel-oscilloscope"
+      - "https://www.rohde-schwarz.com/us/applications/accurate-verification-of-power-supply-startup-sequences-for-auxiliary-bias-supplies_56279-1301059.html"
+      - "https://www.eenewseurope.com/en/speeding-up-power-rail-timing-verification-with-an-8-channel-oscilloscope/"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-OVERSHOOT: 输出过冲/振铃测试 (v4 新增)
+  #   standards 字段: IEC 61204 + IEC 62368-1
+  # ──────────────────────────────────────────────────────────────────
+  M-OVERSHOOT:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 输出特性 (过冲/瞬态偏差)
+      - iec_62368_1_safety            # IEC 62368-1 (过压应力关联)
+    references:
+      - "https://www.celectronics.com/learning-center/en-iec-61204-3"
+      - "https://standards.iteh.ai/catalog/standards/iec/d1b5eed4-23be-42a6-adca-5e9283379efb/iec-61204-1993-amd1-2001"
+      - "https://www.psma.org/wp-content/uploads/2021/01/Thermal-measurments-Final.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-CROSS-REG: 交叉调整率测试 (多路) (v4 新增)
+  #   standards 字段: IEC 61204 (多路输出交叉调整率)
+  # ──────────────────────────────────────────────────────────────────
+  M-CROSS-REG:
+    external_refs:
+      - iec_61204_performance         # IEC 61204 多路输出调整率 (含 cross-regulation)
+      - en_61204_performance
+    references:
+      - "https://webstore.iec.ch/en/publication/4907"
+      - "https://www2.xppower.com/portals/0/brochures/Essential_Guide_to_Power_Supplies.pdf"
+      - "https://www.us.lambda.tdk.com/resources/blogs/20120409.html"
+      - "https://www.testworld.com/wp-content/uploads/power-supply-testing.pdf"
+
+  # ──────────────────────────────────────────────────────────────────
+  # M-BURN-IN: 老化测试(Burn-in) (v4 新增)
+  #   standards 字段为空 (方法条目未声明标准); 以可靠性/老化测试业界方法学溯源,
+  #   新引入 id 附可核实 URL (Tek 高可靠电源测试 app note)。
+  # ──────────────────────────────────────────────────────────────────
+  M-BURN-IN:
+    external_refs:
+      - burn_in_aging_method          # 老化/加速应力筛选方法学 (业界惯例, v4 新 id)
+    references:
+      - "https://www.tek.com/en/documents/application-note/high-reliability-power-supply-testing"
+      - "https://www.szcpet.com/newsinfo/2563359.html"
+      - "https://bbs.csdn.net/weixin_42523326/article/details/100463955"

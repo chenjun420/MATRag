@@ -1,0 +1,919 @@
+# MATRag 测试设备本体 catalog (v3 — 多路 websearch 双轮补齐)
+
+# 27 条 entries: 12 v2 + 15 v3
+# 数据来源标注: vendor_official_pdf / vendor_official_site / vendor_distributor_web / training_knowledge
+# 反向校验: matrag.domain.instruments.cross_validate_with_methods()
+#
+# 加载入口: load_instrument_catalog / find_instruments_by_method / find_by_category
+# 接线可视化: e2e_pa601_virtual.py 用 catalog 取代硬编码常量
+#
+# v3 新增: yokogawa-wt310hc/wt332/wt5000, keysight-n6700, itech-it-m3900,
+#          gwinstek-psw, rigol-dl3031/dg1000, kikusui-pmx/plz,
+#          hioki-pw3335/rm3544, chroma-11210/19032/61505
+
+version: 3
+instruments:
+- id: chroma-61605
+  vendor: Chroma
+  model: '61605'
+  category: ac_source
+  key_specs:
+    voltage_max: 300
+    current_max: 16.4
+    power_max: 4000
+    frequency_max: 1000
+    accuracy_basic: 0.2
+    phases: 1
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - banana
+  - OUTPUT_RECEPTACLE
+  compatible_methods:
+  - M-HOLDUP
+  - M-INPUT-SLOW
+  - M-UVLO
+  - M-INRUSH
+  - M-TRANSIENT
+  - M-EFFICIENCY
+  data_source: vendor_distributor_web
+  references:
+  - https://www.testequity.com/product/19956-1-61605
+  - https://www.chromausa.com/pdf/61600%20Low%20Power%20Programmable%20AC%20Source%20022024.pdf
+- id: chroma-61705
+  vendor: Chroma
+  model: '61705'
+  category: ac_source
+  key_specs:
+    voltage_max: 300
+    current_max: 32
+    power_max: 12000
+    frequency_max: 1200
+    accuracy_basic: 0.2
+    phases: 3
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - banana
+  - OUTPUT_RECEPTACLE
+  compatible_methods:
+  - M-HOLDUP
+  - M-INPUT-SLOW
+  - M-INRUSH
+  - M-TRANSIENT
+  data_source: vendor_official_pdf
+  references:
+  - https://www.chromausa.com/pdf/61700%203-Phase%20Programmable%20AC%20Source%20052023.pdf
+- id: chroma-63206
+  vendor: Chroma
+  model: '63206'
+  category: eload
+  key_specs:
+    voltage_max: 600
+    current_max: 60
+    power_max: 2600
+    modes:
+    - CC
+    - CV
+    - CR
+    - CP
+    trigger_in: TRI (BNC, +5V level edge)
+    rise_time_us: 100
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  - BNC_trigger
+  compatible_methods:
+  - M-HOLDUP
+  - M-RIPPLE-NOISE
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-TRANSIENT
+  - M-OCP
+  - M-STARTUP
+  - M-CROSS-REG
+  data_source: vendor_official_pdf
+  references:
+  - https://docs.ampnuts.ru/eevblog.docs/Chroma/63204/chroma-63200-datahsheet.pdf
+- id: rigol-dl3021
+  vendor: Rigol
+  model: DL3021
+  category: eload
+  key_specs:
+    voltage_max: 150
+    current_max: 40
+    power_max: 200
+    modes:
+    - CC
+    - CV
+    - CR
+    - CP
+    rise_time_us: 25
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-RIPPLE-NOISE
+  - M-REGULATION
+  data_source: vendor_distributor_web
+  references:
+  - https://www.rigol.com/dam/global/downloads/brochures/en/data-sheet/dc-load/DL3000_DataSheet_EN.pdf
+- id: hp-34461a
+  vendor: Keysight (formerly HP)
+  model: 34461A
+  category: dmm
+  key_specs:
+    digits: 6.5
+    nplc_typical: 10
+    accuracy_dcv: 0.0035
+    accuracy_dcv_offset: 0.0005
+    voltage_max: 1000
+    current_max: 3
+    resistance_4wire: true
+    sample_rate_max: 300
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-RIPPLE-NOISE
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-INPUT-SLOW
+  - M-OCP
+  - M-OVP
+  - M-UVP
+  - M-CROSS-REG
+  data_source: vendor_official_pdf
+  references:
+  - https://www.keysight.com/us/en/assets/7018-03846/data-sheets/5991-1983.pdf
+- id: keithley-2110
+  vendor: Keithley (Tektronix)
+  model: '2110'
+  category: dmm
+  key_specs:
+    digits: 5.5
+    nplc_typical: 10
+    accuracy_dcv: 0.0075
+    accuracy_dcv_offset: 0.0001
+    voltage_max: 1000
+    voltage_max_ac: 750
+    current_max: 3
+    resistance_4wire: true
+  protocols:
+  - SCPI
+  - USB
+  - GPIB
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-OCP
+  data_source: vendor_official_pdf
+  references:
+  - https://download.tek.com/datasheet/1KW-73983-1_2110_Digital_Multimeter_Datasheet_051524.pdf
+- id: tek-mso46
+  vendor: Tektronix
+  model: MSO46
+  category: scope
+  key_specs:
+    channels: 6
+    bandwidth_options_mhz:
+    - 200
+    - 350
+    - 500
+    - 1000
+    - 1500
+    sample_rate: 6.25
+    record_length: 62.5
+    input_impedance_ohm:
+    - 50
+    - 1000000.0
+    bw_limit_20mhz: true
+    risetime_1ghz_ps: 400
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - bnc
+  compatible_methods:
+  - M-RIPPLE-NOISE
+  - M-HOLDUP
+  - M-STARTUP
+  - M-INRUSH
+  - M-TRANSIENT
+  - M-STARTUP-TIME
+  - M-OVERSHOOT
+  data_source: vendor_official_pdf
+  references:
+  - https://download.tek.com/datasheet/4-Series-MSO-MSO44-MSO46-Datasheet-48W615585-new.pdf
+- id: keysight-dsox3024t
+  vendor: Keysight
+  model: DSOX3024T
+  category: scope
+  key_specs:
+    channels: 4
+    bandwidth: 200
+    sample_rate: 5
+    record_length: 4
+    bw_limit_20mhz: true
+    upgradeable_bw: true
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - bnc
+  compatible_methods:
+  - M-RIPPLE-NOISE
+  - M-STARTUP
+  - M-STARTUP-TIME
+  - M-OVERSHOOT
+  data_source: vendor_distributor_web
+  references:
+  - https://www.rftest.co.nz/assets/Downloads/Accessible/Keysight/e0f2072179/DSOX3024T.pdf
+- id: yokogawa-wt310
+  vendor: Yokogawa
+  model: WT310
+  category: power_meter
+  key_specs:
+    accuracy_basic: 0.1
+    voltage_max: 600
+    current_max: 20
+    frequency_range_hz:
+    - 0.1
+    - 100000
+    channels: 1
+    crest_factor: 5
+  protocols:
+  - SCPI
+  - USB
+  - GPIB
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-PF
+  - M-INPUT-SLOW
+  - M-INRUSH
+  data_source: vendor_official_pdf
+  references:
+  - https://cdn.tmi.yokogawa.com/WT300Series_Final.pdf
+- id: keysight-e36313a
+  vendor: Keysight
+  model: E36313A
+  category: dc_source
+  key_specs:
+    channels: 3
+    output_1:
+      voltage_max: 6
+      current_max: 10
+    output_2:
+      voltage_max: 25
+      current_max: 2
+    output_3:
+      voltage_max: -25
+      current_max: 2
+    power_max: 160
+    accuracy_programming: 0.05
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - banana
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-UVP
+  - M-REGULATION
+  - M-STARTUP
+  - M-INRUSH
+  data_source: vendor_official_pdf
+  references:
+  - https://www.keysight.com/us/en/assets/7018-05629/data-sheets/5992-2124.pdf
+- id: chroma-62000h
+  vendor: Chroma
+  model: 62000H
+  category: dc_source
+  key_specs:
+    voltage_max: 1000
+    current_max: 375
+    power_max: 15000
+    bidirectional: false
+    parallelable: 10
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-STARTUP
+  - M-TRANSIENT
+  - M-EFFICIENCY
+  data_source: vendor_official_pdf
+  references:
+  - https://www.chromausa.com/pdf/62000H%20Programmable%20DC%20Power%20032025.pdf
+- id: chroma-19020
+  vendor: Chroma
+  model: '19020'
+  category: safety_tester
+  key_specs:
+    hipot_voltage_max: 5000
+    hipot_voltage_dc_max: 6000
+    insulation_resistance_max: 50000000000.0
+    channels: 10
+    feature_flashover_detection: true
+  protocols:
+  - SCPI
+  - RS-232
+  terminals:
+  - HV_special
+  - banana
+  - 4-wire_kelvin
+  compatible_methods:
+  - M-HIPOT
+  - M-INSULATION-RES
+  - M-GROUND-BOND
+  - M-TOUCH-CURRENT
+  data_source: vendor_official_pdf
+  references:
+  - https://assets.testequity.com/te1/Documents/pdf/chroma/Chroma-19020-Series-HiPot-Datasheet-19020-E.pdf
+- id: keysight-e4980a
+  vendor: Keysight
+  model: E4980A
+  category: safety_tester
+  key_specs:
+    frequency_range_hz:
+    - 20
+    - 2000000.0
+    test_voltage_max: 20
+    impedance_accuracy: 0.05
+  protocols:
+  - SCPI
+  - USB
+  - GPIB
+  - LAN
+  terminals:
+  - bnc
+  - 4-wire_kelvin
+  compatible_methods:
+  - M-INSULATION-RES
+  - M-HIPOT
+  data_source: vendor_official_pdf
+  references:
+  - https://www.keysight.com/us/en/product-E4980A/precision-lcr-meter-20-hz-to-2-mhz.html
+- id: yokogawa-wt310hc
+  vendor: Yokogawa
+  model: WT310HC
+  category: power_meter
+  key_specs:
+    accuracy_basic: 0.1
+    voltage_max: 600
+    current_max: 40
+    frequency_range_hz:
+    - 0.5
+    - 20000
+    channels: 1
+    crest_factor: 5
+  protocols:
+  - SCPI
+  - USB
+  - GPIB
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-PF
+  - M-INPUT-SLOW
+  - M-INRUSH
+  - M-REGULATION
+  data_source: vendor_official_pdf
+  references:
+  - https://cdn.tmi.yokogawa.com/WT300Series_Final.pdf
+  - https://cdn.tmi.yokogawa.com/1/5675/files/IMWT310-02EN.pdf
+- id: yokogawa-wt332
+  vendor: Yokogawa
+  model: WT332
+  category: power_meter
+  key_specs:
+    accuracy_basic: 0.1
+    voltage_max: 600
+    current_max: 20
+    frequency_range_hz:
+    - 0.5
+    - 100000
+    channels: 2
+    crest_factor: 5
+  protocols:
+  - SCPI
+  - USB
+  - GPIB
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-PF
+  - M-INPUT-SLOW
+  - M-INRUSH
+  data_source: vendor_official_pdf
+  references:
+  - https://cdn.tmi.yokogawa.com/WT300Series_Final.pdf
+- id: yokogawa-wt5000
+  vendor: Yokogawa
+  model: WT5000
+  category: power_meter
+  key_specs:
+    accuracy_basic: 0.02
+    voltage_max: 1000
+    current_max: 30
+    frequency_range_hz:
+    - 0.1
+    - 1000000
+    channels: 1-4
+    crest_factor: 5
+    sample_rate: 10000000
+    adc_bits: 18
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - GPIB
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  - current_sensor_input
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-PF
+  - M-INPUT-SLOW
+  - M-INRUSH
+  - M-REGULATION
+  data_source: vendor_official_pdf
+  references:
+  - https://cdn.tmi.yokogawa.com/1/7113/files/Specifications%20WT5000%20Precision%20Power%20Analyzers%20Yokogawa%20Test%20Measurement%20BUWT5000%2002EN.pdf
+- id: keysight-n6700
+  vendor: Keysight
+  model: N6700
+  category: dc_source
+  key_specs:
+    modular: true
+    mainframe_power_w: 400
+    modules_count: 4
+    voltage_range_per_module_v:
+    - 6
+    - 8
+    - 20
+    - 30
+    - 35
+    - 40
+    - 60
+    - 80
+    - 100
+    - 120
+    - 150
+    - 200
+    current_max_per_module_a:
+    - 0.5
+    - 1
+    - 1.5
+    - 2.5
+    - 3
+    - 5
+    - 6.7
+    - 8.5
+    - 10
+    - 20
+    - 25
+    - 50
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - GPIB
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-STARTUP
+  - M-INRUSH
+  - M-UVP
+  data_source: vendor_official_pdf
+  references:
+  - https://www.keysight.com/us/en/assets/9018-04533/technical-specifications/9018-04533.pdf
+- id: itech-it-m3900
+  vendor: ITECH
+  model: IT-M3900
+  category: dc_source
+  key_specs:
+    bidirectional: true
+    voltage_max: 1500
+    current_max: 1020
+    power_max: 12000
+    form_factors_w:
+    - 6000
+    - 12000
+    regenerative_efficiency_pct: 95
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - GPIB
+  - RS-232
+  - CAN
+  - RS-485
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-STARTUP
+  - M-TRANSIENT
+  - M-INRUSH
+  - M-UVP
+  data_source: vendor_distributor_web
+  references:
+  - https://www.meilhaus.de/cosmoshop/default/articleMedia/it-m3900c/de/Datasheet_ITECH_IT-M3900C_en.pdf
+- id: gwinstek-psw
+  vendor: GW Instek
+  model: PSW-series
+  category: dc_source
+  key_specs:
+    submodels_count: 18
+    voltages_v:
+    - 30
+    - 40
+    - 80
+    - 160
+    - 250
+    - 800
+    power_w:
+    - 360
+    - 720
+    - 1080
+    multi_range: true
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - RS-232
+  - RS-485
+  terminals:
+  - banana
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-UVP
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-STARTUP
+  data_source: vendor_official_pdf
+  references:
+  - https://assets-us-01.kc-usercontent.com/ecb176a6-5a2e-0000-8943-8441e5fc8d1/27b98bb0-a61e-45fd-98cd-4b8d7c6223ab/psw-series_datasheet.pdf
+- id: rigol-dl3031
+  vendor: Rigol
+  model: DL3031
+  category: eload
+  key_specs:
+    voltage_max: 150
+    current_max: 60
+    power_max: 350
+    modes:
+    - CC
+    - CV
+    - CR
+    - CP
+    dynamic_freq_khz: 30
+    slew_rate_a_us: 5.0
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-HOLDUP
+  - M-EFFICIENCY
+  - M-RIPPLE-NOISE
+  - M-REGULATION
+  - M-OCP
+  - M-STARTUP
+  - M-TRANSIENT
+  data_source: vendor_distributor_web
+  references:
+  - https://www.rigol.com/dam/global/downloads/brochures/en/data-sheet/dc-load/DL3000_DataSheet_EN.pdf
+- id: rigol-dg1000
+  vendor: Rigol
+  model: DG1000
+  category: scope
+  key_specs:
+    channels: 2
+    max_frequency_mhz: 25
+    sample_rate_msa: 100
+    vertical_resolution_bits: 14
+    arb_waveform_length: 4096
+    frequency_accuracy_ppm: 100
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  terminals:
+  - bnc
+  compatible_methods:
+  - M-INRUSH
+  - M-TRANSIENT
+  data_source: vendor_official_pdf
+  references:
+  - https://www.rigol.com/dam/global/downloads/brochures/en/data-sheet/waveform-generators/DG1000_DataSheet_EN.pdf
+- id: kikusui-pmx
+  vendor: Kikusui
+  model: PMX-A series
+  category: dc_source
+  key_specs:
+    submodels_count: 9
+    voltages_v:
+    - 18
+    - 35
+    - 70
+    - 110
+    - 250
+    - 350
+    - 500
+    currents_a:
+    - 0.1
+    - 0.25
+    - 0.6
+    - 1
+    - 2
+    - 3
+    - 5
+    v_resolution_mv: 1
+    i_resolution_ma: 0.1
+    ripple_noise_mv: 0.5
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - banana
+  compatible_methods:
+  - M-OVP
+  - M-OCP
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-STARTUP
+  - M-UVP
+  data_source: vendor_official_pdf
+  references:
+  - https://kikusuiamerica.com/products-index/dc/pmx-a
+- id: kikusui-plz
+  vendor: Kikusui
+  model: PLZ-5W series
+  category: eload
+  key_specs:
+    submodels_count: 5
+    operating_voltage_range_v:
+    - 1
+    - 150
+    current_max_a:
+    - 240
+    - 480
+    - 720
+    - 960
+    - 1440
+    power_max_w:
+    - 1200
+    - 2400
+    - 3600
+    - 6000
+    - 10800
+    slew_rate_a_us: 60
+    modes:
+    - CC
+    - CV
+    - CR
+    - CP
+    - CC+CV
+    - CR+CV
+    regenerative_efficiency_pct: 90
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-HOLDUP
+  - M-RIPPLE-NOISE
+  - M-EFFICIENCY
+  - M-REGULATION
+  - M-OCP
+  - M-STARTUP
+  - M-TRANSIENT
+  data_source: vendor_official_pdf
+  references:
+  - https://global.kikusui.co.jp/products-index/electronic-load/plz-5wh2/
+- id: hioki-pw3335
+  vendor: Hioki
+  model: PW3335
+  category: power_meter
+  key_specs:
+    accuracy_basic: 0.1
+    voltage_ranges_v:
+    - 15
+    - 30
+    - 60
+    - 150
+    - 300
+    - 600
+    current_max: 30
+    channels: 1
+    variants:
+    - PW3335
+    - PW3335-01
+    - PW3335-02
+    - PW3335-03
+    - PW3335-04
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - RS-232
+  - GPIB
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-EFFICIENCY
+  - M-PF
+  - M-INPUT-SLOW
+  - M-INRUSH
+  - M-REGULATION
+  data_source: vendor_official_pdf
+  references:
+  - https://www.hioki.com/sites/default/files/2021-03/client_upload_1_1426838770884.pdf
+- id: hioki-rm3544
+  vendor: Hioki
+  model: RM3544
+  category: dmm
+  key_specs:
+    accuracy_basic: 0.01
+    resistance_resolution_u_ohm: 1
+    current_max: 0.3
+    max_voltage_open_circuit_v: 20
+    interface_options:
+    - RS-232
+    - USB
+    - Printer
+  protocols:
+  - SCPI
+  - RS-232
+  - USB
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  compatible_methods:
+  - M-KELVIN
+  - M-RESISTANCE
+  data_source: vendor_official_pdf
+  references:
+  - https://assets.testequity.com/te1/Documents/pdf/hioki/RM3545-RM3544-ds.pdf
+- id: chroma-11210
+  vendor: Chroma
+  model: '11210'
+  category: safety_tester
+  key_specs:
+    test_voltage_max: 1000
+    insulation_resistance_max: 3000000000.0
+    channels: 12
+    feature:
+    - IR
+    - HV
+    - battery_resistance
+  protocols:
+  - SCPI
+  - USB
+  - RS-232
+  - RS-485
+  terminals:
+  - 4-wire_kelvin
+  - banana
+  - HV_special
+  compatible_methods:
+  - M-INSULATION-RES
+  - M-RESISTANCE
+  data_source: vendor_official_pdf
+  references:
+  - https://idm-instrumentos.es/wp-content/uploads/2018/10/11210_Battery_Cell_Insulation_Tester.pdf
+- id: chroma-19032
+  vendor: Chroma
+  model: '19032'
+  category: safety_tester
+  key_specs:
+    hipot_voltage_max: 5000
+    hipot_voltage_dc_max: 6000
+    ground_bond_current_max_a: 40
+    ground_bond_ext_current_a: 60
+    leakage_current_function: true
+    insulation_resistance_max: 10000000000.0
+    dynamic_function: true
+  protocols:
+  - SCPI
+  - USB
+  - LAN
+  - GPIB
+  - RS-232
+  - Handler
+  terminals:
+  - HV_special
+  - banana
+  - 4-wire_kelvin
+  compatible_methods:
+  - M-HIPOT
+  - M-INSULATION-RES
+  - M-GROUND-BOND
+  - M-TOUCH-CURRENT
+  data_source: vendor_official_pdf
+  references:
+  - https://www.chromausa.com/wp-content/uploads/2024/11/19032-Electrical-Safety-Analyzer-112024.pdf
+- id: chroma-61505
+  vendor: Chroma
+  model: '61505'
+  category: ac_source
+  key_specs:
+    voltage_max: 300
+    current_max: 16
+    power_max: 4000
+    frequency_max: 1000
+    phases: 1
+    accuracy_basic: 0.2
+    feature_iec_61000_3_2: 16A IEC 61000-3-2 harmonics
+  protocols:
+  - SCPI
+  - GPIB
+  - USB
+  - LAN
+  - RS-232
+  terminals:
+  - banana
+  - OUTPUT_RECEPTACLE
+  compatible_methods:
+  - M-HOLDUP
+  - M-INPUT-SLOW
+  - M-UVLO
+  - M-INRUSH
+  - M-TRANSIENT
+  - M-EFFICIENCY
+  - M-PF
+  data_source: vendor_official_pdf
+  references:
+  - https://www.transcat.com/media/pdf/Chroma-61505-Data-Sheet.pdf

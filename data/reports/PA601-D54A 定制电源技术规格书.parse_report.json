@@ -1,0 +1,320 @@
+{
+  "doc_id": "PA601-D54A 定制电源技术规格书",
+  "source_path": "docs\\PA601-D54A 定制电源技术规格书.md",
+  "provider": "local",
+  "ok": true,
+  "tables": [
+    {
+      "table_id": "t0-0",
+      "page": 0,
+      "n_rows": 2,
+      "n_cols": 7,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-1",
+      "page": 0,
+      "n_rows": 46,
+      "n_cols": 2,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-2",
+      "page": 0,
+      "n_rows": 7,
+      "n_cols": 8,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-3",
+      "page": 0,
+      "n_rows": 4,
+      "n_cols": 8,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-4",
+      "page": 0,
+      "n_rows": 1,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-5",
+      "page": 0,
+      "n_rows": 3,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-6",
+      "page": 0,
+      "n_rows": 1,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-7",
+      "page": 0,
+      "n_rows": 2,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-8",
+      "page": 0,
+      "n_rows": 1,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-9",
+      "page": 0,
+      "n_rows": 12,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-10",
+      "page": 0,
+      "n_rows": 11,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-11",
+      "page": 0,
+      "n_rows": 2,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-12",
+      "page": 0,
+      "n_rows": 2,
+      "n_cols": 7,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-13",
+      "page": 0,
+      "n_rows": 15,
+      "n_cols": 8,
+      "merged_cells": 0,
+      "flags": [
+        "WARN_HEADER_REPAIRED"
+      ],
+      "note": "WARN_HEADER_REPAIRED"
+    },
+    {
+      "table_id": "t0-14",
+      "page": 0,
+      "n_rows": 4,
+      "n_cols": 4,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-15",
+      "page": 0,
+      "n_rows": 40,
+      "n_cols": 9,
+      "merged_cells": 0,
+      "flags": [
+        "WARN_DUP_HEADER"
+      ],
+      "note": "WARN_DUP_HEADER"
+    },
+    {
+      "table_id": "t0-16",
+      "page": 0,
+      "n_rows": 15,
+      "n_cols": 10,
+      "merged_cells": 0,
+      "flags": [
+        "WARN_DUP_HEADER"
+      ],
+      "note": "WARN_DUP_HEADER"
+    },
+    {
+      "table_id": "t0-17",
+      "page": 0,
+      "n_rows": 31,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-18",
+      "page": 0,
+      "n_rows": 19,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-19",
+      "page": 0,
+      "n_rows": 18,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-20",
+      "page": 0,
+      "n_rows": 4,
+      "n_cols": 2,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-21",
+      "page": 0,
+      "n_rows": 9,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-22",
+      "page": 0,
+      "n_rows": 1,
+      "n_cols": 6,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-23",
+      "page": 0,
+      "n_rows": 26,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-24",
+      "page": 0,
+      "n_rows": 10,
+      "n_cols": 4,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-25",
+      "page": 0,
+      "n_rows": 7,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-26",
+      "page": 0,
+      "n_rows": 3,
+      "n_cols": 4,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-27",
+      "page": 0,
+      "n_rows": 11,
+      "n_cols": 7,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-28",
+      "page": 0,
+      "n_rows": 4,
+      "n_cols": 7,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-29",
+      "page": 0,
+      "n_rows": 5,
+      "n_cols": 7,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-30",
+      "page": 0,
+      "n_rows": 10,
+      "n_cols": 5,
+      "merged_cells": 0,
+      "flags": [
+        "WARN_DUP_HEADER"
+      ],
+      "note": "WARN_DUP_HEADER"
+    },
+    {
+      "table_id": "t0-31",
+      "page": 0,
+      "n_rows": 4,
+      "n_cols": 2,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    },
+    {
+      "table_id": "t0-32",
+      "page": 0,
+      "n_rows": 7,
+      "n_cols": 4,
+      "merged_cells": 0,
+      "flags": [],
+      "note": "clean"
+    }
+  ],
+  "unresolved": [],
+  "stats": {
+    "n_tables": 33,
+    "n_rows_total": 337,
+    "merged_total": 0,
+    "unresolved_count": 0
+  }
+}

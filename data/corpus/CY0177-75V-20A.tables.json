@@ -1,0 +1,1255 @@
+[
+  {
+    "id": "t1-0",
+    "caption": "表0",
+    "headers": [
+      "项目",
+      "内容"
+    ],
+    "rows": [
+      [
+        "Power Supply Model 电源型号",
+        "Confidentiality level 密级"
+      ],
+      [
+        "CY0177-75V-20A",
+        "机密"
+      ],
+      [
+        "Specification Version 规格书版本",
+        "Total 16 pages 共 16 页"
+      ],
+      [
+        "V1.0",
+        "Total 16 pages 共 16 页"
+      ]
+    ],
+    "marks": [
+      "rowspan:2@col1",
+      "no_header_row"
+    ],
+    "confidence": 0.92,
+    "source": {
+      "page": 1,
+      "section_path": "",
+      "provider": "local",
+      "marks": [
+        "rowspan:2@col1",
+        "no_header_row"
+      ]
+    }
+  },
+  {
+    "id": "t1-1",
+    "caption": "表1",
+    "headers": [
+      "项目",
+      "内容",
+      "日期"
+    ],
+    "rows": [
+      [
+        "Prepared by",
+        "-",
+        "Date"
+      ],
+      [
+        "拟制",
+        "-",
+        "日期"
+      ],
+      [
+        "Reviewed by",
+        "周光兵",
+        "Date"
+      ],
+      [
+        "审核人",
+        "周光兵",
+        "日期"
+      ],
+      [
+        "Authorized by",
+        "黄绪文",
+        "Date"
+      ],
+      [
+        "批准",
+        "黄绪文",
+        "日期"
+      ]
+    ],
+    "marks": [
+      "rowspan:2@col1",
+      "no_header_row"
+    ],
+    "confidence": 0.95,
+    "source": {
+      "page": 1,
+      "section_path": "",
+      "provider": "local",
+      "marks": [
+        "rowspan:2@col1",
+        "no_header_row"
+      ]
+    }
+  },
+  {
+    "id": "t2-0",
+    "caption": "表0",
+    "headers": [
+      "日期",
+      "修订版本",
+      "描述",
+      "核 准"
+    ],
+    "rows": [
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "V1.0",
+        "2021-12-30",
+        "基本功能",
+        "黄绪文"
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ]
+    ],
+    "marks": [
+      "passthrough"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 2,
+      "section_path": "",
+      "provider": "local",
+      "marks": [
+        "passthrough"
+      ]
+    }
+  },
+  {
+    "id": "t5-0",
+    "caption": "表0",
+    "headers": [
+      "Abbreviations 缩略语",
+      "Full spelling 英文全名",
+      "Chinese explanation 中文解释"
+    ],
+    "rows": [
+      [
+        "",
+        "",
+        ""
+      ],
+      [
+        "AC-DC",
+        "Alternating Current-Direct<br>Current",
+        "交流变直流"
+      ],
+      [
+        "EMC",
+        "Electro Magnetic Compatibility",
+        "电磁兼容"
+      ],
+      [
+        "CE",
+        "Conducted Emission",
+        "传导发射"
+      ],
+      [
+        "RE",
+        "Radiated Emission",
+        "辐射发射"
+      ],
+      [
+        "EFT",
+        "Electrical Fast Transient/Burst",
+        "电子脉冲群"
+      ],
+      [
+        "RS",
+        "Radiated Susceptibility",
+        "辐射抗干扰"
+      ],
+      [
+        "CS",
+        "Conducted Susceptibility",
+        "传导抗干扰"
+      ],
+      [
+        "ESD",
+        "Electrostatic Discharge",
+        "静电放电"
+      ]
+    ],
+    "marks": [
+      "passthrough"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 5,
+      "section_path": "",
+      "provider": "local",
+      "marks": [
+        "passthrough"
+      ]
+    }
+  },
+  {
+    "id": "t6-0",
+    "caption": "表0",
+    "headers": [
+      "序号",
+      "标准号",
+      "标准号(2)",
+      "标准号(3)",
+      "名称",
+      "名称(2)"
+    ],
+    "rows": [
+      [
+        "-",
+        "标准号",
+        "-",
+        "-",
+        "名称",
+        "-"
+      ],
+      [
+        "GB 50689-2011    通信局站防雷与接地工程设计规范",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "GB 4943-2011         Safety of Information Technology Equipment<br>                          (Including Electrical Business Equipment)",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "GB9254-2008     信息技术设备的无线电骚扰限值和测量方法",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "IEC 60950-1 2nd      Safety of Information Technology Equipment,<br>edition                  Including Electrical Business Equipment, including<br>                                  all national deviations as specified in the current CB Bulletin",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "YD/T 983-2013    通信电源设备电磁兼容性要求及测量方法",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "ISO 7779              Acoustics - measurement of airborne noise emitted<br>                      by information technology and telecomm unications<br>                      equipment",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "EN 55022              Information Technology Equipment - Radio<br>                        Disturbance Characteristics - Limits and Methods of<br>                     Measurement<br>EN 50116              Information Technology Equipment. Routine<br>                            Electrical Safety Testing in Production",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "EN 55024                 Reliability Prediction Procedure for Electronic<br>                      Equipment",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ]
+    ],
+    "marks": [
+      "colspan:6@row1",
+      "colspan:6@row2",
+      "colspan:6@row3",
+      "colspan:6@row4",
+      "colspan:6@row5",
+      "colspan:6@row6",
+      "colspan:6@row7",
+      "colspan:6@row8",
+      "no_header_row"
+    ],
+    "confidence": 0.85,
+    "source": {
+      "page": 6,
+      "section_path": "1.2 参考标准",
+      "provider": "local",
+      "marks": [
+        "colspan:6@row1",
+        "colspan:6@row2",
+        "colspan:6@row3",
+        "colspan:6@row4",
+        "colspan:6@row5",
+        "colspan:6@row6",
+        "colspan:6@row7",
+        "colspan:6@row8",
+        "no_header_row"
+      ]
+    }
+  },
+  {
+    "id": "t7-0",
+    "caption": "表1 输入规格",
+    "headers": [
+      "项目",
+      "单位",
+      "最小值",
+      "典型值",
+      "最大值",
+      "备注"
+    ],
+    "rows": [
+      [
+        "交流输入电压范围",
+        "Vac",
+        "85",
+        "220",
+        "300",
+        "输入低于180V，输出功率线性降<br>额详见图一（输出功率与输入电<br>压关系）"
+      ],
+      [
+        "额定输入电压范围",
+        "Vac",
+        "100",
+        "/",
+        "240",
+        ""
+      ],
+      [
+        "交流输入电压频率",
+        "Hz",
+        "47",
+        "50",
+        "63",
+        ""
+      ],
+      [
+        "输入电流",
+        "A",
+        "/",
+        "/",
+        "8",
+        "85Vac，满载"
+      ],
+      [
+        "输入冲击电流",
+        "A",
+        "/",
+        "/",
+        "40",
+        "220Vac/50Hz 输入，满载，冷启<br>动，高温50℃。"
+      ],
+      [
+        "待机损耗",
+        "W",
+        "/",
+        "/",
+        "3",
+        "不发开机指令，电源待机损耗"
+      ],
+      [
+        "功率因数",
+        "/",
+        "0.98",
+        "/",
+        "/",
+        "220Vac/50Hz 输入，100%负载<br>≥0.99，50%≥0.98"
+      ],
+      [
+        "效率",
+        "-",
+        "91",
+        "/",
+        "/",
+        "220Vac/50Hz 输入，48V 输出，<br>满载"
+      ],
+      [
+        "效率",
+        "-",
+        "92",
+        "/",
+        "/",
+        "220Vac/50Hz 输入，60V 输出，<br>满载"
+      ]
+    ],
+    "marks": [
+      "passthrough"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 7,
+      "section_path": "3 技术要求 > 3.1 电源输入规格",
+      "provider": "local",
+      "marks": [
+        "passthrough"
+      ]
+    }
+  },
+  {
+    "id": "t8-0",
+    "caption": "表2 输出规格",
+    "headers": [
+      "项目",
+      "单位",
+      "最小值",
+      "典型值",
+      "最大值",
+      "测试条件"
+    ],
+    "rows": [
+      [
+        "输出电压",
+        "V",
+        "40",
+        "/",
+        "75",
+        "匹配48V/60V 电池"
+      ],
+      [
+        "最大电流",
+        "A",
+        "/",
+        "",
+        "20",
+        ""
+      ],
+      [
+        "最小负载电流",
+        "A",
+        "/",
+        "0",
+        "0",
+        "若电流持续小于2A，充电器20 分<br>钟后自动关机。"
+      ],
+      [
+        "最大输出功率",
+        "W",
+        "/",
+        "/",
+        "1200",
+        "电源最大功率1200W，最大电流<br>20A，详见图二输出电压与输出电流<br>(U-I 曲线）"
+      ],
+      [
+        "电压调整率(恒压）",
+        "±%",
+        "/",
+        "/",
+        "2",
+        "48V/60V 满载"
+      ],
+      [
+        "纹波电流",
+        "A",
+        "/",
+        "/",
+        "5",
+        "恒压状态下，电流枪测试纹波电流<br>峰峰值。"
+      ],
+      [
+        "电压精度",
+        "±%",
+        "/",
+        "/",
+        "1",
+        ""
+      ],
+      [
+        "恒流精度",
+        "±%",
+        "/",
+        "/",
+        "5",
+        "额定48V/60V 输出"
+      ],
+      [
+        "噪声+纹波（峰峰值）",
+        "V",
+        "/",
+        "/",
+        "2%Vout",
+        "恒流状态下，纹波噪声最大不超过<br>输出电压的2%"
+      ],
+      [
+        "过冲电压",
+        "V",
+        "/",
+        "/",
+        "Vout+6.8V",
+        "开关机或加卸载时，输出最大过冲<br>电压不超过6.8V 输出电压。"
+      ],
+      [
+        "过冲电流",
+        "A",
+        "/",
+        "/",
+        "20%Iout",
+        "最大过冲电流不超过输出电流的<br>20%"
+      ],
+      [
+        "开机时间",
+        "S",
+        "/",
+        "/",
+        "5",
+        "发开机指令后，电源起机时间。"
+      ],
+      [
+        "噪声",
+        "dB",
+        "/",
+        "/",
+        "65",
+        "1 米距离"
+      ]
+    ],
+    "marks": [
+      "passthrough"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 8,
+      "section_path": "3 技术要求 > 3.2 输出规格",
+      "provider": "local",
+      "marks": [
+        "passthrough"
+      ]
+    }
+  },
+  {
+    "id": "t9-0",
+    "caption": "表3 保护功能",
+    "headers": [
+      "项目/名称",
+      "项目/子项",
+      "单位",
+      "最小值",
+      "典型值",
+      "最大值",
+      "备注"
+    ],
+    "rows": [
+      [
+        "输入欠压保护",
+        "欠压点",
+        "Vac",
+        "85",
+        "/",
+        "/",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输入欠压保护",
+        "恢复点",
+        "Vac",
+        "/",
+        "/",
+        "/",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输入欠压保护",
+        "回差",
+        "Vac",
+        "5",
+        "/",
+        "/",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输入过压保护",
+        "过压点",
+        "Vac",
+        "/",
+        "/",
+        "300",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输入过压保护",
+        "恢复点",
+        "Vac",
+        "/",
+        "/",
+        "/",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输入过压保护",
+        "回差",
+        "Vac",
+        "5",
+        "/",
+        "/",
+        "上位机发指令后才会<br>开机"
+      ],
+      [
+        "输出过压保护",
+        "-",
+        "V",
+        "/",
+        "/",
+        "Vout+2.5V",
+        "当输出电压超过设定电<br>压2.5V，且持续20 秒，<br>电源自动关机，需重新发<br>开机指令才会重新开机。"
+      ],
+      [
+        "输出短路保护",
+        "-",
+        "有",
+        "-",
+        "-",
+        "-",
+        "30S 内自恢复，30S 后自<br>动关机，需重新发开机指<br>令才会重新开机。"
+      ],
+      [
+        "过温保护",
+        "-",
+        "有",
+        "-",
+        "-",
+        "-",
+        "电源自动检测器件温度，<br>温度超高时，电源会自动<br>降额，温度降低后电源功<br>率会恢复。"
+      ],
+      [
+        "电池反接保护",
+        "-",
+        "有",
+        "-",
+        "-",
+        "-",
+        "电池反接，电源不开机"
+      ],
+      [
+        "通讯中断",
+        "-",
+        "有",
+        "-",
+        "-",
+        "-",
+        "充电器120S 内，没有收"
+      ]
+    ],
+    "marks": [
+      "colspan:2@row0",
+      "rowspan:3@col0",
+      "rowspan:3@col2",
+      "rowspan:3@col6",
+      "colspan:2@row8",
+      "colspan:4@row8",
+      "colspan:2@row9",
+      "colspan:4@row9",
+      "colspan:2@row10",
+      "colspan:4@row10",
+      "colspan:2@row11",
+      "colspan:4@row11",
+      "flattened_header"
+    ],
+    "confidence": 0.95,
+    "source": {
+      "page": 9,
+      "section_path": "4 保护功能",
+      "provider": "local",
+      "marks": [
+        "colspan:2@row0",
+        "rowspan:3@col0",
+        "rowspan:3@col2",
+        "rowspan:3@col6",
+        "colspan:2@row8",
+        "colspan:4@row8",
+        "colspan:2@row9",
+        "colspan:4@row9",
+        "colspan:2@row10",
+        "colspan:4@row10",
+        "colspan:2@row11",
+        "colspan:4@row11",
+        "flattened_header"
+      ]
+    }
+  },
+  {
+    "id": "t10-0",
+    "caption": "表0",
+    "headers": [
+      "",
+      "",
+      "到主控命令，自动关机。"
+    ],
+    "rows": [
+      [
+        "充电超时",
+        "有",
+        "持续充电超过10 小时，<br>电源关机。"
+      ],
+      [
+        "NTC 故障",
+        "有",
+        "NTC 故障<br>1）温度<-30℃（NTC<br>开路可能）， 持续超<br>过5 分钟关机。<br>2）温度>125℃（NTC<br>短路可能）， 15 秒关<br>机"
+      ],
+      [
+        "",
+        "",
+        ""
+      ]
+    ],
+    "marks": [
+      "passthrough",
+      "DUP_HEADER"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 10,
+      "section_path": "4 保护功能",
+      "provider": "local",
+      "marks": [
+        "passthrough",
+        "DUP_HEADER"
+      ]
+    }
+  },
+  {
+    "id": "t10-1",
+    "caption": "表1",
+    "headers": [
+      "项目(1)",
+      "项目(2)",
+      "项目(3)",
+      "说明(1)",
+      "说明(2)",
+      "说明(3)",
+      "备注(1)",
+      "备注(2)",
+      "备注(3)"
+    ],
+    "rows": [
+      [
+        "输入交流电压上报，原<br>边PFC 电压上报",
+        "-",
+        "-",
+        "485 或CAN 上报",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "输出防打火",
+        "-",
+        "-",
+        "输出有继电器，当继电器两侧电压相近时才<br>吸合继电器，防止输出端打火。",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "无电流关机",
+        "-",
+        "-",
+        "开机无电流，10 分钟后自动关机，开机后<br>有电流，然后无电流20 分钟后自动关机。",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "充满提示和关机",
+        "-",
+        "-",
+        "A）充电电流<2A，持续64 秒，提示充满，<br>转为恒流浮充。<br>B）20 分钟后，或者无电流20 分钟后，执<br>行关机。",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ],
+      [
+        "-",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-",
+        "-"
+      ]
+    ],
+    "marks": [
+      "colspan:3@row1",
+      "colspan:3@row2",
+      "colspan:3@row3",
+      "colspan:3@row4",
+      "colspan:3@row5",
+      "flattened_header"
+    ],
+    "confidence": 0.85,
+    "source": {
+      "page": 10,
+      "section_path": "5 其它功能",
+      "provider": "local",
+      "marks": [
+        "colspan:3@row1",
+        "colspan:3@row2",
+        "colspan:3@row3",
+        "colspan:3@row4",
+        "colspan:3@row5",
+        "flattened_header"
+      ]
+    }
+  },
+  {
+    "id": "t11-0",
+    "caption": "表4 耐压与绝缘电阻",
+    "headers": [
+      "项目(大类)",
+      "项目",
+      "项目(子项)",
+      "项目(子项2)",
+      "标准（或测试条件）",
+      "标准（或测试条件）2",
+      "标准（或测试条件）3",
+      "备注",
+      "备注2",
+      "备注3"
+    ],
+    "rows": [
+      [
+        "抗电强度",
+        "抗电强度",
+        "输入与输出",
+        "输入与输出",
+        "3000Vac(4240Vdc)/10mA/1min",
+        "3000Vac(4240Vdc)/10mA/1min",
+        "3000Vac(4240Vdc)/10mA/1min",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿"
+      ],
+      [
+        "抗电强度",
+        "抗电强度",
+        "输入与大地",
+        "输入与大地",
+        "1500Vac(2120Vdc)/10mA/1min",
+        "1500Vac(2120Vdc)/10mA/1min",
+        "1500Vac(2120Vdc)/10mA/1min",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿"
+      ],
+      [
+        "抗电强度",
+        "抗电强度",
+        "输出与大地",
+        "输出与大地",
+        "500Vac(700Vdc)/10mA/1min",
+        "500Vac(700Vdc)/10mA/1min",
+        "500Vac(700Vdc)/10mA/1min",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿",
+        "无飞弧、无击穿"
+      ],
+      [
+        "绝缘电阻",
+        "绝缘电阻",
+        "输入与输出",
+        "输入与输出",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%"
+      ],
+      [
+        "绝缘电阻",
+        "绝缘电阻",
+        "输入与大地",
+        "输入与大地",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%"
+      ],
+      [
+        "绝缘电阻",
+        "绝缘电阻",
+        "输出与大地",
+        "输出与大地",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "≥50MΩ@500Vdc",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%",
+        "在环境温度为<br>15—35℃，相对<br>湿度为≤90%"
+      ]
+    ],
+    "marks": [
+      "colspan:2@row0",
+      "rowspan:3@col0;colspan:2@row1",
+      "colspan:2@row1",
+      "colspan:3@row1",
+      "rowspan:3@col7;colspan:3@row1",
+      "colspan:2@row2",
+      "colspan:3@row2",
+      "colspan:2@row3",
+      "colspan:3@row3",
+      "rowspan:3@col0;colspan:2@row4",
+      "colspan:2@row4",
+      "colspan:3@row4",
+      "rowspan:3@col7;colspan:3@row4",
+      "colspan:2@row5",
+      "colspan:3@row5",
+      "colspan:2@row6",
+      "colspan:3@row6",
+      "flattened_header"
+    ],
+    "confidence": 0.88,
+    "source": {
+      "page": 11,
+      "section_path": "5 其它功能",
+      "provider": "local",
+      "marks": [
+        "colspan:2@row0",
+        "rowspan:3@col0;colspan:2@row1",
+        "colspan:2@row1",
+        "colspan:3@row1",
+        "rowspan:3@col7;colspan:3@row1",
+        "colspan:2@row2",
+        "colspan:3@row2",
+        "colspan:2@row3",
+        "colspan:3@row3",
+        "rowspan:3@col0;colspan:2@row4",
+        "colspan:2@row4",
+        "colspan:3@row4",
+        "rowspan:3@col7;colspan:3@row4",
+        "colspan:2@row5",
+        "colspan:3@row5",
+        "colspan:2@row6",
+        "colspan:3@row6",
+        "flattened_header"
+      ]
+    }
+  },
+  {
+    "id": "t11-1",
+    "caption": "表5  EMC 要求",
+    "headers": [
+      "项 目/项目分类",
+      "项 目/测试项目",
+      "标 准（或测试条件）",
+      "-",
+      "性能判/据",
+      "性能判/-",
+      "备 注"
+    ],
+    "rows": [
+      [
+        "EMI",
+        "传导骚扰发射",
+        "CLASS A",
+        "低3dB",
+        "低3dB",
+        "低3dB",
+        "EN55022"
+      ],
+      [
+        "EMI",
+        "辐射骚扰发射",
+        "CLASS A",
+        "低3dB",
+        "低3dB",
+        "低3dB",
+        "EN55022"
+      ],
+      [
+        "EMS",
+        "静电放电抗扰<br>性",
+        "气放电8KV,接触放电6KV",
+        "B",
+        "B",
+        "B",
+        "EN 55024"
+      ],
+      [
+        "EMS",
+        "电快速脉冲群<br>抗扰性",
+        "±2KV",
+        "B",
+        "B",
+        "B",
+        "YD/T1082"
+      ],
+      [
+        "EMS",
+        "浪涌抗扰性",
+        "差模：±2KV（耦合阻抗0 欧姆）<br>共模：±2KV（耦合阻抗0 欧姆）<br>1.2/50μS（8/20μS）混合波形",
+        "B",
+        "B",
+        "B",
+        "YD/T993"
+      ]
+    ],
+    "marks": [
+      "rowspan:2@col0;colspan:2@row0",
+      "rowspan:2@col2",
+      "rowspan:2@col3",
+      "rowspan:2@col5",
+      "rowspan:2@col6",
+      "colspan:3@row2",
+      "colspan:3@row3",
+      "rowspan:3@col0",
+      "colspan:3@row4",
+      "colspan:3@row5",
+      "colspan:3@row6",
+      "flattened_header"
+    ],
+    "confidence": 0.88,
+    "source": {
+      "page": 11,
+      "section_path": "7 EMC 要求",
+      "provider": "local",
+      "marks": [
+        "rowspan:2@col0;colspan:2@row0",
+        "rowspan:2@col2",
+        "rowspan:2@col3",
+        "rowspan:2@col5",
+        "rowspan:2@col6",
+        "colspan:3@row2",
+        "colspan:3@row3",
+        "rowspan:3@col0",
+        "colspan:3@row4",
+        "colspan:3@row5",
+        "colspan:3@row6",
+        "flattened_header"
+      ]
+    }
+  },
+  {
+    "id": "t12-0",
+    "caption": "表6 应用环境要求",
+    "headers": [
+      "项目",
+      "单位",
+      "最小值",
+      "典型/值",
+      "最大值",
+      "备注"
+    ],
+    "rows": [
+      [
+        "工作温度",
+        "℃",
+        "-20",
+        "25",
+        "50",
+        "50℃以上，电源会根据内部器件温度自动<br>降额，保障电源能工作在很高的环境温度，<br>只是功率会有降额。"
+      ],
+      [
+        "储存温度",
+        "℃",
+        "-25",
+        "25",
+        "85",
+        "电源不上电"
+      ],
+      [
+        "相对湿度",
+        "℃<br>%",
+        "10",
+        "/",
+        "95",
+        "正常工作时，无冷凝"
+      ],
+      [
+        "相对湿度",
+        "℃<br>%",
+        "5",
+        "/",
+        "95",
+        "电源不上电，无冷凝"
+      ],
+      [
+        "工作海拔高<br>  度",
+        "m",
+        "-60",
+        "/",
+        "2000",
+        "-"
+      ],
+      [
+        "散热方式",
+        "内置直流风扇强制风冷",
+        "-",
+        "-",
+        "-",
+        "-"
+      ]
+    ],
+    "marks": [
+      "rowspan:2@col0",
+      "rowspan:2@col2",
+      "rowspan:2@col4",
+      "flattened_header",
+      "rowspan:2@col1",
+      "colspan:5@row7"
+    ],
+    "confidence": 0.95,
+    "source": {
+      "page": 12,
+      "section_path": "10 电源可靠性要求",
+      "provider": "local",
+      "marks": [
+        "rowspan:2@col0",
+        "rowspan:2@col2",
+        "rowspan:2@col4",
+        "flattened_header",
+        "rowspan:2@col1",
+        "colspan:5@row7"
+      ]
+    }
+  },
+  {
+    "id": "t13-0",
+    "caption": "表0",
+    "headers": [
+      "序号",
+      "定义",
+      "参数",
+      "备注"
+    ],
+    "rows": [
+      [
+        "1",
+        "产品尺寸",
+        "227mm（长）×124mm（宽）×65mm<br>（高）±1mm",
+        "长L×宽W×高H"
+      ],
+      [
+        "2",
+        "包装尺寸",
+        "515mm（长）×305mm（宽）×280mm<br>（高）±10mm",
+        "一箱装16 个"
+      ],
+      [
+        "3",
+        "净重/毛重",
+        "单机重1.28KG，一箱重21.5KG",
+        ""
+      ],
+      [
+        "4",
+        "交流输入端子类型",
+        "厂家： NZLCN，型号：2EHDC-7.62;<br>或可完全替代的端子（备注）",
+        "位置参见结构图纸"
+      ],
+      [
+        "5",
+        "",
+        "",
+        ""
+      ],
+      [
+        "7",
+        "放置方式",
+        "水平",
+        ""
+      ],
+      [
+        "8",
+        "接地方式",
+        "通过固定电源的M3 螺钉接地，",
+        ""
+      ],
+      [
+        "9",
+        "螺钉要求",
+        "固定电源的螺钉都为M3 螺钉。",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        ""
+      ]
+    ],
+    "marks": [
+      "passthrough"
+    ],
+    "confidence": 1.0,
+    "source": {
+      "page": 13,
+      "section_path": "11 机械结构及标签 > 11.1 外形、接口端子如下图所示：",
+      "provider": "local",
+      "marks": [
+        "passthrough"
+      ]
+    }
+  }
+]

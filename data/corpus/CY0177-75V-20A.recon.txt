@@ -1,0 +1,6 @@
+=== CY0177-75V-20A.doc.json
+  doc_id='CY0177-75V-20A'
+  title='CY0177-75V-20A 电源设计规格书'
+  source_kind='pdf'
+  keys=['doc_id', 'title', 'source_path', 'source_kind', 'meta', 'blocks']
+  meta={"provider": "local", "ext": ".pdf", "size_bytes": 597088}

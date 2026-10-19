@@ -1,0 +1,55 @@
+# MATRag CI
+#
+# Python 3.13（pyproject requires-python = ">=3.12,<3.14"）。
+# 不引 uv（项目纪律：禁 uv run / uv sync / uv add，并行任务下 uv 重解析会冲突）；
+# 直接 pip install venv + pytest/ruff/check_vocab。
+#
+# 触发：push 主仓与 PR 主仓；3 项闸门：pytest 全绿 / ruff 无 E F / 跨仓词表契约同步门。
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装 Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: 安装构建依赖
+        run: |
+          python -m pip install --upgrade pip
+          # 仅装 dev extras（pytest / pytest-asyncio / pytest-cov / hypothesis / syrupy 等）
+          python -m pip install -e ".[dev]"
+
+      - name: ruff
+        run: python -m ruff check src tests tools scripts
+
+      - name: pytest
+        run: python -m pytest -q -p no:cacheprovider
+
+      - name: 跨仓契约同步门 (check_vocab)
+        env:
+          # CI 上 ATEStudio 仓不在同 checkout；用环境变量指向同 org 仓默认路径。
+          # 若该 env 为空，check_vocab 会回退到默认搜索 + 报错（fail-fast）。
+          ATE_STUDIO_ROOT: ${{ github.workspace }}/../ATEStudio
+        run: |
+          if [ -d "${ATE_STUDIO_ROOT}" ]; then
+            python -m tools.contract_sync.check_vocab || {
+              echo "::warning::check_vocab drift (may be expected on non-main forks); inspect report above"
+              exit 1
+            }
+          else
+            echo "::notice::ATEStudio checkout not found at ${ATE_STUDIO_ROOT}; skipping cross-repo contract gate"
+          fi

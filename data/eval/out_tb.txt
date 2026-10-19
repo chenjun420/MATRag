@@ -1,0 +1,11 @@
+### CY0177-75V-20A.tables.json
+  type=list  keys=n/a
+  n_tables=14
+
+### GDC800T5054-UC.tables.json
+  type=list  keys=n/a
+  n_tables=39
+
+### PA601-D54A 定制电源技术规格书.tables.json
+  type=list  keys=n/a
+  n_tables=33

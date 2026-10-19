@@ -1,0 +1,6 @@
+=== GDC800T5054-UC.doc.json
+  doc_id='GDC800T5054-UC'
+  title='GDC800T5054-UC 电源模块'
+  source_kind='pdf'
+  keys=['doc_id', 'title', 'source_path', 'source_kind', 'meta', 'blocks']
+  meta={"provider": "local", "ext": ".pdf", "size_bytes": 4758536}

@@ -1,0 +1,9 @@
+file= PA601-D54A 瀹氬埗鐢垫簮鎶€鏈鏍间功.tables.json  tables= 33
+table keys: ['id', 'caption', 'headers', 'rows', 'marks', 'confidence', 'source']
+  id               = t0-0
+  caption          = 琛?
+  headers          = list[7] ['鏂囦欢缂栧彿', '鐗堟湰鍙?]
+  rows             = list[2] [['500005128243', 'A', '鏉ㄥ織寮?, '2025-9-22', '鏃?, '鏃?, '鏃?], ['500005128243', 'B', '鏉ㄥ織寮?, '2026-8-21', 'DYEC-17767', '1. 淇敼4.2.4杈撳嚭鎺ュ彛銆佷俊鍙锋帴鍙?br>2. 淇敼4.3.4鐩?
+  marks            = list[1] ['passthrough']
+  confidence       = 1.0
+  source           = dict['page', 'section_path', 'provider', 'marks']

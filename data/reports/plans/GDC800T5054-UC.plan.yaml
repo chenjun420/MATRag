@@ -1,0 +1,1343 @@
+# 由 ATERag 从规格书自动生成 —— 这是**草稿**, 不是可直接上机的序列。
+#
+# 产品: GDC800T5054-UC  规格版本: (未标注)
+# 步骤数: 75 (= 计划 73 + 破坏性栅栏 0 + 夹具装夹/释放 2)  分段: 17  逐台稳定等待: 55.9s
+# 未映射场景: 0  (这些需求未被排入任何测试)
+# 批次级设置 1 项, 一次性稳定 30 分钟 (按批计, 不在逐台节拍内)
+#   - set_chamber_temperature = {"typ": 25.0, "unit": "degC"}  稳定 30 分钟
+name: GDC800T5054-UC 产测序列 (ATERag 生成草稿)
+version: '3.2'
+scope:
+  variables: {}
+max_concurrency: 1
+uut_count: 1
+steps:
+- id: fixture_clamp
+  type: fixture_control
+  action: clamp
+  fixture_id: FILL_IN_AT_COMMISSION
+  on_failure: abort
+- id: SR-GDC800T5054-UC-t11-1-1_s001_g000_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 0V
+    value:
+      typ: 0.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 0V
+    rail: ''
+  resources:
+  - PSU_1
+- id: SR-GDC800T5054-UC-t11-1-1_s001_g000_output_current
+  type: action
+  script: measure_input_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 最大输入电流
+    value:
+      max: 28.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 0V
+    rail: ''
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t11-1-1_s001_g000_input_voltage
+- id: SR-GDC800T5054-UC-t11-1-2_s001_g001_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 36V
+    value:
+      typ: 36.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 36V
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t11-1-1_s001_g000_output_current
+- id: SR-GDC800T5054-UC-t11-1-2_s001_g001_output_current
+  type: action
+  script: measure_input_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 最大输入电流
+    value:
+      max: 26.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 36V
+    rail: ''
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t11-1-2_s001_g001_input_voltage
+- id: SR-GDC800T5054-UC-t15-1-0_s001_g002_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 48V
+    value:
+      typ: 48.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 48V
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t11-1-2_s001_g001_output_current
+- id: SR-GDC800T5054-UC-t15-1-0_s001_g002_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TB=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+    rail: ''
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-0_s001_g002_input_voltage
+- id: SR-GDC800T5054-UC-t15-1-0_s001_g002_m_efficiency
+  type: action
+  script: measure_efficiency.py
+  params:
+    condition_kind: efficiency
+    condition_text: 最大负载
+    value:
+      min: 94.0
+      typ: 95.0
+      unit: '%'
+    unit: '%'
+    method_ref: iec62368_efficiency
+    scenario_bindings:
+      input_tier: 48V
+    rail: ''
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-0_s001_g002_temperature
+- id: SR-GDC800T5054-UC-t15-1-1_s001_g002_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TB=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+    rail: ''
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-0_s001_g002_m_efficiency
+- id: SR-GDC800T5054-UC-t15-1-1_s001_g002_m_efficiency
+  type: action
+  script: measure_efficiency.py
+  params:
+    condition_kind: efficiency
+    condition_text: 额定负载
+    value:
+      min: 94.0
+      typ: 95.0
+      unit: '%'
+    unit: '%'
+    method_ref: iec62368_efficiency
+    scenario_bindings:
+      input_tier: 48V
+    rail: ''
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-1_s001_g002_temperature
+- id: SR-GDC800T5054-UC-t15-1-2_s001_g003_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 48V
+    value:
+      typ: 48.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 48V
+      load: 空载
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-1_s001_g002_m_efficiency
+- id: SR-GDC800T5054-UC-t15-1-2_s001_g003_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TB=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+      load: 空载
+    rail: ''
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-2_s001_g003_input_voltage
+- id: SR-GDC800T5054-UC-t15-1-2_s001_g003_m_efficiency
+  type: action
+  script: measure_efficiency.py
+  params:
+    condition_kind: efficiency
+    condition_text: 空载
+    value:
+      min: 91.0
+      typ: 92.0
+      unit: '%'
+    unit: '%'
+    method_ref: iec62368_efficiency
+    scenario_bindings:
+      input_tier: 48V
+      load: 空载
+    rail: ''
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-2_s001_g003_temperature
+- id: SR-GDC800T5054-UC-t14-1-0_s001_g004_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 50V
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-1-2_s001_g003_m_efficiency
+- id: SR-GDC800T5054-UC-t14-1-0_s001_g004_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: '输入欠压保护(50V) 保护点 恢复点 回差 (拆分: 保护点; 恢复点; 回差)'
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings:
+      input_tier: 50V
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t14-1-0_s001_g004_input_voltage
+- id: SR-GDC800T5054-UC-t14-1-1_s001_g005_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 5V
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t14-1-0_s001_g004_m_protection_action
+- id: SR-GDC800T5054-UC-t14-1-1_s001_g005_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: '输入欠压保护(5V4) 保护点 恢复点 回差 (拆分: 保护点; 恢复点; 回差)'
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings:
+      input_tier: 5V
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t14-1-1_s001_g005_input_voltage
+- id: SR-GDC800T5054-UC-t11-1-0_s001_g006_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 工作电压
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t14-1-1_s001_g005_m_protection_action
+- id: SR-GDC800T5054-UC-t15-0-5_s001_g006_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: '过温保护 保护点 回差 (拆分: 保护点; 回差)'
+    value: null
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: ''
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t11-1-0_s001_g006_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-3_s001_g007_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 46V
+    value:
+      typ: 46.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 46V
+    rail: 50V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-5_s001_g006_m_protection_action
+- id: SR-GDC800T5054-UC-t12-0-3_s001_g007_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出电压
+    value:
+      min: 34.0
+      max: 55.0
+      unit: V
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 46V
+    rail: 50V
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-3_s001_g007_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-0_s001_g008_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 48V
+    value:
+      typ: 48.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 48V
+    rail: 50V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-3_s001_g007_m_output_voltage
+- id: SR-GDC800T5054-UC-t12-0-0_s001_g008_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TA=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+    rail: 50V
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-0_s001_g008_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-0_s001_g008_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出整定电压
+    value:
+      min: 5.0
+      typ: 50.0
+      max: 5.0
+      unit: V
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 48V
+    rail: 50V
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-0_s001_g008_temperature
+- id: SR-GDC800T5054-UC-t16-0-6_s001_g009_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 50V
+    value:
+      typ: 50.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 50V
+    rail: 50V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-0_s001_g008_m_output_voltage
+- id: SR-GDC800T5054-UC-t16-0-6_s001_g009_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (TDD)
+    value:
+      max: 3500.0
+      unit: mV
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings:
+      input_tier: 50V
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-6_s001_g009_input_voltage
+- id: SR-GDC800T5054-UC-t16-0-7_s001_g009_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (TDD)
+    value:
+      max: 1.5
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings:
+      input_tier: 50V
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-6_s001_g009_m_timing
+- id: SR-GDC800T5054-UC-t12-0-5_s001_g010_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-7_s001_g009_m_timing
+- id: SR-GDC800T5054-UC-t12-0-5_s001_g010_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 输出电流
+    value:
+      min: 0.0
+      typ: 7.0
+      max: 1.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-5_s001_g010_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-6_s001_g010_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 输出电流
+    value:
+      min: 0.0
+      typ: 2.0
+      max: 18.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-5_s001_g010_m_output_current
+- id: SR-GDC800T5054-UC-t12-0-9_s001_g010_m_output_power
+  type: action
+  script: measure_output_power.py
+  params:
+    condition_kind: output_power
+    condition_text: 输出功率
+    value:
+      min: 0.0
+      typ: 585.0
+      max: 705.0
+      unit: W
+    unit: W
+    method_ref: ''
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-6_s001_g010_m_output_current
+- id: SR-GDC800T5054-UC-t12-0-10_s001_g010_m_output_power
+  type: action
+  script: measure_output_power.py
+  params:
+    condition_kind: output_power
+    condition_text: 输出功率
+    value:
+      min: 0.0
+      typ: 760.0
+      max: 900.0
+      unit: W
+    unit: W
+    method_ref: ''
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-9_s001_g010_m_output_power
+- id: SR-GDC800T5054-UC-t13-0-9_s001_g010_m_cap_load
+  type: action
+  script: verify_cap_load_capability.py
+  params:
+    condition_kind: cap_load
+    condition_text: 容性负载
+    value:
+      min: 1000.0
+      max: 2000.0
+      unit: uF
+    unit: uF
+    method_ref: ''
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-10_s001_g010_m_output_power
+- id: SR-GDC800T5054-UC-t13-0-10_s001_g010_m_cap_load
+  type: action
+  script: verify_cap_load_capability.py
+  params:
+    condition_kind: cap_load
+    condition_text: 容性负载
+    value:
+      min: 1360.0
+      max: 2000.0
+      unit: uF
+    unit: uF
+    method_ref: ''
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-9_s001_g010_m_cap_load
+- id: SR-GDC800T5054-UC-t13-0-13_s001_g010_m_ripple
+  type: action
+  script: measure_ripple_20mhz.py
+  params:
+    condition_kind: ripple
+    condition_text: 输出电压纹波噪声 (峰峰值)
+    value:
+      max: 500.0
+      unit: mVpp
+    unit: mVpp
+    method_ref: en300132_ripple
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-10_s001_g010_m_cap_load
+- id: SR-GDC800T5054-UC-t13-0-16_s001_g010_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压过冲
+    value:
+      max: 5.0
+      unit: '%'
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-13_s001_g010_m_ripple
+- id: SR-GDC800T5054-UC-t13-0-19_s001_g010_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压延迟时间
+    value:
+      min: 200.0
+      max: 5000.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-16_s001_g010_m_timing
+- id: SR-GDC800T5054-UC-t14-0-1_s001_g010_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压上升时间
+    value:
+      max: 200.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-19_s001_g010_m_timing
+- id: SR-GDC800T5054-UC-t15-0-0_s001_g010_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过流保护
+    value:
+      min: 2.0
+      max: 8.0
+      unit: A
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t14-0-1_s001_g010_m_timing
+- id: SR-GDC800T5054-UC-t15-0-3_s001_g010_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过压保护
+    value:
+      min: 60.0
+      max: 64.0
+      unit: V
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-0_s001_g010_m_protection_action
+- id: SR-GDC800T5054-UC-t16-0-0_s001_g010_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 2500.0
+      unit: mV
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-3_s001_g010_m_protection_action
+- id: SR-GDC800T5054-UC-t16-0-1_s001_g010_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 0.2
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 50V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-0_s001_g010_m_timing
+- id: SR-GDC800T5054-UC-t12-0-1_s001_g011_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 48V
+    value:
+      typ: 48.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 48V
+    rail: 5V4
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-1_s001_g010_m_timing
+- id: SR-GDC800T5054-UC-t12-0-1_s001_g011_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TA=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+    rail: 5V4
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-1_s001_g011_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-1_s001_g011_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出整定电压
+    value:
+      min: 24.0
+      typ: 4.0
+      max: 56.0
+      unit: V
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 48V
+    rail: 5V4
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-1_s001_g011_temperature
+- id: SR-GDC800T5054-UC-t13-0-11_s001_g012_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 5V
+    value:
+      typ: 5.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 5V
+    rail: 5V4
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-1_s001_g011_m_output_voltage
+- id: SR-GDC800T5054-UC-t13-0-11_s001_g012_m_cap_load
+  type: action
+  script: verify_cap_load_capability.py
+  params:
+    condition_kind: cap_load
+    condition_text: 容性负载
+    value:
+      min: 300.0
+      max: 1500.0
+      unit: uF
+    unit: uF
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 5V
+    rail: 5V4
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-11_s001_g012_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-4_s001_g013_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-11_s001_g012_m_cap_load
+- id: SR-GDC800T5054-UC-t12-0-4_s001_g013_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出电压
+    value:
+      min: 95.0
+      max: 105.0
+      unit: '%'
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-4_s001_g013_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-7_s001_g013_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 输出电流
+    value:
+      min: 2.0
+      typ: 1.0
+      max: 5.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-4_s001_g013_m_output_voltage
+- id: SR-GDC800T5054-UC-t12-0-11_s001_g013_m_output_power
+  type: action
+  script: measure_output_power.py
+  params:
+    condition_kind: output_power
+    condition_text: 输出功率
+    value:
+      min: 8.0
+      typ: 87.0
+      max: 100.0
+      unit: W
+    unit: W
+    method_ref: ''
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-7_s001_g013_m_output_current
+- id: SR-GDC800T5054-UC-t13-0-14_s001_g013_m_ripple
+  type: action
+  script: measure_ripple_20mhz.py
+  params:
+    condition_kind: ripple
+    condition_text: 输出电压纹波噪声 (峰峰值)
+    value:
+      min: 0.0
+      max: 50.0
+      unit: mVpp
+    unit: mVpp
+    method_ref: en300132_ripple
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-11_s001_g013_m_output_power
+- id: SR-GDC800T5054-UC-t13-0-15_s001_g013_m_ripple
+  type: action
+  script: measure_ripple_20mhz.py
+  params:
+    condition_kind: ripple
+    condition_text: 输出电压纹波噪声 (峰峰值)
+    value:
+      min: 0.0
+      max: 100.0
+      unit: mVpp
+    unit: mVpp
+    method_ref: en300132_ripple
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-14_s001_g013_m_ripple
+- id: SR-GDC800T5054-UC-t13-0-17_s001_g013_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压过冲
+    value:
+      max: 5.0
+      unit: '%'
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-15_s001_g013_m_ripple
+- id: SR-GDC800T5054-UC-t13-0-20_s001_g013_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压延迟时间
+    value:
+      max: 100.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-17_s001_g013_m_timing
+- id: SR-GDC800T5054-UC-t14-0-2_s001_g013_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压上升时间
+    value:
+      max: 50.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-20_s001_g013_m_timing
+- id: SR-GDC800T5054-UC-t15-0-1_s001_g013_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过流保护
+    value:
+      min: 5.0
+      max: 0.0
+      unit: A
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t14-0-2_s001_g013_m_timing
+- id: SR-GDC800T5054-UC-t15-0-4_s001_g013_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过压保护
+    value:
+      min: 94.0
+      max: 0.0
+      unit: V
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-1_s001_g013_m_protection_action
+- id: SR-GDC800T5054-UC-t16-0-2_s001_g013_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 270.0
+      unit: mV
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-4_s001_g013_m_protection_action
+- id: SR-GDC800T5054-UC-t16-0-3_s001_g013_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 0.2
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: 5V4
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-2_s001_g013_m_timing
+- id: SR-GDC800T5054-UC-t12-0-2_s001_g014_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 48V
+    value:
+      typ: 48.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 48V
+    rail: N10V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-3_s001_g013_m_timing
+- id: SR-GDC800T5054-UC-t12-0-2_s001_g014_temperature
+  type: action
+  script: set_chamber_temperature.py
+  params:
+    condition_kind: temperature
+    condition_text: 原文标注 TA=25°C
+    value:
+      typ: 25.0
+      unit: degC
+    unit: degC
+    method_ref: iec62368_temperature_rise
+    scenario_bindings:
+      input_tier: 48V
+    rail: N10V
+  resources:
+  - CHAMBER_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-2_s001_g014_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-2_s001_g014_m_output_voltage
+  type: action
+  script: measure_dc_voltage.py
+  params:
+    condition_kind: output_voltage
+    condition_text: 输出整定电压
+    value:
+      min: -9.34
+      typ: -9.5
+      max: -9.76
+      unit: V
+    unit: V
+    method_ref: en300132_steady_state
+    scenario_bindings:
+      input_tier: 48V
+    rail: N10V
+  resources:
+  - DMM_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-2_s001_g014_temperature
+- id: SR-GDC800T5054-UC-t13-0-12_s001_g015_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 原文标注 5V
+    value:
+      typ: 5.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings:
+      input_tier: 5V
+    rail: N10V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-2_s001_g014_m_output_voltage
+- id: SR-GDC800T5054-UC-t13-0-12_s001_g015_m_cap_load
+  type: action
+  script: verify_cap_load_capability.py
+  params:
+    condition_kind: cap_load
+    condition_text: 容性负载
+    value:
+      min: 50.0
+      max: 470.0
+      unit: uF
+    unit: uF
+    method_ref: ''
+    scenario_bindings:
+      input_tier: 5V
+    rail: N10V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-12_s001_g015_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-8_s001_g016_input_voltage
+  type: action
+  script: set_ac_input.py
+  params:
+    condition_kind: input_voltage
+    condition_text: 产品基线(原文未标注明确输入条件)
+    value:
+      min: 36.0
+      typ: 48.0
+      max: 60.0
+      unit: V
+    unit: Vac
+    method_ref: en300132_inrush_measurement
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - PSU_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-12_s001_g015_m_cap_load
+- id: SR-GDC800T5054-UC-t12-0-8_s001_g016_m_output_current
+  type: action
+  script: measure_dc_current.py
+  params:
+    condition_kind: output_current
+    condition_text: 输出电流
+    value:
+      min: 0.0
+      max: 2.0
+      unit: A
+    unit: A
+    method_ref: en300132_steady_state
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - DMM_2
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-8_s001_g016_input_voltage
+- id: SR-GDC800T5054-UC-t12-0-12_s001_g016_m_output_power
+  type: action
+  script: measure_output_power.py
+  params:
+    condition_kind: output_power
+    condition_text: 输出功率
+    value:
+      min: 0.0
+      max: 9.0
+      unit: W
+    unit: W
+    method_ref: ''
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - POWER_ANALYZER
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-8_s001_g016_m_output_current
+- id: SR-GDC800T5054-UC-t13-0-18_s001_g016_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压过冲
+    value:
+      max: 5.0
+      unit: '%'
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t12-0-12_s001_g016_m_output_power
+- id: SR-GDC800T5054-UC-t14-0-0_s001_g016_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压延迟时间
+    value:
+      max: 200.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t13-0-18_s001_g016_m_timing
+- id: SR-GDC800T5054-UC-t14-0-3_s001_g016_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 输出电压上升时间
+    value:
+      max: 50.0
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t14-0-0_s001_g016_m_timing
+- id: SR-GDC800T5054-UC-t15-0-2_s001_g016_m_protection_action
+  type: action
+  script: verify_protection_action.py
+  params:
+    condition_kind: protection_action
+    condition_text: 输出过流保护
+    value:
+      min: 3.0
+      unit: A
+    unit: ''
+    method_ref: iec62368_protection
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - CONTROL_IF
+  depends_on:
+  - SR-GDC800T5054-UC-t14-0-3_s001_g016_m_timing
+- id: SR-GDC800T5054-UC-t16-0-4_s001_g016_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 630.0
+      unit: mV
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t15-0-2_s001_g016_m_protection_action
+- id: SR-GDC800T5054-UC-t16-0-5_s001_g016_m_timing
+  type: action
+  script: measure_transient_response.py
+  params:
+    condition_kind: timing
+    condition_text: 过冲幅度 恢复时间 (FDD)
+    value:
+      max: 0.2
+      unit: ms
+    unit: ms
+    method_ref: en300132_dynamic_response
+    scenario_bindings: {}
+    rail: N10V
+  resources:
+  - SCOPE_1
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-4_s001_g016_m_timing
+- id: fixture_release
+  type: fixture_control
+  action: release
+  fixture_id: FILL_IN_AT_COMMISSION
+  depends_on:
+  - SR-GDC800T5054-UC-t16-0-5_s001_g016_m_timing

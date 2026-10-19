@@ -1,0 +1,1380 @@
+# 电源产品产测方法（通用知识 / 公共知识, 2026-10-12 websearch 补齐）
+#
+# 定位: 芯片测试与产线测试条目的"方法"层。方法通过 measures(术语) 与 rules(域规则)
+#   把产品/参数/保护/安规等实体联系起来（很多实体都是通过硬件测试方法发生关联）。
+# 字段:
+#   method_id  唯一 id (M-XXX); zh/en 名称; aliases 别名（检索链接用）;
+#   category   ∈ matrag.domain.vocab.CATEGORIES;
+#   definition 一句话定义; parameters 测试条件与参数; instruments 所需仪表（含关键规格）;
+#   interfaces 接口与接线; metrics 测试指标;
+#   procedure 测试步骤; criteria 判据（引用规则 id）;
+#   measures   关联术语 id (T-*); rules 关联域规则 id (K-*);
+#   standards  引用标准（可省略）; references 检索来源 URL; retrieved 检索日期。
+# 本项目内该文件为"通用知识"（不绑定型号）, 具体限值以产品规格书为准。
+
+- method_id: M-RIPPLE-NOISE
+  zh: 输出纹波与噪声测试
+  en: Output Ripple and Noise Test
+  aliases: [纹波测试, 输出纹波测量, 纹波与噪声测量]
+  category: output
+  definition: 测量直流输出上叠加的交流纹波与噪声峰峰值, 验证电源输出质量是否满足规格限值; 行业通用做法为示波器 20MHz 带宽限制 + 靠接法测量。
+  parameters:
+    - 输入电压：额定及上下限（如 115/230Vac 或 90~264Vac 范围点）
+    - 负载：满载/半载等组合工况
+    - 温度：常温（必要时高/低温）
+    - 示波器设置：20MHz 带宽限制、AC 耦合、1~10mV/div
+  instruments:
+    - 示波器（带宽 ≥100MHz，支持 20MHz 带宽限制）
+    - 无源探头（1X 或 10:1）配接地弹簧/靠接治具
+    - 去耦电容组（10µF 电解 + 0.1µF 陶瓷，或 50Ω 同轴+隔直板）
+    - 电子负载（CC 模式）
+  interfaces:
+    - 输出端子 V+/V− 探头靠接输出电容两端（接地回路 <1cm）
+    - 输入端子 L/N/PE 接可编程交流源
+    - 示波器供电经隔离（避免共地噪声）
+  metrics:
+    - 纹波与噪声峰峰值 Vpp（mVpp，20MHz 带宽限制下）
+    - 电感纹波电流峰峰值 ΔI_L（App）
+    - 电容纹波电流有效值 I_rms（Arms）
+  procedure:
+    - 示波器设 AC 耦合、带宽限制 20MHz; 探头用 1X 档（或 10:1 配合带宽限制）, 以接地弹簧/靠接法替代长地线, 避免地线环路谐振放大高频噪声;
+    - 探头上并联去耦电容组（典型 10µF 电解 + 0.1µF 陶瓷）或经隔直板接同轴电缆, 滤除非真实的拾取噪声;
+    - 测量点选输出电容两端（SMD 焊盘等无感测试点）, 远离开关节点/变压器/整流回路等辐射源;
+    - 垂直灵敏度 1~10mV/div, 时基取 1~2 个开关周期, 边沿触发捕获稳定周期波形;
+    - 在满载/半载、输入高低限、温度极值等组合工况下记录纹波峰峰值, 与规格限值比对。
+  criteria:
+    - 输出纹波峰峰值 ≤ 规格限值（模块电源典型 ≤1%·Vout 或 50~100mVpp）, 实测须使用 20MHz 带宽限制与去耦电容（K-PWR-102）;
+    - 电容实际纹波电流有效值 ≤ 额定纹波电流, 超额定将按 Arrhenius 律加速老化（K-PWR-103）;
+    - 电感纹波电流峰峰值实测 ≤ 设计值 ΔI_L, 峰值电流不得超出饱和值（K-PWR-104）。
+  measures: [T-RIPPLE, T-RIPPLEVOLT, T-RIPPLE-CURRENT, T-ESR, T-VPP, T-SWITCHFREQ]
+  rules: [K-PWR-101, K-PWR-102, K-PWR-103, K-PWR-104]
+  standards: [IEC 61204]
+  references:
+    - https://e2echina.ti.com/cfs-file/__key/communityserver-discussions-components-files/24/0624.TI_2D008259554F636B6E784B6DD58B3575906E8476B97EE26C1FFF_.pdf
+    - https://www.digikey.cn/zh/forum/t/topic/5575
+    - https://www.legend-si.com/newsinfo/8071541.html
+    - https://news.eeworld.com.cn/Test_and_measurement/2015/0630/article_12152.html
+  retrieved: "2026-10-12"
+
+- method_id: M-HOLDUP
+  zh: 掉电保持时间测试
+  en: Hold-up Time Test
+  aliases: [保持时间测试, 掉电保持测试, hold-up测试]
+  category: dynamics
+  definition: 切断交流输入后, 测量直流输出维持在规定范围内（标称 90% 以上）的时间, 验证母线储能对市电跌落（如一个工频周期）的支撑能力。
+  parameters:
+    - 输入：最低工作电压（母线最低点）
+    - 负载：规定负载（如 0.5×额定）
+    - 条件：输出跌落至标称 90% 计时
+  instruments:
+    - 电子负载（带时间量测/外部触发 TRI 功能）
+    - 示波器（电压电平触发）
+    - 可编程交流源（支持同步断开的开关控制）
+  interfaces:
+    - 交流输入经开关/继电器与触发信号同步
+    - 输出端子 V+/V− 接电子负载
+    - 触发线连接负载 TRI 口与 AC 开关
+  metrics:
+    - 保持时间 t_hold（ms，≥16~20ms 或规格值）
+    - 输出下跌拐点电压（90% 标称）
+    - 关机下冲与下降时间（记录曲线）
+  procedure:
+    - 在最低输入电压（母线电压最低点）与规定负载（如 CC=0.5A）下运行至稳定;
+    - 用开关/继电器同步切断 AC 输入, 以电子负载或示波器的电平触发（TRI 外部触发→输出电压下降沿）捕获时间差;
+    - 记录输出从标称跌落至允许下限（标称 90%）的时间; 多次重复取最小值;
+    - 与规格值比对（通用要求 ≥16~20ms, 对应 50Hz 一个市电周期）, 并用最低母线电压核算储能电容。
+  criteria:
+    - 断电后输出维持标称 90% 以上的时间 ≥ 规格值（通用 ≥16~20ms）（K-PWR-114）;
+    - 母线储能电容 C ≥ 2·P_out·t_hold / (η·(V1²−V2²)), 须按最低输入电压核算（K-PWR-115）。
+  measures: [T-HOLDUP, T-RECTBUS, T-WORKVOLT]
+  rules: [K-PWR-114, K-PWR-115]
+  standards: [IEC 61204]
+  references:
+    - https://bbs.21dianyuan.com/thread-238263-1-1.html
+    - https://baike.baidu.com/item/%E7%94%B5%E6%BA%90%E4%BF%9D%E6%8C%81%E6%97%B6%E9%97%B4/5147058
+    - https://zhuanlan.zhihu.com/p/608764868
+    - http://www.jartul.com/te_service_method_copy/0/0.chtml
+  retrieved: "2026-10-12"
+
+- method_id: M-UVLO
+  zh: 欠压保护(UVLO)测试
+  en: Input Undervoltage Lockout Test
+  aliases: [欠压锁定测试, 欠压保护测试, UVLO测试]
+  category: protection
+  definition: 缓慢升降输入电压, 测量输出的关断点（UVLO 停止阈值）、恢复点（启动阈值）及回差, 并验证欠压期间的告警行为。
+  parameters:
+    - 输入：缓慢升/降（如 3Vac/min 或按规格速率）
+    - 负载：额定
+    - 温度：常温及高/低温复测
+  instruments:
+    - 可编程交/直流源（可程序化缓变）
+    - 数字万用表/上位机读数（记录输入/输出电压）
+    - 电子负载
+  interfaces:
+    - 输入端子接可编程源
+    - 输出端子接电子负载
+    - 遥信/通信口（观察欠压告警上报）
+  metrics:
+    - UVLO 关断点、启动点（V）
+    - 回差 = 启动点 − 关断点（V）
+    - 欠压告警点（V）
+  procedure:
+    - 额定负载下缓慢降低输入电压至输出关断, 记录 UVLO 关断点;
+    - 缓慢回升输入电压至输出恢复, 记录启动阈值; 回差 = 恢复点 − 关断点;
+    - 在高/常温等温度工况与多台样机上复测, 记录最小/最大/典型三档限值;
+    - 观察欠压告警区（低于告警点、高于关断点）内遥信是否上报、输出是否继续运行。
+  criteria:
+    - 最低工作电压 < UVLO 启动阈值 < UVLO 关断阈值, 欠压告警点高于最低工作电压（K-PROT-109）;
+    - 欠压告警区内须上报遥信并可继续运行, 跌至关断点才保护（K-PROT-110）;
+    - 回差 ≥ max(设定值×1%, 输入噪声峰峰值×2)（K-PROT-108）;
+    - UVLO 三档限值须覆盖整个工作温度范围, 典型值不可用于判定（K-PROT-103）。
+  measures: [T-UVLO, T-UVP, T-HYSTERESIS, T-WORKVOLT]
+  rules: [K-PROT-102, K-PROT-103, K-PROT-108, K-PROT-109, K-PROT-110]
+  standards: [IEC 61204]
+  references:
+    - https://zhuanlan.zhihu.com/p/699450936
+    - https://www.szwanbo.com/industry-news/539386.html
+    - https://blog.csdn.net/Namisooft/article/details/154358263
+  retrieved: "2026-10-12"
+
+- method_id: M-OCP
+  zh: 过流保护测试
+  en: Over Current Protection Test
+  aliases: [过流保护测试, OCP测试, 限流点测试]
+  category: protection
+  definition: 逐步增加负载电流, 测量输出进入保护（限流/关断）的电流点与保护模式（打嗝/锁存）, 并验证恢复行为与保护点精度。
+  parameters:
+    - 输入：额定（及高低线）
+    - 负载：CC 模式逐步递增
+    - 温度：常温（必要时高温）
+  instruments:
+    - 电子负载（CC 模式，带 OCP 自动测试功能）
+    - 示波器（观察输出波形/电流探头可选）
+  interfaces:
+    - 输出端子 V+/V− 接电子负载
+    - 示波器探头接输出端
+  metrics:
+    - OCP 保护点（A，容差 ±5%）
+    - 保护模式判定（打嗝/锁存/折返）
+    - 重试间隔（打嗝模式，ms~s）
+  procedure:
+    - 电子负载以 CC 模式逐步增加电流, 记录输出进入保护时的电流值;
+    - 判定保护模式：打嗝（hiccup, 周期重试）/锁存（锁定关断需人工或重新上电复位）/折返;
+    - 对打嗝模式记录重试间隔; 对锁存模式记录复位条件与故障码;
+    - 保护点与标称值比对（±5% 容差内）, 重复多台样机。
+  criteria:
+    - 保护点实测值落在标称 ±5% 容差带内（K-PROT-111）;
+    - 打嗝模式重试间隔典型数百 ms~数秒, 故障消除后自动恢复（K-PROT-104/105）;
+    - 最高级故障须锁存并记录可查询故障码, 复位条件明确（K-PROT-114）。
+  measures: [T-OCP, T-HICCUP, T-LATCHOFF]
+  rules: [K-PROT-104, K-PROT-105, K-PROT-111, K-PROT-114]
+  standards: [IEC 61204]
+  references:
+    - https://www.fcpowerup.com/how-do-i-test-power-supplies
+    - https://zhuanlan.zhihu.com/p/699450936
+    - https://www.szwanbo.com/industry-news/539386.html
+  retrieved: "2026-10-12"
+
+- method_id: M-OTP
+  zh: 过温保护测试
+  en: Over Temperature Protection Test
+  aliases: [过温保护测试, OTP测试]
+  category: protection
+  definition: 将样机置于温箱/加热环境升温, 测量过温保护触发点、恢复点与回差, 并验证保护/恢复行为。
+  parameters:
+    - 环境：温箱从常温逐步升温
+    - 负载：额定
+    - 温度：覆盖保护点及恢复点
+  instruments:
+    - 温箱（控温范围覆盖保护点）
+    - 热电偶/温度记录仪（或读取 NTC 遥测温度）
+    - 电子负载
+  interfaces:
+    - 样机置于温箱内带载运行
+    - NTC/遥测温度读取接口（如 I2C/PMBus）
+    - 输出端子接电子负载
+  metrics:
+    - 过温保护触发点（℃）
+    - 恢复点与回差（℃）
+    - 温度遥测读数误差（℃）
+  procedure:
+    - 额定负载下将样机放入温箱, 从常温逐步升温, 记录过温保护触发点（典型读取 NTC/遥测温度）;
+    - 逐步降温, 记录保护恢复点与回差;
+    - 记录保护模式（关断/降额）与恢复方式（自动/复位）;
+    - 结合热阻链路核算结温余量。
+  criteria:
+    - 过温保护点与回差符合规格; 回差 ≥ max(设定值×1%, 输入噪声峰峰值×2)（K-PROT-108）;
+    - 告警阈值 ≤ 保护点 − 设计余量（K-PROT-002）;
+    - 保护功能完整性（OVP/OCP/OPP/OTP/SCP 同时声明）（K-PROT-107）。
+  measures: [T-OTP, T-HYSTERESIS, T-JTEMP, T-THERMALCHAMBER]
+  rules: [K-PROT-107, K-PROT-108, K-PROT-002]
+  standards: [IEC 61204]
+  references:
+    - https://zhuanlan.zhihu.com/p/656149742
+    - https://www.szcpet.com/newsinfo/2563359.html
+    - https://bbs.csdn.net/weixin_42523326/article/details/100463955
+  retrieved: "2026-10-12"
+
+- method_id: M-SCP
+  zh: 短路保护测试
+  en: Short Circuit Protection Test
+  aliases: [短路保护测试, SCP测试]
+  category: protection
+  definition: 将输出直接短接（阻抗 <0.1Ω）, 验证电源进入保护状态并锁定/重试, 且不损坏接口线缆与器件。
+  parameters:
+    - 负载：正常带载后切换至短路（阻抗 <0.1Ω）
+    - 输入：额定
+    - 短路时长：按规格（典型 µs~ms 级动作）
+  instruments:
+    - 电子负载（支持短路模式）或专用短路开关/接触器
+    - 示波器+电流探头（记录短路电流波形）
+  interfaces:
+    - 输出端子 V+/V− 经电子负载短路模式短接
+    - 示波器+电流探头接入输出回路
+  metrics:
+    - 短路保护动作时间（µs）
+    - 短路电流峰值/折返电流 I_sc（A）
+    - 短路解除后恢复时间与恢复行为
+  procedure:
+    - 用低阻开关/继电器将任一路输出直接短路（输出阻抗 <0.1Ω 即判短路）;
+    - 记录短路电流波形与保护动作时间（典型 µs 级）;
+    - 移除短路, 观察恢复行为（自动打嗝恢复或需复位）;
+    - 检查接口/线缆/器件有无熔断或损伤。
+  criteria:
+    - 任一路输出阻抗 <0.1Ω 时必须进入关闭并锁定保护状态, 不应损坏接口线缆（K-PROT-104）;
+    - 折返式保护短路态电流 I_sc 应低于恒流限流点（典型 0.2~0.5 倍）（K-PROT-106）。
+  measures: [T-SCP, T-FOLDBACK, T-HICCUP]
+  rules: [K-PROT-104, K-PROT-106]
+  standards: [IEC 61204]
+  references:
+    - https://www.fcpowerup.com/how-do-i-test-power-supplies
+    - http://welissom.com/html/cn/xingyezixun/4561.html
+  retrieved: "2026-10-12"
+
+- method_id: M-OVP
+  zh: 过压保护测试
+  en: Over Voltage Protection Test
+  aliases: [过压保护测试, OVP测试]
+  category: protection
+  definition: 升高输出电压（或施加外部电压）使输出超过保护点, 测量保护触发点与动作方式（钳位/关断）。
+  parameters:
+    - 输出：缓慢升高（内部设定或外部注入电压）
+    - 负载：额定
+    - 触发方式：外部电压源注入或破坏反馈
+  instruments:
+    - 可调直流源（外部注入过压）
+    - 示波器（记录保护动作波形）
+    - 数字万用表
+  interfaces:
+    - 外部电压源经二极管/隔离接入输出端子
+    - 输出端子 V+/V− 接电子负载
+    - 示波器接输出端
+  metrics:
+    - OVP 保护点（V，±5% 容差带）
+    - 保护动作时间（ms 级）
+    - 跟踪式 OVP 系数（宽可调电源）
+  procedure:
+    - 缓慢升高输出电压设定/施加外部电压, 记录输出超过保护点时的动作;
+    - 对宽输出可调电源验证跟踪式 OVP（保护点随设定值变化）;
+    - 记录保护点与标称值的偏差与容差带。
+  criteria:
+    - OVP 保护点实测值落在标称 ±5% 容差带内（K-PROT-111）;
+    - 宽输出可调电源须采用跟踪式 OVP（保护点 = 设定值 × 系数）（K-PROT-101）。
+  measures: [T-OVP]
+  rules: [K-PROT-101, K-PROT-111]
+  standards: [IEC 61204]
+  references:
+    - https://zhuanlan.zhihu.com/p/699450936
+    - https://www.szwanbo.com/industry-news/539386.html
+  retrieved: "2026-10-12"
+
+- method_id: M-HIPOT
+  zh: 耐压(电介质强度)测试
+  en: Dielectric Strength (Hi-Pot) Test
+  aliases: [耐压测试, 高压测试, 电介质强度测试]
+  category: safety
+  definition: 对绝缘系统施加高于工作电压的试验电压并保持规定时间, 观测击穿/闪络与漏电流, 验证绝缘强度。
+  parameters:
+    - 试验电压：按绝缘类型选择（如 2500Vdc 基本/4000Vdc 加强）
+    - 保持时间：1min
+    - 漏电流截止值：如 5mA
+    - 升压速率：≤500V/s
+  instruments:
+    - 耐压测试仪（AC/DC，漏电流可整定 0.5~5mA）
+    - 校准电阻（700kΩ 验证报警点）
+    - 隔离/安全防护设施
+  interfaces:
+    - 输入 L/N 短接 → 高压输出线
+    - 输出/外壳 → 回路接地线（PE）
+    - 测试后放电回路
+  metrics:
+    - 试验电压（kVac/kVdc）
+    - 漏电流读数（mA，≤截止值）
+    - 判定：无击穿/闪络
+  procedure:
+    - 上电前预测试：先测绝缘电阻/接地阻抗排除短路故障;
+    - 输入火零线短接接高压输出, 输出/PE 接地; 耐压仪设置漏电流截止值（如 5mA）;
+    - 按标准选择试验电压（如基本绝缘/加强绝缘对应等级, 或按“工作电压×2+1000V”公式）, 升压并保持 1min;
+    - 观察有无击穿、闪络与漏电流读数; 直流耐压后按规定放电。
+  criteria:
+    - 基本绝缘（输入对地）2500Vdc、加强绝缘（输入对输出）4000Vdc 试验电压下无击穿闪络（K-SAF-101）;
+    - 试验回路须具备过流/过压保护, 被测件与接地导体保持规定间距, 按规定升压（K-SAF-102）;
+    - 安规测试顺序：先绝缘电阻/接地预测试, 再耐压（K-SAF-109）。
+  measures: [T-HIPOT, T-Y1Y2, T-SAFSEQ]
+  rules: [K-SAF-101, K-SAF-102, K-SAF-109]
+  standards: [IEC 62368-1, GB 9706.1]
+  references:
+    - https://www.cnblogs.com/datacenter/p/18350186
+    - https://cloud.tencent.com/developer/article/2464362
+    - https://www.eet-china.com/mp/a119666.html
+    - https://gwinstek.com.cn/down/259/%E8%80%90%E7%94%B5%E5%8E%8B%E6%B5%8B%E8%AF%95GPT%E7%99%BD%E7%9A%AE%E4%B9%A6_cn.pdf
+  retrieved: "2026-10-12"
+
+- method_id: M-INSULATION-RES
+  zh: 绝缘电阻测试
+  en: Insulation Resistance Test
+  aliases: [绝缘电阻测试, 绝缘测试]
+  category: safety
+  definition: 用绝缘电阻表在带电部件与外壳/输出之间施加直流电压, 测量绝缘电阻值。
+  parameters:
+    - 试验电压：500Vdc
+    - 环境：相对湿度 90%
+    - 读数：待稳定后记录
+  instruments:
+    - 绝缘电阻表/兆欧表（500V 档，量程 ≥ 250MΩ）
+  interfaces:
+    - L 端 → 输入短接端
+    - E 端 → 外壳/输出
+    - G 端（屏蔽端）按需
+  metrics:
+    - 绝缘电阻（MΩ，≥2MΩ 限值）
+    - 读数稳定时间
+  procedure:
+    - 断电状态, 绝缘电阻表（500Vdc）接输入短接端与外壳（或输出）之间;
+    - 待读数稳定后记录绝缘电阻值（相对湿度 90% 条件下）;
+    - 与限值比对; 测试后按规定放电。
+  criteria:
+    - 绝缘电阻 ≥ 2MΩ（500Vdc, 相对湿度 90%）（K-SAF-001）;
+    - 属安规预测试项：先于耐压执行（K-SAF-109）。
+  measures: [T-INSULRES]
+  rules: [K-SAF-001, K-SAF-109]
+  standards: [IEC 62368-1]
+  references:
+    - https://cloud.tencent.com/developer/article/2464362
+    - https://www.cnblogs.com/datacenter/p/18350186
+  retrieved: "2026-10-12"
+
+- method_id: M-GROUND-BOND
+  zh: 接地连续性(接地阻抗)测试
+  en: Ground Bond (Earth Continuity) Test
+  aliases: [接地电阻测试, 接地连续性测试]
+  category: safety
+  definition: 用大电流低电阻法测量保护接地端子与可触及金属外壳之间的阻抗, 验证接地保护有效性。
+  parameters:
+    - 测试电流：≥10A（典型 25A）
+    - 开路电压：≤12V
+    - 测试时间：按规定（如 1min 内读数）
+  instruments:
+    - 接地电阻测试仪（大电流低电阻法，分辨率 mΩ 级）
+    - 四线制电压取样线
+  interfaces:
+    - 电流夹接保护接地端子与可触及金属外壳
+    - 电压取样线夹在内侧（消除接触电阻）
+  metrics:
+    - 接地阻抗（mΩ/Ω，<0.1Ω 限值）
+  procedure:
+    - 使用接地电阻测试仪, 输出大电流（≥10A）、开路电压 ≤12V（50/60Hz）;
+    - 接保护接地端子与可触及金属外壳, 读取阻抗;
+    - 记录阻抗值并比对限值。
+  criteria:
+    - 保护接地端子与外壳间接地阻抗 < 0.1Ω, 须用大电流（≥10A）低电阻法测量（K-SAF-002/108）。
+  measures: [T-GNDCONT]
+  rules: [K-SAF-002, K-SAF-108]
+  standards: [IEC 62368-1]
+  references:
+    - https://www.eet-china.com/mp/a119666.html
+    - https://cloud.tencent.com/developer/article/2464362
+  retrieved: "2026-10-12"
+
+- method_id: M-TOUCH-CURRENT
+  zh: 接触电流(漏电流)测试
+  en: Touch Current (Leakage Current) Test
+  aliases: [漏电流测试, 接触电流测试]
+  category: safety
+  definition: 在被测电源正常状态与单一故障状态下, 测量流经可触及部件的接触电流, 验证人身安全。
+  parameters:
+    - 状态：正常 + 单一故障（开地等）
+    - 极性：正接/反接各测
+    - 频率：最不利条件
+  instruments:
+    - 接触电流测试仪（内置 IEC 60990 加权测量网络）
+    - 隔离变压器/可调压电源
+  interfaces:
+    - 测量网络串接于可触及部件与地之间
+    - 由转换开关切换网络类型
+    - 样机输入接隔离电源
+  metrics:
+    - 接触电流（mA，峰值/有效值，≤限值）
+    - 保护导体电流（mA）
+  procedure:
+    - 在正常状态与单一故障状态（开地/断开某一路）下分别测量;
+    - 在输入极性反转下各测一次（整流滤波充电峰值对读数有影响）;
+    - 使用最不利的电压/频率条件; 记录峰值与有效值。
+  criteria:
+    - 正常/单一故障（极性反转）条件下接触电流均在限值内（K-SAF-107）;
+    - Y 电容容值上限由漏电流限值反推 C = I_leak/(2π·f·V)（K-SAF-104）。
+  measures: [T-TOUCHCURR, T-YCAP]
+  rules: [K-SAF-107, K-SAF-104]
+  standards: [IEC 62368-1]
+  references:
+    - https://www.eet-china.com/mp/a119666.html
+    - https://zhuanlan.zhihu.com/p/481833370
+  retrieved: "2026-10-12"
+
+- method_id: M-EFFICIENCY
+  zh: 效率测试
+  en: Efficiency Test
+  aliases: [效率测试, 转换效率测试]
+  category: efficiency
+  definition: 在额定输入与多个负载点测量输入/输出功率, 计算转换效率 η = P_out/P_in × 100%, 并测空载输入功率。
+  parameters:
+    - 输入：115Vac/60Hz、230Vac/50Hz 等规定条件
+    - 负载：25%/50%/75%/100%（+空载）
+    - 预热：30min
+  instruments:
+    - 功率分析仪（电压/电流通道同步采样，精度 ≤0.1~0.5%）
+    - 可编程交流源
+    - 电子负载
+  interfaces:
+    - 输入经功率分析仪电压/电流通道接样机
+    - 输出接功率分析仪直流通道与电子负载
+  metrics:
+    - 效率 η（%，各负载点）
+    - 平均效率（能效等级）
+    - 空载输入功率（W）
+    - 功率因数 PF
+  procedure:
+    - 用功率分析仪（电压/电流通道同步采样）接入输入侧; 输出侧接电子负载;
+    - 在 25%/50%/75%/100% 负载点分别记录 P_out 与 P_in;
+    - 计算各点效率 η=P_out/P_in×100%; 另测空载（轻载）输入功率;
+    - 负载变化引起输入压降时须补偿, 保持输入电压稳定后读数。
+  criteria:
+    - η = P_out/P_in × 100%（K-PWR-001）; 四负载点测试方法（K-PWR-118）;
+    - 功率分析仪通道须同步采样, 仪器精度 ≤ 规格要求（K-PWR-119）;
+    - 空载输入功率 ≤ 规格值（模块电源典型 0.3~0.5W）（K-PWR-120）;
+    - P_out ≤ P_in 功率平衡自检（K-PWR-121）。
+  measures: [T-EFFICIENCY, T-LOSS, T-NOLOADPWR, T-PF]
+  rules: [K-PWR-001, K-PWR-118, K-PWR-119, K-PWR-120, K-PWR-121]
+  standards: [IEC 61204]
+  references:
+    - https://blog.csdn.net/huxyc/article/details/126152207
+    - https://zhuanlan.zhihu.com/p/591748436
+    - https://bbs.eeworld.com.cn/thread-1328739-1-1.html
+  retrieved: "2026-10-12"
+
+- method_id: M-REGULATION
+  zh: 调整率测试(负载/线性)
+  en: Load and Line Regulation Test
+  aliases: [负载调整率测试, 线性调整率测试, 电压调整率测试]
+  category: output
+  definition: 输入电压变化（线性调整率）或负载变化（负载调整率）时, 测量输出电压的偏离幅度。
+  parameters:
+    - 线性：输入从最低到最高（如 90~264Vac）
+    - 负载：10%→100%
+    - 多路：逐路加载测交叉
+  instruments:
+    - 数字万用表（6½ 位）/功率分析仪
+    - 可编程交流源
+    - 电子负载
+  interfaces:
+    - 输出端子接电子负载
+    - 万用表经开尔文（远端感测）接输出端子
+    - 输入接可编程源
+  metrics:
+    - 线性调整率（%/mV）
+    - 负载调整率（%）
+    - 交叉调整率（%）
+    - 输出精度（±%读数+%FS）
+  procedure:
+    - 线性调整率：负载恒定, 输入从最低到最高（如 90~264Vac）变化, 记录 V_max/V_min, 按 (V_max−V_min)/V_nom×100% 计算;
+    - 负载调整率：输入恒定, 负载 10%→100% 变化, 记录 V_空载与 V_满载差, 除以标称;
+    - 多路电源另测交叉调整率（其他路负载变化时本路输出变化）;
+    - 稳定后读数, 记录测试条件。
+  criteria:
+    - 线性/负载调整率 ≤ 规格限值（商用典型 0.1%~1%, 工业级 ≤0.5%）（K-PWR-110/111）;
+    - 输出精度叠加读数+满量程带（模块电源典型 ±(0.5~1)% 读数 + ±0.5% FS）（K-PWR-112）。
+  measures: [T-LOADREG, T-LINEREG, T-OUTACC, T-CROSSREG]
+  rules: [K-PWR-110, K-PWR-111, K-PWR-112]
+  standards: [IEC 61204]
+  references:
+    - https://b2bwiki.baidu.com/article/d0r1kf9ftjsv1cjnbi0g
+    - https://modelers.csdn.net/69a50b2f7bbde9200b9aceec.html
+  retrieved: "2026-10-12"
+
+- method_id: M-TRANSIENT
+  zh: 动态响应测试
+  en: Load and Line Transient Response Test
+  aliases: [动态响应测试, 负载瞬态测试, 过冲恢复测试]
+  category: dynamics
+  definition: 施加负载电流阶跃（或输入电压阶跃）, 测量输出电压的偏移幅度与恢复时间。
+  parameters:
+    - 负载阶跃：25%↔50%↔25%、50%↔75%↔50%
+    - 斜率：典型 2.5A/µs
+    - 周期：20ms/占空 50%
+    - 输入/温度：高低限与温度极值
+  instruments:
+    - 电子负载（动态模式，斜率与周期可编程；rise time 快于被测 5 倍）
+    - 示波器（Sample/Hi-Res 模式）
+  interfaces:
+    - 输出端子 V+/V− 接电子负载
+    - 示波器经短地线/同轴靠接输出端（20MHz 带宽限制）
+  metrics:
+    - 输出电压偏移幅度（±%·Vout）
+    - 恢复时间（µs，回到恢复带）
+    - 输入瞬态偏移（±%）
+  procedure:
+    - 电子负载动态模式：负载电流按 25%↔50%↔25%（或 50%↔75%↔50%）额定值阶跃, 斜率典型 2.5A/µs, 周期约 20ms;
+    - 示波器以 Sample/Hi-res 模式记录输出电压波形（保持稳压过程）;
+    - 读取最大偏移幅度与恢复时间（回到恢复带并保持稳定所需时间）;
+    - 在输入高/低限、温度极值等工况复测; 输入瞬态按输入电压阶跃同法测量。
+  criteria:
+    - 恢复时间 ≤200µs 时输出超调 ≤±5%·Vout; >200µs 时 ≤ 负载调整率（±0.5%）级（K-PWR-106/107）;
+    - 输入瞬态下输出偏移 ≤±2%, 恢复时间 ≤100µs（K-PWR-108）;
+    - 电子负载的 rise time 须至少比被测电源快 5 倍, 否则负载能力成为限制项（K-FIX-019）。
+  measures: [T-TRANSIENT, T-LINETRANSIENT, T-STARTOVERSHOOT]
+  rules: [K-PWR-106, K-PWR-107, K-PWR-108, K-FIX-019]
+  standards: [IEC 61204]
+  references:
+    - https://www.dianyuan.com/article/46903.html
+    - https://www.analog.com/cn/resources/technical-articles/line-and-load-transient-testing-for-power-supplies.html
+    - https://blog.csdn.net/weixin_37623660/article/details/145145618
+  retrieved: "2026-10-12"
+
+- method_id: M-STARTUP
+  zh: 启动特性测试(延迟/上升时间/过冲)
+  en: Start-up Characteristics Test
+  aliases: [启动测试, 上升时间测试, 开机延迟测试]
+  category: dynamics
+  definition: 在预定带载条件下接通输入, 检测电源启动延迟、输出上升时间与启动过冲, 并观察输入浪涌电流。
+  parameters:
+    - 负载模式：CC/CR/CP
+    - 输入：接通（含最低/额定输入）
+    - 记录：延迟/上升/过冲
+  instruments:
+    - 示波器（多通道，配电流探头）
+    - 电子负载（CC/CR/CP）
+    - 可编程交流源
+  interfaces:
+    - 输入电压波形 CH1（经差分探头或隔离）
+    - 输出上升波形 CH2
+    - PG/PGOOD 信号（如具备）CH3 监测
+    - 输入电流经电流探头
+  metrics:
+    - 开机延迟时间（ms）
+    - 输出电压上升时间（ms，10%~90%）
+    - 启动过冲（±%·Vout）
+    - PG 建立延时（相对输出达稳, 如具备）
+  procedure:
+    - 电子负载以 CC/CR/CP 模式带载（CR 模式对电源最温和, CP 最严酷）;
+    - 接通输入, 用示波器（配合电流探头）记录输出上升波形与输入电流波形;
+    - 记录开机延迟时间（接通至输出开始上升）、上升时间（升至额定）、启动过冲幅度;
+    - 记录 PG/PGOOD（如具备）相对输出建立的翻转时序, 与序列要求比对;
+    - 观察输入浪涌电流是否构成破坏性影响。
+  criteria:
+    - 软启动限制输出浪涌, 启动过冲 ≤1~5%·Vout, 启动时间符合规格（K-PWR-109）。
+  measures: [T-STARTUPTIME, T-RISETIME, T-SOFTSTART, T-STARTOVERSHOOT, T-PGOOD]
+  rules: [K-PWR-109]
+  standards: [IEC 61204]
+  references:
+    - http://www.jartul.com/te_service_method_copy/0/0.chtml
+    - https://zhuanlan.zhihu.com/p/608764868
+  retrieved: "2026-10-12"
+
+- method_id: M-INRUSH
+  zh: 输入浪涌电流测试
+  en: Input Inrush Current Test
+  aliases: [浪涌电流测试, 输入冲击电流测试]
+  category: input
+  definition: 在输入电压峰值时刻接通输入, 测量瞬态输入电流峰值（冷启动/热机重启）, 验证限流措施与保险丝配合。
+  parameters:
+    - 接通相位：90°或270°（峰值点）
+    - 状态：冷启动（电容放尽）与热机重启
+    - 负载：最大负载
+  instruments:
+    - 示波器（Normal 触发，5ms/div）+ 电流探头
+    - 可编程交流源（相位可控）
+  interfaces:
+    - 电流探头夹 AC 输入线（L 或 N）
+    - 示波器 CH1 接输入电压触发
+    - 输出接电子负载
+    - 示波器经隔离变压器供电
+  metrics:
+    - 浪涌电流峰值 I_inrush（A，冷/热启动）
+    - 与保险丝 I²t 配合核算
+  procedure:
+    - 在输入电压峰值处（90°/270° 相位）接通输入, 用电流探头/分流器记录浪涌电流峰值;
+    - 分别测试冷启动与热机（电容已充电）重启;
+    - 核算与输入保险丝的 I²t 配合。
+  criteria:
+    - 浪涌电流受 NTC/限流电阻/继电器限制在规格值内（K-PWR-116）;
+    - 保险丝额定分断 I²t 须显著大于被保护器件 I²t（K-SAF-106）。
+  measures: [T-INRUSH, T-HOTPLUG, T-PFC]
+  rules: [K-PWR-116, K-SAF-106]
+  standards: [IEC 61204]
+  references:
+    - https://patents.google.com/patent/CN102095921A/zh
+    - http://www.jartul.com/te_service_method_copy/0/0.chtml
+  retrieved: "2026-10-12"
+
+- method_id: M-KELVIN
+  zh: 四线开尔文接触电阻测试
+  en: Kelvin (4-Wire) Contact Resistance Test
+  aliases: [四线法测试, 接触电阻测试, 开尔文测试]
+  category: general
+  definition: 用四线开尔文法测量接触/导通电阻：力线与感线在被测接触点汇合, 消除引线与接触电阻引入的测量误差。
+  parameters:
+    - 恒流：10~100mA（不超过额定）
+    - 测点：接触点汇合（力/感线）
+    - 复测：每次插拔后记录
+  instruments:
+    - 数字微欧计/源表（四线法）
+    - 四线开尔文夹具/探针
+    - 恒流源（可选）
+  interfaces:
+    - 力线（force）与感线（sense）在被测接触点汇合
+    - 四线探针/开尔文夹接被测点
+  metrics:
+    - 接触电阻（mΩ，探针典型 20~50mΩ）
+    - 工装链路接触电阻（<0.1Ω 硬上限）
+  procedure:
+    - 力线（force）与感线（sense）必须在被测接触点汇合（而非探针插座处）;
+    - 恒流源施加小电流（典型 10~100mA, 不超过额定）, 高阻表测压降换算电阻;
+    - 每次插拔后复测并记录劣化趋势, 建立周期性复校（每班次或每 N 次插拔）。
+  criteria:
+    - 四线法布置正确（力/感线在被测点汇合）, 夹具引线电阻被消除（K-FIX-009）;
+    - 工装链路接触电阻硬上限 0.1Ω, 探针接触电阻典型 20~50mΩ（K-FIX-005）;
+    - 半 Kelvin 布置（力感线在插座处分离）未消除接触电阻, 用于接触电阻本身测量时须识别（K-FIX-010）;
+    - 接触电阻上限须留时间衰减余量并建立周期复校（K-FIX-018）。
+  measures: [T-KELVIN4W, T-POGOPIN, T-GRR]
+  rules: [K-FIX-005, K-FIX-009, K-FIX-010, K-FIX-018]
+  references:
+    - https://www.bilibili.com/opus/859935787941101606
+    - https://www.dediprog.com/zh-tw/product/Pogo-Pin
+    - https://pogopin.com.cn/News/559.html
+  retrieved: "2026-10-12"
+
+- method_id: M-TEMP-RISE
+  zh: 温升测试
+  en: Temperature Rise Test
+  aliases: [温升测试, 温度测试]
+  category: thermal
+  definition: 在额定条件下运行至热稳定, 测量关键器件（MOSFET/变压器/电解电容/整流桥等）的温升与结温余量。
+  parameters:
+    - 环境：25℃（或规定）
+    - 负载：额定
+    - 时长：至热稳定（≥30min / 45min 内变化 <1℃）
+  instruments:
+    - 热电偶（K/J 型）+ 数据采集仪
+    - 热像仪（辅助定位）
+    - 温箱
+  interfaces:
+    - 热电偶经胶粘固定于器件表面（MOSFET/变压器/电解电容/整流桥）
+    - 数据采集仪接上位机记录
+  metrics:
+    - 器件温升 ΔT（K）
+    - 结温 T_j（℃，≤限值）
+    - 关键器件温度（℃）
+  procedure:
+    - 额定负载、规定环境温度（如 25℃）、额定输入下运行至热稳定（典型 ≥30min）;
+    - 用热电偶/热像仪测量关键器件温度（绕组、磁性元件表面、电解电容壳体等）;
+    - ΔT = 器件温度 − 环境温度; 结合热阻链路 T_j = T_a + P_loss×R_th 核算结温;
+    - 记录环境温度并按降额曲线判定输出能力。
+  criteria:
+    - 结温 T_j 不超器件限值（ΔT = P_loss×R_th）（A-DELTA-T 链式核算）;
+    - 电解电容寿命按 Arrhenius 律折算（温度每降 10℃ 寿命约翻倍）（K-THM-003）;
+    - 产测须记录环境温度并与降额曲线联动判定（K-CAL-107）。
+  measures: [T-JTEMP, T-RTH, T-ARRHENIUS, T-THERMALCHAMBER]
+  rules: [K-THM-003, K-CAL-107]
+  references:
+    - https://zhuanlan.zhihu.com/p/656149742
+    - https://www.szcpet.com/newsinfo/2563359.html
+  retrieved: "2026-10-12"
+
+- method_id: M-BURN-IN
+  zh: 老化测试(Burn-in)
+  en: Burn-in (Aging) Test
+  aliases: [老化测试, 煲机测试, aging测试]
+  category: reliability
+  definition: 满负荷长时间运行（典型 72h）以人工加速失效, 暴露早期失效率（Infant Mortality）, 剔除潜在缺陷品。
+  parameters:
+    - 负载：满载（或规范加载）
+    - 时长：典型 72h（可组合高温高湿/温循）
+    - 监控：输出参数漂移
+  instruments:
+    - 老化房/老化柜（温控）
+    - 多路电子负载/老化架
+    - 数据记录仪（电压/纹波/ESR 监控）
+  interfaces:
+    - 样机批量接入老化架供电与负载回路
+    - 监控通道连接输出端子
+  metrics:
+    - 老化后参数漂移（电压/纹波/ESR，不超限）
+    - 早期失效剔除率
+    - 可用度 A = MTBF/(MTBF+MTTR)
+  procedure:
+    - 满载（或按规范加载）长时间连续运行;
+    - 多工况组合（可选）：高温高湿（如 85℃/85%RH）→ 高低温循环 → 常温全功能负载;
+    - 期间监控输出参数漂移（电压/纹波/ESR 变化）;
+    - 记录异常品并分析（连接器触点/电解电容/焊点等薄弱环节）。
+  criteria:
+    - 老化后参数不漂移超限; 出现失效或漂移超限者剔除（产线筛选）;
+    - 可用度按 A = MTBF/(MTBF+MTTR) 模型核算（K-REL-001）。
+  measures: [T-BURNIN, T-LONGTERM, T-MTBF]
+  rules: [K-REL-001]
+  references:
+    - https://bbs.csdn.net/weixin_42523326/article/details/100463955
+    - https://www.szcpet.com/newsinfo/2563359.html
+    - https://zhuanlan.zhihu.com/p/1937994308528604765
+  retrieved: "2026-10-12"
+
+- method_id: M-PF
+  zh: 功率因数与输入电流测试
+  en: Power Factor and Input Current Test
+  aliases: [功率因数测试, PF测试, 输入电流测试, 输入电流有效值测试]
+  category: input
+  definition: 在额定输入与多负载点测量交流输入的有功功率/视在功率与输入电流, 计算功率因数 PF 并核对谐波电流限值, 验证 PFC 电路与输入电流设计。
+  parameters:
+    - 输入电压：115Vac/60Hz 与 230Vac/50Hz（或规格规定点）
+    - 负载：25%/50%/75%/100% 额定（空载测输入功率）
+    - 预热：标称负载下预热 ≥30min
+  instruments:
+    - 功率分析仪（电压/电流通道同步采样, 可测 PF/THD/谐波）
+    - 可编程交流源（低失真输出）
+    - 电子负载（CC 模式）
+  interfaces:
+    - 输入经功率分析仪电压/电流通道接入样机 L/N/PE
+    - 输出端子 V+/V− 接电子负载
+  metrics:
+    - 功率因数 PF（无量纲, = P/S）
+    - 输入电流有效值 I_in（Arms）
+    - 各次谐波电流（A, 对照 EN61000-3-2 限值）
+  procedure:
+    - 依规格设定输入电压、频率与输出负载;
+    - 从功率分析仪读取 Pin、Iin、PF（有功/视在功率）, 计算 Pout 与效率;
+    - 在各负载点记录 PF 与输入电流, 并执行谐波分析;
+    - 空载时记录输入功率与输入电流。
+  criteria:
+    - 功率因数 PF = 有功功率 / 视在功率（K-AC-001）, 视在功率 S = V_rms × I_rms（K-AC-002）;
+    - 交流输入功率 Pin = Vin × Iin × PF（K-PWR-003）, 测量须用同步采样功率分析仪（K-PWR-119）;
+    - 谐波电流限值须满足 EN61000-3-2（Class D 等）对应限值。
+  measures: [T-PF, T-APPARENTPOWER, T-REALPOWER, T-REACTIVEPOWER, T-RMS]
+  rules: [K-AC-001, K-AC-002, K-AC-003, K-PWR-003, K-PWR-119]
+  standards: [EN 61000-3-2]
+  references:
+    - https://blog.csdn.net/u010588566/article/details/129319535
+    - https://www.intonepower.com/zh/news/understanding-total-harmonic-distortion-thd-and-power-factor-a-simplified-guide
+    - https://blog.csdn.net/U_YAO/article/details/130979238
+  retrieved: "2026-10-12"
+
+- method_id: M-INPUT-SLOW
+  zh: 输入缓慢变动测试
+  en: Input Slow Variation Test
+  aliases: [输入缓升缓降测试, 输入低压点循环测试]
+  category: input
+  definition: 以缓慢速率升降输入电压（如 3Vac/min）, 观察电源自我保护与恢复行为, 验证低线附近无损坏、无反复启停, 并记录关断/启动点。
+  parameters:
+    - 输入变化速率：3Vac/min（或按规格）
+    - 负载：最大负载
+    - 变化范围：从额定降至 0Vac, 再从 0Vac 升至额定
+  instruments:
+    - 可编程交流源（支持程序化缓变）
+    - 功率表/数字万用表（记录输入/输出电压）
+    - 电子负载
+  interfaces:
+    - 输入端子接可编程交流源
+    - 输出端子 V+/V− 接电子负载（满载）
+    - 电压监测点：输入/输出（万用表或记录仪）
+  metrics:
+    - 关断点/启动点输入电压（Vac）
+    - 低压点循环稳定性（反复启停次数）
+  procedure:
+    - 设定最大负载与额定输入, 待稳定;
+    - 以 3Vac/min 逐步调降输入电压, 记录输入/输出电压直至电源当机（关断）;
+    - 从 0Vac 以同速率缓慢回升, 记录输出恢复正常时的输入电压（启动点）;
+    - 产线简化版：在欠压点附近 ±3Vac 区间循环 5~8min, 观察是否反复启停。
+  criteria:
+    - 当机与启动输入电压须低于输入电压范围下限（K-PROT-109）;
+    - 缓变过程中不得出现损坏、不稳动作或异常保护（K-LIM-001）;
+    - 低压点循环运行期间电源应稳定工作, 无反复启停。
+  measures: [T-WORKVOLT, T-MAXINPUT, T-UVLO]
+  rules: [K-PROT-102, K-PROT-109, K-LIM-001]
+  standards: [IEC 61204]
+  references:
+    - https://blog.csdn.net/U_YAO/article/details/130979238
+    - https://www.iclabcn.com/1070.html
+  retrieved: "2026-10-12"
+
+- method_id: M-OPP
+  zh: 过功率保护测试
+  en: Over Power Protection Test
+  aliases: [OPP测试, 过功率保护测试]
+  category: protection
+  definition: 通过电子负载按步进递增拉载功率, 测出过功率保护动作点与保护模式（打嗝/锁存）, 验证功率上限保护与恢复行为。
+  parameters:
+    - 拉载方式：恒定功率（CP）或恒定电流步进递增（步进/步长按规格）
+    - 触发电压：负载输入电压跌落阈值（用于判定保护发生）
+    - 输入：额定（必要时高低线）
+  instruments:
+    - 电子负载（支持 OPP/OCP 自动测试：起始/结束值、步数、每步时长、触发电压可编程）
+    - 示波器（观察保护动作波形, 可选）
+  interfaces:
+    - 输出端子 V+/V− 接电子负载
+    - 示波器探头接输出端（可选）
+  metrics:
+    - 过功率保护点（W, 标称 ±5%）
+    - 保护模式：打嗝/锁存/折返
+    - 保护动作后的恢复行为
+  procedure:
+    - 电子负载设为 OPP 测试模式, 设定功率起始值/结束值/步进/每步时间与触发电压;
+    - 负载按递增步进拉载, 同时监测负载端电压判定保护是否发生;
+    - 记录保护发生时的功率值, 核对是否在规格上下限内（GO/NG）;
+    - 记录保护模式与解除后的恢复行为。
+  criteria:
+    - 保护点实测值落在标称值 ±5% 容差带内（K-PROT-111）;
+    - 打嗝模式重试间隔典型数百 ms~数秒, 故障消除后自动恢复（K-PROT-104/105）;
+    - 保护功能完整性：须声明 OVP/OCP/OPP/OTP/SCP（K-PROT-107）。
+  measures: [T-OPP, T-HICCUP, T-FOLDBACK, T-LATCHOFF]
+  rules: [K-PROT-104, K-PROT-105, K-PROT-107, K-PROT-111]
+  standards: [IEC 61204]
+  references:
+    - http://en.apmtech.cn/cnft/thelatestnews/info.aspx?itemid=2512
+    - https://www.itechate.com/uploadfiles/2020/06/202006241638433843.pdf
+  retrieved: "2026-10-12"
+
+- method_id: M-REVERSE-IN
+  zh: 输入反接保护测试
+  en: Input Reverse Polarity Protection Test
+  aliases: [反接保护测试, 输入反接测试]
+  category: protection
+  definition: 在直流输入端施加反极性电压, 验证电源不损坏、反接消除后功能恢复正常, 评估防反接电路（二极管/MOS/理想二极管）有效性。
+  parameters:
+    - 反接电压：额定输入电压（DC）
+    - 持续时间：按规格（典型数秒~1min）
+    - 负载：额定
+  instruments:
+    - 可编程直流源（可反接输出）
+    - 数字万用表（监测输入/输出）
+    - 电子负载
+  interfaces:
+    - 直流输入端子 V+/V− 反接至直流源
+    - 输出端子接电子负载
+  metrics:
+    - 反接期间输入电流（mA/A, 应被阻断）
+    - 反接消除后输出恢复情况
+  procedure:
+    - 反接输入端子（正负对调）, 施加额定直流输入电压并保持规定时间;
+    - 观察输入电流是否被有效阻断（数 mA 级为佳）, 样机有无发热/冒烟;
+    - 断开反接, 恢复正常极性上电, 检查输出功能与参数是否正常;
+    - 记录反接前后关键参数对比。
+  criteria:
+    - 输入反接不损坏, 反接消除后功能恢复正常（K-PROT-116）;
+    - 防反接电路（二极管/MOS/理想二极管）不得影响正常导通损耗与效率（评估性判据）。
+  measures: [T-REVERSEIN]
+  rules: [K-PROT-116]
+  standards: []
+  references:
+    - https://blog.csdn.net/qq_21794157/article/details/131388533
+    - https://www.yfwdiode.com/news/169.html
+    - https://www.silicontent.com/blog-info?id=33
+  retrieved: "2026-10-12"
+
+- method_id: M-ORING
+  zh: 输出防倒灌(反灌)测试
+  en: Output Reverse Current Blocking Test
+  aliases: [防倒灌测试, 反灌电流测试, ORing测试]
+  category: protection
+  definition: 在输出端施加高于输出的外部电压, 验证防倒灌电路（ORing 二极管/理想二极管）阻断反向电流, 并评估压降与关断速度。
+  parameters:
+    - 外部电压：输出标称以上（如 +5%~10% 或按规格）
+    - 观察对象：反向电流大小与阻断时间
+  instruments:
+    - 可编程直流源（模拟外部母线电压）
+    - 示波器 + 电流探头/精密分流器（测反向电流）
+    - 电子负载
+  interfaces:
+    - 外部电源正接输出端子 + 极（高于 Vout）
+    - 电流探头/分流器串入输出回路
+    - 样机输出端子接电子负载（或不接载）
+  metrics:
+    - 反向电流峰值/稳态（µA~mA, 理想二极管典型反向阻断）
+    - 反向关断时间（µs 级, 如 0.75µs 快速关断）
+  procedure:
+    - 样机正常输出, 记录输出电压;
+    - 将外部电源电压调至高于输出值, 接至输出端子;
+    - 用电流探头/分流器观察从样机流向外部电源的反向电流;
+    - 逐步升高外部电压, 记录反向电流与阻断行为;
+    - 撤销外部电压, 确认样机输出正常。
+  criteria:
+    - 带电池母线/并联应用须防止外部能量经输出端反灌入模块（K-PROT-117）;
+    - 防倒灌器件压降与关断速度须满足系统要求（评估性判据）。
+  measures: [T-ORING, T-REVERSEIN]
+  rules: [K-PROT-117]
+  standards: []
+  references:
+    - https://patents.google.com/patent/CN204131383U/zh
+    - https://www.eet-china.com/mp/a345841.html
+    - https://www.silicontent.com/blog-info?id=33
+  retrieved: "2026-10-12"
+
+- method_id: M-SHARE
+  zh: 并联均流测试
+  en: Parallel Current Sharing Test
+  aliases: [均流测试, 均流度测试, 并联测试]
+  category: output
+  definition: 将多台/多模块并联带载, 测量各模块电流分配偏差（均流度）, 验证均流设计（下垂法等）满足偏差限值。
+  parameters:
+    - 并联数量：≥2（含 N+1 冗余场景）
+    - 负载：10%~100% 额定（多点）
+    - 导线：各模块输出线长/截面积一致
+  instruments:
+    - 电子负载（容量覆盖并联总输出）
+    - 电流表/电流探头（逐模块测流, 或读取各模块遥测）
+    - 上位机（记录均流数据）
+  interfaces:
+    - 各模块输出并联至同一电子负载
+    - 均流母线（如支持）互连
+    - 遥测/通信口读取各模块电流
+  metrics:
+    - 均流度/电流分配偏差（≤±5% 额定输出电流）
+    - 各模块输出电流偏差（A）
+  procedure:
+    - 按规范并联接好模块（输出线等长）, 接入电子负载;
+    - 在 10%~100% 负载多点测量各模块输出电流;
+    - 计算均流偏差：[I_i − I_avg] / I_额定 等口径;
+    - （N+1）拔除/关断单模块, 验证母线电压保持与剩余模块自动分担。
+  criteria:
+    - 并联模块分担电流偏差 ≤ ±5%（典型）（K-PWR-113, K-SHR-001/002）;
+    - 均流偏差超限（>±10%）须检测并告警（K-CTL-104）;
+    - 单模块故障须自动退出并保持母线（N+1）（K-PROT-118）。
+  measures: [T-SHARE, T-DROOP, T-NPLUS1]
+  rules: [K-PWR-113, K-SHR-001, K-SHR-002, K-CTL-104, K-PROT-118]
+  standards: []
+  references:
+    - https://www.21ic.com/a/974757.html
+    - https://baike.baidu.com/item/%E5%9D%87%E6%B5%81%E5%BA%A6/18253620
+    - https://www.chinaaet.com/article/173620
+    - https://patents.google.com/patent/CN103683479A/zh
+  retrieved: "2026-10-12"
+
+- method_id: M-TELEMETRY
+  zh: 遥测精度测试
+  en: Telemetry Accuracy Test
+  aliases: [遥测测试, 回读精度测试, 遥测精度测试]
+  category: communication
+  definition: 通过 PMBus/I2C 等通信接口读回输入/输出电压、电流、功率与温度遥测值, 与基准仪表比对, 验证遥测精度、采样带宽与标定持久化。
+  parameters:
+    - 工况：至少覆盖 10%/50%/100% 负载与常温
+    - 比对基准：六位半万用表/功率分析仪, 高精度温度计
+    - 标定：按需执行增益/偏置标定并断电重启验证持久化
+  instruments:
+    - 上位机 + PMBus/I2C 通信适配器（或专用测试盒）
+    - 数字万用表/功率分析仪（精度高于遥测规格 3~10 倍）
+    - 电子负载与可编程源
+  interfaces:
+    - 通信口（PMBus/I2C：SDA/SCL、地址线）接适配器
+    - 输出端子 V+/V− 接电子负载与基准仪表
+    - 测温度点：NTC/传感器
+  metrics:
+    - 电压/电流遥测误差（≤±(0.5~1)% 读数 + ±0.5% 量程）
+    - 温度遥测误差（℃, ≤传感器公差合成）
+    - 采样率/带宽是否覆盖开关纹波频率（≥2 倍 Nyquist）
+  procedure:
+    - 上位机经通信口读取各遥测寄存器（Vout/Iout/Pin/Temp 等）;
+    - 在同工况下用基准仪表读取实际值, 逐一比对计算误差;
+    - 检查采样率是否覆盖被测最高频率分量（开关频率及其谐波）;
+    - 执行标定（如需）, 断电重启后复查标定系数持久化与回读一致性。
+  criteria:
+    - 电压/电流遥测误差 ≤ ±(0.5~1)% 读数 + ±0.5% 量程（K-TLM-101）;
+    - 采样率须覆盖被测信号最高频率分量（K-TLM-102）;
+    - 温度遥测误差 ≤ 传感器与电阻公差合成误差（K-TLM-105）;
+    - 设定值回读一致性：回读值与设定值偏差 ≤ 设定精度带（K-TLM-108）;
+    - 标定系数写入非易失存储, 掉电重启后保持（K-CAL-101/102）。
+  measures: [T-TELEMETRY, T-CALIB, T-PMBUS]
+  rules: [K-TLM-101, K-TLM-102, K-TLM-105, K-TLM-108, K-CAL-101, K-CAL-102]
+  standards: [PMBus 1.3]
+  references:
+    - https://www.21ic.com/a/924474.html
+    - https://zhuanlan.zhihu.com/p/2083493365044327730
+    - https://bbs.csdn.net/weixin_29190169/article/details/100224907
+  retrieved: "2026-10-12"
+
+- method_id: M-TELESIGNAL
+  zh: 遥信与告警上报测试
+  en: Telesignal and Alarm Reporting Test
+  aliases: [遥信测试, 告警上报测试, 干接点测试]
+  category: communication
+  definition: 通过故障模拟注入保护触发条件, 验证遥信状态位与告警输出（干接点/光耦/通信位）的上报正确性、去抖与上报时延, 以及故障锁存与复位行为。
+  parameters:
+    - 故障场景：欠压/过压/过流/过温/短路等模拟项（按告警清单）
+    - 监测：状态信号与控制信号同步录波
+    - 去抖设置：0/10/30/100ms 等档位（如支持）
+  instruments:
+    - 故障注入工装/模拟盒（含开路、短路、对轨短路三类）
+    - 上位机（读取通信告警位） + 示波器/记录仪（干接点动作）
+    - 万用表（干接点通断）
+  interfaces:
+    - 告警输出接口：干接点/光耦（与被测电平匹配, 常用隔离）
+    - 通信口：告警位/状态字读取
+    - 故障注入通道接被测点
+  metrics:
+    - 告警上报时延（≤规格值, 典型 ≤1s）
+    - 遥信极性/干接点一致性（常开/常闭与语义）
+    - 去抖时间（ms 档位）
+    - 故障锁存与故障码可查性
+  procedure:
+    - 按告警清单逐项注入故障条件（含并发场景）;
+    - 同步监测告警干接点动作与通信状态位;
+    - 记录从条件成立到告警上报的时延, 验证去抖滤波;
+    - 触发最高级故障, 验证锁存与故障码读取, 复位后清除;
+    - 验证多告警并发时的严重度仲裁（停机>降额>预警）。
+  criteria:
+    - 数字量输入须设去抖滤波（K-TLM-103）;
+    - 告警上报时延 ≤ 规格值（K-TLM-110）;
+    - 遥信极性/干接点语义与失效安全一致（K-TLM-111）;
+    - 欠压期间须置遥信告警（K-PROT-110）;
+    - 最高级故障锁存并记录故障码（K-PROT-114）; 多告警按严重度仲裁（K-PROT-115）;
+    - 告警分级（预警/降额/停机）与输出接口隔离（K-CTL-101, K-CTL-102）。
+  measures: [T-TELESIGNAL, T-ALARM, T-DRYCONTACT, T-FAULTLATCH, T-HYSTERESIS]
+  rules: [K-TLM-103, K-TLM-110, K-TLM-111, K-PROT-110, K-PROT-114, K-PROT-115, K-CTL-101, K-CTL-102]
+  standards: []
+  references:
+    - https://patents.google.com/patent/CN116106777A/zh
+    - https://www.h3c.com/cn/d_202603/2776209_30005_0.htm
+    - https://www.ibm.com/docs/zh/datapower-gateway/11.0.0?topic=appliance-troubleshooting-power-supply-modules
+  retrieved: "2026-10-12"
+
+- method_id: M-TELECONTROL
+  zh: 遥控开关机与设定测试
+  en: Remote Control (On/Off and Setpoint) Test
+  aliases: [遥控测试, 远程开关机测试, 远端设定测试]
+  category: communication
+  definition: 通过遥控接口（通信命令或使能引脚）执行开/关机与设定值下发, 验证遥控优先级（本地-远端切换）、响应时延与设定值限幅/回读一致性。
+  parameters:
+    - 命令序列：开机→设定值扫描→关机; 本地/远端切换场景
+    - 设定范围：全量程（含上下限与越界值）
+  instruments:
+    - 上位机（遥控命令下发与回读）
+    - 示波器（输出建立/关断与命令的时序）
+    - 电子负载
+  interfaces:
+    - 遥控使能引脚（EN/RE）或通信口接上位机
+    - 输出端子接电子负载, 示波器监测输出
+  metrics:
+    - 遥控开机/关机响应时延（≤规格值）
+    - 设定值回读偏差（≤设定精度带）
+    - 设定值限幅（上限 ≤ OCP 等硬件保护范围）
+  procedure:
+    - 远端模式下下发开机命令, 记录输出建立时延; 下发关机, 记录关断时延;
+    - 下发设定值（含上下限）, 回读并与实际输出比对;
+    - 尝试下发越界设定值, 验证限幅在硬件保护范围内;
+    - 切换本地/远端模式, 验证操作互斥与优先级提示;
+    - 数字控制器：验证看门狗超时后的安全复位行为。
+  criteria:
+    - 远端遥控使能时本地面板失效或明确提示（K-TLM-106）;
+    - 遥控可设定范围完全包含于硬件保护范围内（K-TLM-107）;
+    - 设定值回读一致性 ≤ 设定精度带（K-TLM-108）;
+    - 开/关机与设定下发的响应时延 ≤ 规格值（K-TLM-109）;
+    - 数字控制器须具备看门狗, 超时后安全复位（K-PROT-113）。
+  measures: [T-TELECONTROL, T-TELEADJUST, T-ENABLE, T-WDT]
+  rules: [K-TLM-106, K-TLM-107, K-TLM-108, K-TLM-109, K-PROT-113]
+  standards: []
+  references:
+    - https://patents.google.com/patent/CN101727368A/zh
+    - https://www.tek.com/en/documents/application-note/verifying-power-supply-sequencing-8-channel-oscilloscope
+    - https://www.upsmate.com/news/shownews.php?id=94
+  retrieved: "2026-10-12"
+
+- method_id: M-COMM
+  zh: 通信接口测试
+  en: Communication Interface Test
+  aliases: [通信测试, RS485测试, 回环测试]
+  category: communication
+  definition: 对数字通信接口执行回环/自检与压力测试：验证物理层连通、地址唯一性、帧格式/CRC、误码率与断线恢复, 保证遥测/遥信/遥控可靠。
+  parameters:
+    - 接口类型：RS485/RS232/CAN/PMBus 等（按型号）
+    - 波特率：最高使用速率
+    - 场景：正常通信、地址冲突、断线重连、错误帧注入
+  instruments:
+    - 上位机 + 通信适配器（支持该协议）
+    - 示波器/协议分析仪（物理层波形与帧解码, 可选）
+    - 终端电阻/总线线束
+  interfaces:
+    - 通信端子（A/B、SDA/SCL 等）接适配器与总线
+    - 多点拓扑：测试地址唯一性与总线冲突
+  metrics:
+    - 回环/自检通过率（100%）
+    - 误码率 BER（工业典型 ≤10⁻⁶, 严苛 ≤10⁻⁷）
+    - 地址唯一性（同一总线无冲突）
+    - 断线恢复时间
+  procedure:
+    - 单机回环：适配器自发自收验证物理层与协议基本功能;
+    - 多点组网：多台同总线, 逐台寻址验证地址唯一性与响应;
+    - 以最高波特率连续通信（压力测试）, 统计误码率;
+    - 注入错误帧/断线, 验证容错与自动恢复;
+    - 检查终端电阻匹配与波形质量（必要时）。
+  criteria:
+    - 通信接口产测须做回环/自检测试; RS485 须验证地址唯一性与误码（K-TLM-112）;
+    - 通信中断/看门狗超时后须安全复位（K-PROT-113）。
+  measures: [T-PMBUS, T-WDT]
+  rules: [K-TLM-112, K-PROT-113]
+  standards: []
+  references:
+    - https://blog.csdn.net/weixin_33610780/article/details/157085840
+    - https://patents.google.com/patent/CN205229445U/zh
+    - https://gnsems.com/zh-CN/how-to-solve-problems-related-to-why-rs485-communication-fails
+  retrieved: "2026-10-12"
+
+- method_id: M-POWERCYCLE
+  zh: 开关机循环测试
+  en: Power On/Off Cycling Test
+  aliases: [开关循环测试, 通断循环测试]
+  category: reliability
+  definition: 以规定节奏反复通断输入电源, 验证电源在反复启动应力（浪涌/热应力）下的工作稳定性与参数一致性。
+  parameters:
+    - 节奏：合 15s / 断 5s（或按规范）, 连续 2h（产线可加严）
+    - 负载：最大负载
+    - 环境：常温（或高温）
+  instruments:
+    - 接触器/继电器控制回路（或可编程交流源）
+    - 电子负载
+    - 数据记录仪（输出电压监测）
+  interfaces:
+    - 输入经接触器/继电器接交流源
+    - 输出端子接电子负载
+    - 监测通道接输出端与输入
+  metrics:
+    - 循环次数（次）
+    - 输出电压一致性/漂移（V）
+    - 异常次数（0）
+  procedure:
+    - 输入端接循环控制（接触器）与交流源, 输出满载;
+    - 设定合 15s/断 5s 循环, 连续运行 2h（或规范时长）;
+    - 全程监测输出电压与样机状态, 记录异常;
+    - 结束后复测关键参数并与初始值比对。
+  criteria:
+    - 循环期间电源正常工作, 试验后性能无明显变化;
+    - 每次启动浪涌电流仍受 NTC/限流措施限制（K-PWR-116）。
+  measures: [T-INRUSH, T-LONGTERM, T-BURNIN]
+  rules: [K-PWR-116]
+  standards: []
+  references:
+    - https://www.sohu.com/a/733237521_100175321
+    - https://www.iclabcn.com/1070.html
+    - https://zhuanlan.zhihu.com/p/620038384
+  retrieved: "2026-10-12"
+
+- method_id: M-UVP
+  zh: 输出欠压保护测试
+  en: Output Under Voltage Protection Test
+  aliases: [UVP测试, 输出欠压保护测试]
+  category: protection
+  definition: 调整/拉低输出电压直至触发欠压报警或保护, 记录动作点与恢复点, 验证输出欠压保护及回差。
+  parameters:
+    - 拉低方式：通过设定或过载使输出电压缓慢下降
+    - 观察项：欠压报警点、恢复点与回差
+  instruments:
+    - 可编程直流源/电子负载（制造输出欠压条件）
+    - 数字万用表/示波器（记录阈值）
+  interfaces:
+    - 输出端子 V+/V− 接电子负载
+    - 示波器/万用表监测输出
+  metrics:
+    - 输出欠压保护点（V）
+    - 恢复点与回差（V）
+  procedure:
+    - 缓慢降低输出（或加深拉载）直至欠压报警/保护动作, 记录阈值;
+    - 缓慢回升输出直至报警消失, 记录恢复点, 计算回差;
+    - 复测高/低温等工况。
+  criteria:
+    - 欠压保护动作点与回差符合规格（K-PROT-102）;
+    - 回差 ≥ max(设定值×1%, 噪声峰峰值×2)（K-PROT-108）。
+  measures: [T-UVP, T-HYSTERESIS]
+  rules: [K-PROT-102, K-PROT-108]
+  standards: [IEC 61204]
+  references:
+    - https://bbs.eeworld.com.cn/thread-1271383-1-1.html
+    - https://blog.csdn.net/weixin_43326587/article/details/147612469
+  retrieved: "2026-10-12"
+
+- method_id: M-INDICATOR
+  zh: 面板指示灯与显示功能测试
+  en: Panel Indicator Test
+  aliases: [指示灯测试, 状态灯测试, 面板显示测试]
+  category: general
+  definition: 对电源面板状态指示（运行/告警/故障 LED 与显示）执行功能验证：自检序列、亮灭/颜色/闪烁语义与状态定义的一致性，以及复位后的灯态行为。
+  parameters:
+    - 状态场景：正常上电、告警注入、故障锁存、复位
+    - 观察方式：目视挡光工装或视觉检测相机（AOI）
+  instruments:
+    - 目视检查工装（挡光/固定视角）或视觉检测相机（AOI）
+    - 故障注入工装（与遥信测试共用）
+    - 上位机（对照状态字与告警清单）
+  interfaces:
+    - 面板指示灯观察位（相机/人眼）
+    - 告警注入通道接被测点
+  metrics:
+    - 各状态灯亮灭/颜色/闪烁频率与语义一致（100%）
+    - 上电自检显示序列正确性
+  procedure:
+    - 正常上电, 记录自检序列与稳态运行灯态;
+    - 注入告警/故障条件, 验证告警灯颜色/闪烁与状态字及告警清单一致;
+    - 复位并清除故障, 验证灯态复位与锁存语义一致;
+    - 老化后复检灯态（可选, 见 M-BURN-IN）。
+  criteria:
+    - 面板指示语义与告警/状态定义一致, 便于失效安全判读;
+    - 上电自检与灯态序列符合规格描述。
+  measures: [T-LEDIND]
+  rules: []
+  standards: []
+  references:
+    - https://www.ibm.com/docs/zh/datapower-gateway/11.0.0?topic=appliance-troubleshooting-power-supply-modules
+    - https://www.h3c.com/cn/d_202603/2776209_30005_0.htm
+  retrieved: "2026-10-16"
+
+# ────────────────────────────────────────────────────────────────────
+# TC-15 STARTUP-TIME (subset of M-STARTUP): distinct timing parameter
+# ────────────────────────────────────────────────────────────────────
+- method_id: M-STARTUP-TIME
+  zh: 启动时间精确测试 (ton/tr 阶跃测量)
+  en: Start-up Precise Timing Test
+  aliases: [启动时间测试, ton测量, tr测量]
+  category: dynamics
+  definition: 用 8 通道示波器同步采样输入/输出/PG/输入电流 4 路信号, 精确测量开机延迟 (ton, 接通→输出开始上升) 与上升时间 (tr, 10%→90% 额定), 并与 PG/PGOOD 建立时序对齐 (8-ch 多路示波器 Tek 用法, Tektronix 应用笔记经典案例)。
+  parameters:
+    - 负载模式 CC / CR / CP (CR 对电源最温和, CP 最严酷)
+    - 输入相位 0/90/180/270 度任选, 含最不利的 AC 峰值接通
+    - 记录输入电压波形 / 输出上升波形 / PG / 输入电流 inrush
+  instruments:
+    - 8 通道示波器 (Tek MSO46/MSO64 推荐, 满足业内 8-ch sequencing 应用笔记推荐)
+    - 电流探头 (AC/DC, Tek TCP 系列)
+    - 差分探头 (高压隔离)
+    - 电子负载 (CC/CR/CP 各模式)
+    - 可编程交流源
+  interfaces:
+    - CH1 输入电压 / 差分探头隔离
+    - CH2 输出电压上升波形
+    - CH3 PG 或 PGOOD 信号 (如具备)
+    - CH4 输入电流 / 电流探头
+  metrics:
+    - 开机延迟 ton (ms, 接通电源到输出开始上升)
+    - 输出上升时间 tr (ms, 10% 到 90% Vnom)
+    - PG 相对输出建立延时 (ms)
+    - 启动过冲幅度 (%, 详见 M-OVERSHOOT)
+  procedure:
+    - 设定额定负载模式 (CC/CR/CP 任选, 记录在报告)
+    - 以规定相角接通输入, 用示波器 (Infinite Persistence / History) 同步四路
+    - 读取 ton 与 tr (自动测量或统计光标), 计算 PG 与输出建立的时序关系
+    - 重复 N 次 (typical 10) 观察时序一致性与启动过冲
+    - 与规格比对, 异常项记入报告 (包括 PG 缺失等)
+  criteria:
+    - 启动时间 ton/tr 不超规格, 典型限值 ≤100ms, 依产品规范 (K-PWR-109)
+    - PG 或 PGOOD 应在输出稳压后建立, 典型 <100ms 延时, 不得先于输出翻转
+    - 多个接通相角的时序一致性应在 ±5% 内, 电源设计余量
+  measures: [T-STARTUPTIME, T-RISETIME, T-PGOOD, T-STARTOVERSHOOT]
+  rules: [K-PWR-109]
+  standards: [IEC 62368-1]
+  references:
+    - "https://www.tek.com/en/documents/application-note/verifying-power-supply-sequencing-8-channel-oscilloscope"
+    - "https://www.eenewseurope.com/en/speeding-up-power-rail-timing-verification-with-an-8-channel-oscilloscope/"
+    - "https://www.rohde-schwarz.com/us/applications/accurate-verification-of-power-supply-startup-sequences-for-auxiliary-bias-supplies_56279-1301059.html"
+  retrieved: "2026-10-19"
+
+# ────────────────────────────────────────────────────────────────────
+# TC-16 OUTPUT OVERSHOOT (subset of M-STARTUP): turn-on overshoot only
+# ────────────────────────────────────────────────────────────────────
+- method_id: M-OVERSHOOT
+  zh: 输出启动过冲测试
+  en: Output Turn-On Overshoot Test
+  aliases: [启动过冲测试, overshoot测量]
+  category: output
+  definition: 接通输入时观察输出电压超调峰值 (与稳态额定 Vnom 比较). 验证软启动/闭环抑制使过冲落在规格带内。
+  parameters:
+    - 负载工况 0 / 满载 / 50% 满载三种
+    - 输入相位 90 或 270 度, AC 峰值接通最严酷
+    - 观察窗口 上电后 0 到 200ms
+  instruments:
+    - 示波器 (Tek MSO46 1GHz 带宽, 20MHz 带宽限制以避免开关尖峰误判)
+    - 差分探头
+    - 可编程交流源
+    - 电子负载
+  interfaces:
+    - 示波器 CH1 经差分探头接输出 V+/V- (靠接治具, 短地环路)
+    - 输入同步触发 (CH1 电压触发起动点)
+  metrics:
+    - 过冲幅度 peak vs Vnom (%)
+    - 过冲持续时间 (ms, 超过恢复带时段)
+    - 多个接通相角下过冲一致性 (%)
+  procedure:
+    - 用示波器 Hi-Res / Average 模式采输出波形 (max-Min 即可看出过冲)
+    - 计算过冲 (Vpeak − Vnom) / Vnom × 100%
+    - 在三种负载 + 两个最严相位条件下重复测试
+    - 验证软启动使过冲带通常 ≤5% (通信电源严苛 ≤1%)
+  criteria:
+    - 启动过冲 ≤5% Vnom (K-PWR-109 通用限值)
+    - 通信电源 ≤1% Vnom, 5G/服务器等高端电源要求更严
+    - 软启动受控, 不出现异常门控斜率
+  measures: [T-STARTOVERSHOOT, T-SOFTSTART]
+  rules: [K-PWR-109]
+  standards: [IEC 61204, IEC 62368-1]
+  references:
+    - "https://www.celectronics.com/learning-center/en-iec-61204-3"
+    - "https://standards.iteh.ai/catalog/standards/iec/d1b5eed4-23be-42a6-adca-5e9283379efb/iec-61204-1993-amd1-2001"
+    - "https://www.psma.org/wp-content/uploads/2021/01/Thermal-measurments-Final.pdf"
+  retrieved: "2026-10-19"
+
+# ────────────────────────────────────────────────────────────────────
+# TC-12 CROSS-REGULATION
+# ────────────────────────────────────────────────────────────────────
+- method_id: M-CROSS-REG
+  zh: 交叉调整率测试 (多轨)
+  en: Multi-Rail Cross-Regulation Test
+  aliases: [交叉调整率测试, multi-rail regulation]
+  category: output
+  definition: 对多轨输出电源, 让某轨负载变化 (0%→100%), 测其他轨输出电压偏离. 验证变压器/磁反馈稳压设计的跨轨耦合.
+  parameters:
+    - 多轨要求 至少 2 轨 (RAIL_A + RAIL_B)
+    - 不变轨 RAIL_under_test 维持标称负载
+    - 扰动轨 RAIL_agitate 按 0% / 50% / 100% 三点逐档突变
+    - 测量量 RAIL_under_test 的 ΔV (mV 或 %)
+  instruments:
+    - 数字万用表 6½ 位 (Keithley 2110 或 HP/Keysight 34461A)
+    - 多通道电子负载 (dual-output Chroma 63206 或 ITECH IT-M3900)
+    - 4 线 Kelvin 接线
+  interfaces:
+    - DUT 多轨输出 L+ / L- (每轨 4-wire Kelvin sense)
+    - DMM HI/LO 跨轨切换扫描
+  metrics:
+    - 跨轨调整率 (mV 或 %)
+    - 故障跨轨输出之一低载, 其他仍稳定 (K-CROSS-001)
+  procedure:
+    - 标称输入下双轨带载至额定, 读取 Vout_A 与 Vout_B 稳定
+    - 把 B 轨从空载 突变到 50% 再突变到 100%, 每档稳态后读 A 即 DUT 轨
+    - 计算 A 轨 ΔV 偏离 = (V_A_min - V_A_max) / V_nom × 100%
+    - 再以同样方法测 B 相对 A 的扰动, 对称执行
+    - 记录工况与温度对调整率的影响
+  criteria:
+    - 跨轨调整率 ≤5% (典型 ±1-2%), 判据余量须大于仪器精度 2 倍 (K-PWR-111)
+    - 多轨设计中单通道失效须自动隔离, 母线不中断 (K-PROT-118)
+  measures: [T-CROSSREG]
+  rules: [K-PWR-110, K-PWR-111, K-PROT-118]
+  standards: [IEC 61204]
+  references:
+    - "https://www2.xppower.com/portals/0/brochures/Essential_Guide_to_Power_Supplies.pdf"
+    - "https://www.us.lambda.tdk.com/resources/blogs/20120409.html"
+    - "https://www.celectronics.com/Specialty-Product-Testing/Power-Supply-IEC61204"
+    - "https://www.testworld.com/wp-content/uploads/power-supply-testing.pdf"
+  retrieved: "2026-10-19"
+
+# ────────────────────────────────────────────────────────────────────
+# (end of methods)
+# ────────────────────────────────────────────────────────────────────
